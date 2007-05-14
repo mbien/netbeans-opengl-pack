@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: com.mbien.glslcompiler
+OpenIDE-Module-Install: com/mbien/glslcompiler/Installer.class
+OpenIDE-Module-Layer: com/mbien/glslcompiler/layer.xml
+OpenIDE-Module-Localizing-Bundle: com/mbien/glslcompiler/Bundle.properties
+OpenIDE-Module-Specification-Version: 0.9
