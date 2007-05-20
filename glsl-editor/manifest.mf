@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+OpenIDE-Module: net.highteq.gamedev.nbm.glsleditor
+OpenIDE-Module-Layer: net/highteq/gamedev/nbm/glsleditor/layer.xml
+OpenIDE-Module-Localizing-Bundle: net/highteq/gamedev/nbm/glsleditor/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+OpenIDE-Module-Install: net/highteq/gamedev/nbm/glsleditor/GlslEditorModule.class
+
+Name: net/highteq/gamedev/nbm/glsleditor/dataobject/GlslFragmentShaderLoader.class
+OpenIDE-Module-Class: Loader
+
+Name: net/highteq/gamedev/nbm/glsleditor/dataobject/GlslVertexShaderLoader.class
+OpenIDE-Module-Class: Loader
+
