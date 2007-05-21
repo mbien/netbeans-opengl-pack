@@ -54,6 +54,8 @@ public class Installer extends ModuleInstall {
         out.getOut().println("module home: "+moduleHome);
         
                 
+// cylab: we probably don't need this, since the directory structure of a netbeans module should be used for natives deployment
+/*
         try{
             unzipFile(nativesSource, moduleHome+"/lib");
 //            apendToLibraryPath(dest+File.separator+"jogl-natives");
@@ -66,7 +68,7 @@ public class Installer extends ModuleInstall {
         }catch(IOException ex){
             Exceptions.printStackTrace(ex);
         }
-        
+*/        
         final String[] strings = new String[2];
         GLWorker worker = new GLWorker();
         worker.addWork(new GLRunnable() {
@@ -109,6 +111,8 @@ public class Installer extends ModuleInstall {
         // TODO use lookup...
         GLSLCompiler.instance = new GLSLCompiler(pattern);
         
+// cylab: I directly add the observer to the document in the GlslXXXShaderObject now
+/*
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 observer = new ShaderFileObserver();
@@ -116,18 +120,22 @@ public class Installer extends ModuleInstall {
                 result.addLookupListener(observer);
             }
         });
+ */
     }
     
 
     @Override
     public void uninstalled() {
         super.uninstalled();
+// cylab: I directly add the observer to the document in the GlslXXXShaderObject now
+/*
         if(result != null){
             result.removeLookupListener(observer);
             result = null;
         }
+*/ 
         CompilerAnnotations.clearAll();
-    }
+ }
     
 
     private void unzipFile(String source, String destDir) throws IOException {

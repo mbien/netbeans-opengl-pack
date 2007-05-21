@@ -25,10 +25,15 @@ public class ShaderFileObserver implements LookupListener, DocumentListener, Run
     
     /** Creates a new instance of ShaderFileObserver */
     public ShaderFileObserver() {
+        this(null);
+    }
+    
+    public ShaderFileObserver(DataObject dao) {
+        currentDao = dao;
         compilerTask = RP.create(this);
         compilerTask.setPriority(Thread.MIN_PRIORITY);
     }
-    
+
     public void resultChanged(LookupEvent e) {
         
         Lookup.Result<DataObject> res = (Lookup.Result<DataObject>)e.getSource();
@@ -87,7 +92,7 @@ public class ShaderFileObserver implements LookupListener, DocumentListener, Run
         GLSLCompiler.getInstance().compileShader(currentDao);
     }
     
-    private final void runCompileTask() {
+    public final void runCompileTask() {
         compilerTask.schedule(compileDelay);
     }
 
