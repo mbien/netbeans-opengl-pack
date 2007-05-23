@@ -4,13 +4,14 @@
     <folder name="Actions">
         <folder name="Build">
             <file name="com-mbien-glslcompiler-actions-CompileShaderAction.instance"/>
+            <file name="com-mbien-glslcompiler-actions-LinkShaderAction.instance"/>
         </folder>
     </folder>
-    <!--folder name="Loaders">
+    <folder name="Loaders">
         <folder name="text">
             <folder name="x-glsl-fragment-shader">
                 <folder name="Actions">
-                    <attr name="OpenAction.instance/com-mbien-glslcompiler-actions-separatorBefore.instance" boolvalue="true"/>
+                    <attr name="org-openide-actions-RenameAction.instance/com-mbien-glslcompiler-actions-separatorBefore.instance" boolvalue="true"/>
                     <file name="com-mbien-glslcompiler-actions-separatorBefore.instance">
                         <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
                     </file>
@@ -19,6 +20,11 @@
                         <attr name="originalFile" stringvalue="Actions/Build/com-mbien-glslcompiler-actions-CompileShaderAction.instance"/>
                     </file>
                     <attr name="com-mbien-glslcompiler-actions-CompileShaderAction.shadow/com-mbien-glslcompiler-actions-separatorAfter.instance" boolvalue="true"/>
+                    <attr name="com-mbien-glslcompiler-actions-CompileShaderAction.shadow/com-mbien-glslcompiler-actions-LinkShaderAction.shadow" boolvalue="true"/>
+                    <file name="com-mbien-glslcompiler-actions-LinkShaderAction.shadow">
+                        <attr name="originalFile" stringvalue="Actions/Build/com-mbien-glslcompiler-actions-LinkShaderAction.instance"/>
+                    </file>
+                    <attr name="com-mbien-glslcompiler-actions-LinkShaderAction.shadow/com-mbien-glslcompiler-actions-separatorAfter.instance" boolvalue="true"/>
                     <file name="com-mbien-glslcompiler-actions-separatorAfter.instance">
                         <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
                     </file>
@@ -27,7 +33,7 @@
             </folder>
             <folder name="x-glsl-vertex-shader">
                 <folder name="Actions">
-                    <attr name="OpenAction.instance/com-mbien-glslcompiler-actions-separatorBefore.instance" boolvalue="true"/>
+                    <attr name="org-openide-actions-RenameAction.instance/com-mbien-glslcompiler-actions-separatorBefore.instance" boolvalue="true"/>
                     <file name="com-mbien-glslcompiler-actions-separatorBefore.instance">
                         <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
                     </file>
@@ -36,6 +42,11 @@
                         <attr name="originalFile" stringvalue="Actions/Build/com-mbien-glslcompiler-actions-CompileShaderAction.instance"/>
                     </file>
                     <attr name="com-mbien-glslcompiler-actions-CompileShaderAction.shadow/com-mbien-glslcompiler-actions-separatorAfter.instance" boolvalue="true"/>
+                    <attr name="com-mbien-glslcompiler-actions-CompileShaderAction.shadow/com-mbien-glslcompiler-actions-LinkShaderAction.shadow" boolvalue="true"/>
+                    <file name="com-mbien-glslcompiler-actions-LinkShaderAction.shadow">
+                        <attr name="originalFile" stringvalue="Actions/Build/com-mbien-glslcompiler-actions-LinkShaderAction.instance"/>
+                    </file>
+                    <attr name="com-mbien-glslcompiler-actions-LinkShaderAction.shadow/com-mbien-glslcompiler-actions-separatorAfter.instance" boolvalue="true"/>
                     <file name="com-mbien-glslcompiler-actions-separatorAfter.instance">
                         <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
                     </file>
@@ -43,7 +54,7 @@
                 </folder>
             </folder>
         </folder>
-    </folder-->
+    </folder>
     <folder name="Editors">
         <folder name="AnnotationTypes">
             <file name="com-mbien-glslcompiler-GLSLCompilerWarning.xml" url="GLSLCompilerWarning.xml"/>

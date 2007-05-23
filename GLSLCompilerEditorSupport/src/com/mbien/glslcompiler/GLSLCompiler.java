@@ -10,6 +10,8 @@ import com.mbien.engine.util.GLRunnable;
 import com.mbien.engine.util.GLWorker;
 import com.mbien.engine.glsl.GLSLCompileException;
 import com.mbien.engine.glsl.GLSLCompilerMassageHandler;
+import com.mbien.engine.glsl.GLSLLinkException;
+import com.mbien.engine.glsl.GLSLProgram;
 import com.mbien.engine.glsl.GLSLShader;
 import com.mbien.glslcompiler.annotation.CompilerAnnotation;
 import com.mbien.glslcompiler.annotation.CompilerAnnotations;
@@ -17,6 +19,7 @@ import java.io.IOException;
 import java.util.regex.Pattern;
 import javax.media.opengl.GL;
 import javax.media.opengl.GLContext;
+import javax.media.opengl.GLException;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import org.openide.cookies.EditorCookie;
@@ -61,7 +64,18 @@ public class GLSLCompiler implements CompilerEventListener {
     }
     
     
-    public void compileShader(DataObject dao) {
+    /**
+     * Compiles the shader and checks for compilation errors. Annotations are 
+     * automatically placed if errors accrue.
+     * 
+     * This is a fire and forget method. The shader will be immediately removed after
+     * compilation, successfull or not.
+     * 
+     * @return Returns true if shader compilation succeeds.
+     */
+    public boolean compileShader(DataObject... daos) {
+        
+        boolean success = true;
         
         try{
             io.getOut().reset();
@@ -69,48 +83,149 @@ public class GLSLCompiler implements CompilerEventListener {
             Exceptions.printStackTrace(ex);
         }
         
-        CompilerAnnotations.removeAnnotations(dao);
+        for (int i = 0; i < daos.length; i++) {
+            DataObject dao = daos[i];
+            CompilerAnnotations.removeAnnotations(dao);
+            massageHandler.setSource(dao);
         
-        Document doc = dao.getCookie(EditorCookie.class).getDocument();
-        final GLSLShader shader;
+            try{
+                compile(createShader(dao), true);
+            }catch(GLSLCompileException ex){
+                success = false;
+                massageHandler.parse(ex.getMessage());
+            }
+        }
+        
+        return success;
+    }
+    
+    
+    /*
+     * see compileShader
+     * TODO doc mbien
+     */
+    public boolean compileAndLinkProgram(DataObject... daos) {
+        
+        boolean success = true;
         
         try{
-            if(doc != null){
+            io.getOut().reset();
+        }catch(IOException ex) {
+            Exceptions.printStackTrace(ex);
+        }
+        
+        GLSLShader[] shaders = new GLSLShader[daos.length];
+        
+        for (int i = 0; i < shaders.length; i++) {
+            
+            CompilerAnnotations.removeAnnotations(daos[i]);
+            massageHandler.setSource(daos[i]);
+            
+            try{
+                shaders[i] = createShader(daos[i]);
+                compile(shaders[i], false);
+            }catch(GLSLCompileException ex) {
+                success = false;
+                massageHandler.parse(ex.getMessage());
+            }
+            
+        }
+        
+        // success == true if all shaders compiled without errors
+        if(success) {
+            io.getOut().println("compilation successfull");
+            try{
+                link(shaders);
+                io.getOut().println("link successfull");
+            }catch(GLSLLinkException ex) {
+                success = false;
+                io.getOut().println("link error");
+                io.getOut().println(ex.getMessage());
+//                massageHandler.parse(ex.getMessage());
+            }
+        }
+        return success;
+    }
+    
+    /**
+     * creates a new GLSLShader object from the given DataObject. This shader is
+     * not initialized or bound to any GL context.
+     * 
+     * @param dao - the DataObject of the shader source
+     */
+    public GLSLShader createShader(DataObject dao) {
+        
+        GLSLShader shader = null;
+        
+        Document doc = dao.getCookie(EditorCookie.class).getDocument();
+        if(doc != null) {
+            try{
                 String shaderSource = doc.getText(0, doc.getLength());
                 String shaderName = dao.getPrimaryFile().getNameExt();
                 GLSLShader.ShaderType shaderType = GLSLShader.ShaderType.parse(dao.getPrimaryFile().getExt());
-
-                
                 shader = new GLSLShader(shaderSource, shaderName, shaderType);
-            }else{
-                shader = new GLSLShader(FileUtil.toFile(dao.getPrimaryFile()));
+            }catch(BadLocationException ex){
+                // not possible
+                ex.printStackTrace();
             }
-            shader.setThrowExceptionOnCompilerWarning(true);
-            massageHandler.setSource(dao);
-            
-            GLRunnable work = new GLRunnable() {
-                public void run(GLContext context) {
-                    GL gl = context.getGL();
-
-                    try{
-                        shader.initShader(gl);
-                    }catch(GLSLCompileException ex) {
-                        massageHandler.parse(ex.getMessage());
-                    }
-
-                    shader.deleteShader(gl);
-               }
-
-            };
-            glWorker.addWork(work);
-            glWorker.work();
-            
-        }catch(BadLocationException e) {
-            Exceptions.printStackTrace(e);
+        }else{
+            shader = new GLSLShader(FileUtil.toFile(dao.getPrimaryFile()));
         }
+        shader.setThrowExceptionOnCompilerWarning(true);
         
+        return shader;
     }
+    
+    private void compile(final GLSLShader shader, final boolean deleteAfterCompilation) throws GLSLCompileException {
+
+        final GLSLCompileException[] exception = new GLSLCompileException[] {null};
         
+        GLRunnable compilerTask = new GLRunnable(){
+            public void run(GLContext context) {
+                GL gl = context.getGL();
+
+                try{
+                    shader.initShader(gl);
+                }catch(GLSLCompileException ex) {
+                    exception[0] = ex;
+                }finally{
+                    if(deleteAfterCompilation)
+                        shader.deleteShader(gl);
+                }
+           }
+       };
+       glWorker.work(compilerTask);
+       
+       if(exception[0] != null)
+            throw exception[0];
+       
+    }
+    
+    private void link(final GLSLShader[] shaders) throws GLSLLinkException {
+        
+        final GLSLLinkException[] exception = new GLSLLinkException[] {null};
+        
+        GLRunnable linkerTask = new GLRunnable(){
+            public void run(GLContext context) {
+                GL gl = context.getGL();
+                GLSLProgram program = new GLSLProgram();
+                try{
+                    program.initProgram(gl, shaders);
+                }catch(GLSLLinkException ex) {
+                    exception[0] = ex;
+                }finally{
+                    // delete program and all attached shaders
+                    program.deinitProgram(gl, true);
+                }
+           }
+       };
+       glWorker.work(linkerTask);
+       
+       // rethrow exception from Runnable
+       if(exception[0] != null)
+            throw exception[0];
+    }
+    
     
     public void compilerEvent(CompilerEvent e) {
                

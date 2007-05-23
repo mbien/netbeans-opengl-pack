@@ -16,7 +16,7 @@ public class GLSLShader {
  public final ShaderType type;
  
  private final String source;
- private final String[] shaderNames;
+ final String[] shaderNames;
  
  private int handle;
  
@@ -138,7 +138,7 @@ public class GLSLShader {
         gl.glGetInfoLogARB(handle, buffer[0], buffer, 0, log, 0);
         
         if(log[0] != 0)  {// 0 if empty
-            error = throwExceptionOnCompilerWarning; // TODO setup exception level
+            error = throwExceptionOnCompilerWarning | error; // TODO setup exception level
 //            getLog().warning("compiler info log:\n"+new String(log, 0, log.length-1));
         }
         

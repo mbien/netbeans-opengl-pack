@@ -1,39 +1,54 @@
 package com.mbien.glslcompiler.actions;
 
 import com.mbien.glslcompiler.GLSLCompiler;
+import org.openide.filesystems.FileUtil;
 import org.openide.loaders.DataObject;
 import org.openide.nodes.Node;
 import org.openide.util.HelpCtx;
 import org.openide.util.NbBundle;
-import org.openide.util.actions.CookieAction;
+import org.openide.util.actions.NodeAction;
 
 /**
  * Created on 6. March 2007, 15:48
  * @author Michael Bien
  */
-public final class CompileShaderAction extends CookieAction {
+public final class CompileShaderAction extends NodeAction {
     
 
     protected void performAction(Node[] activatedNodes) {
-        DataObject dataObject = (DataObject) activatedNodes[0].getLookup().lookup(DataObject.class);
+            
+        DataObject[] daos = new DataObject[activatedNodes.length];
+        for (int i = 0; i < daos.length; i++) {
+            daos[i] = (DataObject) activatedNodes[i].getLookup().lookup(DataObject.class);
+        }
         
         GLSLCompiler c = GLSLCompiler.getInstance();
-        c.compileShader(dataObject);
+        c.compileShader(daos);
         
     }
     
-    protected int mode() {
-        return CookieAction.MODE_EXACTLY_ONE;
+    protected boolean enable(Node[] nodes) {
+        
+        for (int i = 0; i < nodes.length; i++) {
+            
+            DataObject dao = (DataObject) nodes[i].getLookup().lookup(DataObject.class);
+            String mimeType = FileUtil.getMIMEType(dao.getPrimaryFile());
+
+            if(mimeType == null)
+                return false;
+
+            if(!(  mimeType.equals("text/x-glsl-vertex-shader")
+                || mimeType.equals("text/x-glsl-fragment-shader")
+                || mimeType.equals("text/x-glsl-geometry-shader"))  ) {
+                return false;
+            }
+        }
+        
+        return true;
     }
     
     public String getName() {
         return NbBundle.getMessage(CompileShaderAction.class, "CTL_CompileShaderAction");
-    }
-    
-    protected Class[] cookieClasses() {
-        return new Class[] {
-            DataObject.class
-        };
     }
     
     protected void initialize() {
@@ -49,6 +64,8 @@ public final class CompileShaderAction extends CookieAction {
     protected boolean asynchronous() {
         return false;
     }
+
+
     
 }
 
