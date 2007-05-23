@@ -30,16 +30,19 @@ public final class LinkShaderAction extends NodeAction {
         if(nodes.length > 3)
             return false;
         
-        DataObject[] dataObjects = new DataObject[nodes.length];
+        DataObject[] daos = new DataObject[nodes.length];
         boolean containsFragmentFile = false;
         boolean containsVertexFile = false;
         boolean containsGeometryFile = false;
         
-        for (int i = 0; i < dataObjects.length; i++) {
-            dataObjects[i] = (DataObject) nodes[i].getLookup().lookup(DataObject.class);
+        for (int i = 0; i < daos.length; i++) {
             
+            daos[i] = (DataObject) nodes[i].getLookup().lookup(DataObject.class);
+                        
+            if(daos[i] == null)
+                return false;
             
-            String mimeType = FileUtil.getMIMEType(dataObjects[i].getPrimaryFile());
+            String mimeType = FileUtil.getMIMEType(daos[i].getPrimaryFile());
 
             if(mimeType == null)
                 return false;

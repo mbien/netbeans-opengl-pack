@@ -32,6 +32,10 @@ public final class CompileShaderAction extends NodeAction {
         for (int i = 0; i < nodes.length; i++) {
             
             DataObject dao = (DataObject) nodes[i].getLookup().lookup(DataObject.class);
+            
+            if(dao == null)
+                return false;
+            
             String mimeType = FileUtil.getMIMEType(dao.getPrimaryFile());
 
             if(mimeType == null)
