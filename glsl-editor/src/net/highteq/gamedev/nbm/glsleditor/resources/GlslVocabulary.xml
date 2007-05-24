@@ -1,1705 +1,1802 @@
 <map>
-
-	<!-- VERTEX SHADER VARIABLES -->
-	<!-- Special Output Variables (7.1 p42) access=RW -->
-  <entry>
-    <string>gl_Position</string>
-    <desc>
-			<type>vec4</type>
-			<category>build-in-var</category>
-			<tooltip>shader must write</tooltip>
-    </desc>
-  </entry>
-  <entry>
-    <string>gl_PointSize</string>
-    <desc>
-			<type>float</type>
-			<category>build-in-var</category>
-			<tooltip>enable GL_VERTEX_PROGRAM_POINT_SIZE</tooltip>
-    </desc>
-  </entry>
-  <entry>
-    <string>gl_ClipVertex</string>
-    <desc>
-			<type>vec4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-
-  <!-- Attribute Inputs (7.3 p44) access=RO -->
-	<entry>
-	  <string>gl_Vertex</string>
-    <desc>
-			<type>attribute vec4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_Normal</string>
-    <desc>
-			<type>attribute vec3</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_Color</string>
-    <desc>
-			<type>attribute vec4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_SecondaryColor</string>
-    <desc>
-			<type>attribute vec4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MultiTexCoord0</string>
-    <desc>
-			<type>attribute vec4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MultiTexCoord1</string>
-    <desc>
-			<type>attribute vec4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MultiTexCoord2</string>
-    <desc>
-			<type>attribute vec4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MultiTexCoord3</string>
-    <desc>
-			<type>attribute vec4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MultiTexCoord4</string>
-    <desc>
-			<type>attribute vec4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MultiTexCoord5</string>
-    <desc>
-			<type>attribute vec4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MultiTexCoord6</string>
-    <desc>
-			<type>attribute vec4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MultiTexCoord7</string>
-    <desc>
-			<type>attribute vec4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_FogCoord</string>
-    <desc>
-			<type>attribute float</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-
-  <!-- Varying Outputs (7.6 p48) access=RW -->
-	<entry>
-    <string>gl_FrontColor</string>
-    <desc>
-			<type>varying vec4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-    <string>gl_BackColor</string>
-    <desc>
-			<type>varying vec4</type>
-			<category>build-in-var</category>
-			<tooltip>enable GL_VERTEX_PROGRAM_TWO_SIDE</tooltip>
-    </desc>
-	</entry>
-  <entry>
-    <string>gl_FrontSecondaryColor</string>
-    <desc>
-			<type>varying vec4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_BackSecondaryColor</string>
-    <desc>
-			<type>varying vec4</type>
-			<category>build-in-var</category>
-			<tooltip>enable GL_VERTEX_PROGRAM_TWO_SIDE</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_TexCoord</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>varying vec4</type>
-			<category>build-in-var</category>
-			<tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_FogFragCoord</string>
-    <desc>
-			<type>varying float</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-
-	<!-- FRAGMENT SHADER VARIABLES -->
-	<!--Special Output Variables (7.2 p43) access=RW -->
-  <entry>
-	  <string>gl_FragColor</string>
-    <desc>
-			<type>vec4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_FragData</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>vec4</type>
-			<category>build-in-var</category>
-			<tooltip>INDEX&lt;gl_MaxDrawBuffers</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_FragDepth</string>
-    <desc>
-			<type>float</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-
-
-	<!-- Varying Inputs (7.6 p48) access=RO -->
-  <entry>
-	  <string>gl_Color</string>
-    <desc>
-			<type>varying vec4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_SecondaryColor</string>
-    <desc>
-			<type>varying vec4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_TexCoord</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>varying vec4</type>
-			<category>build-in-var</category>
-			<tooltip>DEFAULT=glFragCoord.z</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_FogFragCoord</string>
-    <desc>
-			<type>varying float</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-
-	<!--Special Input Variables (7.2 p43) access=RO-->
-  <entry>
-	  <string>gl_FragCoord</string>
-    <desc>
-			<type>vec4</type>
-			<category>build-in-var</category>
-			<tooltip>pixel coordinates</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_TexCoord</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>varying vec4</type>
-			<category>build-in-var</category>
-			<tooltip>DEFAULT=glFragCoord.z</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_FrontFacing</string>
-    <desc>
-			<type>bool</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-
-	<!--BUILT-IN CONSTANTS (7.4 p44)-->
-  <entry>
-	  <string>gl_MaxVertexUniformComponents</string>
-    <desc>
-			<type>const int</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MaxFragmentUniformComponents</string>
-    <desc>
-			<type>const int</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MaxVertexAttribs</string>
-    <desc>
-			<type>const int</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MaxVaryingFloats</string>
-    <desc>
-			<type>const int</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MaxDrawBuffers</string>
-    <desc>
-			<type>const int</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MaxTextureCoords</string>
-    <desc>
-			<type>const int</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MaxTextureUnits</string>
-    <desc>
-			<type>const int</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MaxTextureImageUnits</string>
-    <desc>
-			<type>const int</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MaxVertexTextureImageUnits</string>
-    <desc>
-			<type>const int</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MaxCombinedTextureImageUnits</string>
-    <desc>
-			<type>const int</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MaxLights</string>
-    <desc>
-			<type>const int</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MaxClipPlanes</string>
-    <desc>
-			<type>const int</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-
-	<!-- BUILT-IN UNIFORMs (7.5 p45) access=RO -->
-  <entry>
-	  <string>gl_ModelViewMatrix</string>
-    <desc>
-			<type>uniform mat4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_ModelViewProjectionMatrix</string>
-    <desc>
-			<type>uniform mat4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_ProjectionMatrix</string>
-    <desc>
-			<type>uniform mat4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_TextureMatrix</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>uniform mat4</type>
-			<category>build-in-var</category>
-			<tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_ModelViewMatrixInverse</string>
-    <desc>
-			<type>uniform mat4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_ModelViewProjectionMatrixInverse</string>
-    <desc>
-			<type>uniform mat4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_ProjectionMatrixInverse</string>
-    <desc>
-			<type>uniform mat4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_TextureMatrixInverse</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>uniform mat4</type>
-			<category>build-in-var</category>
-			<tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_ModelViewMatrixTranspose</string>
-    <desc>
-			<type>uniform mat4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_ModelViewProjectionMatrixTranspose</string>
-    <desc>
-			<type>uniform mat4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_ProjectionMatrixTranspose</string>
-    <desc>
-			<type>uniform mat4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_TextureMatrixTranspose</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>uniform mat4</type>
-			<category>build-in-var</category>
-			<tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_ModelViewMatrixInverseTranspose</string>
-    <desc>
-			<type>uniform mat4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_ModelViewProjectionMatrixInverseTranspose</string>
-    <desc>
-			<type>uniform mat4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_ProjectionMatrixInverseTranspose</string>
-    <desc>
-			<type>uniform mat4</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_TextureMatrixInverseTranspose</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>uniform mat4</type>
-			<category>build-in-var</category>
-			<tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_NormalMatrix</string>
-    <desc>
-			<type>uniform mat3</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_NormalScale</string>
-    <desc>
-			<type>uniform float</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_DepthRangeParameters</string>
-    <desc>
-			<arguments>{float near; float far; float diff;}</arguments>
-			<type>struct</type>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_DepthRange</string>
-    <desc>
-			<type>uniform gl_DepthRangeParameters</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_FogParameters</string>
-    <desc>
-			<arguments>{vec4 color; float density; float start; float end; float scale;}</arguments>
-			<type>struct</type>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_Fog</string>
-    <desc>
-			<type>uniform gl_FogParameters</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_LightSourceParameters</string>
-    <desc>
-			<arguments>{vec4 ambient; vec4 diffuse; vec4 specular; vec4 position; vec4 halfVector; vec3 spotDirection; float spotExponent; float spotCutoff; float spotCosCutoff; float constantAttenuation; float linearAttenuation; float quadraticAttenuation;}</arguments>
-			<type>struct</type>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_LightSource</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>uniform gl_LightSourceParameters</type>
-			<category>build-in-var</category>
-			<tooltip>INDEX&lt;gl_MaxLights</tooltip>
-    </desc>
-  </entry>
-
-  <entry>
-	  <string>gl_LightModelParameters</string>
-    <desc>
-			<arguments>{vec4 ambient;}</arguments>
-			<type>struct</type>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_LightModel</string>
-    <desc>
-			<type>uniform gl_LightModelParameters</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_LightModelProducts</string>
-    <desc>
-			<arguments>{vec4 sceneColor;}</arguments>
-			<type>struct</type>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_FrontLightModelProduct</string>
-    <desc>
-			<type>uniform gl_LightModelProducts</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_BackLightModelProduct</string>
-    <desc>
-			<type>uniform gl_LightModelProducts</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_LightProducts</string>
-    <desc>
-			<arguments>{vec4 ambient; vec4 diffuse; vec4 specular;}</arguments>
-			<type>struct</type>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_FrontLightProduct</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>uniform gl_LightProducts</type>
-			<category>build-in-var</category>
-			<tooltip>INDEX&lt;gl_MaxLights</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_BackLightProduct</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>uniform gl_LightProducts</type>
-			<category>build-in-var</category>
-			<tooltip>INDEX&lt;gl_MaxLights</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_MaterialParameters</string>
-    <desc>
-			<arguments>{vec4 emission; vec4 ambient; vec4 diffuse; vec4 specular; float shininess;}</arguments>
-			<type>struct</type>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_FrontMaterial</string>
-    <desc>
-			<type>uniform gl_MaterialParameters</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_BackMaterial</string>
-    <desc>
-			<type>uniform gl_MaterialParameters</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_PointParameters</string>
-    <desc>
-			<arguments>{float size; float sizeMin; float sizeMax; float fadeThresholdSize; float distanceConstantAttenuation; float distanceLinearAttenuation; float distanceQuadraticAttenuation;}</arguments>
-			<type>struct</type>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_Point</string>
-    <desc>
-			<type>uniform gl_PointParameters</type>
-			<category>build-in-var</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_TextureEnvColor</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>uniform vec4</type>
-			<category>build-in-var</category>
-			<tooltip>INDEX&lt;gl_MaxTextureUnits</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_ClipPlane</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>uniform vec4</type>
-			<category>build-in-var</category>
-			<tooltip>INDEX&lt;gl_MaxClipPlanes</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_EyePlaneS</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>uniform vec4</type>
-			<category>build-in-var</category>
-			<tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_EyePlaneT</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>uniform vec4</type>
-			<category>build-in-var</category>
-			<tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_EyePlaneR</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>uniform vec4</type>
-			<category>build-in-var</category>
-			<tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_EyePlaneQ</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>uniform vec4</type>
-			<category>build-in-var</category>
-			<tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_ObjectPlaneS</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>uniform vec4</type>
-			<category>build-in-var</category>
-			<tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_ObjectPlaneT</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>uniform vec4</type>
-			<category>build-in-var</category>
-			<tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_ObjectPlaneR</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>uniform vec4</type>
-			<category>build-in-var</category>
-			<tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
-    </desc>
-  </entry>
-  <entry>
-	  <string>gl_ObjectPlaneQ</string>
-    <desc>
-			<arguments>[]</arguments>
-			<type>uniform vec4</type>
-			<category>build-in-var</category>
-			<tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
-    </desc>
-  </entry>
-
-	<!-- DATA TYPES (4.1 p16) -->
-  <entry>
-    <string>float</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>vec2</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>vec3</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>vec4</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>int</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>ivec2</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>ivec3</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>ivec4</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>bool</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>bvec2</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>bvec3</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>bvec4</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>mat2</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>mat3</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>mat4</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>void</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>sampler1D</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>sampler2D</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>sampler3D</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>samplerCube</string>
-    <desc/>
-  </entry>
-  <entry>
-    <string>sampler1DShadow</string>
-    <desc/>
-  </entry>
-	<entry>
-    <string>sampler2DShadow</string>
-    <desc/>
-  </entry>
-	
-	<!-- DATA TYPE QUALIFIERS (4.3 p22) -->
-  <entry>
-    <string>uniform</string>
-    <desc>
-			<tooltip>input to Vertex and Fragment shader from OpenGL or application (READ-ONLY)</tooltip>
-    </desc>
-  </entry>
-  <entry>
-    <string>attribute</string>
-    <desc>
-			<tooltip>input per-vertex to Vertex shader from OpenGL or application (READ-ONLY)</tooltip>
-    </desc>
-  </entry>
-  <entry>
-    <string>varying</string>
-    <desc>
-			<tooltip>output from Vertex shader (READ/WRITE), interpolated, then input to Fragment shader (READ-ONLY)</tooltip>
-    </desc>
-  </entry>
-  <entry>
-    <string>const</string>
-    <desc>
-			<tooltip>compile-time constant (READ-ONLY)</tooltip>
-    </desc>
-  </entry>
-  <entry>
-    <string>in</string>
-    <desc>
-			<tooltip>value initialized on entry, not copied on return (default)</tooltip>
-    </desc>
-  </entry>
-  <entry>
-    <string>out</string>
-    <desc>
-			<tooltip>copied out on return, but not initialized</tooltip>
-    </desc>
-  </entry>
-  <entry>
-    <string>inout</string>
-    <desc>
-			<tooltip>value initialized on entry, and copied out on return</tooltip>
-    </desc>
-  </entry>
-  <entry>
-    <string>const</string>
-    <desc>
-			<tooltip>constant function input</tooltip>
-    </desc>
-  </entry>
-<!--
-PREPROCESSOR (3.3 p9)
-#
-#define
-#undef
-#if
-#ifdef
-#ifndef
-#else
-#elif
-#endif
-#error
-#pragma
-#line
-__LINE__
-__FILE__
-__VERSION__
-GLSL version declaration and extensions protocol:
-#version
-default is "#version 110" (3.3 p11)
-#extension {name | all} : {require | enable | warn | disable}
-default is "#extension all : disable" (3.3 p11)
--->
-	
-<!-- BUILT-IN FUNCTIONS -->
-	<!-- Angle and Trigonometry Functions (8.1 p51) -->
-  <entry>
-	  <string>sin</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>cos</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>tan</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-
-  <entry>
-	  <string>asin</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>acos</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>atan</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>atan</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-
-  <entry>
-	  <string>radians</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>degrees</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-
-	<!-- Exponential Functions (8.2 p52) -->
-  <entry>
-	  <string>pow</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>exp</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>log</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>exp2</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>log2</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>sqrt</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>inversesqrt</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-
-	<!-- Common Functions (8.3 p52)-->
-  <entry>
-	  <string>abs</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>ceil</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>clamp</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>clamp</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4, float, float)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>floor</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>fract</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>max</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>max</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4, float)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>min</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>min</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4, float)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>mix</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>mix</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4, float)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>mod</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>mod</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4, float)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>sign</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>smoothstep</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>smoothstep</string>
-    <desc>
-			<arguments>(float, float, float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>step</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>step</string>
-    <desc>
-			<arguments>(float, float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-
-	<!-- Geometric Functions (8.4 p54) -->
-  <entry>
-	  <string>ftransform</string> <!-- Vertex ONLY -->
-    <desc>
-			<arguments>()</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>cross</string>
-    <desc>
-			<arguments>(vec3, vec3)</arguments>
-			<type>vec3</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>distance</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
-			<type>float</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>dot</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
-			<type>float</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>faceforward</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4 V, float|vec2|vec3|vec4 I, float|vec2|vec3|vec4 N)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>length</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>normalize</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>reflect</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4 I, float|vec2|vec3|vec4 N)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>refract</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4 I, float|vec2|vec3|vec4 M, float eta)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-
-	<!-- Fragment Processing Functions (8.8 p58) Fragment ONLY -->
-  <entry>
-	  <string>dFdx</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>dFdy</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>fwidth</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float|vec2|vec3|vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-
-	<!-- Matrix Functions (8.5 p55) -->
-  <entry>
-	  <string>matrixCompMult</string>
-    <desc>
-			<arguments>(mat2|mat3|mat4, mat2|mat3|mat4)</arguments>
-			<type>mat2|mat3|mat4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-
-	<!-- Vector Relational Functions (8.6 p55) -->
-  <entry>
-	  <string>all</string>
-    <desc>
-			<arguments>(bvec2|bvec3|bvec4)</arguments>
-			<type>bool</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>any</string>
-    <desc>
-			<arguments>(bvec2|bvec3|bvec4)</arguments>
-			<type>bool</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>equal</string>
-    <desc>
-			<arguments>(vec2|vec3|vec4, vec2|vec3|vec4)</arguments>
-			<type>bvec2|bvec3|bvec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>equal</string>
-    <desc>
-			<arguments>(ivec2|ivec3|ivec4, ivec2|ivec3|ivec4)</arguments>
-			<type>bvec2|bvec3|bvec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>equal</string>
-    <desc>
-			<arguments>(bvec2|bvec3|bvec4, bvec2|bvec3|bvec4)</arguments>
-			<type>bvec2|bvec3|bvec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>greaterThan</string>
-    <desc>
-			<arguments>(vec2|vec3|vec4, vec2|vec3|vec4)</arguments>
-			<type>bvec2|bvec3|bvec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>greaterThan</string>
-    <desc>
-			<arguments>(ivec2|ivec3|ivec4, ivec2|ivec3|ivec4)</arguments>
-			<type>bvec2|bvec3|bvec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>greaterThanEqual</string>
-    <desc>
-			<arguments>(vec2|vec3|vec4, vec2|vec3|vec4)</arguments>
-			<type>bvec2|bvec3|bvec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>greaterThanEqual</string>
-    <desc>
-			<arguments>(ivec2|ivec3|ivec4, ivec2|ivec3|ivec4)</arguments>
-			<type>bvec2|bvec3|bvec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>lessThan</string>
-    <desc>
-			<arguments>(vec2|vec3|vec4, vec2|vec3|vec4)</arguments>
-			<type>bvec2|bvec3|bvec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>lessThan</string>
-    <desc>
-			<arguments>(ivec2|ivec3|ivec4, ivec2|ivec3|ivec4)</arguments>
-			<type>bvec2|bvec3|bvec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>lessThanEqual</string>
-    <desc>
-			<arguments>(vec2|vec3|vec4, vec2|vec3|vec4)</arguments>
-			<type>bvec2|bvec3|bvec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>lessThanEqual</string>
-    <desc>
-			<arguments>(ivec2|ivec3|ivec4, ivec2|ivec3|ivec4)</arguments>
-			<type>bvec2|bvec3|bvec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>not</string>
-    <desc>
-			<arguments>(bvec2|bvec3|bvec4)</arguments>
-			<type>bvec2|bvec3|bvec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>notEqual</string>
-    <desc>
-			<arguments>(vec2|vec3|vec4, vec2|vec3|vec4)</arguments>
-			<type>bvec2|bvec3|bvec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>notEqual</string>
-    <desc>
-			<arguments>(ivec2|ivec3|ivec4, ivec2|ivec3|ivec4)</arguments>
-			<type>bvec2|bvec3|bvec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>notEqual</string>
-    <desc>
-			<arguments>(bvec2|bvec3|bvec4, bvec2|bvec3|bvec4)</arguments>
-			<type>bvec2|bvec3|bvec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-
-	<!-- Texture Lookup Functions (8.7 p56) -->
-	<!-- Optional bias term is Fragment ONLY -->
-  <entry>
-	  <string>texture1D</string>
-    <desc>
-			<arguments>(sampler1D, float)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>texture1D</string>
-    <desc>
-			<arguments>(sampler1D, float, float bias)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>texture1DProj</string>
-    <desc>
-			<arguments>(sampler1D, vec2|vec4)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>texture1DProj</string>
-    <desc>
-			<arguments>(sampler1D, vec2|vec4, float bias)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>texture2D</string>
-    <desc>
-			<arguments>(sampler2D, vec2)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>texture2D</string>
-    <desc>
-			<arguments>(sampler2D, vec2, float bias)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>texture2DProj</string>
-    <desc>
-			<arguments>(sampler2D, vec3|vec4)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>texture2DProj</string>
-    <desc>
-			<arguments>(sampler2D, vec3|vec4, float bias)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>texture3D</string>
-    <desc>
-			<arguments>(sampler3D, vec3)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>texture3D</string>
-    <desc>
-			<arguments>(sampler3D, vec3, float bias)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>texture3DProj</string>
-    <desc>
-			<arguments>(sampler3D, vec4)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>texture3DProj</string>
-    <desc>
-			<arguments>(sampler3D, vec4, float bias)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>textureCube</string>
-    <desc>
-			<arguments>(samplerCube, vec3)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>textureCube</string>
-    <desc>
-			<arguments>(samplerCube, vec3, float bias)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>shadow1D</string>
-    <desc>
-			<arguments>(sampler1DShadow, vec3)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>shadow1D</string>
-    <desc>
-			<arguments>(sampler1DShadow, vec3, float bias)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>shadow2D</string>
-    <desc>
-			<arguments>(sampler2DShadow, vec3)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>shadow2D</string>
-    <desc>
-			<arguments>(sampler2DShadow, vec3, float bias)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>shadow1DProj</string>
-    <desc>
-			<arguments>(sampler1DShadow, vec4)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>shadow1DProj</string>
-    <desc>
-			<arguments>(sampler1DShadow, vec4, float bias)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>shadow2DProj</string>
-    <desc>
-			<arguments>(sampler2DShadow, vec4)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>shadow2DProj</string>
-    <desc>
-			<arguments>(sampler2DShadow, vec4, float bias)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-
-	<!-- Texture Lookup Functions with LOD (8.7 p56) -->
-	<!-- Vertex ONLY; ensure GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS > 0 -->
-  <entry>
-	  <string>texture1DLod</string>
-    <desc>
-			<arguments>(sampler1D, float, float lod)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>texture1DProjLod</string>
-    <desc>
-			<arguments>(sampler1D, vec2|vec4, float lod)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>texture2DLod</string>
-    <desc>
-			<arguments>(sampler2D, vec2, float lod)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>texture2DProjLod</string>
-    <desc>
-			<arguments>(sampler2D, vec3|vec4, float lod)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>texture3DProjLod</string>
-    <desc>
-			<arguments>(sampler3D, vec4, float lod)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>textureCubeLod</string>
-    <desc>
-			<arguments>(samplerCube, vec3, float lod)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>shadow1DLod</string>
-    <desc>
-			<arguments>(sampler1DShadow, vec3, float lod)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>shadow2DLod</string>
-    <desc>
-			<arguments>(sampler2DShadow, vec3, float lod)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>shadow1DProjLod</string>
-    <desc>
-			<arguments>(sampler1DShadow, vec4, float lod)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>shadow2DProjLod</string>
-    <desc>
-			<arguments>(sampler2DShadow, vec4, float lod)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-
-	<!-- Noise Functions (8.9 p60) -->
-  <entry>
-	  <string>noise1</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>float</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>noise2</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>vec2</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>noise3</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>vec3</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-  <entry>
-	  <string>noise4</string>
-    <desc>
-			<arguments>(float|vec2|vec3|vec4)</arguments>
-			<type>vec4</type>
-			<category>build-in-func</category>
-    </desc>
-  </entry>
-<!--
+    
+    <!-- VERTEX SHADER VARIABLES -->
+    <!-- Special Output Variables (7.1 p42) access=RW -->
+    <entry>
+        <string>gl_Position</string>
+        <desc>
+            <type>vec4</type>
+            <category>build-in-var</category>
+            <tooltip>shader must write</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_PointSize</string>
+        <desc>
+            <type>float</type>
+            <category>build-in-var</category>
+            <tooltip>enable GL_VERTEX_PROGRAM_POINT_SIZE</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_ClipVertex</string>
+        <desc>
+            <type>vec4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    
+    <!-- Attribute Inputs (7.3 p44) access=RO -->
+    <entry>
+        <string>gl_Vertex</string>
+        <desc>
+            <type>attribute vec4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_Normal</string>
+        <desc>
+            <type>attribute vec3</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_Color</string>
+        <desc>
+            <type>attribute vec4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_SecondaryColor</string>
+        <desc>
+            <type>attribute vec4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MultiTexCoord0</string>
+        <desc>
+            <type>attribute vec4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MultiTexCoord1</string>
+        <desc>
+            <type>attribute vec4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MultiTexCoord2</string>
+        <desc>
+            <type>attribute vec4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MultiTexCoord3</string>
+        <desc>
+            <type>attribute vec4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MultiTexCoord4</string>
+        <desc>
+            <type>attribute vec4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MultiTexCoord5</string>
+        <desc>
+            <type>attribute vec4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MultiTexCoord6</string>
+        <desc>
+            <type>attribute vec4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MultiTexCoord7</string>
+        <desc>
+            <type>attribute vec4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_FogCoord</string>
+        <desc>
+            <type>attribute float</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    
+    <!-- Varying Outputs (7.6 p48) access=RW -->
+    <entry>
+        <string>gl_FrontColor</string>
+        <desc>
+            <type>varying vec4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_BackColor</string>
+        <desc>
+            <type>varying vec4</type>
+            <category>build-in-var</category>
+            <tooltip>enable GL_VERTEX_PROGRAM_TWO_SIDE</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_FrontSecondaryColor</string>
+        <desc>
+            <type>varying vec4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_BackSecondaryColor</string>
+        <desc>
+            <type>varying vec4</type>
+            <category>build-in-var</category>
+            <tooltip>enable GL_VERTEX_PROGRAM_TWO_SIDE</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_TexCoord</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>varying vec4</type>
+            <category>build-in-var</category>
+            <tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_FogFragCoord</string>
+        <desc>
+            <type>varying float</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    
+    <!-- FRAGMENT SHADER VARIABLES -->
+    <!--Special Output Variables (7.2 p43) access=RW -->
+    <entry>
+        <string>gl_FragColor</string>
+        <desc>
+            <type>vec4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_FragData</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>vec4</type>
+            <category>build-in-var</category>
+            <tooltip>INDEX&lt;gl_MaxDrawBuffers</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_FragDepth</string>
+        <desc>
+            <type>float</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    
+    
+    <!-- Varying Inputs (7.6 p48) access=RO -->
+    <entry>
+        <string>gl_Color</string>
+        <desc>
+            <type>varying vec4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_SecondaryColor</string>
+        <desc>
+            <type>varying vec4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_TexCoord</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>varying vec4</type>
+            <category>build-in-var</category>
+            <tooltip>DEFAULT=glFragCoord.z</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_FogFragCoord</string>
+        <desc>
+            <type>varying float</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    
+    <!--Special Input Variables (7.2 p43) access=RO-->
+    <entry>
+        <string>gl_FragCoord</string>
+        <desc>
+            <type>vec4</type>
+            <category>build-in-var</category>
+            <tooltip>pixel coordinates</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_TexCoord</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>varying vec4</type>
+            <category>build-in-var</category>
+            <tooltip>DEFAULT=glFragCoord.z</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_FrontFacing</string>
+        <desc>
+            <type>bool</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    
+    <!--BUILT-IN CONSTANTS (7.4 p44)-->
+    <entry>
+        <string>gl_MaxVertexUniformComponents</string>
+        <desc>
+            <type>const int</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MaxFragmentUniformComponents</string>
+        <desc>
+            <type>const int</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MaxVertexAttribs</string>
+        <desc>
+            <type>const int</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MaxVaryingFloats</string>
+        <desc>
+            <type>const int</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MaxDrawBuffers</string>
+        <desc>
+            <type>const int</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MaxTextureCoords</string>
+        <desc>
+            <type>const int</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MaxTextureUnits</string>
+        <desc>
+            <type>const int</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MaxTextureImageUnits</string>
+        <desc>
+            <type>const int</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MaxVertexTextureImageUnits</string>
+        <desc>
+            <type>const int</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MaxCombinedTextureImageUnits</string>
+        <desc>
+            <type>const int</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MaxLights</string>
+        <desc>
+            <type>const int</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MaxClipPlanes</string>
+        <desc>
+            <type>const int</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    
+    <!-- BUILT-IN UNIFORMs (7.5 p45) access=RO -->
+    <entry>
+        <string>gl_ModelViewMatrix</string>
+        <desc>
+            <type>uniform mat4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_ModelViewProjectionMatrix</string>
+        <desc>
+            <type>uniform mat4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_ProjectionMatrix</string>
+        <desc>
+            <type>uniform mat4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_TextureMatrix</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>uniform mat4</type>
+            <category>build-in-var</category>
+            <tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_ModelViewMatrixInverse</string>
+        <desc>
+            <type>uniform mat4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_ModelViewProjectionMatrixInverse</string>
+        <desc>
+            <type>uniform mat4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_ProjectionMatrixInverse</string>
+        <desc>
+            <type>uniform mat4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_TextureMatrixInverse</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>uniform mat4</type>
+            <category>build-in-var</category>
+            <tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_ModelViewMatrixTranspose</string>
+        <desc>
+            <type>uniform mat4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_ModelViewProjectionMatrixTranspose</string>
+        <desc>
+            <type>uniform mat4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_ProjectionMatrixTranspose</string>
+        <desc>
+            <type>uniform mat4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_TextureMatrixTranspose</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>uniform mat4</type>
+            <category>build-in-var</category>
+            <tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_ModelViewMatrixInverseTranspose</string>
+        <desc>
+            <type>uniform mat4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_ModelViewProjectionMatrixInverseTranspose</string>
+        <desc>
+            <type>uniform mat4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_ProjectionMatrixInverseTranspose</string>
+        <desc>
+            <type>uniform mat4</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_TextureMatrixInverseTranspose</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>uniform mat4</type>
+            <category>build-in-var</category>
+            <tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_NormalMatrix</string>
+        <desc>
+            <type>uniform mat3</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_NormalScale</string>
+        <desc>
+            <type>uniform float</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_DepthRangeParameters</string>
+        <desc>
+            <arguments>{float near; float far; float diff;}</arguments>
+            <type>struct</type>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_DepthRange</string>
+        <desc>
+            <type>uniform gl_DepthRangeParameters</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_FogParameters</string>
+        <desc>
+            <arguments>{vec4 color; float density; float start; float end; float scale;}</arguments>
+            <type>struct</type>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_Fog</string>
+        <desc>
+            <type>uniform gl_FogParameters</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_LightSourceParameters</string>
+        <desc>
+            <arguments>{vec4 ambient; vec4 diffuse; vec4 specular; vec4 position; vec4 halfVector; vec3 spotDirection; float spotExponent; float spotCutoff; float spotCosCutoff; float constantAttenuation; float linearAttenuation; float quadraticAttenuation;}</arguments>
+            <type>struct</type>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_LightSource</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>uniform gl_LightSourceParameters</type>
+            <category>build-in-var</category>
+            <tooltip>INDEX&lt;gl_MaxLights</tooltip>
+        </desc>
+    </entry>
+    
+    <entry>
+        <string>gl_LightModelParameters</string>
+        <desc>
+            <arguments>{vec4 ambient;}</arguments>
+            <type>struct</type>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_LightModel</string>
+        <desc>
+            <type>uniform gl_LightModelParameters</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_LightModelProducts</string>
+        <desc>
+            <arguments>{vec4 sceneColor;}</arguments>
+            <type>struct</type>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_FrontLightModelProduct</string>
+        <desc>
+            <type>uniform gl_LightModelProducts</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_BackLightModelProduct</string>
+        <desc>
+            <type>uniform gl_LightModelProducts</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_LightProducts</string>
+        <desc>
+            <arguments>{vec4 ambient; vec4 diffuse; vec4 specular;}</arguments>
+            <type>struct</type>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_FrontLightProduct</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>uniform gl_LightProducts</type>
+            <category>build-in-var</category>
+            <tooltip>INDEX&lt;gl_MaxLights</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_BackLightProduct</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>uniform gl_LightProducts</type>
+            <category>build-in-var</category>
+            <tooltip>INDEX&lt;gl_MaxLights</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_MaterialParameters</string>
+        <desc>
+            <arguments>{vec4 emission; vec4 ambient; vec4 diffuse; vec4 specular; float shininess;}</arguments>
+            <type>struct</type>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_FrontMaterial</string>
+        <desc>
+            <type>uniform gl_MaterialParameters</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_BackMaterial</string>
+        <desc>
+            <type>uniform gl_MaterialParameters</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_PointParameters</string>
+        <desc>
+            <arguments>{float size; float sizeMin; float sizeMax; float fadeThresholdSize; float distanceConstantAttenuation; float distanceLinearAttenuation; float distanceQuadraticAttenuation;}</arguments>
+            <type>struct</type>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_Point</string>
+        <desc>
+            <type>uniform gl_PointParameters</type>
+            <category>build-in-var</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_TextureEnvColor</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>uniform vec4</type>
+            <category>build-in-var</category>
+            <tooltip>INDEX&lt;gl_MaxTextureUnits</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_ClipPlane</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>uniform vec4</type>
+            <category>build-in-var</category>
+            <tooltip>INDEX&lt;gl_MaxClipPlanes</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_EyePlaneS</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>uniform vec4</type>
+            <category>build-in-var</category>
+            <tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_EyePlaneT</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>uniform vec4</type>
+            <category>build-in-var</category>
+            <tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_EyePlaneR</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>uniform vec4</type>
+            <category>build-in-var</category>
+            <tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_EyePlaneQ</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>uniform vec4</type>
+            <category>build-in-var</category>
+            <tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_ObjectPlaneS</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>uniform vec4</type>
+            <category>build-in-var</category>
+            <tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_ObjectPlaneT</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>uniform vec4</type>
+            <category>build-in-var</category>
+            <tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_ObjectPlaneR</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>uniform vec4</type>
+            <category>build-in-var</category>
+            <tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>gl_ObjectPlaneQ</string>
+        <desc>
+            <arguments>[]</arguments>
+            <type>uniform vec4</type>
+            <category>build-in-var</category>
+            <tooltip>INDEX&lt;gl_MaxTextureCoords</tooltip>
+        </desc>
+    </entry>
+    
+    <!-- DATA TYPES (4.1 p16) -->
+    <entry>
+        <string>float</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>vec2</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>vec3</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>vec4</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>int</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>ivec2</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>ivec3</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>ivec4</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>bool</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>bvec2</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>bvec3</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>bvec4</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>mat2</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>mat3</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>mat4</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>void</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>sampler1D</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>sampler2D</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>sampler3D</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>samplerCube</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>sampler1DShadow</string>
+        <desc/>
+    </entry>
+    <entry>
+        <string>sampler2DShadow</string>
+        <desc/>
+    </entry>
+    
+    <!-- DATA TYPE QUALIFIERS (4.3 p22) -->
+    <entry>
+        <string>uniform</string>
+        <desc>
+            <tooltip>input to Vertex and Fragment shader from OpenGL or application (READ-ONLY)</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>attribute</string>
+        <desc>
+            <tooltip>input per-vertex to Vertex shader from OpenGL or application (READ-ONLY)</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>varying</string>
+        <desc>
+            <tooltip>output from Vertex shader (READ/WRITE), interpolated, then input to Fragment shader (READ-ONLY)</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>centroid</string>
+        <desc>
+            <tooltip>centroid interpolation on multi-sample varyings</tooltip>
+        </desc>
+    </entry>
+        <entry>
+        <string>invariant</string>
+        <desc>
+            <tooltip>ensures all calculations of this variable result in identical values across programs</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>const</string>
+        <desc>
+            <tooltip>compile-time constant (READ-ONLY)</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>in</string>
+        <desc>
+            <tooltip>value initialized on entry, not copied on return (default)</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>out</string>
+        <desc>
+            <tooltip>copied out on return, but not initialized</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>inout</string>
+        <desc>
+            <tooltip>value initialized on entry, and copied out on return</tooltip>
+        </desc>
+    </entry>
+    <entry>
+        <string>const</string>
+        <desc>
+            <tooltip>constant function input</tooltip>
+        </desc>
+    </entry>
+    
+    <!--
+    PREPROCESSOR (3.3 p9)
+    #
+    #define
+    #undef
+    #if
+    #ifdef
+    #ifndef
+    #else
+    #elif
+    #endif
+    #error
+    #pragma
+    #line
+    __LINE__
+    __FILE__
+    __VERSION__
+    GLSL version declaration and extensions protocol:
+    #version
+    default is "#version 110" (3.3 p11)
+    #extension {name | all} : {require | enable | warn | disable}
+    default is "#extension all : disable" (3.3 p11)
+    -->
+    
+    <!-- BUILT-IN FUNCTIONS -->
+    <!-- Angle and Trigonometry Functions (8.1 p51) -->
+    <entry>
+        <string>sin</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>cos</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>tan</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    
+    <entry>
+        <string>asin</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>acos</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>atan</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>atan</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    
+    <entry>
+        <string>radians</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>degrees</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    
+    <!-- Exponential Functions (8.2 p52) -->
+    <entry>
+        <string>pow</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>exp</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>log</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>exp2</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>log2</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>sqrt</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>inversesqrt</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    
+    <!-- Common Functions (8.3 p52)-->
+    <entry>
+        <string>abs</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>ceil</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>clamp</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>clamp</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4, float, float)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>floor</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>fract</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>max</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>max</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4, float)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>min</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>min</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4, float)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>mix</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>mix</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4, float)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>mod</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>mod</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4, float)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>sign</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>smoothstep</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>smoothstep</string>
+        <desc>
+            <arguments>(float, float, float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>step</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>step</string>
+        <desc>
+            <arguments>(float, float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    
+    <!-- Geometric Functions (8.4 p54) -->
+    <entry>
+        <string>ftransform</string> <!-- Vertex ONLY -->
+        <desc>
+            <arguments>()</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>cross</string>
+        <desc>
+            <arguments>(vec3, vec3)</arguments>
+            <type>vec3</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>distance</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
+            <type>float</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>dot</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4, float|vec2|vec3|vec4)</arguments>
+            <type>float</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>faceforward</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4 V, float|vec2|vec3|vec4 I, float|vec2|vec3|vec4 N)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>length</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>normalize</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>reflect</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4 I, float|vec2|vec3|vec4 N)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>refract</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4 I, float|vec2|vec3|vec4 M, float eta)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    
+    <!-- Fragment Processing Functions (8.8 p58) Fragment ONLY -->
+    <entry>
+        <string>dFdx</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>dFdy</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>fwidth</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float|vec2|vec3|vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    
+    <!-- Matrix Functions (8.5 p55) -->
+    <entry>
+        <string>matrixCompMult</string>
+        <desc>
+            <arguments>(mat2|mat3|mat4, mat2|mat3|mat4)</arguments>
+            <type>mat2|mat3|mat4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    
+    <!-- Vector Relational Functions (8.6 p55) -->
+    <entry>
+        <string>all</string>
+        <desc>
+            <arguments>(bvec2|bvec3|bvec4)</arguments>
+            <type>bool</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>any</string>
+        <desc>
+            <arguments>(bvec2|bvec3|bvec4)</arguments>
+            <type>bool</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>equal</string>
+        <desc>
+            <arguments>(vec2|vec3|vec4, vec2|vec3|vec4)</arguments>
+            <type>bvec2|bvec3|bvec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>equal</string>
+        <desc>
+            <arguments>(ivec2|ivec3|ivec4, ivec2|ivec3|ivec4)</arguments>
+            <type>bvec2|bvec3|bvec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>equal</string>
+        <desc>
+            <arguments>(bvec2|bvec3|bvec4, bvec2|bvec3|bvec4)</arguments>
+            <type>bvec2|bvec3|bvec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>greaterThan</string>
+        <desc>
+            <arguments>(vec2|vec3|vec4, vec2|vec3|vec4)</arguments>
+            <type>bvec2|bvec3|bvec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>greaterThan</string>
+        <desc>
+            <arguments>(ivec2|ivec3|ivec4, ivec2|ivec3|ivec4)</arguments>
+            <type>bvec2|bvec3|bvec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>greaterThanEqual</string>
+        <desc>
+            <arguments>(vec2|vec3|vec4, vec2|vec3|vec4)</arguments>
+            <type>bvec2|bvec3|bvec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>greaterThanEqual</string>
+        <desc>
+            <arguments>(ivec2|ivec3|ivec4, ivec2|ivec3|ivec4)</arguments>
+            <type>bvec2|bvec3|bvec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>lessThan</string>
+        <desc>
+            <arguments>(vec2|vec3|vec4, vec2|vec3|vec4)</arguments>
+            <type>bvec2|bvec3|bvec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>lessThan</string>
+        <desc>
+            <arguments>(ivec2|ivec3|ivec4, ivec2|ivec3|ivec4)</arguments>
+            <type>bvec2|bvec3|bvec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>lessThanEqual</string>
+        <desc>
+            <arguments>(vec2|vec3|vec4, vec2|vec3|vec4)</arguments>
+            <type>bvec2|bvec3|bvec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>lessThanEqual</string>
+        <desc>
+            <arguments>(ivec2|ivec3|ivec4, ivec2|ivec3|ivec4)</arguments>
+            <type>bvec2|bvec3|bvec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>not</string>
+        <desc>
+            <arguments>(bvec2|bvec3|bvec4)</arguments>
+            <type>bvec2|bvec3|bvec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>notEqual</string>
+        <desc>
+            <arguments>(vec2|vec3|vec4, vec2|vec3|vec4)</arguments>
+            <type>bvec2|bvec3|bvec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>notEqual</string>
+        <desc>
+            <arguments>(ivec2|ivec3|ivec4, ivec2|ivec3|ivec4)</arguments>
+            <type>bvec2|bvec3|bvec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>notEqual</string>
+        <desc>
+            <arguments>(bvec2|bvec3|bvec4, bvec2|bvec3|bvec4)</arguments>
+            <type>bvec2|bvec3|bvec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    
+    <!-- Texture Lookup Functions (8.7 p56) -->
+    <!-- Optional bias term is Fragment ONLY -->
+    <entry>
+        <string>texture1D</string>
+        <desc>
+            <arguments>(sampler1D, float)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>texture1D</string>
+        <desc>
+            <arguments>(sampler1D, float, float bias)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>texture1DProj</string>
+        <desc>
+            <arguments>(sampler1D, vec2|vec4)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>texture1DProj</string>
+        <desc>
+            <arguments>(sampler1D, vec2|vec4, float bias)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>texture2D</string>
+        <desc>
+            <arguments>(sampler2D, vec2)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>texture2D</string>
+        <desc>
+            <arguments>(sampler2D, vec2, float bias)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>texture2DProj</string>
+        <desc>
+            <arguments>(sampler2D, vec3|vec4)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>texture2DProj</string>
+        <desc>
+            <arguments>(sampler2D, vec3|vec4, float bias)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>texture3D</string>
+        <desc>
+            <arguments>(sampler3D, vec3)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>texture3D</string>
+        <desc>
+            <arguments>(sampler3D, vec3, float bias)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>texture3DProj</string>
+        <desc>
+            <arguments>(sampler3D, vec4)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>texture3DProj</string>
+        <desc>
+            <arguments>(sampler3D, vec4, float bias)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>textureCube</string>
+        <desc>
+            <arguments>(samplerCube, vec3)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>textureCube</string>
+        <desc>
+            <arguments>(samplerCube, vec3, float bias)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>shadow1D</string>
+        <desc>
+            <arguments>(sampler1DShadow, vec3)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>shadow1D</string>
+        <desc>
+            <arguments>(sampler1DShadow, vec3, float bias)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>shadow2D</string>
+        <desc>
+            <arguments>(sampler2DShadow, vec3)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>shadow2D</string>
+        <desc>
+            <arguments>(sampler2DShadow, vec3, float bias)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>shadow1DProj</string>
+        <desc>
+            <arguments>(sampler1DShadow, vec4)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>shadow1DProj</string>
+        <desc>
+            <arguments>(sampler1DShadow, vec4, float bias)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>shadow2DProj</string>
+        <desc>
+            <arguments>(sampler2DShadow, vec4)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>shadow2DProj</string>
+        <desc>
+            <arguments>(sampler2DShadow, vec4, float bias)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    
+    <!-- Texture Lookup Functions with LOD (8.7 p56) -->
+    <!-- Vertex ONLY; ensure GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS > 0 -->
+    <entry>
+        <string>texture1DLod</string>
+        <desc>
+            <arguments>(sampler1D, float, float lod)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>texture1DProjLod</string>
+        <desc>
+            <arguments>(sampler1D, vec2|vec4, float lod)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>texture2DLod</string>
+        <desc>
+            <arguments>(sampler2D, vec2, float lod)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>texture2DProjLod</string>
+        <desc>
+            <arguments>(sampler2D, vec3|vec4, float lod)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>texture3DProjLod</string>
+        <desc>
+            <arguments>(sampler3D, vec4, float lod)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>textureCubeLod</string>
+        <desc>
+            <arguments>(samplerCube, vec3, float lod)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>shadow1DLod</string>
+        <desc>
+            <arguments>(sampler1DShadow, vec3, float lod)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>shadow2DLod</string>
+        <desc>
+            <arguments>(sampler2DShadow, vec3, float lod)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>shadow1DProjLod</string>
+        <desc>
+            <arguments>(sampler1DShadow, vec4, float lod)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>shadow2DProjLod</string>
+        <desc>
+            <arguments>(sampler2DShadow, vec4, float lod)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    
+    <!-- Noise Functions (8.9 p60) -->
+    <entry>
+        <string>noise1</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>float</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>noise2</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>vec2</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>noise3</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>vec3</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>noise4</string>
+        <desc>
+            <arguments>(float|vec2|vec3|vec4)</arguments>
+            <type>vec4</type>
+            <category>build-in-func</category>
+        </desc>
+    </entry>
+    
+    
+    <!-- LANGUAGE TOKENS -->
+    <!-- 
+    break continue do for while
+    if else
+    discard return
+    struct
+    true false
+    -->
+    
+    <entry>
+        <string>break</string>
+        <desc>
+            <category>keyword</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>continue</string>
+        <desc>
+            <category>keyword</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>do</string>
+        <desc>
+            <category>keyword</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>for</string>
+        <desc>
+            <category>keyword</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>while</string>
+        <desc>
+            <category>keyword</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>if</string>
+        <desc>
+            <category>keyword</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>else</string>
+        <desc>
+            <category>keyword</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>discard</string>
+        <desc>
+            <category>keyword</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>return</string>
+        <desc>
+            <category>keyword</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>struct</string>
+        <desc>
+            <category>keyword</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>true</string>
+        <desc>
+            <category>keyword</category>
+        </desc>
+    </entry>
+    <entry>
+        <string>false</string>
+        <desc>
+            <category>keyword</category>
+        </desc>
+    </entry>
+    
+    <!--
   <entry>
     <string>keyword1</string>
     <desc>
@@ -1743,5 +1840,5 @@ default is "#extension all : disable" (3.3 p11)
 			]]></help>
     </desc>
   </entry>
--->
+    -->
 </map>
