@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- You may freely edit this file. See harness/README in the NetBeans platform -->
+<!-- for some information on what you could do (e.g. targets to override). -->
+<!-- If you delete this file and reopen the project it will be recreated. -->
+<project name="glredbook" default="netbeans" basedir="." xmlns:vpp="antlib:foundrylogic.vpp">
+	
+	<description>Builds, tests, and runs the project net.highteq.gamedev.nbm.joglglredbookproject.</description>
+	<import file="nbproject/build-impl.xml"/>
+		
+	<path id="vpp.path">
+		<fileset dir="${vpp.home}/lib" includes="*.jar"/>
+	</path>
+
+	<target name="generate-config" depends="init">
+
+		<!-- unzip the examples jar 
+		<mkdir dir="tmp"/>
+		<mkdir dir="tmp/api"/>
+		<unzip src="release/jogl-project/glredbook10.jar" dest="tmp">
+			<patternset includes="**/*.java"/>
+		</unzip>
+		<javadoc
+			packagenames="glredbook10.*"
+			excludepackagenames="com.*,org.*,net.*,java.*,javax.*"
+			sourcepath="tmp"
+			defaultexcludes="yes"
+			author="true"
+			version="true"
+			verbose="false"
+			destdir="tmp/api"
+		/>		
+		-->
+
+		
+		<!-- generate layer file (project template configration) using velocity -->
+		<copy
+			file="etc/layer.xml"
+			todir="src/net/highteq/gamedev/nbm/joglglredbookproject"
+			overwrite="true"
+		>
+			<filterchain>
+				<vpp:filter xmlns="antlib:foundrylogic.vpp">
+					<config refid="vpp0"/>
+				</vpp:filter>
+			</filterchain>
+		</copy>
+		
+		<!-- iterate the example apps to generate the missing files -->
+		<script language="javascript"><![CDATA[
+			examples= glredbook.getProperty("examples").split("[, ]+")
+			for(i=0; i < examples.length;i++ )
+			{
+				glredbook.setProperty("example",examples[i])
+				antcall = glredbook.createTask("antcall");
+				antcall.setTarget("-generate-single-config");
+				antcall.perform();
+			}
+		]]></script>
+	</target>
+
+	<target name="-generate-single-config">
+		<!-- read the javadoc to provide info text for the template description file -->
+		<script language="javascript"><![CDATA[
+			importPackage(Packages.org.w3c.tidy);
+			importPackage(Packages.org.dom4j);
+			importPackage(Packages.org.dom4j.io);
+			importPackage(Packages.java.io);
+			importPackage(Packages.java.net);
+			importPackage(Packages.java.util);
+			
+			source= new File(glredbook.getProperty("basedir"),"tmp/api/glredbook10/"+glredbook.getProperty("example")+".html");
+			tidy= new Tidy();
+		  try{
+				inStream= new FileInputStream(source);
+				reader= new DOMReader();
+				doc= reader.read(tidy.parseDOM(inStream, null));
+				vpp0.getVelocityContext().internalPut("root",doc);
+			}
+			catch(error)
+			{
+				echo = glredbook.createTask("echo");
+				echo.setMessage("Exception: "+ error);
+				echo.perform();
+			}
+			finally
+			{
+				try{
+					inStream.close();
+				}
+				catch(error)
+				{
+					/* ignore */
+				}
+			}
+		]]></script>
+
+		<!-- generate the template description html -->
+		<copy
+			file="etc/description.html"
+			tofile="src/net/highteq/gamedev/nbm/joglglredbookproject/resources/${example}.html"
+			overwrite="true"
+		>
+			<filterchain>
+				<vpp:filter xmlns="antlib:foundrylogic.vpp">
+					<config refid="vpp0"/>
+				</vpp:filter>
+			</filterchain>
+		</copy>
+	</target>
+</project>
