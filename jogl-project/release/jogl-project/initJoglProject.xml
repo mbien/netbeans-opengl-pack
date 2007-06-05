@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="initJoglProject" default="all" basedir=".">
+	<target name="initProject">
+				
+		<replaceregexp byline="true" flags="g">
+			<regexp pattern="(\W+)jogl-project.Main(\W+)?"/>
+			<substitution expression="\1${project.packageName}.${project.mainClass}\2"/>
+			<fileset dir="${project.root}">
+				<include name="**/*.properties"/>
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp byline="true" flags="g">
+			<regexp pattern="(\W+)jogl-project(\W+)"/>
+			<substitution expression="\1${project.name}\2"/>
+			<fileset dir="${project.root}">
+				<include name="**/*.xml"/>
+				<include name="**/*.properties"/>
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp byline="true" flags="g">
+			<regexp pattern="natives.platform=natives.platform"/>
+			<substitution expression="natives.platform=${natives.platform}"/>
+			<fileset dir="${project.root}">
+				<include name="**/*.properties"/>
+			</fileset>
+		</replaceregexp>
+
+		<mkdir dir="${project.root}/tmp"/>
+		<unzip src="${template.archive}" dest="${project.root}/tmp">
+			<patternset includes="${template.includes}" excludes="${template.excludes}">
+				<include name="${template.srcPath}${template.demoPath}/**/*"/>
+			</patternset>
+		</unzip>
+
+		<mkdir dir="${project.root}/src/${project.packagePath}"/>
+		<move todir="${project.root}/src/${project.packagePath}">
+			<fileset dir="${project.root}/tmp/${template.srcPath}${template.demoPath}" excludes="${template.demoClass}.java"/>
+		</move>
+		<move
+			file="${project.root}/tmp/${template.srcPath}${template.demoPath}/${template.demoClass}.java"
+			tofile="${project.root}/src/${project.packagePath}/${project.mainClass}.java"
+		/>
+
+		<delete dir="${project.root}/tmp"/>
+		<antcall target="addDeps"/>
+				
+		<replaceregexp byline="true" flags="g">
+			<regexp pattern='(\W+)${template.demoPath.regex}(\W+)'/>
+			<substitution expression="\1${project.packagePath}\2"/>
+			<fileset dir="${project.root}/src/${project.packagePath}">
+				<include name="**/*.java"/>
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp byline="true" flags="g">
+			<regexp pattern='(\W+)${template.demoPackage.regex}(\W+)'/>
+			<substitution expression="\1${project.packageName}\2"/>
+			<fileset dir="${project.root}/src/${project.packagePath}">
+				<include name="**/*.java"/>
+			</fileset>
+		</replaceregexp>
+
+		<replaceregexp byline="true" flags="g">
+			<regexp pattern="(\W+)${template.demoClass.regex}(\W+)?"/>
+			<substitution expression="\1${project.mainClass}\2"/>
+			<fileset file="${project.root}/src/${project.packagePath}/${project.mainClass}.java"/>
+		</replaceregexp>
+
+	</target>
+		
+	<target name="addDeps" if="template.extraFiles">
+		<mkdir dir="${project.root}/tmp"/>
+		<unzip src="${template.archive}" dest="${project.root}/tmp">
+			<patternset includes="${template.extraFiles}" excludes="**${template.demoPath}/${template.demoClass}.java"/>
+		</unzip>
+		<move todir="${project.root}/src">
+			<fileset dir="${project.root}/tmp/${template.srcPath}" includes="**/*"/>
+		</move>
+		<delete dir="${project.root}/tmp"/>
+	</target>
+
+</project>

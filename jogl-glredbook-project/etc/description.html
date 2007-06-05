@@ -1,0 +1,12 @@
+<html>
+<head>
+<title>$ant.example</title>
+</head>
+<body>
+	#set( $p= $root.selectSingleNode("//p") )
+	#if( "pre" == $p.selectSingleNode("preceding-sibling::*[2]").getName() )
+		$root.selectSingleNode("//p").asXML()
+	#end
+	
+</body>
+</html>
