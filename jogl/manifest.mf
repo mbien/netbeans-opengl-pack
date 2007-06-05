@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-OpenIDE-Module: com.mbien.gl
-OpenIDE-Module-Localizing-Bundle: com/mbien/gl/Bundle.properties
+OpenIDE-Module: javax.media.opengl
+OpenIDE-Module-Localizing-Bundle: javax/media/opengl/Bundle.properties
 OpenIDE-Module-Specification-Version: 1.0
 
