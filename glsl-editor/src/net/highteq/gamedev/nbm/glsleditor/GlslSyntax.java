@@ -10,6 +10,7 @@
 
 package net.highteq.gamedev.nbm.glsleditor;
 
+import net.highteq.gamedev.nbm.glsleditor.vocabulary.GLSLElementDescriptor;
 import org.netbeans.editor.Syntax;
 import org.netbeans.editor.TokenID;
 import org.openide.ErrorManager;
@@ -60,9 +61,11 @@ public class GlslSyntax extends Syntax {
             
             if(offset>startOffset)
                 lastChar = buffer[offset-1];
+            
             actChar = buffer[offset];
             
             switch (state) {
+                
                 case INIT:
                     
                     currentToken.delete(0, currentToken.length()); // clear token
@@ -197,10 +200,11 @@ public class GlslSyntax extends Syntax {
 
                 case ISA_CR:
                     if (actChar == '\n') {
-                        offset++;
+                        offset++;       
+                        state = INIT;
+                        return GlslTokenContext.END_OF_LINE;
                     }
-                    state = INIT;
-                    return GlslTokenContext.END_OF_LINE;
+
             }
             currentToken.append(actChar);
             offset++;
@@ -217,7 +221,6 @@ public class GlslSyntax extends Syntax {
                 state = INIT;
                 return GlslTokenContext.COMMENT;
             case ISI_ML_COMMENT:
-                state = ISI_ML_COMMENT;
                 return GlslTokenContext.COMMENT;
         }
         
@@ -226,14 +229,26 @@ public class GlslSyntax extends Syntax {
     
     private TokenID findNameType(String token) {
         
-        GlslVocabularyManager.Descriptor desc = vocabularies.getDesc(token);
+        GLSLElementDescriptor[] desc = vocabularies.getDesc(token);
+        
         if(desc != null) {
-            if("keyword".equals(desc.getCategory())) {
+            
+            if(desc[0].category != null) {
+                
+                if(desc[0].category == GLSLElementDescriptor.Category.BUILD_IN_FUNC) 
+                    return GlslTokenContext.BUILD_IN_FUNC;
+
+                if(desc[0].category == GLSLElementDescriptor.Category.BUILD_IN_VAR) 
+                    return GlslTokenContext.BUILD_IN_VAR;
+            
+//                if(     "keyword".equals(desc.getCategory())
+//                    ||  "iteration".equals(desc.getCategory())
+//                    ||  "selection".equals(desc.getCategory())
+//                    ||  "qualifier".equals(desc.getCategory())
+//                    ||  "type".equals(desc.getCategory())
+//                    ||  desc.getCategory().startsWith("jump")  ) 
                 return GlslTokenContext.KEYWORD;
-            }else if("build-in-func".equals(desc.getCategory())) {
-                return GlslTokenContext.BUILD_IN_FUNC;
-            }else if("build-in-var".equals(desc.getCategory())) {
-                return GlslTokenContext.BUILD_IN_VAR;
+                
             }
         }
         

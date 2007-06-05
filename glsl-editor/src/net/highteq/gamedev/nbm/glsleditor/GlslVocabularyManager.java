@@ -3,162 +3,167 @@
  *
  * Created on 12. Februar 2006, 03:37
  *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
  */
 
 package net.highteq.gamedev.nbm.glsleditor;
 
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
 import java.io.InputStream;
+import java.util.AbstractSet;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
+import net.highteq.gamedev.nbm.glsleditor.vocabulary.GLSLElementDescriptor;
+import net.highteq.gamedev.nbm.glsleditor.vocabulary.GLSLVocabulary;
 import org.openide.ErrorManager;
 import org.openide.filesystems.FileObject;
 import org.openide.filesystems.Repository;
+import org.openide.util.Lookup;
 
 /**
  *
  * @author mhenze
+ * @author Michael Bien
  */
-public class GlslVocabularyManager
-{
-	private static final ErrorManager LOGGER = ErrorManager.getDefault().getInstance(GlslVocabularyManager.class.getName());
-	private XStream xstream = new XStream(new DomDriver());
-	private Map vocabulary;
-	private String mimetype;
-	private static HashMap instances= new HashMap();
+public class GlslVocabularyManager {
+    
+ private static final ErrorManager LOGGER = ErrorManager.getDefault().getInstance(GlslVocabularyManager.class.getName());
+ private static final HashMap<String, GlslVocabularyManager> instances = new HashMap<String, GlslVocabularyManager>();
+ private static GLSLVocabulary vocabulary = null;
 
-	/** Creates a new instance of GlslVocabularyManager */
-	private GlslVocabularyManager(String mimetype)
-	{
-		this.mimetype= mimetype;
-		xstream.alias("desc", Descriptor.class);
-		loadVocabulary();
-	}
-	
-	public static GlslVocabularyManager getInstance(String mimetype)
-	{
-		GlslVocabularyManager instance= (GlslVocabularyManager) instances.get(mimetype);
-		if(instance==null)
-		{
-			instance= new GlslVocabularyManager(mimetype);
-			instances.put(mimetype,instance);
-		}
-		return instance;
-	}
-	
-	private void loadVocabulary()
-	{
-		FileObject vocabularyfile = Repository.getDefault().getDefaultFileSystem().findResource("Editors/"+mimetype+"/vocabulary.xml");
-		if (vocabularyfile != null)
-		{
-			InputStream in= null;
-			try
-			{
-				in= vocabularyfile.getInputStream();
-				vocabulary= (Map) xstream.fromXML(in);
-			}
-			catch (Exception e)
-			{
-				LOGGER.notify(e);
-			}
-			finally
-			{
-				if(in!=null) try
-				{in.close();}
-				catch (Exception e)
-				{LOGGER.notify(e);};
-			}
-		}
-	}
-	
-	public Set getKeys()
-	{
-		return vocabulary.keySet();
-	}
-	
-	public Descriptor getDesc(String key)
-	{
-		Descriptor desc= (Descriptor)(vocabulary==null?null:vocabulary.get(key));	
-		if(desc!=null && desc.getName()==null)
-		{
-			desc.setName(key);
-		}
-		return desc;
-	}
-	
-	public static class Descriptor
-	{
-		private String name=null;
-		private String syntax=null;
-		private String arguments=null;
-		private String type=null;
-		private String tooltip=null;
-		private String help=null;
-		private String category=null;
-		
-		public void setSyntax(String syntax)
-		{
-			this.syntax= syntax;
-		}
-		public void setName(String name)
-		{
-			this.name= name;
-		}
-		public void setArguments(String arguments)
-		{
-			this.arguments= arguments;
-		}
-		public void setType(String type)
-		{
-			this.type= type;
-		}
-		public void setTooltip(String tooltip)
-		{
-			this.tooltip= tooltip;
-		}
-		public void setHelp(String help)
-		{
-			this.help= help;
-		}
-		public void setCategory(String category)
-		{
-			this.category= category;
-		}
-
-		public String getSyntax()
-		{
-			if(syntax!=null)
-				return syntax;
-			return "<b>"+getName()+"</b><i>"+getArguments()+"</i>"+(type==null?"":(":"+type));
-		}
-		public String getName()
-		{
-			return this.name;
-		}
-		public String getArguments()
-		{
-			return this.arguments==null?"":arguments;
-		}
-		public String getType()
-		{
-			return this.type==null?"":type;
-		}
-		public String getTooltip()
-		{
-			return tooltip==null?name:tooltip;
-		}
-		public String getHelp()
-		{
-			return help==null?getTooltip():help;
-		}
-		public String getCategory()
-		{
-			return category==null?"keyword":category;
-		}
-
-	}
+ private final String mimetype;
+ private final Set<String> keySet;
+ private final Map<String, GLSLElementDescriptor[]> vocabularyExtention;
+    
+    /** Creates a new instance of GlslVocabularyManager */
+    private GlslVocabularyManager(String mimetype) {
+        
+        if(    !mimetype.equals("text/x-glsl-fragment-shader")
+            && !mimetype.equals("text/x-glsl-vertex-shader")
+            && !mimetype.equals("text/x-glsl-geometry-shader")) {
+            throw new IllegalArgumentException(mimetype+" is no GLSL mime type");
+        }
+        
+        
+        this.mimetype = mimetype;
+        
+        if(vocabulary == null)
+            loadVocabulary();
+        
+        if(mimetype.equals("text/x-glsl-fragment-shader")) {
+            vocabularyExtention = vocabulary.fragmentShaderVocabulary;
+        }else if(mimetype.equals("text/x-glsl-vertex-shader")) {
+            vocabularyExtention = vocabulary.vertexShaderVocabulary;
+        }else {
+            vocabularyExtention = vocabulary.geometryShaderVocabulary;
+        }
+        
+        // merges two views
+        keySet = new AbstractSet<String>() {
+            
+            private final Set<String> mainSet = vocabulary.mainVocabulary.keySet();
+            private final Set<String> extSet = vocabularyExtention.keySet();
+            
+            
+            public Iterator<String> iterator() {
+                return new Iterator<String>(){
+                    
+                    Iterator<String> mainIt = mainSet.iterator();
+                    Iterator<String> extIt = extSet.iterator();
+                    
+                    public boolean hasNext() {
+                        return mainIt.hasNext() || extIt.hasNext();
+                    }
+                    
+                    public String next() {
+                        if(mainIt.hasNext())
+                            return mainIt.next();
+                        else
+                            return extIt.next();
+                    }
+                    
+                    public void remove() {
+                        throw new UnsupportedOperationException("Not supported yet.");
+                    }
+                    
+                };
+            }
+            
+            public int size() {
+                return mainSet.size()+extSet.size();
+            }
+            
+        };
+        
+    }
+    
+    public static GlslVocabularyManager getInstance(String mimetype) {
+        
+        GlslVocabularyManager instance= (GlslVocabularyManager) instances.get(mimetype);
+        
+        if(instance==null) {
+            instance= new GlslVocabularyManager(mimetype);
+            instances.put(mimetype,instance);
+        }
+        
+        return instance;
+    }
+    
+    private void loadVocabulary() {
+        
+        FileObject vocabularyfile = Repository.getDefault().getDefaultFileSystem().findResource("Editors/"+mimetype+"/vocabulary.xml");
+        
+        if (vocabularyfile != null) {
+            
+            InputStream in = null;
+            
+            try {
+                in = vocabularyfile.getInputStream();
+                
+                // workaround; we have some jaxb version conflicts between nb, the jdk and our redundant wrapper lib
+                // => load our jaxb in the system classloader
+//                ClassLoader orig = Thread.currentThread().getContextClassLoader();
+//                ClassLoader master = Lookup.getDefault().lookup(ClassLoader.class);
+//                Thread.currentThread().setContextClassLoader(master);
+//                try {
+                    JAXBContext jc = JAXBContext.newInstance(GLSLVocabulary.class, GLSLElementDescriptor.class);
+                    Unmarshaller unmarshaller = jc.createUnmarshaller();
+                    vocabulary = (GLSLVocabulary)unmarshaller.unmarshal(in);
+//                } finally {
+//                    Thread.currentThread().setContextClassLoader(orig);
+//                }
+                
+            } catch (Exception ex) {
+                LOGGER.notify(ex);
+            } finally {
+                if(in != null) {
+                    try {
+                        in.close();
+                    } catch (Exception e) {
+                        LOGGER.notify(e);
+                    };
+                }
+            }
+            
+        }
+        
+    }
+    
+    public Set getKeys() {
+        return keySet;
+    }
+    
+    public GLSLElementDescriptor[] getDesc(String key) {
+        
+        GLSLElementDescriptor[] desc = vocabulary.mainVocabulary.get(key);
+        
+        if(desc == null)
+            desc = vocabularyExtention.get(key);
+        
+        return desc;
+    }
+    
+    
 }

@@ -1,10 +1,9 @@
 package net.highteq.gamedev.nbm.glsleditor.dataobject;
 
+import com.mbien.glslcompiler.ShaderFileObserver;
 import java.beans.PropertyChangeEvent;
 import java.io.IOException;
-import com.mbien.glslcompiler.*;
 import java.beans.PropertyChangeListener;
-import javax.swing.SwingUtilities;
 import javax.swing.text.Document;
 import org.openide.filesystems.FileObject;
 import org.openide.loaders.DataObjectExistsException;
