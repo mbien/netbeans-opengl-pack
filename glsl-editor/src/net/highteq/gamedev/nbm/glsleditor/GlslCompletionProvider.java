@@ -1,8 +1,6 @@
 package net.highteq.gamedev.nbm.glsleditor;
 
 import javax.swing.JEditorPane;
-import javax.swing.JLabel;
-import javax.swing.UIManager;
 import org.netbeans.api.editor.completion.Completion;
 import org.openide.ErrorManager;
 import org.netbeans.editor.BaseDocument;
@@ -30,9 +28,10 @@ import org.netbeans.spi.editor.completion.support.CompletionUtilities;
 
 
 /**
- * A testing Completion Provider that provides abbreviations as result.
+ * Completion provider for the OpenGL Shading Language editor.
  *
- * @author Jan Lahoda
+ * @author Mathias Henze
+ * @author Michael Bien
  */
 public class GlslCompletionProvider implements CompletionProvider
 {
@@ -87,7 +86,7 @@ public class GlslCompletionProvider implements CompletionProvider
                 {
                         LOGGER.notify(e);
                 }
-
+                
                 Iterator it= vocabulary.getKeys().iterator();
                 while (it.hasNext())  {
                     
@@ -114,30 +113,89 @@ public class GlslCompletionProvider implements CompletionProvider
         }
     }
 
-    private static class GlslCompletionItem implements CompletionItem
-    {
+    private static class GlslCompletionItem implements CompletionItem    {
+        
         private String key;
         private GLSLElementDescriptor content;
-        private JLabel itemLabel;
-        private int carretPosition= 0;
-        private String prefix= "";
+        private int carretPosition = 0;
+        private String prefix;
+        
+        private String leftText;
+        private String rightText;
+        
+        private String fontColor = "<font color=#b200b2>";
+        private String ARGUMENTS_COLOR = "<font color=#b28b00>";
+        private String BUILD_IN_VAR_COLOR = "<font color=#008618>";
+        private String KEYWORD_COLOR = "<font color=#000099>";
+        
+        private int priority;
 
-        public GlslCompletionItem(String key, GLSLElementDescriptor content, String prefix, int carretPosition)
-        {
-            this.key= key;
-            this.content= content;
-            this.prefix= prefix;
-            this.carretPosition= carretPosition;
-            this.itemLabel= new JLabel("<html><body>"+makeSyntax()+"</body></html>");
+        public GlslCompletionItem(String key, GLSLElementDescriptor content, String prefix, int carretPosition)    {
+            
+            this.key = key;
+            this.content = content;
+            this.prefix = prefix;
+            this.carretPosition = carretPosition;
+            
+            leftText = createLeftText();
+            rightText = content.type;
+            
+            // low prority is first in completion list
+            switch(content.category) {
+                case TYPE:
+                    priority = 10;
+                    break;
+                case JUMP:
+                    priority = 9;
+                    break;
+                case SELECTION:
+                    priority = 8;
+                    break;
+                case ITERATION:
+                    priority = 7;
+                    break;
+                case KEYWORD:
+                    priority = 6;
+                    break;
+                case QUALIFIER:
+                    priority = 5;
+                    break;
+                case BUILD_IN_FUNC:
+                    priority = 4;
+                    break;
+                case BUILD_IN_VAR:
+                    priority = 3;
+                    break;
+            }
         }
         
-        private String makeSyntax() {
-            String text = "<b>"+key+"</b>";
-            if(content.arguments != null)
-                text += content.arguments;
-            if(content.type != null)
-                text += ":"+content.type;
-            return text;
+        private String createLeftText() {
+            
+            StringBuilder text = new StringBuilder();
+            
+            switch(content.category) {
+                case TYPE:
+                case JUMP:
+                case SELECTION:
+                case ITERATION:
+                case KEYWORD:
+                case QUALIFIER:
+                    text.append(KEYWORD_COLOR); 
+                    break;
+                case BUILD_IN_VAR:
+                    text.append(BUILD_IN_VAR_COLOR);
+                    break;
+            }
+            text.append("<b>");
+            text.append(key);
+            text.append("</b></font>");
+            
+            if(content.arguments != null){
+                text.append(ARGUMENTS_COLOR);
+                text.append(content.arguments);
+                text.append("</font>");
+            }
+            return text.toString();
         }
 
         public String getKey()
@@ -173,30 +231,26 @@ public class GlslCompletionProvider implements CompletionProvider
                 }
         }
 
-        public void processKeyEvent(KeyEvent evt)
-        {
+        public void processKeyEvent(KeyEvent evt)   {
             // TODO: if "." then Completion.get().showCompletion()
         }
 
-        public int getPreferredWidth(Graphics g, Font defaultFont)
-        {
-                return (int) itemLabel.getPreferredSize().getWidth();
+        public int getPreferredWidth(Graphics g, Font defaultFont)     {
+            return CompletionUtilities.getPreferredWidth(leftText, rightText, g, defaultFont);
         }
 
-        public void render(
-                Graphics g, Font defaultFont, Color defaultColor, Color backgroundColor, int width, int height, boolean selected
-                )
-        {
-                itemLabel.setFont(defaultFont);
-                itemLabel.setForeground(defaultColor);
-                itemLabel.setBackground(backgroundColor);
-                itemLabel.setBounds(0,0,width,height);
-                if(selected)
-                {
-                        itemLabel.setBackground(UIManager.getDefaults().getColor("MenuItem.selectionBackground"));
-                        itemLabel.setForeground(UIManager.getDefaults().getColor("MenuItem.selectionForeground"));
-                }
-                itemLabel.paint(g);
+        public void render(Graphics g, Font defaultFont, Color defaultColor, Color backgroundColor, int width, int height, boolean selected)   {
+//                itemLabel.setFont(defaultFont);
+//                itemLabel.setForeground(defaultColor);
+//                itemLabel.setBackground(backgroundColor);
+//                itemLabel.setBounds(0,0,width,height);
+//                if(selected)
+//                {
+//                        itemLabel.setBackground(UIManager.getDefaults().getColor("MenuItem.selectionBackground"));
+//                        itemLabel.setForeground(UIManager.getDefaults().getColor("MenuItem.selectionForeground"));
+//                }
+//                itemLabel.paint(g);
+            CompletionUtilities.renderHtml(null, leftText, rightText, g, defaultFont, defaultColor, width, height, selected);
         }
 
         public CompletionTask createDocumentationTask()
@@ -231,7 +285,7 @@ public class GlslCompletionProvider implements CompletionProvider
 
         public int getSortPriority()
         {
-                return 23; // ?
+                return priority;
         }
 
         public CharSequence getSortText()

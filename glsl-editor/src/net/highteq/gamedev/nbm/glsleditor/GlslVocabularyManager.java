@@ -124,6 +124,9 @@ public class GlslVocabularyManager {
                 
                 // workaround; we have some jaxb version conflicts between nb, the jdk and our redundant wrapper lib
                 // => load our jaxb in the system classloader
+                
+                // ^^ this dosn't work; we have now a implementation version dependency on jaxb
+                
 //                ClassLoader orig = Thread.currentThread().getContextClassLoader();
 //                ClassLoader master = Lookup.getDefault().lookup(ClassLoader.class);
 //                Thread.currentThread().setContextClassLoader(master);

@@ -17,13 +17,14 @@ import org.openide.ErrorManager;
 
 /**
  *
- * @author Administrator
+ * @author Mathias Henze
+ * @author Michael Bien
  */
 public class GlslSyntax extends Syntax {
     
     private static final ErrorManager LOGGER = ErrorManager.getDefault().getInstance(GlslSyntax.class.getName());
     private static final boolean LOG = LOGGER.isLoggable(ErrorManager.INFORMATIONAL);
-    private StringBuilder currentToken;
+    private int tokenStart;
     private boolean inEscape;
     private GlslVocabularyManager vocabularies;
     
@@ -40,7 +41,6 @@ public class GlslSyntax extends Syntax {
     public GlslSyntax(String mimetype) {
         tokenContextPath = GlslTokenContext.contextPath;
         vocabularies = GlslVocabularyManager.getInstance(mimetype);
-        currentToken = new StringBuilder();
     }
     
     protected TokenID parseToken() {
@@ -55,11 +55,10 @@ public class GlslSyntax extends Syntax {
         
         char lastChar=' ';
         char actChar;
-        int startOffset = offset;
         
         while (offset < stopOffset) {
             
-            if(offset>startOffset)
+            if(offset > 0)
                 lastChar = buffer[offset-1];
             
             actChar = buffer[offset];
@@ -68,7 +67,7 @@ public class GlslSyntax extends Syntax {
                 
                 case INIT:
                     
-                    currentToken.delete(0, currentToken.length()); // clear token
+                    tokenStart = offset;    // mark start of token
                     
                     switch (actChar) {
                         case '(':
@@ -83,7 +82,6 @@ public class GlslSyntax extends Syntax {
                             state = INIT;
                             offset++;
                             return GlslTokenContext.CURLY_BRACE;
-
                         case '}':
                             state = INIT;
                             offset++;
@@ -101,30 +99,25 @@ public class GlslSyntax extends Syntax {
                             state = INIT;
                             offset++;
                             return GlslTokenContext.WHITESPACE;
-
                         case '\r':
                             state = ISA_CR;
                             break;
-
                         case '#':
                             state = ISI_PREPROC;
                             break;
-
                         case '"':
                             state = ISI_STRING_VALUE;
                             break;
                         case '/':
-                            if(lastChar=='/') {
+                            if(lastChar=='/') 
                                 state = ISI_COMMENT;
-                            }
                             break;
                         case '*':
-                            if(lastChar=='/') {
+                            if(lastChar=='/') 
                                 state = ISI_ML_COMMENT;
-                            }
                             break;
                         default:
-                            if(Character.isJavaIdentifierStart(actChar)) {
+                            if(Character.isJavaIdentifierPart(actChar)) {
                                 state = ISI_NAME;
                             } else {
                                 state = INIT;
@@ -133,19 +126,21 @@ public class GlslSyntax extends Syntax {
                     break;
 
                 case ISI_NAME:
+                    
                     switch (actChar) {
                         case '\r':
                             state = ISA_CR;
-                            return findNameType(currentToken.toString());
+                            return findTokenID(buffer, tokenStart, offset);
                         default:
                             if(!Character.isJavaIdentifierPart(actChar)) {
                                 state = INIT;
-                                return findNameType(currentToken.toString());
+                                return findTokenID(buffer, tokenStart, offset);
                             }
-                        }
+                    }
                     break;
 
                 case ISI_STRING_VALUE:
+                    
                     switch (actChar) {
                         case '\\':
                             inEscape=true;
@@ -159,10 +154,11 @@ public class GlslSyntax extends Syntax {
                         default:
                             inEscape= false;
                             break;
-                        }
+                    }
                     break;
 
                 case ISI_PREPROC:
+                    
                     switch (actChar) {
                         case '\n':
                             offset++;
@@ -172,10 +168,11 @@ public class GlslSyntax extends Syntax {
                             offset++;
                             state = ISA_CR;
                             return GlslTokenContext.PREPROCESSOR;
-                        }
+                    }
                     break;
 
                 case ISI_COMMENT:
+                    
                     switch (actChar) {
                         case '\n':
                             offset++;
@@ -185,10 +182,11 @@ public class GlslSyntax extends Syntax {
                             offset++;
                             state = ISA_CR;
                             return GlslTokenContext.COMMENT;
-                        }
+                    }
                     break;
 
                 case ISI_ML_COMMENT:
+                    
                     if (actChar == '/') {
                         if(lastChar=='*') {
                             offset++;
@@ -199,6 +197,7 @@ public class GlslSyntax extends Syntax {
                     break;
 
                 case ISA_CR:
+                    
                     if (actChar == '\n') {
                         offset++;       
                         state = INIT;
@@ -206,14 +205,13 @@ public class GlslSyntax extends Syntax {
                     }
 
             }
-            currentToken.append(actChar);
             offset++;
         }
         
         switch (state) {
             case ISI_NAME:
                 state = INIT;
-                return findNameType(currentToken.toString());
+                return findTokenID(buffer, tokenStart, offset);
             case ISI_STRING_VALUE:
                 state = INIT;
                 return GlslTokenContext.STRING_VALUE;
@@ -227,8 +225,33 @@ public class GlslSyntax extends Syntax {
         return null;
     }
     
-    private TokenID findNameType(String token) {
+    private TokenID findTokenID(char[] buffer, int start, int end) {
         
+        // it is possible that the syntax lexer stops scanning inside a token.
+        // => search real token start and/or end indices and assamble token
+        // search end of token to the right
+        if(end < buffer.length && Character.isJavaIdentifierPart(buffer[end])) {
+            int index = end;
+            while(index < buffer.length) {
+                if(!Character.isJavaIdentifierPart(buffer[index])) {
+                    end = index;
+                    break;
+                }
+                index++;
+            }
+        }           
+        // search end of token to the left
+        if(start-1 >= 0 && Character.isJavaIdentifierPart(buffer[start-1])) {
+            int index = start;
+            while(index >= 0) {
+                if(!Character.isJavaIdentifierPart(buffer[index-1])) {
+                    start = index;
+                    break;
+                }
+                index--;
+            }
+        }
+        String token = new String(buffer, start, end-start);
         GLSLElementDescriptor[] desc = vocabularies.getDesc(token);
         
         if(desc != null) {
