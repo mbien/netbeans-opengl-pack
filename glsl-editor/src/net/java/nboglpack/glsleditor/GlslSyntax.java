@@ -8,9 +8,9 @@
  * Open. You can then make changes to the template in the Source Editor.
  */
 
-package net.highteq.gamedev.nbm.glsleditor;
+package net.java.nboglpack.glsleditor;
 
-import net.highteq.gamedev.nbm.glsleditor.vocabulary.GLSLElementDescriptor;
+import net.java.nboglpack.glsleditor.vocabulary.GLSLElementDescriptor;
 import org.netbeans.editor.Syntax;
 import org.netbeans.editor.TokenID;
 import org.openide.ErrorManager;

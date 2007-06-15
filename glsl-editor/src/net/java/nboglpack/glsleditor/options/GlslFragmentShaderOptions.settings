@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE settings PUBLIC "-//NetBeans//DTD Session settings 1.0//EN" "http://www.netbeans.org/dtds/sessionsettings-1_0.dtd">
 <settings version="1.0">
-    <module name="net.highteq.gamedev.nbm.glsleditor"/>
+    <module name="net.java.nboglpack.glsleditor"/>
     <instanceof class="java.io.Externalizable"/>
     <instanceof class="org.openide.util.SharedClassObject"/>
     <instanceof class="java.beans.beancontext.BeanContextProxy"/>
@@ -9,5 +9,5 @@
     <instanceof class="org.openide.options.SystemOption"/>
     <instanceof class="org.netbeans.modules.editor.options.OptionSupport"/>
     <instanceof class="org.netbeans.modules.editor.options.BaseOptions"/>
-    <instance class="net.highteq.gamedev.nbm.glsleditor.options.GlslFragmentShaderOptions"/>
+    <instance class="net.java.nboglpack.glsleditor.options.GlslFragmentShaderOptions"/>
 </settings>

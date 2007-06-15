@@ -5,7 +5,7 @@
  *
  */
 
-package net.highteq.gamedev.nbm.glsleditor;
+package net.java.nboglpack.glsleditor;
 
 import java.io.InputStream;
 import java.util.AbstractSet;
@@ -15,12 +15,11 @@ import java.util.Map;
 import java.util.Set;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
-import net.highteq.gamedev.nbm.glsleditor.vocabulary.GLSLElementDescriptor;
-import net.highteq.gamedev.nbm.glsleditor.vocabulary.GLSLVocabulary;
+import net.java.nboglpack.glsleditor.vocabulary.GLSLElementDescriptor;
+import net.java.nboglpack.glsleditor.vocabulary.GLSLVocabulary;
 import org.openide.ErrorManager;
 import org.openide.filesystems.FileObject;
 import org.openide.filesystems.Repository;
-import org.openide.util.Lookup;
 
 /**
  *

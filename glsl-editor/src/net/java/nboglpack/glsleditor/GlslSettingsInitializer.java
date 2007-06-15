@@ -7,7 +7,7 @@
  * and open the template in the editor.
  */
 
-package net.highteq.gamedev.nbm.glsleditor;
+package net.java.nboglpack.glsleditor;
 
 import java.awt.Color;
 import java.awt.Font;

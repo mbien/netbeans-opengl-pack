@@ -8,7 +8,7 @@
  * Open. You can then make changes to the template in the Source Editor.
  */
 
-package net.highteq.gamedev.nbm.glsleditor;
+package net.java.nboglpack.glsleditor;
 
 import org.netbeans.editor.BaseTokenID;
 import org.netbeans.editor.TokenContext;

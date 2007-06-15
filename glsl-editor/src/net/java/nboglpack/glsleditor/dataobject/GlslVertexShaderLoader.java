@@ -1,4 +1,4 @@
-package net.highteq.gamedev.nbm.glsleditor.dataobject;
+package net.java.nboglpack.glsleditor.dataobject;
 
 import java.io.IOException;
 import org.openide.filesystems.FileObject;
@@ -14,7 +14,7 @@ public class GlslVertexShaderLoader extends UniFileLoader {
     private static final long serialVersionUID = 1L;
 
     public GlslVertexShaderLoader() {
-        super("net.highteq.gamedev.nbm.glsleditor.dataobject.GlslDataObject");
+        super("net.java.nboglpack.glsleditor.dataobject.GlslDataObject");
     }
 
     protected String defaultDisplayName() {

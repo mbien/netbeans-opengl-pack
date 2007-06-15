@@ -4,57 +4,57 @@
     <folder name="Editors">
         <folder name="text">
             <folder name="x-glsl-fragment-shader">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.glsleditor.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
                 <file name="vocabulary.xml" url="resources/GlslVocabulary.xml"/>
                 <folder name="CompletionProviders">
                     <file name="GlslCompletionProvider.instance">
-                        <attr name="instanceClass" stringvalue="net.highteq.gamedev.nbm.glsleditor.GlslCompletionProvider"/>
+                        <attr name="instanceClass" stringvalue="net.java.nboglpack.glsleditor.GlslCompletionProvider"/>
                     </file>
                 </folder>
                 <folder name="NetBeans">
                     <folder name="Defaults">
                         <file name="coloring.xml" url="resources/NetBeans-glsl-fontsColors.xml">
-                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.glsleditor.Bundle"/>
+                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
                         </file>
                     </folder>
                 </folder> 
                 <folder name="CityLights">
                     <folder name="Defaults">
                         <file name="coloring.xml" url="resources/CityLights-glsl-fontsColors.xml">
-                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.glsleditor.Bundle"/>
+                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
                         </file>
                     </folder>
                 </folder>
                 <file name="Settings.settings" url="options/GlslFragmentShaderOptions.settings"/>
                 <file name="EditorKit.instance">
-                    <attr name="instanceClass" stringvalue="net.highteq.gamedev.nbm.glsleditor.GlslFragmentShaderEditorKit"/>
+                    <attr name="instanceClass" stringvalue="net.java.nboglpack.glsleditor.GlslFragmentShaderEditorKit"/>
                 </file>
             </folder>
             <folder name="x-glsl-vertex-shader">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.glsleditor.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
                 <file name="vocabulary.xml" url="resources/GlslVocabulary.xml"/>
                 <folder name="CompletionProviders">
                     <file name="GlslCompletionProvider.instance">
-                        <attr name="instanceClass" stringvalue="net.highteq.gamedev.nbm.glsleditor.GlslCompletionProvider"/>
+                        <attr name="instanceClass" stringvalue="net.java.nboglpack.glsleditor.GlslCompletionProvider"/>
                     </file>
                 </folder>
                 <folder name="NetBeans">
                     <folder name="Defaults">
                         <file name="coloring.xml" url="resources/NetBeans-glsl-fontsColors.xml">
-                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.glsleditor.Bundle"/>
+                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
                         </file>
                     </folder>
                 </folder> 
                 <folder name="CityLights">
                     <folder name="Defaults">
                         <file name="coloring.xml" url="resources/CityLights-glsl-fontsColors.xml">
-                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.glsleditor.Bundle"/>
+                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
                         </file>
                     </folder>
                 </folder>
                 <file name="Settings.settings" url="options/GlslVertexShaderOptions.settings"/>
                 <file name="EditorKit.instance">
-                    <attr name="instanceClass" stringvalue="net.highteq.gamedev.nbm.glsleditor.GlslVertexShaderEditorKit"/>
+                    <attr name="instanceClass" stringvalue="net.java.nboglpack.glsleditor.GlslVertexShaderEditorKit"/>
                 </file>
             </folder>
         </folder>
@@ -150,23 +150,23 @@
     <folder name="Services">
         <folder name="MIMEResolver">
             <file name="GlslFragmentShaderResolver.xml" url="resources/GlslFragmentShaderResolver.xml">
-                <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/highteq/gamedev/nbm/glsleditor/resources/FragmentShaderIcon.gif"/>
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.glsleditor.Bundle"/>
+                <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/glsleditor/resources/FragmentShaderIcon.gif"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
             </file>
             <file name="GlslVertexShaderResolver.xml" url="resources/GlslVertexShaderResolver.xml">
-                <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/highteq/gamedev/nbm/glsleditor/resources/VertexShaderIcon.gif"/>
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.glsleditor.Bundle"/>
+                <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/glsleditor/resources/VertexShaderIcon.gif"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
             </file>
         </folder>
     </folder>
     <folder name="Templates">
         <folder name="Other">
             <file name="FragmentShader.frag" url="resources/FragmentShaderTemplate.frag">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.glsleditor.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
             </file>
             <file name="VertexShader.vert" url="resources/VertexShaderTemplate.vert">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.glsleditor.Bundle"/>
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
                 <attr name="template" boolvalue="true"/>
             </file>
         </folder>

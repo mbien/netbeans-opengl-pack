@@ -1,7 +1,7 @@
-package net.highteq.gamedev.nbm.glsleditor.dataobject;
+package net.java.nboglpack.glsleditor.dataobject;
 
-import com.mbien.glslcompiler.ShaderFileObserver;
-import com.mbien.glslcompiler.ShaderFileObserver;
+import net.java.nboglpack.glslcompiler.ShaderFileObserver;
+import net.java.nboglpack.glslcompiler.ShaderFileObserver;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;

@@ -4,7 +4,7 @@
  * Created on 03.06.2007, 23:03:57
  * 
  */
-package net.highteq.gamedev.nbm.glsleditor.vocabulary;
+package net.java.nboglpack.glsleditor.vocabulary;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlEnum;

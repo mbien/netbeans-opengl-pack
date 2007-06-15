@@ -1,4 +1,4 @@
-package net.highteq.gamedev.nbm.glsleditor.dataobject;
+package net.java.nboglpack.glsleditor.dataobject;
 
 import java.awt.Image;
 import java.beans.BeanInfo;
@@ -10,7 +10,7 @@ import org.openide.util.Utilities;
 
 public class GlslFragmentShaderLoaderBeanInfo extends SimpleBeanInfo
 {
-	public static final String IMAGE_ICON_BASE = "net/highteq/gamedev/nbm/glsleditor/resources/FragmentShaderIcon.gif";
+	public static final String IMAGE_ICON_BASE = "net/java/nbjoglpack/glsleditor/resources/FragmentShaderIcon.gif";
 	
 	public BeanInfo[] getAdditionalBeanInfo()
 	{

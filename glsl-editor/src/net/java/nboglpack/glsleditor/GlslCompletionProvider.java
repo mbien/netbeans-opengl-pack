@@ -1,4 +1,4 @@
-package net.highteq.gamedev.nbm.glsleditor;
+package net.java.nboglpack.glsleditor;
 
 import javax.swing.JEditorPane;
 import org.netbeans.api.editor.completion.Completion;
@@ -23,7 +23,7 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.util.Iterator;
-import net.highteq.gamedev.nbm.glsleditor.vocabulary.GLSLElementDescriptor;
+import net.java.nboglpack.glsleditor.vocabulary.GLSLElementDescriptor;
 import org.netbeans.spi.editor.completion.support.CompletionUtilities;
 
 

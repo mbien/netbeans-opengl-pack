@@ -1,14 +1,14 @@
-package net.highteq.gamedev.nbm.glsleditor.dataobject;
+package net.java.nboglpack.glsleditor.dataobject;
 
 import org.openide.loaders.DataNode;
 import org.openide.nodes.Children;
 
-public class GlslFragmentShaderNode extends DataNode
+public class GlslVertexShaderNode extends DataNode
 {
-	public GlslFragmentShaderNode(GlslFragmentShaderObject obj)
+	public GlslVertexShaderNode(GlslVertexShaderObject obj)
 	{
 		super(obj, Children.LEAF);
-		setIconBaseWithExtension(GlslFragmentShaderLoaderBeanInfo.IMAGE_ICON_BASE);
+		setIconBaseWithExtension(GlslVertexShaderLoaderBeanInfo.IMAGE_ICON_BASE);
 	}
 //    /** Creates a property sheet. */
 //    protected Sheet createSheet() {

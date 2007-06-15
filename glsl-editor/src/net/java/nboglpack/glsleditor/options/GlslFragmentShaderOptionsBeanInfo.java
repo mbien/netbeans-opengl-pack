@@ -7,7 +7,7 @@
  * and open the template in the editor.
  */
 
-package net.highteq.gamedev.nbm.glsleditor.options;
+package net.java.nboglpack.glsleditor.options;
 
 import java.util.MissingResourceException;
 import org.netbeans.modules.editor.options.BaseOptionsBeanInfo;
@@ -25,7 +25,7 @@ public class GlslFragmentShaderOptionsBeanInfo extends BaseOptionsBeanInfo {
      * icon prefix.
      */
     public GlslFragmentShaderOptionsBeanInfo() {
-        super("/net/highteq/gamedev/nbm/glsleditor/resources/OptionsIcon"); // NOI18N
+        super("/net/java/nboglpack/glsleditor/resources/OptionsIcon"); // NOI18N
     }
     
     /*

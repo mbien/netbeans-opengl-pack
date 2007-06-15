@@ -7,7 +7,7 @@
  * and open the template in the editor.
  */
 
-package net.highteq.gamedev.nbm.glsleditor;
+package net.java.nboglpack.glsleditor;
 
 import javax.swing.text.Document;
 import org.netbeans.editor.Syntax;
@@ -18,17 +18,17 @@ import org.openide.ErrorManager;
  *
  * @author Administrator
  */
-public class GlslFragmentShaderEditorKit extends NbEditorKit {
+public class GlslVertexShaderEditorKit extends NbEditorKit {
     
-    private static final ErrorManager LOGGER = ErrorManager.getDefault().getInstance(GlslFragmentShaderEditorKit.class.getName());
+    private static final ErrorManager LOGGER = ErrorManager.getDefault().getInstance(GlslVertexShaderEditorKit.class.getName());
     private static final boolean LOG = LOGGER.isLoggable(ErrorManager.INFORMATIONAL);
     
-    public static final String MIME_TYPE = "text/x-glsl-fragment-shader"; // NOI18N
+    public static final String MIME_TYPE = "text/x-glsl-vertex-shader"; // NOI18N
     
     /** 
      * Creates a new instance of ManifestEditorKit 
      */
-    public GlslFragmentShaderEditorKit() { 
+    public GlslVertexShaderEditorKit() { 
     }
     
     /**

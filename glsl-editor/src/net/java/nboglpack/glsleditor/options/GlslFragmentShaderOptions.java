@@ -7,11 +7,11 @@
  * and open the template in the editor.
  */
 
-package net.highteq.gamedev.nbm.glsleditor.options;
+package net.java.nboglpack.glsleditor.options;
 
 import java.util.MissingResourceException;
+import net.java.nboglpack.glsleditor.GlslFragmentShaderEditorKit;
 import org.netbeans.modules.editor.options.BaseOptions;
-import net.highteq.gamedev.nbm.glsleditor.GlslVertexShaderEditorKit;
 import org.openide.util.HelpCtx;
 import org.openide.util.NbBundle;
 
@@ -19,9 +19,9 @@ import org.openide.util.NbBundle;
  *
  * @author Administrator
  */
-public class GlslVertexShaderOptions extends BaseOptions {
+public class GlslFragmentShaderOptions extends BaseOptions {
     
-    public static String GLSL = "Glsl_vertex_shader"; // NOI18N
+    public static String GLSL = "Glsl_fragment_shader"; // NOI18N
     
     /** Name of property. */
     private static final String HELP_ID = "editing.editor.glsl"; // NOI18N
@@ -30,8 +30,8 @@ public class GlslVertexShaderOptions extends BaseOptions {
     static final String[] GLSL_PROP_NAMES = new String[] {};
     
     
-    public GlslVertexShaderOptions() {
-        super(GlslVertexShaderEditorKit.class, GLSL);
+    public GlslFragmentShaderOptions() {
+        super(GlslFragmentShaderEditorKit.class, GLSL);
     }
     
     /**
@@ -55,7 +55,7 @@ public class GlslVertexShaderOptions extends BaseOptions {
      */
     protected String getString(String key) {
         try {
-            return NbBundle.getMessage(GlslVertexShaderOptions.class, key);
+            return NbBundle.getMessage(GlslFragmentShaderOptions.class, key);
         } catch (MissingResourceException e) {
             return super.getString(key);
         }
