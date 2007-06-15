@@ -10,7 +10,7 @@ import org.openide.util.Utilities;
 
 public class GlslFragmentShaderLoaderBeanInfo extends SimpleBeanInfo
 {
-	public static final String IMAGE_ICON_BASE = "net/java/nbjoglpack/glsleditor/resources/FragmentShaderIcon.gif";
+	public static final String IMAGE_ICON_BASE = "net/java/nboglpack/glsleditor/resources/FragmentShaderIcon.gif";
 	
 	public BeanInfo[] getAdditionalBeanInfo()
 	{
