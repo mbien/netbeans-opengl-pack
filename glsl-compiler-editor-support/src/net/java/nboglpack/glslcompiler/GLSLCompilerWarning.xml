@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE type PUBLIC "-//NetBeans//DTD annotation type 1.1//EN" "http://www.netbeans.org/dtds/annotation-type-1_1.dtd">
+<!--
+    Document   : GLSLCompilerWarning.xml
+    Created on : 15. March 2007, 16:19
+    Author     : Michael Bien
+    Description:
+        Configuration file of the GLSL compiler warning Annotation.
+-->
+<type name='com-mbien-glslcompiler-GlslCompilerWarningAnnotation'
+      description_key='GlslCompilerWarningLabel'
+      localizing_bundle='com.mbien.glslcompiler.annotation.Bundle'
+      visible='true'
+      glyph='nbresloc:/com/mbien/glslcompiler/annotation/Warning.gif'
+      waveunderline='#DDDD66'
+      type='linepart'
+      severity='warning'
+      priority='1'
+/>
