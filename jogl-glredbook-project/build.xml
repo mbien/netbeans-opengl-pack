@@ -4,7 +4,7 @@
 <!-- If you delete this file and reopen the project it will be recreated. -->
 <project name="glredbook" default="netbeans" basedir="." xmlns:vpp="antlib:foundrylogic.vpp">
 	
-	<description>Builds, tests, and runs the project net.highteq.gamedev.nbm.joglglredbookproject.</description>
+	<description>Builds, tests, and runs the project net.java.nboglpack.joglglredbookproject.</description>
 	<import file="nbproject/build-impl.xml"/>
 		
 	<path id="vpp.path">

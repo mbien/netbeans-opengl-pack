@@ -3,8 +3,8 @@
     <type>org.netbeans.modules.apisupport.project</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/nb-module-project/2">
-            <code-name-base>net.highteq.gamedev.nbm.joglproject</code-name-base>
-            <standalone/>
+            <code-name-base>net.java.nboglpack.joglproject</code-name-base>
+            <suite-component/>
             <module-dependencies>
                 <dependency>
                     <code-name-base>org.apache.tools.ant.module</code-name-base>
@@ -100,7 +100,7 @@
                 </dependency>
             </module-dependencies>
             <public-packages>
-                <package>net.highteq.gamedev.nbm.joglproject</package>
+                <package>net.java.nboglpack.joglproject</package>
             </public-packages>
         </data>
     </configuration>

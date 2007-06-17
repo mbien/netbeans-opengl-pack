@@ -1,4 +1,4 @@
-package net.highteq.gamedev.nbm.joglproject;
+package net.java.nboglpack.joglproject;
 
 import java.io.File;
 import javax.swing.JFileChooser;

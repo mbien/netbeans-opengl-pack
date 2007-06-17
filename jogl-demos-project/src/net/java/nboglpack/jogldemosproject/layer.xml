@@ -12,8 +12,8 @@
 											<attr name="projectName" stringvalue="JOGLGearsDemo"/>
 											<attr name="archive" stringvalue="jogl-demos-src.zip"/>
 											<attr name="srcPath" stringvalue="jogl-demos/src"/>
-											<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.jogldemosproject.Bundle"/>
-											<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+											<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
+											<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 											<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/jogldemosproject/resources/GearsDemoDescription.html"/>
 											<attr name="template" boolvalue="true"/>
 									</file>
@@ -24,8 +24,8 @@
 											<attr name="projectName" stringvalue="JOGLMultisampleDemo"/>
 											<attr name="archive" stringvalue="jogl-demos-src.zip"/>
 											<attr name="srcPath" stringvalue="jogl-demos/src"/>
-											<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.jogldemosproject.Bundle"/>
-											<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+											<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
+											<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 											<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/jogldemosproject/resources/MultisampleDemoDescription.html"/>
 											<attr name="template" boolvalue="true"/>
 									</file>
@@ -37,8 +37,8 @@
 											<attr name="archive" stringvalue="jogl-demos-src.zip"/>
 											<attr name="srcPath" stringvalue="jogl-demos/src"/>
 											<attr name="extraFiles" stringvalue="gleem/**/*,demos/common/**/*,demos/util/**/*,demos/data/models/**/*"/>
-											<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.jogldemosproject.Bundle"/>
-											<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+											<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
+											<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 											<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/jogldemosproject/resources/InfiniteShadowVolumesDemoDescription.html"/>
 											<attr name="template" boolvalue="true"/>
 									</file>
@@ -50,8 +50,8 @@
 											<attr name="archive" stringvalue="jogl-demos-src.zip"/>
 											<attr name="srcPath" stringvalue="jogl-demos/src"/>
 											<attr name="extraFiles" stringvalue="gleem/**/*,demos/common/**/*,demos/util/**/*,demos/data/**/*"/>
-											<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.jogldemosproject.Bundle"/>
-											<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+											<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
+											<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 											<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/jogldemosproject/resources/ProceduralTexturePhysicsDemoDescription.html"/>
 											<attr name="template" boolvalue="true"/>
 									</file>
@@ -63,8 +63,8 @@
 											<attr name="archive" stringvalue="jogl-demos-src.zip"/>
 											<attr name="srcPath" stringvalue="jogl-demos/src"/>
 											<attr name="extraFiles" stringvalue="gleem/**/*,demos/common/**/*,demos/util/**/*,demos/data/**/*"/>
-											<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.jogldemosproject.Bundle"/>
-											<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+											<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
+											<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 											<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/jogldemosproject/resources/VertexProgRefractDemoDescription.html"/>
 											<attr name="template" boolvalue="true"/>
 									</file>
@@ -75,8 +75,8 @@
 											<attr name="projectName" stringvalue="JOGLParticlesDemo"/>
 											<attr name="archive" stringvalue="jogl-demos-src.zip"/>
 											<attr name="srcPath" stringvalue="jogl-demos/src"/>
-											<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.jogldemosproject.Bundle"/>
-											<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+											<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
+											<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 											<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/jogldemosproject/resources/ParticlesDemoDescription.html"/>
 											<attr name="template" boolvalue="true"/>
 									</file>

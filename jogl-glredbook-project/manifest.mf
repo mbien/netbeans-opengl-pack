@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-OpenIDE-Module: net.highteq.gamedev.nbm.joglglredbookproject
+OpenIDE-Module: net.java.nboglpack.joglglredbookproject
 OpenIDE-Module-Layer: net/highteq/gamedev/nbm/joglglredbookproject/layer.xml
 OpenIDE-Module-Localizing-Bundle: net/highteq/gamedev/nbm/joglglredbookproject/Bundle.properties
 OpenIDE-Module-Specification-Version: 1.0

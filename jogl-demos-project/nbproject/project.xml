@@ -3,11 +3,11 @@
     <type>org.netbeans.modules.apisupport.project</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/nb-module-project/2">
-            <code-name-base>net.highteq.gamedev.nbm.jogldemosproject</code-name-base>
-            <standalone/>
+            <code-name-base>net.java.nboglpack.jogldemosproject</code-name-base>
+            <suite-component/>
             <module-dependencies>
                 <dependency>
-                    <code-name-base>net.highteq.gamedev.nbm.joglproject</code-name-base>
+                    <code-name-base>net.java.nboglpack.joglproject</code-name-base>
                     <build-prerequisite/>
                     <compile-dependency/>
                     <run-dependency>

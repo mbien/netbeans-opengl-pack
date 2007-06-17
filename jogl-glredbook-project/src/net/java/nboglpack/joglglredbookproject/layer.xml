@@ -13,8 +13,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/accanti.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -26,8 +26,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/accnot.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -39,8 +39,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/accpersp.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -52,8 +52,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/accum.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -65,8 +65,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/aim.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -78,8 +78,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/alpha.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -91,8 +91,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/alpha3D.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -104,8 +104,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/anti.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -117,8 +117,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/antipoint.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -130,8 +130,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/antipoly.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -143,8 +143,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/bezcurve.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -156,8 +156,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/bezmesh.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -169,8 +169,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/bezsurf.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -182,8 +182,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/checker.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -195,8 +195,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/checker2.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -208,8 +208,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/chess.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -221,8 +221,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/clip.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -234,8 +234,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/colormat.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -247,8 +247,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/cone.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -260,8 +260,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/cube.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -273,8 +273,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/depthcue.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -286,8 +286,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/disk.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -299,8 +299,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/dof.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -312,8 +312,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/dofnot.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -325,8 +325,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/double(buf).html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -338,8 +338,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/drawf.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -351,8 +351,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/feedback.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -364,8 +364,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/fog.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -377,8 +377,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/font.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -390,8 +390,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/light.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -403,8 +403,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/linelist.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -416,8 +416,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/lines.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -429,8 +429,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/list.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -442,8 +442,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/list2.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -455,8 +455,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/maplight.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -468,8 +468,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/material.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -481,8 +481,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/mipmap.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -494,8 +494,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/model.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -507,8 +507,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/movelight.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -520,8 +520,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/pickdepth.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -533,8 +533,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/pickline.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -546,8 +546,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/picksquare.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -559,8 +559,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/plane.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -572,8 +572,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/planet.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -585,8 +585,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/planetup.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -598,8 +598,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/polys.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -611,8 +611,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/robot.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -624,8 +624,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/sccolorlight.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -637,8 +637,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/scene.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -650,8 +650,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/scenebamb.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -663,8 +663,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/sceneflat.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -676,8 +676,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/select.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -689,8 +689,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/simple.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -702,8 +702,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/smooth.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -715,8 +715,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/sphere.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -728,8 +728,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/stencil.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -741,8 +741,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/stroke.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -754,8 +754,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/tea.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -767,8 +767,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/teaambient.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -780,8 +780,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/teapots.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -793,8 +793,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/texturesurf.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
@@ -806,8 +806,8 @@
 						<attr name="archive" stringvalue="glredbook10.jar"/>
 						<attr name="srcPath" stringvalue=""/>
 						<attr name="archiveExcludes" stringvalue=""/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
 						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/jfont.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
