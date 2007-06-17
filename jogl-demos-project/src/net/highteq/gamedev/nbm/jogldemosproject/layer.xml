@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+    <folder name="Templates">
+        <folder name="Project">
+            <folder name="OpenGL">
+							<folder name="Demos">
+									<file name="GearsDemo.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+											<attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/opengl-icon.gif"/>
+											<attr name="demo" stringvalue="demos.gears.Gears"/>
+											<attr name="projectPackage" stringvalue="demos.gears"/>
+											<attr name="projectName" stringvalue="JOGLGearsDemo"/>
+											<attr name="archive" stringvalue="jogl-demos-src.zip"/>
+											<attr name="srcPath" stringvalue="jogl-demos/src"/>
+											<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.jogldemosproject.Bundle"/>
+											<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+											<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/jogldemosproject/resources/GearsDemoDescription.html"/>
+											<attr name="template" boolvalue="true"/>
+									</file>
+									<file name="MultisampleDemo.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+											<attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/opengl-icon.gif"/>
+											<attr name="demo" stringvalue="demos.multisample.Multisample"/>
+											<attr name="projectPackage" stringvalue="demos.multisample"/>
+											<attr name="projectName" stringvalue="JOGLMultisampleDemo"/>
+											<attr name="archive" stringvalue="jogl-demos-src.zip"/>
+											<attr name="srcPath" stringvalue="jogl-demos/src"/>
+											<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.jogldemosproject.Bundle"/>
+											<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+											<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/jogldemosproject/resources/MultisampleDemoDescription.html"/>
+											<attr name="template" boolvalue="true"/>
+									</file>
+									<file name="InfiniteShadowVolumesDemo.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+											<attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/opengl-icon.gif"/>
+											<attr name="demo" stringvalue="demos.infiniteShadowVolumes.InfiniteShadowVolumes"/>
+											<attr name="projectPackage" stringvalue="demos.infiniteShadowVolumes"/>
+											<attr name="projectName" stringvalue="JOGLInfiniteShadowVolumesDemo"/>
+											<attr name="archive" stringvalue="jogl-demos-src.zip"/>
+											<attr name="srcPath" stringvalue="jogl-demos/src"/>
+											<attr name="extraFiles" stringvalue="gleem/**/*,demos/common/**/*,demos/util/**/*,demos/data/models/**/*"/>
+											<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.jogldemosproject.Bundle"/>
+											<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+											<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/jogldemosproject/resources/InfiniteShadowVolumesDemoDescription.html"/>
+											<attr name="template" boolvalue="true"/>
+									</file>
+									<file name="ProceduralTexturePhysicsDemo.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+											<attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/opengl-icon.gif"/>
+											<attr name="demo" stringvalue="demos.proceduralTexturePhysics.ProceduralTexturePhysics"/>
+											<attr name="projectPackage" stringvalue="demos.proceduralTexturePhysics"/>
+											<attr name="projectName" stringvalue="JOGLProceduralTexturePhysicsDemo"/>
+											<attr name="archive" stringvalue="jogl-demos-src.zip"/>
+											<attr name="srcPath" stringvalue="jogl-demos/src"/>
+											<attr name="extraFiles" stringvalue="gleem/**/*,demos/common/**/*,demos/util/**/*,demos/data/**/*"/>
+											<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.jogldemosproject.Bundle"/>
+											<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+											<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/jogldemosproject/resources/ProceduralTexturePhysicsDemoDescription.html"/>
+											<attr name="template" boolvalue="true"/>
+									</file>
+									<file name="VertexProgRefractDemo.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+											<attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/opengl-icon.gif"/>
+											<attr name="demo" stringvalue="demos.vertexProgRefract.VertexProgRefract"/>
+											<attr name="projectPackage" stringvalue="demos.vertexProgRefract"/>
+											<attr name="projectName" stringvalue="JOGLVertexProgRefractDemo"/>
+											<attr name="archive" stringvalue="jogl-demos-src.zip"/>
+											<attr name="srcPath" stringvalue="jogl-demos/src"/>
+											<attr name="extraFiles" stringvalue="gleem/**/*,demos/common/**/*,demos/util/**/*,demos/data/**/*"/>
+											<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.jogldemosproject.Bundle"/>
+											<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+											<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/jogldemosproject/resources/VertexProgRefractDemoDescription.html"/>
+											<attr name="template" boolvalue="true"/>
+									</file>
+									<file name="ParticlesDemo.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+											<attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/opengl-icon.gif"/>
+											<attr name="demo" stringvalue="demos.particles.engine.ControlWindow"/>
+											<attr name="projectPackage" stringvalue="demos.particles.engine"/>
+											<attr name="projectName" stringvalue="JOGLParticlesDemo"/>
+											<attr name="archive" stringvalue="jogl-demos-src.zip"/>
+											<attr name="srcPath" stringvalue="jogl-demos/src"/>
+											<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.jogldemosproject.Bundle"/>
+											<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+											<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/jogldemosproject/resources/ParticlesDemoDescription.html"/>
+											<attr name="template" boolvalue="true"/>
+									</file>
+							</folder>
+           </folder>
+        </folder>
+    </folder>
+</filesystem>
+
