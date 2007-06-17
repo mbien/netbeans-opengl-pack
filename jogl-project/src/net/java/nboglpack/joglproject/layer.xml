@@ -5,7 +5,7 @@
         <folder name="Project">
             <folder name="OpenGL">
                 <file name="SimpleDemo.zip" url="resources/jogl-project.zip">
-									<attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/opengl-icon.gif"/>
+									<attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                   <attr name="demo" stringvalue="net.highteq.gamedev.SimpleJOGL"/>
 									<attr name="projectPackage" stringvalue="org.yourorghere"/>
 									<attr name="projectName" stringvalue="SimpleJOGL"/>
@@ -13,7 +13,7 @@
 									<attr name="srcPath" stringvalue="SimpleJOGL/src"/>
 									<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglproject.Bundle"/>
 									<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-									<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/SimpleJOGLDescription.html"/>
+									<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/SimpleJOGLDescription.html"/>
 									<attr name="template" boolvalue="true"/>
 							</file>
            </folder>

@@ -6,7 +6,7 @@
 			<folder name="OpenGL">
 				<folder name="Redbook Demos">
 										
-					<file name="accanti.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="accanti.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.accanti"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="accanti"/>
@@ -15,11 +15,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/accanti.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/accanti.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="accnot.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="accnot.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.accnot"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="accnot"/>
@@ -28,11 +28,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/accnot.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/accnot.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="accpersp.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="accpersp.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.accpersp"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="accpersp"/>
@@ -41,11 +41,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/accpersp.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/accpersp.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="accum.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="accum.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.accum"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="accum"/>
@@ -54,11 +54,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/accum.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/accum.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="aim.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="aim.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.aim"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="aim"/>
@@ -67,11 +67,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/aim.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/aim.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="alpha.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="alpha.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.alpha"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="alpha"/>
@@ -80,11 +80,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/alpha.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/alpha.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="alpha3D.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="alpha3D.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.alpha3D"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="alpha3D"/>
@@ -93,11 +93,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/alpha3D.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/alpha3D.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="anti.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="anti.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.anti"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="anti"/>
@@ -106,11 +106,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/anti.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/anti.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="antipoint.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="antipoint.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.antipoint"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="antipoint"/>
@@ -119,11 +119,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/antipoint.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/antipoint.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="antipoly.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="antipoly.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.antipoly"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="antipoly"/>
@@ -132,11 +132,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/antipoly.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/antipoly.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="bezcurve.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="bezcurve.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.bezcurve"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="bezcurve"/>
@@ -145,11 +145,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/bezcurve.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/bezcurve.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="bezmesh.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="bezmesh.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.bezmesh"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="bezmesh"/>
@@ -158,11 +158,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/bezmesh.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/bezmesh.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="bezsurf.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="bezsurf.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.bezsurf"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="bezsurf"/>
@@ -171,11 +171,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/bezsurf.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/bezsurf.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="checker.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="checker.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.checker"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="checker"/>
@@ -184,11 +184,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/checker.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/checker.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="checker2.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="checker2.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.checker2"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="checker2"/>
@@ -197,11 +197,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/checker2.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/checker2.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="chess.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="chess.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.chess"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="chess"/>
@@ -210,11 +210,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/chess.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/chess.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="clip.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="clip.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.clip"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="clip"/>
@@ -223,11 +223,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/clip.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/clip.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="colormat.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="colormat.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.colormat"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="colormat"/>
@@ -236,11 +236,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/colormat.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/colormat.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="cone.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="cone.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.cone"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="cone"/>
@@ -249,11 +249,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/cone.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/cone.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="cube.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="cube.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.cube"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="cube"/>
@@ -262,11 +262,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/cube.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/cube.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="depthcue.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="depthcue.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.depthcue"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="depthcue"/>
@@ -275,11 +275,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/depthcue.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/depthcue.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="disk.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="disk.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.disk"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="disk"/>
@@ -288,11 +288,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/disk.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/disk.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="dof.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="dof.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.dof"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="dof"/>
@@ -301,11 +301,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/dof.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/dof.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="dofnot.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="dofnot.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.dofnot"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="dofnot"/>
@@ -314,11 +314,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/dofnot.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/dofnot.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="double(buf).zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="double(buf).zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.double(buf)"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="double(buf)"/>
@@ -327,11 +327,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/double(buf).html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/double(buf).html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="drawf.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="drawf.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.drawf"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="drawf"/>
@@ -340,11 +340,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/drawf.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/drawf.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="feedback.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="feedback.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.feedback"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="feedback"/>
@@ -353,11 +353,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/feedback.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/feedback.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="fog.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="fog.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.fog"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="fog"/>
@@ -366,11 +366,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/fog.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/fog.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="font.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="font.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.font"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="font"/>
@@ -379,11 +379,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/font.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/font.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="light.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="light.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.light"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="light"/>
@@ -392,11 +392,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/light.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/light.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="linelist.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="linelist.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.linelist"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="linelist"/>
@@ -405,11 +405,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/linelist.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/linelist.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="lines.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="lines.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.lines"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="lines"/>
@@ -418,11 +418,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/lines.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/lines.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="list.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="list.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.list"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="list"/>
@@ -431,11 +431,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/list.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/list.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="list2.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="list2.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.list2"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="list2"/>
@@ -444,11 +444,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/list2.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/list2.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="maplight.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="maplight.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.maplight"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="maplight"/>
@@ -457,11 +457,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/maplight.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/maplight.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="material.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="material.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.material"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="material"/>
@@ -470,11 +470,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/material.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/material.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="mipmap.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="mipmap.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.mipmap"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="mipmap"/>
@@ -483,11 +483,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/mipmap.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/mipmap.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="model.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="model.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.model"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="model"/>
@@ -496,11 +496,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/model.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/model.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="movelight.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="movelight.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.movelight"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="movelight"/>
@@ -509,11 +509,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/movelight.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/movelight.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="pickdepth.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="pickdepth.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.pickdepth"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="pickdepth"/>
@@ -522,11 +522,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/pickdepth.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/pickdepth.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="pickline.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="pickline.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.pickline"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="pickline"/>
@@ -535,11 +535,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/pickline.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/pickline.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="picksquare.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="picksquare.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.picksquare"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="picksquare"/>
@@ -548,11 +548,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/picksquare.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/picksquare.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="plane.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="plane.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.plane"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="plane"/>
@@ -561,11 +561,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/plane.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/plane.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="planet.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="planet.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.planet"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="planet"/>
@@ -574,11 +574,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/planet.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/planet.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="planetup.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="planetup.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.planetup"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="planetup"/>
@@ -587,11 +587,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/planetup.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/planetup.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="polys.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="polys.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.polys"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="polys"/>
@@ -600,11 +600,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/polys.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/polys.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="robot.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="robot.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.robot"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="robot"/>
@@ -613,11 +613,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/robot.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/robot.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="sccolorlight.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="sccolorlight.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.sccolorlight"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="sccolorlight"/>
@@ -626,11 +626,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/sccolorlight.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/sccolorlight.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="scene.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="scene.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.scene"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="scene"/>
@@ -639,11 +639,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/scene.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/scene.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="scenebamb.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="scenebamb.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.scenebamb"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="scenebamb"/>
@@ -652,11 +652,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/scenebamb.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/scenebamb.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="sceneflat.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="sceneflat.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.sceneflat"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="sceneflat"/>
@@ -665,11 +665,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/sceneflat.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/sceneflat.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="select.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="select.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.select"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="select"/>
@@ -678,11 +678,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/select.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/select.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="simple.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="simple.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.simple"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="simple"/>
@@ -691,11 +691,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/simple.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/simple.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="smooth.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="smooth.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.smooth"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="smooth"/>
@@ -704,11 +704,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/smooth.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/smooth.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="sphere.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="sphere.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.sphere"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="sphere"/>
@@ -717,11 +717,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/sphere.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/sphere.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="stencil.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="stencil.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.stencil"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="stencil"/>
@@ -730,11 +730,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/stencil.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/stencil.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="stroke.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="stroke.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.stroke"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="stroke"/>
@@ -743,11 +743,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/stroke.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/stroke.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="tea.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="tea.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.tea"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="tea"/>
@@ -756,11 +756,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/tea.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/tea.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="teaambient.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="teaambient.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.teaambient"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="teaambient"/>
@@ -769,11 +769,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/teaambient.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/teaambient.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="teapots.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="teapots.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.teapots"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="teapots"/>
@@ -782,11 +782,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/teapots.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/teapots.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="texturesurf.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="texturesurf.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.texturesurf"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="texturesurf"/>
@@ -795,11 +795,11 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/texturesurf.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/texturesurf.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										
-					<file name="jfont.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="jfont.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.jfont"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="jfont"/>
@@ -808,7 +808,7 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/jfont.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/jfont.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 										

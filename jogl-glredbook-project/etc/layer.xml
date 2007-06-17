@@ -8,7 +8,7 @@
 				<folder name="Redbook Demos">
 					#foreach( $example in $examples )
 					
-					<file name="${example}.zip" url="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip">
+					<file name="${example}.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
 						<attr name="demo" stringvalue="glredbook10.$example"/>
 						<attr name="projectPackage" stringvalue="glredbook10"/>
 						<attr name="projectName" stringvalue="$example"/>
@@ -17,7 +17,7 @@
 						<attr name="archiveExcludes" stringvalue=""/>
 						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
 						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglglredbookproject/resources/${example}.html"/>
+						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/${example}.html"/>
 						<attr name="template" boolvalue="true"/>
 					</file>
 					#end

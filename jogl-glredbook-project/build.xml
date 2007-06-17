@@ -35,7 +35,7 @@
 		<!-- generate layer file (project template configration) using velocity -->
 		<copy
 			file="etc/layer.xml"
-			todir="src/net/highteq/gamedev/nbm/joglglredbookproject"
+			todir="src/net/java/nboglpack/joglglredbookproject"
 			overwrite="true"
 		>
 			<filterchain>
@@ -97,7 +97,7 @@
 		<!-- generate the template description html -->
 		<copy
 			file="etc/description.html"
-			tofile="src/net/highteq/gamedev/nbm/joglglredbookproject/resources/${example}.html"
+			tofile="src/net/java/nboglpack/joglglredbookproject/resources/${example}.html"
 			overwrite="true"
 		>
 			<filterchain>

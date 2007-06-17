@@ -8,7 +8,7 @@
     <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
 
     <target name="-pre-compile">
-        <zip basedir="jogl-project" destfile="src/net/highteq/gamedev/nbm/joglproject/resources/jogl-project.zip" update="false"/>
+        <zip basedir="jogl-project" destfile="src/net/java/nboglpack/joglproject/resources/jogl-project.zip" update="false"/>
         <unzip src="jogl-dist/jogl-webstart.zip" dest="release/libs/"/>
         <unzip src="jogl-dist/gluegen-rt-webstart.zip" dest="release/libs/"/>
         <foreach param="filepath" target="unzip-natives" inheritall="true">
