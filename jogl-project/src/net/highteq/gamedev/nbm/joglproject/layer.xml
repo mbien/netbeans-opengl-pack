@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+    <folder name="Templates">
+        <folder name="Project">
+            <folder name="OpenGL">
+                <file name="SimpleDemo.zip" url="resources/jogl-project.zip">
+									<attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/opengl-icon.gif"/>
+                  <attr name="demo" stringvalue="net.highteq.gamedev.SimpleJOGL"/>
+									<attr name="projectPackage" stringvalue="org.yourorghere"/>
+									<attr name="projectName" stringvalue="SimpleJOGL"/>
+									<attr name="archive" stringvalue="jogl-templates.zip"/>
+									<attr name="srcPath" stringvalue="SimpleJOGL/src"/>
+									<attr name="SystemFileSystem.localizingBundle" stringvalue="net.highteq.gamedev.nbm.joglproject.Bundle"/>
+									<attr name="instantiatingIterator" methodvalue="net.highteq.gamedev.nbm.joglproject.ProjectWizardIterator.createIterator"/>
+									<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/highteq/gamedev/nbm/joglproject/resources/SimpleJOGLDescription.html"/>
+									<attr name="template" boolvalue="true"/>
+							</file>
+           </folder>
+        </folder>
+    </folder>
+
+    <folder name="org-netbeans-api-project-libraries">
+        <folder name="Libraries">
+            <file name="JOGL.xml" url="resources/JOGL.xml"/>
+            <file name="GLUEGEN-RT.xml" url="resources/GLUEGEN-RT.xml"/>
+        </folder>
+    </folder>
+</filesystem>
