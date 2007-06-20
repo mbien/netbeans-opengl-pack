@@ -7,11 +7,11 @@
     Description:
         Configuration file of the GLSL compiler warning Annotation.
 -->
-<type name='com-mbien-glslcompiler-GlslCompilerWarningAnnotation'
+<type name='net-java-nboglpack-glslcompiler-GlslCompilerWarningAnnotation'
       description_key='GlslCompilerWarningLabel'
-      localizing_bundle='com.mbien.glslcompiler.annotation.Bundle'
+      localizing_bundle='net.java.nboglpack.glslcompiler.annotation.Bundle'
       visible='true'
-      glyph='nbresloc:/com/mbien/glslcompiler/annotation/Warning.gif'
+      glyph='nbresloc:/net/java/nboglpack/glslcompiler/annotation/Warning.gif'
       waveunderline='#DDDD66'
       type='linepart'
       severity='warning'

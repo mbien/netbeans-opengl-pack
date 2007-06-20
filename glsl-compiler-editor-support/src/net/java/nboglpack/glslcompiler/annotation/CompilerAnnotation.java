@@ -27,8 +27,8 @@ public class CompilerAnnotation extends Annotation {
     
  public enum AnnotationType {
      
-     WARNING("com-mbien-glslcompiler-GlslCompilerWarningAnnotation"),
-     ERROR("com-mbien-glslcompiler-GlslCompilerErrorAnnotation");
+     WARNING("net-java-nboglpack-glslcompiler-GlslCompilerWarningAnnotation"),
+     ERROR("net-java-nboglpack-glslcompiler-GlslCompilerErrorAnnotation");
      
      private final String type;
              

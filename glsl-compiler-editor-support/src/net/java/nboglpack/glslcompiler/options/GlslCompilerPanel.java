@@ -28,15 +28,13 @@ final class GlslCompilerPanel extends javax.swing.JPanel {
         javax.swing.JPanel optionsPanel = new javax.swing.JPanel();
         javax.swing.JLabel patternLabel = new javax.swing.JLabel();
         patternTextField = new javax.swing.JTextField();
-        javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
-        javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
+        javax.swing.JPanel runtimePanel = new javax.swing.JPanel();
+        javax.swing.JLabel glVersion = new javax.swing.JLabel();
         glVersionLabel = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
+        javax.swing.JLabel gpuVendor = new javax.swing.JLabel();
         vendorLabel = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel5 = new javax.swing.JLabel();
+        javax.swing.JLabel joglVersion = new javax.swing.JLabel();
         joglVersionLabel = new javax.swing.JLabel();
-
-        setBackground(java.awt.Color.white);
 
         optionsPanel.setBackground(getBackground());
         optionsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("compiler error log parser configuration"));
@@ -62,51 +60,51 @@ final class GlslCompilerPanel extends javax.swing.JPanel {
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        jPanel1.setBackground(getBackground());
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("OpenGL Runtime Information"));
+        runtimePanel.setBackground(getBackground());
+        runtimePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("OpenGL Runtime Information"));
 
-        org.openide.awt.Mnemonics.setLocalizedText(jLabel1, "OpenGL Version:");
+        org.openide.awt.Mnemonics.setLocalizedText(glVersion, "OpenGL Version:");
 
         org.openide.awt.Mnemonics.setLocalizedText(glVersionLabel, "jLabel2");
 
-        org.openide.awt.Mnemonics.setLocalizedText(jLabel3, "GPU Vendor:");
+        org.openide.awt.Mnemonics.setLocalizedText(gpuVendor, "GPU Vendor:");
 
         org.openide.awt.Mnemonics.setLocalizedText(vendorLabel, "jLabel4");
 
-        org.openide.awt.Mnemonics.setLocalizedText(jLabel5, "JOGL Version:");
+        org.openide.awt.Mnemonics.setLocalizedText(joglVersion, "JOGL Version:");
 
         org.openide.awt.Mnemonics.setLocalizedText(joglVersionLabel, "jLabel6");
 
-        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
+        org.jdesktop.layout.GroupLayout runtimePanelLayout = new org.jdesktop.layout.GroupLayout(runtimePanel);
+        runtimePanel.setLayout(runtimePanelLayout);
+        runtimePanelLayout.setHorizontalGroup(
+            runtimePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(runtimePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel1)
-                    .add(jLabel3)
-                    .add(jLabel5))
+                .add(runtimePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(glVersion)
+                    .add(gpuVendor)
+                    .add(joglVersion))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(runtimePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(joglVersionLabel)
                     .add(vendorLabel)
                     .add(glVersionLabel))
                 .addContainerGap(179, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1)
+        runtimePanelLayout.setVerticalGroup(
+            runtimePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(runtimePanelLayout.createSequentialGroup()
+                .add(runtimePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(glVersion)
                     .add(glVersionLabel))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel3)
+                .add(runtimePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(gpuVendor)
                     .add(vendorLabel))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel5)
+                .add(runtimePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(joglVersion)
                     .add(joglVersionLabel))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -119,14 +117,14 @@ final class GlslCompilerPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, optionsPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, runtimePanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(runtimePanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(optionsPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
