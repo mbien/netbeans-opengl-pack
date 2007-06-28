@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module: javax.beans.binding
+OpenIDE-Module-Localizing-Bundle: javax/beans/binding/Bundle.properties
+OpenIDE-Module-Specification-Version: 6.1
+
