@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+    <folder name="Actions">
+        <folder name="Tools">
+            <file name="net-java-nboglpack-glcapabilities-OpenGLCapabilitiesAction.instance"/>
+        </folder>
+    </folder>
+    <folder name="Menu">
+        <folder name="Tools">
+            <attr name="PaletteManager/net-java-nboglpack-glcapabilities-OpenGLCapabilitiesAction.shadow" boolvalue="true"/>
+            <attr name="net-java-nboglpack-glcapabilities-OpenGLCapabilitiesAction.shadow/Separator2.instance" boolvalue="true"/>
+            <file name="net-java-nboglpack-glcapabilities-OpenGLCapabilitiesAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Tools/net-java-nboglpack-glcapabilities-OpenGLCapabilitiesAction.instance"/>
+            </file>
+        </folder>
+    </folder>
+</filesystem>
