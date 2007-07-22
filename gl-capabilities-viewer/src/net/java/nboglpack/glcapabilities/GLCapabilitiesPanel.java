@@ -7,6 +7,8 @@ package net.java.nboglpack.glcapabilities;
 
 import java.util.Comparator;
 import javax.beans.binding.Binding;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.binding.ParameterKeys;
 import javax.swing.event.DocumentEvent;
@@ -30,6 +32,7 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         
         initComponents();
         
+        // bind capabilities table to model
         Binding binding = new Binding(model, "${capabilities}", capabilitiesTable, "elements");
         binding.putParameter(ParameterKeys.EDITABLE, false);
         
@@ -41,11 +44,26 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
                 .putParameter(ParameterKeys.COLUMN_CLASS, String.class);
 
         bindingContext.addBinding(binding);
-        
         binding.bind();
         
-        final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(capabilitiesTable.getModel());
-        capabilitiesTable.setRowSorter(sorter);
+        // bind extensions table to model
+        binding = new Binding(model, "${extensions}", extensionsTable, "elements");
+        binding.putParameter(ParameterKeys.EDITABLE, false);
+        
+        bindingContext.addBinding(binding);
+        binding.bind();
+        
+        
+        // add filter capability to tables
+        createFilter(capabilitiesTable, capabilitiesSearchField);
+        createFilter(extensionsTable, extensionsSearchField);
+        
+    }
+
+    private void createFilter(JTable table, JTextField searchField) {
+        
+        final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(table.getModel());
+        table.setRowSorter(sorter);
         
         searchField.getDocument().addDocumentListener(new DocumentListener() {
 
@@ -57,9 +75,10 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
                 updateSearch(e.getDocument());
             }
             
-            private void updateSearch(Document doc){
+            private void updateSearch(Document doc) {
+                
                 try {
-                    final String[] search = doc.getText(0, doc.getLength()).toUpperCase().trim().split(" ");
+                    final String[] search = doc.getText(0, doc.getLength()).toLowerCase().trim().split(" ");
                     
                     if(search.length == 0) {
                         sorter.setRowFilter(null);
@@ -67,11 +86,13 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
                     }
                     
                     sorter.setRowFilter(new RowFilter<Object, Object>() {
+                        
                         public boolean include(Entry<? extends Object, ? extends Object> entry) {
+                            
                             for (int i = 0; i < entry.getValueCount(); i++) {
                                 boolean contains = true;
                                 for(int n = 0; n < search.length; n++){
-                                    if (!entry.getStringValue(i).contains(search[n])){
+                                    if (!entry.getStringValue(i).toLowerCase().contains(search[n])){
                                         contains = false;
                                         break;
                                     }
@@ -79,8 +100,10 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
                                 if(contains)
                                     return true;
                             }
+                            
                             return false;
                         }
+                                                
                     });
                 } catch (BadLocationException ex) {
                     sorter.setRowFilter(null);
@@ -89,24 +112,21 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
             }
 
             public void changedUpdate(DocumentEvent e) {}
+            
         });
-        
-    }
-
-    void setModel(GLCapabilitiesModel model) {
-        this.model = model;
-    }
-
-    public GLCapabilitiesModel getModel() {
-        return model;
     }
     
-    public void update() {
+    
+    
+    public void updateFromModel() {
         
         bindingContext.unbind();
         bindingContext.bind();
         
-        TableRowSorter<TableModel> sorter = (TableRowSorter)capabilitiesTable.getRowSorter();
+        TableRowSorter<TableModel> sorter = (TableRowSorter)extensionsTable.getRowSorter();
+        sorter.setModel(extensionsTable.getModel());
+        
+        sorter = (TableRowSorter)capabilitiesTable.getRowSorter();
         sorter.setModel(capabilitiesTable.getModel());
         
         sorter.setComparator(1, new Comparator<String>() {
@@ -133,6 +153,13 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         capabilitiesTable.getColumnModel().getColumn(1).setMaxWidth(80);
     }
     
+    public GLCapabilitiesModel getModel() {
+        return model;
+    }
+    void setModel(GLCapabilitiesModel model) {
+        this.model = model;
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -147,77 +174,52 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         javax.swing.JTabbedPane tabbedPane = new javax.swing.JTabbedPane();
         javax.swing.JPanel overviewPanel = new javax.swing.JPanel();
         javax.swing.JPanel basicCapsPanel = new javax.swing.JPanel();
+        glField = new javax.swing.JTextField();
+        glslField = new javax.swing.JTextField();
+        joglField = new javax.swing.JTextField();
+        rendererField = new javax.swing.JTextField();
+        vendorField = new javax.swing.JTextField();
         javax.swing.JLabel vendor = new javax.swing.JLabel();
         javax.swing.JLabel renderer = new javax.swing.JLabel();
         javax.swing.JLabel gl = new javax.swing.JLabel();
         javax.swing.JLabel glsl = new javax.swing.JLabel();
         javax.swing.JLabel jogl = new javax.swing.JLabel();
-        rendererField = new javax.swing.JTextField();
-        vendorField = new javax.swing.JTextField();
-        joglField = new javax.swing.JTextField();
-        glField = new javax.swing.JTextField();
-        glslField = new javax.swing.JTextField();
         javax.swing.JPanel overviewCapsPanel = new javax.swing.JPanel();
-        javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        textureSizeField = new javax.swing.JTextField();
-        javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
         viewportField = new javax.swing.JTextField();
-        javax.swing.JLabel jLabel4 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel5 = new javax.swing.JLabel();
-        anisotropicFilteringField = new javax.swing.JTextField();
-        fsaaField = new javax.swing.JTextField();
-        javax.swing.JLabel jLabel6 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel7 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel8 = new javax.swing.JLabel();
+        textureSizeField = new javax.swing.JTextField();
         textureUnitsField = new javax.swing.JTextField();
         textureUnitsVSField = new javax.swing.JTextField();
-        javax.swing.JLabel jLabel9 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel10 = new javax.swing.JLabel();
+        lightsField = new javax.swing.JTextField();
+        anisotropicFilteringField = new javax.swing.JTextField();
+        fsaaField = new javax.swing.JTextField();
         textureUnitsFSField = new javax.swing.JTextField();
         textureUnitsGSField = new javax.swing.JTextField();
         renderBuffersField = new javax.swing.JTextField();
+        javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel4 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel5 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel6 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel7 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel8 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel9 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel10 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel11 = new javax.swing.JLabel();
-        lightsField = new javax.swing.JTextField();
         javax.swing.JPanel capabilitiesPanel = new javax.swing.JPanel();
         javax.swing.JScrollPane capabilitiesScrollPane = new javax.swing.JScrollPane();
         capabilitiesTable = new javax.swing.JTable();
-        javax.swing.JLabel jLabel12 = new javax.swing.JLabel();
-        searchField = new javax.swing.JTextField();
+        javax.swing.JLabel findLabel = new javax.swing.JLabel();
+        capabilitiesSearchField = new javax.swing.JTextField();
         javax.swing.JPanel extensionsPanel = new javax.swing.JPanel();
-        javax.swing.JScrollPane extentionListScrollPanel = new javax.swing.JScrollPane();
-        extentionsList = new javax.swing.JList();
+        extensionsSearchField = new javax.swing.JTextField();
+        javax.swing.JLabel findLabel1 = new javax.swing.JLabel();
+        javax.swing.JScrollPane extensionsScrollPane = new javax.swing.JScrollPane();
+        extensionsTable = new javax.swing.JTable();
         javax.swing.JPanel displayPanel = new javax.swing.JPanel();
 
+        tabbedPane.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+
         basicCapsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.basicCapsPanel.border.title"))); // NOI18N
-
-        vendor.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.vendor.text")); // NOI18N
-
-        renderer.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.renderer.text")); // NOI18N
-
-        gl.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.gl.text")); // NOI18N
-
-        glsl.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.glsl.text")); // NOI18N
-
-        jogl.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jogl.text")); // NOI18N
-
-        rendererField.setEditable(false);
-        rendererField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        rendererField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.rendererField.text")); // NOI18N
-
-        bindingContext.addBinding(model, "${renderer}", rendererField, "text");
-
-        vendorField.setEditable(false);
-        vendorField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        vendorField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.vendorField.text")); // NOI18N
-
-        bindingContext.addBinding(model, "${vendor}", vendorField, "text");
-
-        joglField.setEditable(false);
-        joglField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        joglField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.joglField.text")); // NOI18N
-
-        bindingContext.addBinding(model, "${implVersion}", joglField, "text");
 
         glField.setEditable(false);
         glField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -231,6 +233,34 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
 
         bindingContext.addBinding(model, "${glslVersion}", glslField, "text");
 
+        joglField.setEditable(false);
+        joglField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        joglField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.joglField.text")); // NOI18N
+
+        bindingContext.addBinding(model, "${implVersion}", joglField, "text");
+
+        rendererField.setEditable(false);
+        rendererField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        rendererField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.rendererField.text")); // NOI18N
+
+        bindingContext.addBinding(model, "${renderer}", rendererField, "text");
+
+        vendorField.setEditable(false);
+        vendorField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        vendorField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.vendorField.text")); // NOI18N
+
+        bindingContext.addBinding(model, "${vendor}", vendorField, "text");
+
+        vendor.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.vendor.text")); // NOI18N
+
+        renderer.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.renderer.text")); // NOI18N
+
+        gl.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.gl.text")); // NOI18N
+
+        glsl.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.glsl.text")); // NOI18N
+
+        jogl.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jogl.text")); // NOI18N
+
         javax.swing.GroupLayout basicCapsPanelLayout = new javax.swing.GroupLayout(basicCapsPanel);
         basicCapsPanel.setLayout(basicCapsPanelLayout);
         basicCapsPanelLayout.setHorizontalGroup(
@@ -243,31 +273,18 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
                     .addComponent(jogl)
                     .addComponent(renderer)
                     .addComponent(vendor))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(glslField)
-                    .addComponent(glField)
-                    .addComponent(joglField)
-                    .addComponent(vendorField)
-                    .addComponent(rendererField, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(vendorField, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .addComponent(glField, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .addComponent(glslField, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .addComponent(joglField, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .addComponent(rendererField, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
                 .addContainerGap())
         );
         basicCapsPanelLayout.setVerticalGroup(
             basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(basicCapsPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(renderer)
-                    .addComponent(rendererField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(vendor)
-                    .addComponent(vendorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jogl)
-                    .addComponent(joglField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gl)
                     .addComponent(glField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -275,22 +292,22 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
                 .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(glsl)
                     .addComponent(glslField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jogl)
+                    .addComponent(joglField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(renderer)
+                    .addComponent(rendererField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(vendor)
+                    .addComponent(vendorField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         overviewCapsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.overviewCapsPanel.border.title"))); // NOI18N
-
-        jLabel1.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel1.text")); // NOI18N
-
-        jLabel2.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel2.text")); // NOI18N
-
-        textureSizeField.setEditable(false);
-        textureSizeField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textureSizeField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.textureSizeField.text")); // NOI18N
-
-        bindingContext.addBinding(model, "${maxTextureSize}", textureSizeField, "text");
-
-        jLabel3.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel3.text")); // NOI18N
 
         viewportField.setEditable(false);
         viewportField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -298,25 +315,11 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
 
         bindingContext.addBinding(model, "${maxViewPortSize}", viewportField, "text");
 
-        jLabel4.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel4.text")); // NOI18N
+        textureSizeField.setEditable(false);
+        textureSizeField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textureSizeField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.textureSizeField.text")); // NOI18N
 
-        jLabel5.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel5.text")); // NOI18N
-
-        anisotropicFilteringField.setEditable(false);
-        anisotropicFilteringField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        anisotropicFilteringField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.anisotropicFilteringField.text")); // NOI18N
-
-        bindingContext.addBinding(model, "${maxAnisotropy}", anisotropicFilteringField, "text");
-
-        fsaaField.setEditable(false);
-        fsaaField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fsaaField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.fsaaField.text")); // NOI18N
-
-        jLabel6.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel6.text")); // NOI18N
-
-        jLabel7.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel7.text")); // NOI18N
-
-        jLabel8.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel8.text")); // NOI18N
+        bindingContext.addBinding(model, "${maxTextureSize}", textureSizeField, "text");
 
         textureUnitsField.setEditable(false);
         textureUnitsField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -330,9 +333,21 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
 
         bindingContext.addBinding(model, "${maxVertexTextureImageUnits}", textureUnitsVSField, "text");
 
-        jLabel9.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel9.text")); // NOI18N
+        lightsField.setEditable(false);
+        lightsField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        lightsField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.lightsField.text")); // NOI18N
 
-        jLabel10.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel10.text")); // NOI18N
+        bindingContext.addBinding(model, "${maxLights}", lightsField, "text");
+
+        anisotropicFilteringField.setEditable(false);
+        anisotropicFilteringField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        anisotropicFilteringField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.anisotropicFilteringField.text")); // NOI18N
+
+        bindingContext.addBinding(model, "${maxAnisotropy}", anisotropicFilteringField, "text");
+
+        fsaaField.setEditable(false);
+        fsaaField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fsaaField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.fsaaField.text")); // NOI18N
 
         textureUnitsFSField.setEditable(false);
         textureUnitsFSField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -352,93 +367,94 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
 
         bindingContext.addBinding(model, "${maxDrawBuffers}", renderBuffersField, "text");
 
+        jLabel1.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel1.text")); // NOI18N
+
+        jLabel3.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel3.text")); // NOI18N
+
+        jLabel4.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel4.text")); // NOI18N
+
+        jLabel5.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel5.text")); // NOI18N
+
+        jLabel6.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel6.text")); // NOI18N
+
+        jLabel7.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel7.text")); // NOI18N
+
+        jLabel8.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel8.text")); // NOI18N
+
+        jLabel9.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel9.text")); // NOI18N
+
+        jLabel10.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel10.text")); // NOI18N
+
         jLabel11.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel11.text")); // NOI18N
-
-        lightsField.setEditable(false);
-        lightsField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        lightsField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.lightsField.text")); // NOI18N
-
-        bindingContext.addBinding(model, "${maxLights}", lightsField, "text");
 
         javax.swing.GroupLayout overviewCapsPanelLayout = new javax.swing.GroupLayout(overviewCapsPanel);
         overviewCapsPanel.setLayout(overviewCapsPanelLayout);
         overviewCapsPanelLayout.setHorizontalGroup(
             overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(overviewCapsPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(overviewCapsPanelLayout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jLabel2))
-                    .addGroup(overviewCapsPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel7)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel8))
-                            .addComponent(jLabel1)))
-                    .addGroup(overviewCapsPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, overviewCapsPanelLayout.createSequentialGroup()
-                        .addComponent(viewportField, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addComponent(textureUnitsField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-                    .addComponent(textureUnitsVSField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-                    .addComponent(textureSizeField, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-                    .addComponent(lightsField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
-                .addGap(12, 12, 12)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel11))
+                .addGap(5, 5, 5)
+                .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(viewportField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                    .addComponent(textureSizeField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                    .addComponent(textureUnitsField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                    .addComponent(textureUnitsVSField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                    .addComponent(lightsField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel5)
                     .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textureUnitsFSField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-                    .addComponent(fsaaField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-                    .addComponent(anisotropicFilteringField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-                    .addComponent(textureUnitsGSField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-                    .addComponent(renderBuffersField, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
+                .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(anisotropicFilteringField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                    .addComponent(fsaaField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                    .addComponent(textureUnitsFSField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                    .addComponent(textureUnitsGSField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                    .addComponent(renderBuffersField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE))
                 .addContainerGap())
         );
         overviewCapsPanelLayout.setVerticalGroup(
             overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(overviewCapsPanelLayout.createSequentialGroup()
                 .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(overviewCapsPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(anisotropicFilteringField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(viewportField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))))
+                    .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(viewportField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4))
+                    .addComponent(anisotropicFilteringField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(fsaaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textureSizeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(textureSizeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5))
+                    .addComponent(fsaaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(textureUnitsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textureUnitsFSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(textureUnitsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9))
+                    .addComponent(textureUnitsFSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textureUnitsVSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textureUnitsGSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
+                    .addComponent(textureUnitsGSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textureUnitsVSField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addGap(18, 18, 18)
                 .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(renderBuffersField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
+                    .addComponent(renderBuffersField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lightsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -462,7 +478,7 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
                 .addComponent(basicCapsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(overviewCapsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.overviewPanel.TabConstraints.tabTitle"), overviewPanel); // NOI18N
@@ -478,9 +494,9 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         capabilitiesTable.setFillsViewportHeight(true);
         capabilitiesScrollPane.setViewportView(capabilitiesTable);
 
-        jLabel12.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel12.text")); // NOI18N
+        findLabel.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.findLabel.text")); // NOI18N
 
-        searchField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.searchField.text")); // NOI18N
+        capabilitiesSearchField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.capabilitiesSearchField.text")); // NOI18N
 
         javax.swing.GroupLayout capabilitiesPanelLayout = new javax.swing.GroupLayout(capabilitiesPanel);
         capabilitiesPanel.setLayout(capabilitiesPanelLayout);
@@ -489,11 +505,11 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, capabilitiesPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(capabilitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(capabilitiesScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                    .addComponent(capabilitiesScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
                     .addGroup(capabilitiesPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(searchField, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)))
+                        .addComponent(findLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(capabilitiesSearchField, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         capabilitiesPanelLayout.setVerticalGroup(
@@ -501,18 +517,32 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
             .addGroup(capabilitiesPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(capabilitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(capabilitiesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                    .addComponent(findLabel)
+                    .addComponent(capabilitiesSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(capabilitiesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         tabbedPane.addTab(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.capabilitiesPanel.TabConstraints.tabTitle"), capabilitiesPanel); // NOI18N
 
-        bindingContext.addBinding(model, "${extensions}", extentionsList, "elements");
+        extensionsSearchField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.extensionsSearchField.text")); // NOI18N
 
-        extentionListScrollPanel.setViewportView(extentionsList);
+        findLabel1.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.findLabel1.text")); // NOI18N
+
+        extensionsScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        extensionsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        extensionsTable.setFillsViewportHeight(true);
+        extensionsTable.setTableHeader(null);
+        extensionsScrollPane.setViewportView(extensionsTable);
 
         javax.swing.GroupLayout extensionsPanelLayout = new javax.swing.GroupLayout(extensionsPanel);
         extensionsPanel.setLayout(extensionsPanelLayout);
@@ -520,14 +550,23 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
             extensionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(extensionsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(extentionListScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                .addGroup(extensionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(extensionsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
+                    .addGroup(extensionsPanelLayout.createSequentialGroup()
+                        .addComponent(findLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(extensionsSearchField, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         extensionsPanelLayout.setVerticalGroup(
             extensionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, extensionsPanelLayout.createSequentialGroup()
+            .addGroup(extensionsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(extentionListScrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addGroup(extensionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(findLabel1)
+                    .addComponent(extensionsSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(extensionsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -537,11 +576,11 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         displayPanel.setLayout(displayPanelLayout);
         displayPanelLayout.setHorizontalGroup(
             displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 386, Short.MAX_VALUE)
+            .addGap(0, 385, Short.MAX_VALUE)
         );
         displayPanelLayout.setVerticalGroup(
             displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 410, Short.MAX_VALUE)
+            .addGap(0, 389, Short.MAX_VALUE)
         );
 
         tabbedPane.addTab(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.displayPanel.TabConstraints.tabTitle"), displayPanel); // NOI18N
@@ -552,14 +591,14 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -569,18 +608,18 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField anisotropicFilteringField;
+    private javax.swing.JTextField capabilitiesSearchField;
     private javax.swing.JTable capabilitiesTable;
-    private javax.swing.JList extentionsList;
+    private javax.swing.JTextField extensionsSearchField;
+    private javax.swing.JTable extensionsTable;
     private javax.swing.JTextField fsaaField;
     private javax.swing.JTextField glField;
     private javax.swing.JTextField glslField;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField joglField;
     private javax.swing.JTextField lightsField;
     private net.java.nboglpack.glcapabilities.GLCapabilitiesModel model;
     private javax.swing.JTextField renderBuffersField;
     private javax.swing.JTextField rendererField;
-    private javax.swing.JTextField searchField;
     private javax.swing.JTextField textureSizeField;
     private javax.swing.JTextField textureUnitsFSField;
     private javax.swing.JTextField textureUnitsField;

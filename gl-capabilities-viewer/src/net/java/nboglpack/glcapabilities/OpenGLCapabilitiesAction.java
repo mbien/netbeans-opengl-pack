@@ -171,7 +171,7 @@ public final class OpenGLCapabilitiesAction extends CallableSystemAction {
                 while(keys.hasNext()) 
                     elements.add(new GLCapabilitiesModel.Capability(keys.next(), values.next()));
                 
-                capsPanel.update();
+                capsPanel.updateFromModel();
             }
             
         };
