@@ -11,46 +11,44 @@
         <folder name="text">
             <folder name="x-glsl-fragment-shader">
                 <folder name="Actions">
-                    <attr name="org-openide-actions-RenameAction.instance/net-java-nboglpack-glslcompiler-actions-separatorBefore.instance" boolvalue="true"/>
-                    <file name="net-java-nboglpack-glslcompiler-actions-separatorBefore.instance">
+                    <file name="net-java-nboglpack-glslcompiler-actions-CompileShaderAction.instance">
+                        <attr name="position" intvalue="910"/>
+                    </file>
+                    <file name="net-java-nboglpack-glslcompiler-actions-LinkShaderAction.instance">
+                        <attr name="position" intvalue="920"/>
+                    </file>
+                    <file name="sep-5.instance">
                         <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                        <attr name="position" intvalue="930"/>
                     </file>
-                    <attr name="net-java-nboglpack-glslcompiler-actions-separatorBefore.instance/net-java-nboglpack-glslcompiler-actions-CompileShaderAction.shadow" boolvalue="true"/>
-                    <file name="net-java-nboglpack-glslcompiler-actions-CompileShaderAction.shadow">
-                        <attr name="originalFile" stringvalue="Actions/Build/net-java-nboglpack-glslcompiler-actions-CompileShaderAction.instance"/>
-                    </file>
-                    <attr name="net-java-nboglpack-glslcompiler-actions-CompileShaderAction.shadow/net-java-nboglpack-glslcompiler-actions-separatorAfter.instance" boolvalue="true"/>
-                    <attr name="net-java-nboglpack-glslcompiler-actions-CompileShaderAction.shadow/net-java-nboglpack-glslcompiler-actions-LinkShaderAction.shadow" boolvalue="true"/>
-                    <file name="net-java-nboglpack-glslcompiler-actions-LinkShaderAction.shadow">
-                        <attr name="originalFile" stringvalue="Actions/Build/net-java-nboglpack-glslcompiler-actions-LinkShaderAction.instance"/>
-                    </file>
-                    <attr name="net-java-nboglpack-glslcompiler-actions-LinkShaderAction.shadow/net-java-nboglpack-glslcompiler-actions-separatorAfter.instance" boolvalue="true"/>
-                    <file name="net-java-nboglpack-glslcompiler-actions-separatorAfter.instance">
-                        <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
-                    </file>
-                    <attr name="net-java-nboglpack-glslcompiler-actions-separatorAfter.instance/Separator3.instance" boolvalue="true"/>
                 </folder>
             </folder>
             <folder name="x-glsl-vertex-shader">
                 <folder name="Actions">
-                    <attr name="org-openide-actions-RenameAction.instance/net-java-nboglpack-glslcompiler-actions-separatorBefore.instance" boolvalue="true"/>
-                    <file name="net-java-nboglpack-glslcompiler-actions-separatorBefore.instance">
+                    <file name="net-java-nboglpack-glslcompiler-actions-CompileShaderAction.instance">
+                        <attr name="position" intvalue="910"/>
+                    </file>
+                    <file name="net-java-nboglpack-glslcompiler-actions-LinkShaderAction.instance">
+                        <attr name="position" intvalue="920"/>
+                    </file>
+                    <file name="sep-5.instance">
                         <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                        <attr name="position" intvalue="930"/>
                     </file>
-                    <attr name="net-java-nboglpack-glslcompiler-actions-separatorBefore.instance/net-java-nboglpack-glslcompiler-actions-CompileShaderAction.shadow" boolvalue="true"/>
-                    <file name="net-java-nboglpack-glslcompiler-actions-CompileShaderAction.shadow">
-                        <attr name="originalFile" stringvalue="Actions/Build/net-java-nboglpack-glslcompiler-actions-CompileShaderAction.instance"/>
+                </folder>
+            </folder>
+            <folder name="x-glsl-geometry-shader">
+                <folder name="Actions">
+                    <file name="net-java-nboglpack-glslcompiler-actions-CompileShaderAction.instance">
+                        <attr name="position" intvalue="910"/>
                     </file>
-                    <attr name="net-java-nboglpack-glslcompiler-actions-CompileShaderAction.shadow/net-java-nboglpack-glslcompiler-actions-separatorAfter.instance" boolvalue="true"/>
-                    <attr name="net-java-nboglpack-glslcompiler-actions-CompileShaderAction.shadow/net-java-nboglpack-glslcompiler-actions-LinkShaderAction.shadow" boolvalue="true"/>
-                    <file name="net-java-nboglpack-glslcompiler-actions-LinkShaderAction.shadow">
-                        <attr name="originalFile" stringvalue="Actions/Build/net-java-nboglpack-glslcompiler-actions-LinkShaderAction.instance"/>
+                    <file name="net-java-nboglpack-glslcompiler-actions-LinkShaderAction.instance">
+                        <attr name="position" intvalue="920"/>
                     </file>
-                    <attr name="net-java-nboglpack-glslcompiler-actions-LinkShaderAction.shadow/net-java-nboglpack-glslcompiler-actions-separatorAfter.instance" boolvalue="true"/>
-                    <file name="net-java-nboglpack-glslcompiler-actions-separatorAfter.instance">
+                    <file name="sep-5.instance">
                         <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                        <attr name="position" intvalue="930"/>
                     </file>
-                    <attr name="net-java-nboglpack-glslcompiler-actions-separatorAfter.instance/Separator3.instance" boolvalue="true"/>
                 </folder>
             </folder>
         </folder>
