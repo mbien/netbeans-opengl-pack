@@ -635,9 +635,9 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="capabilitiesScrollPane" alignment="0" pref="365" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="findLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="filterLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="capabilitiesSearchField" pref="343" max="32767" attributes="0"/>
+                              <Component id="capabilitiesSearchField" pref="333" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -649,7 +649,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="findLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="filterLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="capabilitiesSearchField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -679,10 +679,10 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="findLabel">
+            <Component class="javax.swing.JLabel" name="filterLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                  <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.findLabel.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
+                  <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.filterLabel.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -722,9 +722,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="extensionsScrollPane" alignment="0" pref="365" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="findLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="filterLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="extensionsSearchField" pref="343" max="32767" attributes="0"/>
+                              <Component id="extensionsSearchField" pref="333" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -736,7 +736,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="findLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="filterLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="extensionsSearchField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -754,10 +754,10 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="findLabel1">
+            <Component class="javax.swing.JLabel" name="filterLabel1">
               <Properties>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                  <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.findLabel1.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
+                  <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.filterLabel1.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
                 </Property>
               </Properties>
               <AuxValues>

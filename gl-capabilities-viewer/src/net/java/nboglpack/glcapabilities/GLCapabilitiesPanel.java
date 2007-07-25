@@ -208,11 +208,11 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         javax.swing.JPanel capabilitiesPanel = new javax.swing.JPanel();
         javax.swing.JScrollPane capabilitiesScrollPane = new javax.swing.JScrollPane();
         capabilitiesTable = new javax.swing.JTable();
-        javax.swing.JLabel findLabel = new javax.swing.JLabel();
+        javax.swing.JLabel filterLabel = new javax.swing.JLabel();
         capabilitiesSearchField = new javax.swing.JTextField();
         javax.swing.JPanel extensionsPanel = new javax.swing.JPanel();
         extensionsSearchField = new javax.swing.JTextField();
-        javax.swing.JLabel findLabel1 = new javax.swing.JLabel();
+        javax.swing.JLabel filterLabel1 = new javax.swing.JLabel();
         javax.swing.JScrollPane extensionsScrollPane = new javax.swing.JScrollPane();
         extensionsTable = new javax.swing.JTable();
         javax.swing.JPanel displayPanel = new javax.swing.JPanel();
@@ -494,7 +494,7 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         capabilitiesTable.setFillsViewportHeight(true);
         capabilitiesScrollPane.setViewportView(capabilitiesTable);
 
-        findLabel.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.findLabel.text")); // NOI18N
+        filterLabel.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.filterLabel.text")); // NOI18N
 
         capabilitiesSearchField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.capabilitiesSearchField.text")); // NOI18N
 
@@ -507,9 +507,9 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
                 .addGroup(capabilitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(capabilitiesScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
                     .addGroup(capabilitiesPanelLayout.createSequentialGroup()
-                        .addComponent(findLabel)
+                        .addComponent(filterLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(capabilitiesSearchField, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)))
+                        .addComponent(capabilitiesSearchField, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         capabilitiesPanelLayout.setVerticalGroup(
@@ -517,7 +517,7 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
             .addGroup(capabilitiesPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(capabilitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(findLabel)
+                    .addComponent(filterLabel)
                     .addComponent(capabilitiesSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(capabilitiesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
@@ -528,7 +528,7 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
 
         extensionsSearchField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.extensionsSearchField.text")); // NOI18N
 
-        findLabel1.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.findLabel1.text")); // NOI18N
+        filterLabel1.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.filterLabel1.text")); // NOI18N
 
         extensionsScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -553,9 +553,9 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
                 .addGroup(extensionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(extensionsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
                     .addGroup(extensionsPanelLayout.createSequentialGroup()
-                        .addComponent(findLabel1)
+                        .addComponent(filterLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(extensionsSearchField, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)))
+                        .addComponent(extensionsSearchField, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         extensionsPanelLayout.setVerticalGroup(
@@ -563,7 +563,7 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
             .addGroup(extensionsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(extensionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(findLabel1)
+                    .addComponent(filterLabel1)
                     .addComponent(extensionsSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(extensionsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)

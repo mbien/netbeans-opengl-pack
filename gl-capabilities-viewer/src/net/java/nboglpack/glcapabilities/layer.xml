@@ -8,10 +8,8 @@
     </folder>
     <folder name="Menu">
         <folder name="Tools">
-            <attr name="PaletteManager/net-java-nboglpack-glcapabilities-OpenGLCapabilitiesAction.shadow" boolvalue="true"/>
-            <attr name="net-java-nboglpack-glcapabilities-OpenGLCapabilitiesAction.shadow/Separator2.instance" boolvalue="true"/>
-            <file name="net-java-nboglpack-glcapabilities-OpenGLCapabilitiesAction.shadow">
-                <attr name="originalFile" stringvalue="Actions/Tools/net-java-nboglpack-glcapabilities-OpenGLCapabilitiesAction.instance"/>
+            <file name="net-java-nboglpack-glcapabilities-OpenGLCapabilitiesAction.instance">
+                <attr name="position" intvalue="1210"/>
             </file>
         </folder>
     </folder>
