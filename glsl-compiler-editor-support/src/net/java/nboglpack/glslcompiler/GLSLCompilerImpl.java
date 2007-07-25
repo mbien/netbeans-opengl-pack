@@ -16,10 +16,10 @@ import com.mbien.engine.glsl.GLSLShader;
 import net.java.nboglpack.glslcompiler.annotation.CompilerAnnotation;
 import net.java.nboglpack.glslcompiler.annotation.CompilerAnnotations;
 import java.io.IOException;
+import java.util.prefs.Preferences;
 import java.util.regex.Pattern;
 import javax.media.opengl.GL;
 import javax.media.opengl.GLContext;
-import javax.media.opengl.GLException;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import org.openide.cookies.EditorCookie;
@@ -29,6 +29,7 @@ import org.openide.loaders.DataObject;
 import org.openide.text.Line;
 import org.openide.util.Exceptions;
 import org.openide.filesystems.FileUtil;
+import org.openide.util.NbPreferences;
 import org.openide.windows.IOProvider;
 import org.openide.windows.InputOutput;
 import org.openide.windows.OutputEvent;
@@ -38,9 +39,8 @@ import org.openide.windows.OutputListener;
  * Created on 14. March 2007, 23:51
  * @author Michael Bien
  */
-public class GLSLCompiler implements CompilerEventListener {
+public class GLSLCompilerImpl implements CompilerEventListener, GLSLCompilerService {
     
- static GLSLCompiler instance;
  
  private final GLSLCompilerMassageHandler massageHandler;
  private final GLWorker glWorker;
@@ -48,25 +48,54 @@ public class GLSLCompiler implements CompilerEventListener {
  
  
     /** Creates a new instance of GLSLCompiler */
-    GLSLCompiler(Pattern pattern) {
-        massageHandler = new GLSLCompilerMassageHandler(pattern);
+    public GLSLCompilerImpl() {
+        
         glWorker = new GLWorker();
+        
+        Preferences pref = NbPreferences.forModule(GLSLCompilerService.class);
+        String patternString = pref.get("GlslCompilerLogPattern", null);
+        
+        
+        if(patternString == null) {
+        
+            final String[] buffer = new String[1];
+            glWorker.addWork(new GLRunnable() {
+                public void run(GLContext context) {
+                    GL gl = context.getGL();
+                    buffer[0] = gl.glGetString(GL.GL_VENDOR);
+                }
+            });
+            glWorker.work();
+            
+            // samples of compiler errors:
+            // NV:  "(267) : error C0000: syntax error, unexpected identifier, expecting ';' or ',' at token ius";
+            // ATI: "ERROR: 0:17: '-' :  wrong operand types  no operation '-' exists that takes a left-hand operand of type 'const int' and a right operand of type 'float' (or there is no acceptable conversion)"
+
+            if(buffer[0].contains("NVIDIA")) {
+                patternString = "\\((\\d+)\\)\\s*:\\s*(\\w+)";
+            }else if(buffer[0].contains("ATI")) {
+                patternString = "(\\w+):\\s*\\d+:(\\d+):";
+            }else{
+                patternString = "()()";
+            }
+            
+            pref.put("GlslCompilerLogPattern", patternString);
+        }
+        
+        Pattern pattern = Pattern.compile(patternString);
+        
+        
+        massageHandler = new GLSLCompilerMassageHandler(pattern);
         io = IOProvider.getDefault().getIO("GLSL Compiler Output", false);
         
         massageHandler.addCompilerEventListener(this);
-    }
-    
-    public static GLSLCompiler getInstance() {
-//        if(instance == null)
-//            instance = new GLSLCompiler();
         
-        return instance;
     }
-    
+   
     
     /**
      * Compiles the shader and checks for compilation errors. Annotations are 
-     * automatically placed if errors accrue.
+     * automatically placed if errors accure.
      * 
      * This is a fire and forget method. The shader will be immediately removed after
      * compilation, successfull or not.
@@ -271,8 +300,8 @@ private class HyperlinkProvider implements OutputListener{
         
     }
 
-    public void outputLineCleared(OutputEvent arg0) {   }
-    public void outputLineSelected(OutputEvent arg0) {    }
+    public void outputLineCleared(OutputEvent arg0) {}
+    public void outputLineSelected(OutputEvent arg0) {}
     
 }
 

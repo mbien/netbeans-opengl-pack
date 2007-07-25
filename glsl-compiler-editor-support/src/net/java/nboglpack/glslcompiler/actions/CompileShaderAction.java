@@ -1,10 +1,11 @@
 package net.java.nboglpack.glslcompiler.actions;
 
-import net.java.nboglpack.glslcompiler.GLSLCompiler;
+import net.java.nboglpack.glslcompiler.GLSLCompilerService;
 import org.openide.filesystems.FileUtil;
 import org.openide.loaders.DataObject;
 import org.openide.nodes.Node;
 import org.openide.util.HelpCtx;
+import org.openide.util.Lookup;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.NodeAction;
 
@@ -18,12 +19,13 @@ public final class CompileShaderAction extends NodeAction {
     protected void performAction(Node[] activatedNodes) {
             
         DataObject[] daos = new DataObject[activatedNodes.length];
-        for (int i = 0; i < daos.length; i++) {
-            daos[i] = (DataObject) activatedNodes[i].getLookup().lookup(DataObject.class);
-        }
+        for (int i = 0; i < daos.length; i++) 
+            daos[i] = activatedNodes[i].getLookup().lookup(DataObject.class);
         
-        GLSLCompiler c = GLSLCompiler.getInstance();
-        c.compileShader(daos);
+        
+        GLSLCompilerService compiler = Lookup.getDefault().lookup(GLSLCompilerService.class);
+        
+        compiler.compileShader(daos);
         
     }
     
@@ -31,7 +33,7 @@ public final class CompileShaderAction extends NodeAction {
         
         for (int i = 0; i < nodes.length; i++) {
             
-            DataObject dao = (DataObject) nodes[i].getLookup().lookup(DataObject.class);
+            DataObject dao = nodes[i].getLookup().lookup(DataObject.class);
             
             if(dao == null)
                 return false;
@@ -55,6 +57,7 @@ public final class CompileShaderAction extends NodeAction {
         return NbBundle.getMessage(CompileShaderAction.class, "CTL_CompileShaderAction");
     }
     
+    @Override
     protected void initialize() {
         super.initialize();
         // see org.openide.util.actions.SystemAction.iconResource() javadoc for more details
@@ -65,6 +68,7 @@ public final class CompileShaderAction extends NodeAction {
         return HelpCtx.DEFAULT_HELP;
     }
     
+    @Override
     protected boolean asynchronous() {
         return false;
     }

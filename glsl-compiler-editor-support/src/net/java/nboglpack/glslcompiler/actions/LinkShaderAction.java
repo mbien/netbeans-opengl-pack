@@ -1,10 +1,11 @@
 package net.java.nboglpack.glslcompiler.actions;
 
-import net.java.nboglpack.glslcompiler.GLSLCompiler;
+import net.java.nboglpack.glslcompiler.GLSLCompilerService;
 import org.openide.filesystems.FileUtil;
 import org.openide.loaders.DataObject;
 import org.openide.nodes.Node;
 import org.openide.util.HelpCtx;
+import org.openide.util.Lookup;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.NodeAction;
 
@@ -21,7 +22,9 @@ public final class LinkShaderAction extends NodeAction {
         for(int i = 0; i < activatedNodes.length; i++)
             daos[i] = (DataObject) activatedNodes[i].getLookup().lookup(DataObject.class);
         
-        GLSLCompiler.getInstance().compileAndLinkProgram(daos);
+        GLSLCompilerService compiler = Lookup.getDefault().lookup(GLSLCompilerService.class);
+        
+        compiler.compileAndLinkProgram(daos);
     }
     
     protected boolean enable(Node[] nodes) {
