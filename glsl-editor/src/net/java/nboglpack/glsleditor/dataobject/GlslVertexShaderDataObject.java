@@ -1,7 +1,7 @@
 package net.java.nboglpack.glsleditor.dataobject;
 
-import net.java.nboglpack.glslcompiler.ShaderFileObserver;
-import net.java.nboglpack.glslcompiler.ShaderFileObserver;
+import net.java.nboglpack.glsleditor.GlslShaderFileObserver;
+import net.java.nboglpack.glsleditor.GlslShaderFileObserver;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
@@ -15,12 +15,15 @@ import org.openide.text.CloneableEditorSupport;
 import org.openide.text.DataEditorSupport;
 
 public class GlslVertexShaderDataObject extends MultiDataObject {
-    private ShaderFileObserver observer;
+    
+ private GlslShaderFileObserver observer;
 
     public GlslVertexShaderDataObject(FileObject pf, GlslVertexShaderDataLoader loader) throws DataObjectExistsException, IOException {
+        
         super(pf, loader);
         CookieSet cookies = getCookieSet();
-        observer= new ShaderFileObserver(this);
+        observer= new GlslShaderFileObserver(this);
+        
         final CloneableEditorSupport support= DataEditorSupport.create(this, getPrimaryEntry(), cookies);
         support.addPropertyChangeListener(
             new PropertyChangeListener(){

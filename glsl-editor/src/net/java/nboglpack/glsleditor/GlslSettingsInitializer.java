@@ -10,12 +10,10 @@
 package net.java.nboglpack.glsleditor;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.util.Map;
 import org.netbeans.editor.BaseKit;
 import org.netbeans.editor.Coloring;
 import org.netbeans.editor.Settings;
-import org.netbeans.editor.SettingsDefaults;
 import org.netbeans.editor.SettingsNames;
 import org.netbeans.editor.SettingsUtil;
 import org.netbeans.editor.TokenCategory;
