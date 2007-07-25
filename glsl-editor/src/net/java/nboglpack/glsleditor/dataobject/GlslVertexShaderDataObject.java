@@ -14,10 +14,10 @@ import org.openide.nodes.Node;
 import org.openide.text.CloneableEditorSupport;
 import org.openide.text.DataEditorSupport;
 
-public class GlslVertexShaderObject extends MultiDataObject {
+public class GlslVertexShaderDataObject extends MultiDataObject {
     private ShaderFileObserver observer;
 
-    public GlslVertexShaderObject(FileObject pf, GlslVertexShaderLoader loader) throws DataObjectExistsException, IOException {
+    public GlslVertexShaderDataObject(FileObject pf, GlslVertexShaderDataLoader loader) throws DataObjectExistsException, IOException {
         super(pf, loader);
         CookieSet cookies = getCookieSet();
         observer= new ShaderFileObserver(this);
@@ -45,6 +45,6 @@ public class GlslVertexShaderObject extends MultiDataObject {
     }
     
     protected Node createNodeDelegate() {
-        return new GlslVertexShaderNode(this);
+        return new GlslVertexShaderDataNode(this);
     }
 }

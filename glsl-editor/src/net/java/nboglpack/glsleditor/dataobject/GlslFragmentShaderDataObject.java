@@ -13,10 +13,12 @@ import org.openide.nodes.Node;
 import org.openide.text.CloneableEditorSupport;
 import org.openide.text.DataEditorSupport;
 
-public class GlslFragmentShaderObject extends MultiDataObject {
+
+
+public class GlslFragmentShaderDataObject extends MultiDataObject {
     private ShaderFileObserver observer;
     
-    public GlslFragmentShaderObject(FileObject pf, GlslFragmentShaderLoader loader) throws DataObjectExistsException, IOException {
+    public GlslFragmentShaderDataObject(FileObject pf, GlslFragmentShaderDataLoader loader) throws DataObjectExistsException, IOException {
         super(pf, loader);
         CookieSet cookies = getCookieSet();
         observer= new ShaderFileObserver(this);
@@ -44,7 +46,7 @@ public class GlslFragmentShaderObject extends MultiDataObject {
     }
     
     protected Node createNodeDelegate() {
-        return new GlslFragmentShaderNode(this);
+        return new GlslFragmentShaderDataNode(this);
     }
 
 }

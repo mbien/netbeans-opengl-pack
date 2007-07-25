@@ -3,12 +3,12 @@ package net.java.nboglpack.glsleditor.dataobject;
 import org.openide.loaders.DataNode;
 import org.openide.nodes.Children;
 
-public class GlslFragmentShaderNode extends DataNode
+public class GlslFragmentShaderDataNode extends DataNode
 {
-	public GlslFragmentShaderNode(GlslFragmentShaderObject obj)
+	public GlslFragmentShaderDataNode(GlslFragmentShaderDataObject obj)
 	{
 		super(obj, Children.LEAF);
-		setIconBaseWithExtension(GlslFragmentShaderLoaderBeanInfo.IMAGE_ICON_BASE);
+		setIconBaseWithExtension(GlslFragmentShaderDataLoaderBeanInfo.IMAGE_ICON_BASE);
 	}
 //    /** Creates a property sheet. */
 //    protected Sheet createSheet() {

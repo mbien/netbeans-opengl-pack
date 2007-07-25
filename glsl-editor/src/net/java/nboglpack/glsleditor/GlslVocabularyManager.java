@@ -145,7 +145,7 @@ public class GlslVocabularyManager {
                         in.close();
                     } catch (Exception e) {
                         LOGGER.notify(e);
-                    };
+                    }
                 }
             }
             

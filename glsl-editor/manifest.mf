@@ -5,9 +5,12 @@ OpenIDE-Module-Localizing-Bundle: net/java/nboglpack/glsleditor/Bundle.propertie
 OpenIDE-Module-Specification-Version: 1.0
 OpenIDE-Module-Install: net/java/nboglpack/glsleditor/GlslEditorModule.class
 
-Name: net/java/nboglpack/glsleditor/dataobject/GlslFragmentShaderLoader.class
+Name: net/java/nboglpack/glsleditor/dataobject/GlslGeometryShaderDataLoader.class
 OpenIDE-Module-Class: Loader
 
-Name: net/java/nboglpack/glsleditor/dataobject/GlslVertexShaderLoader.class
+Name: net/java/nboglpack/glsleditor/dataobject/GlslFragmentShaderDataLoader.class
+OpenIDE-Module-Class: Loader
+
+Name: net/java/nboglpack/glsleditor/dataobject/GlslVertexShaderDataLoader.class
 OpenIDE-Module-Class: Loader
 
