@@ -44,6 +44,7 @@ public class GlslVertexShaderDataObject extends MultiDataObject {
         cookies.add((Node.Cookie) support);
     }
     
+    @Override
     protected Node createNodeDelegate() {
         return new GlslVertexShaderDataNode(this);
     }

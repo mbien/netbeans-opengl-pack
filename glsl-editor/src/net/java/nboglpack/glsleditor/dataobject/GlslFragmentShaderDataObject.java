@@ -45,6 +45,7 @@ public class GlslFragmentShaderDataObject extends MultiDataObject {
         cookies.add((Node.Cookie) support);
     }
     
+    @Override
     protected Node createNodeDelegate() {
         return new GlslFragmentShaderDataNode(this);
     }

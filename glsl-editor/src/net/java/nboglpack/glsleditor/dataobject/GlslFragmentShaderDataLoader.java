@@ -17,10 +17,12 @@ public class GlslFragmentShaderDataLoader extends UniFileLoader {
         super("net.java.nboglpack.glsleditor.dataobject.GlslDataObject");
     }
 
+    @Override
     protected String defaultDisplayName() {
         return NbBundle.getMessage(GlslFragmentShaderDataLoader.class, "LBL_glsl_fragment_shader_loader_name");
     }
 
+    @Override
     protected void initialize() {
         super.initialize();
         getExtensions().addMimeType(REQUIRED_MIME);
@@ -30,6 +32,7 @@ public class GlslFragmentShaderDataLoader extends UniFileLoader {
         return new GlslFragmentShaderDataObject(primaryFile, this);
     }
 
+    @Override
     protected String actionsContext() {
         return "Loaders/" + REQUIRED_MIME + "/Actions";
     }

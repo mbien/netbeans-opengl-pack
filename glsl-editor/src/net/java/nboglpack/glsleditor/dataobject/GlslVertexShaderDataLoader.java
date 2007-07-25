@@ -17,10 +17,12 @@ public class GlslVertexShaderDataLoader extends UniFileLoader {
         super("net.java.nboglpack.glsleditor.dataobject.GlslDataObject");
     }
 
+    @Override
     protected String defaultDisplayName() {
         return NbBundle.getMessage(GlslFragmentShaderDataLoader.class, "LBL_glsl_vertex_shader_loader_name");
     }
 
+    @Override
     protected void initialize() {
         super.initialize();
         getExtensions().addMimeType(REQUIRED_MIME);
@@ -30,6 +32,7 @@ public class GlslVertexShaderDataLoader extends UniFileLoader {
         return new GlslVertexShaderDataObject(primaryFile, this);
     }
 
+    @Override
     protected String actionsContext() {
         return "Loaders/" + REQUIRED_MIME + "/Actions";
     }

@@ -3,7 +3,6 @@ package net.java.nboglpack.glsleditor.dataobject;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
-import javax.swing.text.Document;
 import net.java.nboglpack.glslcompiler.ShaderFileObserver;
 import org.openide.filesystems.FileObject;
 import org.openide.loaders.DataObjectExistsException;
@@ -49,6 +48,7 @@ public class GlslGeometryShaderDataObject extends MultiDataObject {
         cookies.add((Node.Cookie) support);
     }
     
+    @Override
     protected Node createNodeDelegate() {
         return new GlslGeometryShaderDataNode(this, getLookup());
     }

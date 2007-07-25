@@ -21,10 +21,12 @@ public class GlslGeometryShaderDataLoader extends UniFileLoader {
         super("net.java.nboglpack.glsleditor.dataobject.GlslGeometryShaderDataObject");
     }
     
+    @Override
     protected String defaultDisplayName() {
         return NbBundle.getMessage(GlslGeometryShaderDataLoader.class, "LBL_GlslGeometryShader_loader_name");
     }
     
+    @Override
     protected void initialize() {
         super.initialize();
         getExtensions().addMimeType(REQUIRED_MIME);
@@ -34,6 +36,7 @@ public class GlslGeometryShaderDataLoader extends UniFileLoader {
         return new GlslGeometryShaderDataObject(primaryFile, this);
     }
     
+    @Override
     protected String actionsContext() {
         return "Loaders/" + REQUIRED_MIME + "/Actions";
     }

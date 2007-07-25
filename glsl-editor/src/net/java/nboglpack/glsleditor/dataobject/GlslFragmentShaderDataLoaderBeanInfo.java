@@ -8,31 +8,25 @@ import java.beans.SimpleBeanInfo;
 import org.openide.loaders.UniFileLoader;
 import org.openide.util.Utilities;
 
-public class GlslFragmentShaderDataLoaderBeanInfo extends SimpleBeanInfo
-{
-	public static final String IMAGE_ICON_BASE = "net/java/nboglpack/glsleditor/resources/FragmentShaderIcon.gif";
-	
-	public BeanInfo[] getAdditionalBeanInfo()
-	{
-		try
-		{
-			return new BeanInfo[] {Introspector.getBeanInfo(UniFileLoader.class)};
-		}
-		catch (IntrospectionException e)
-		{
-			throw new AssertionError(e);
-		}
-	}
-	
-	public Image getIcon(int type)
-	{
-		if (type == BeanInfo.ICON_COLOR_16x16 || type == BeanInfo.ICON_MONO_16x16)
-		{
-			return Utilities.loadImage(IMAGE_ICON_BASE);
-		}
-		else
-		{
-			return null;
-		}
-	}
+public class GlslFragmentShaderDataLoaderBeanInfo extends SimpleBeanInfo {
+
+    public static final String IMAGE_ICON_BASE = "net/java/nboglpack/glsleditor/resources/FragmentShaderIcon.gif";
+
+    @Override
+    public BeanInfo[] getAdditionalBeanInfo() {
+        try {
+            return new BeanInfo[]{Introspector.getBeanInfo(UniFileLoader.class)};
+        } catch (IntrospectionException e) {
+            throw new AssertionError(e);
+        }
+    }
+
+    @Override
+    public Image getIcon(int type) {
+        if (type == BeanInfo.ICON_COLOR_16x16 || type == BeanInfo.ICON_MONO_16x16) {
+            return Utilities.loadImage(IMAGE_ICON_BASE);
+        } else {
+            return null;
+        }
+    }
 }
