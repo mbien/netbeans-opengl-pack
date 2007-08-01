@@ -13,6 +13,7 @@ import com.mbien.engine.glsl.GLSLCompilerMassageHandler;
 import com.mbien.engine.glsl.GLSLLinkException;
 import com.mbien.engine.glsl.GLSLProgram;
 import com.mbien.engine.glsl.GLSLShader;
+import java.beans.Beans;
 import net.java.nboglpack.glslcompiler.annotation.CompilerAnnotation;
 import net.java.nboglpack.glslcompiler.annotation.CompilerAnnotations;
 import java.io.IOException;

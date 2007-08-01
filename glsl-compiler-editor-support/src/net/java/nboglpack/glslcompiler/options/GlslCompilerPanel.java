@@ -140,7 +140,8 @@ final class GlslCompilerPanel extends javax.swing.JPanel {
     }
     
     void store() {
-        NbPreferences.forModule(GlslCompilerPanel.class).put("GlslCompilerLogPattern", patternTextField.getText());
+        if(valid())
+            NbPreferences.forModule(GlslCompilerPanel.class).put("GlslCompilerLogPattern", patternTextField.getText());
     }
     
     boolean valid() {
