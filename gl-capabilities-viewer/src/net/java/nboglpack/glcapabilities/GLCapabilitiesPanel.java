@@ -5,19 +5,18 @@
  */
 package net.java.nboglpack.glcapabilities;
 
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.beans.Beans;
 import java.util.Comparator;
 import javax.beans.binding.Binding;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.RowFilter;
+import javax.media.opengl.DefaultGLCapabilitiesChooser;
+import javax.media.opengl.GLCanvas;
+import javax.media.opengl.GLCapabilities;
+import javax.media.opengl.GLCapabilitiesChooser;
 import javax.swing.binding.ParameterKeys;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
-import org.openide.util.Exceptions;
 
 /**
  *
@@ -25,109 +24,122 @@ import org.openide.util.Exceptions;
  */
 public class GLCapabilitiesPanel extends javax.swing.JPanel {
     
-    
+ private JOGLGearsDemo demo;
    
     /** Creates new form GLCapabilityPanel */
     public GLCapabilitiesPanel() {
         
+        // TODO workaround; NB forgets to set design time flag => we do it
+        Beans.setDesignTime(false);
+        
         initComponents();
         
         // bind capabilities table to model
-        Binding binding = new Binding(model, "${capabilities}", capabilitiesTable, "elements");
+        Binding binding = new Binding(capabilitiesModel, "${capabilities}", capabilitiesJPanel.getTable(), "elements");
         binding.putParameter(ParameterKeys.EDITABLE, false);
         
         binding.addChildBinding("${name}", null)     
-                .putParameter(ParameterKeys.COLUMN, 0)
-                .putParameter(ParameterKeys.COLUMN_CLASS, String.class);
+               .putParameter(ParameterKeys.COLUMN, 0)
+               .putParameter(ParameterKeys.COLUMN_CLASS, String.class);
         binding.addChildBinding("${value}", null)     
-                .putParameter(ParameterKeys.COLUMN, 1)
-                .putParameter(ParameterKeys.COLUMN_CLASS, String.class);
+               .putParameter(ParameterKeys.COLUMN, 1)
+               .putParameter(ParameterKeys.COLUMN_CLASS, String.class);
 
         bindingContext.addBinding(binding);
         binding.bind();
         
+        
         // bind extensions table to model
-        binding = new Binding(model, "${extensions}", extensionsTable, "elements");
+        binding = new Binding(capabilitiesModel, "${extensions}", extentionsJPanel.getTable(), "elements");
         binding.putParameter(ParameterKeys.EDITABLE, false);
         
         bindingContext.addBinding(binding);
         binding.bind();
         
         
-        // add filter capability to tables
-        createFilter(capabilitiesTable, capabilitiesSearchField);
-        createFilter(extensionsTable, extensionsSearchField);
+        // bind display modes table
+        binding = new Binding(capabilitiesModel, "${displayModes}", displayModesJPanel.getTable(), "elements");
+        binding.putParameter(ParameterKeys.EDITABLE, false);
         
+        binding.addChildBinding("${hardwareAccelerated}", null)
+               .putParameter(ParameterKeys.COLUMN, 0)
+               .putParameter(ParameterKeys.COLUMN_CLASS, Boolean.class);
+        
+        binding.addChildBinding("${doubleBuffered}", null)
+               .putParameter(ParameterKeys.COLUMN, 1)
+               .putParameter(ParameterKeys.COLUMN_CLASS, Boolean.class);
+        
+        binding.addChildBinding("${stereo}", null)
+               .putParameter(ParameterKeys.COLUMN, 2)
+               .putParameter(ParameterKeys.COLUMN_CLASS, Boolean.class);
+        
+        binding.addChildBinding("${sampleBuffers}", null)
+               .putParameter(ParameterKeys.COLUMN, 3)
+               .putParameter(ParameterKeys.COLUMN_CLASS, Boolean.class);
+        
+        binding.addChildBinding("${numSamples}", null)
+               .putParameter(ParameterKeys.COLUMN, 4)
+               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
+        
+        binding.addChildBinding("${depthBits}", null)
+               .putParameter(ParameterKeys.COLUMN, 5)
+               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
+        
+        binding.addChildBinding("${redBits}", null)
+               .putParameter(ParameterKeys.COLUMN, 6)
+               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
+        
+        binding.addChildBinding("${greenBits}", null)
+               .putParameter(ParameterKeys.COLUMN, 7)
+               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
+        
+        binding.addChildBinding("${blueBits}", null)
+               .putParameter(ParameterKeys.COLUMN, 8)
+               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
+        
+        binding.addChildBinding("${alphaBits}", null)
+               .putParameter(ParameterKeys.COLUMN, 8)
+               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
+        
+        binding.addChildBinding("${accumRedBits}", null)
+               .putParameter(ParameterKeys.COLUMN, 9)
+               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
+        
+        binding.addChildBinding("${accumGreenBits}", null)
+               .putParameter(ParameterKeys.COLUMN, 10)
+               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
+        
+        binding.addChildBinding("${accumBlueBits}", null)
+               .putParameter(ParameterKeys.COLUMN, 11)
+               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
+        
+        binding.addChildBinding("${accumAlphaBits}", null)
+               .putParameter(ParameterKeys.COLUMN, 12)
+               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
+        
+        bindingContext.addBinding(binding);
+        binding.bind();
+        
+        
+        demo = new JOGLGearsDemo(gLCanvas);
+        demo.start();
+         
     }
-
-    private void createFilter(JTable table, JTextField searchField) {
-        
-        final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(table.getModel());
-        table.setRowSorter(sorter);
-        
-        searchField.getDocument().addDocumentListener(new DocumentListener() {
-
-            public void insertUpdate(DocumentEvent e) {
-                updateSearch(e.getDocument());
-            }
-
-            public void removeUpdate(DocumentEvent e) {
-                updateSearch(e.getDocument());
-            }
-            
-            private void updateSearch(Document doc) {
-                
-                try {
-                    final String[] search = doc.getText(0, doc.getLength()).toLowerCase().trim().split(" ");
-                    
-                    if(search.length == 0) {
-                        sorter.setRowFilter(null);
-                        return;
-                    }
-                    
-                    sorter.setRowFilter(new RowFilter<Object, Object>() {
-                        
-                        public boolean include(Entry<? extends Object, ? extends Object> entry) {
-                            
-                            for (int i = 0; i < entry.getValueCount(); i++) {
-                                boolean contains = true;
-                                for(int n = 0; n < search.length; n++){
-                                    if (!entry.getStringValue(i).toLowerCase().contains(search[n])){
-                                        contains = false;
-                                        break;
-                                    }
-                                }
-                                if(contains)
-                                    return true;
-                            }
-                            
-                            return false;
-                        }
-                                                
-                    });
-                } catch (BadLocationException ex) {
-                    sorter.setRowFilter(null);
-                    Exceptions.printStackTrace(ex);
-                }
-            }
-
-            public void changedUpdate(DocumentEvent e) {}
-            
-        });
-    }
-    
-    
     
     public void updateFromModel() {
         
         bindingContext.unbind();
         bindingContext.bind();
         
-        TableRowSorter<TableModel> sorter = (TableRowSorter)extensionsTable.getRowSorter();
-        sorter.setModel(extensionsTable.getModel());
+        TableRowSorter<TableModel> sorter = (TableRowSorter<TableModel>)extentionsJPanel.getTable().getRowSorter();
+        sorter.setModel(extentionsJPanel.getTable().getModel());
         
-        sorter = (TableRowSorter)capabilitiesTable.getRowSorter();
-        sorter.setModel(capabilitiesTable.getModel());
+        sorter = (TableRowSorter)displayModesJPanel.getTable().getRowSorter();
+        sorter.setModel(displayModesJPanel.getTable().getModel());
+        
+        sorter = (TableRowSorter)capabilitiesJPanel.getTable().getRowSorter();
+        sorter.setModel(capabilitiesJPanel.getTable().getModel());
+
         
         sorter.setComparator(1, new Comparator<String>() {
             
@@ -150,14 +162,46 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
             }
             
         });
-        capabilitiesTable.getColumnModel().getColumn(1).setMaxWidth(80);
+        capabilitiesJPanel.getTable().getColumnModel().getColumn(1).setMaxWidth(80);
+        
     }
     
+    
+    private GLCanvas createGLDemoCanvas() {
+        
+        GLCapabilities caps = new GLCapabilities();
+        caps.setNumSamples(4);
+        caps.setSampleBuffers(true);
+        
+        GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        GLCapabilitiesChooser chooser = new DefaultGLCapabilitiesChooser(){
+
+            @Override
+            public int chooseCapabilities(GLCapabilities desired, GLCapabilities[] available, int arg2) {
+                int max = 0;
+                for (GLCapabilities elem : available) {
+                    if(elem == null)
+                        continue;
+                    capabilitiesModel.getDisplayModes().add(elem);
+                    if(elem.getHardwareAccelerated() && max < elem.getNumSamples())
+                        max = elem.getNumSamples();
+                }
+                capabilitiesModel.setMaxSampleBuffers(max+"x");
+
+                return super.chooseCapabilities(desired, available, arg2);
+            }
+        };
+        
+        
+        return new GLCanvas(caps, chooser, null, device);
+    }
+            
+    
     public GLCapabilitiesModel getModel() {
-        return model;
+        return capabilitiesModel;
     }
     void setModel(GLCapabilitiesModel model) {
-        this.model = model;
+        this.capabilitiesModel = model;
     }
     
     /** This method is called from within the constructor to
@@ -170,7 +214,7 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
     private void initComponents() {
         bindingContext = new javax.beans.binding.BindingContext();
 
-        model = new net.java.nboglpack.glcapabilities.GLCapabilitiesModel();
+        capabilitiesModel = new net.java.nboglpack.glcapabilities.GLCapabilitiesModel();
         javax.swing.JTabbedPane tabbedPane = new javax.swing.JTabbedPane();
         javax.swing.JPanel overviewPanel = new javax.swing.JPanel();
         javax.swing.JPanel basicCapsPanel = new javax.swing.JPanel();
@@ -184,6 +228,7 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         javax.swing.JLabel gl = new javax.swing.JLabel();
         javax.swing.JLabel glsl = new javax.swing.JLabel();
         javax.swing.JLabel jogl = new javax.swing.JLabel();
+        gLCanvas = createGLDemoCanvas();
         javax.swing.JPanel overviewCapsPanel = new javax.swing.JPanel();
         viewportField = new javax.swing.JTextField();
         textureSizeField = new javax.swing.JTextField();
@@ -205,17 +250,9 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         javax.swing.JLabel jLabel9 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel10 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel11 = new javax.swing.JLabel();
-        javax.swing.JPanel capabilitiesPanel = new javax.swing.JPanel();
-        javax.swing.JScrollPane capabilitiesScrollPane = new javax.swing.JScrollPane();
-        capabilitiesTable = new javax.swing.JTable();
-        javax.swing.JLabel filterLabel = new javax.swing.JLabel();
-        capabilitiesSearchField = new javax.swing.JTextField();
-        javax.swing.JPanel extensionsPanel = new javax.swing.JPanel();
-        extensionsSearchField = new javax.swing.JTextField();
-        javax.swing.JLabel filterLabel1 = new javax.swing.JLabel();
-        javax.swing.JScrollPane extensionsScrollPane = new javax.swing.JScrollPane();
-        extensionsTable = new javax.swing.JTable();
-        javax.swing.JPanel displayPanel = new javax.swing.JPanel();
+        capabilitiesJPanel = new net.java.nboglpack.glcapabilities.FilteredTable();
+        extentionsJPanel = new net.java.nboglpack.glcapabilities.FilteredTable();
+        displayModesJPanel = new net.java.nboglpack.glcapabilities.DisplayModesPanel();
 
         tabbedPane.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
 
@@ -225,31 +262,31 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         glField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         glField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.glField.text")); // NOI18N
 
-        bindingContext.addBinding(model, "${glVersion}", glField, "text");
+        bindingContext.addBinding(capabilitiesModel, "${glVersion}", glField, "text");
 
         glslField.setEditable(false);
         glslField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         glslField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.glslField.text")); // NOI18N
 
-        bindingContext.addBinding(model, "${glslVersion}", glslField, "text");
+        bindingContext.addBinding(capabilitiesModel, "${glslVersion}", glslField, "text");
 
         joglField.setEditable(false);
         joglField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         joglField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.joglField.text")); // NOI18N
 
-        bindingContext.addBinding(model, "${implVersion}", joglField, "text");
+        bindingContext.addBinding(capabilitiesModel, "${implVersion}", joglField, "text");
 
         rendererField.setEditable(false);
         rendererField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         rendererField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.rendererField.text")); // NOI18N
 
-        bindingContext.addBinding(model, "${renderer}", rendererField, "text");
+        bindingContext.addBinding(capabilitiesModel, "${renderer}", rendererField, "text");
 
         vendorField.setEditable(false);
         vendorField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         vendorField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.vendorField.text")); // NOI18N
 
-        bindingContext.addBinding(model, "${vendor}", vendorField, "text");
+        bindingContext.addBinding(capabilitiesModel, "${vendor}", vendorField, "text");
 
         vendor.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.vendor.text")); // NOI18N
 
@@ -268,34 +305,41 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
             .addGroup(basicCapsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(gl)
-                    .addComponent(glsl)
                     .addComponent(jogl)
-                    .addComponent(renderer)
-                    .addComponent(vendor))
+                    .addComponent(glsl)
+                    .addComponent(gl)
+                    .addComponent(vendor)
+                    .addComponent(renderer))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(vendorField, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                    .addComponent(glField, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                    .addComponent(glslField, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                    .addComponent(joglField, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                    .addComponent(rendererField, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
+                .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(basicCapsPanelLayout.createSequentialGroup()
+                        .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(glField, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                            .addComponent(glslField, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                            .addComponent(joglField, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(gLCanvas, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rendererField, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                    .addComponent(vendorField, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE))
                 .addContainerGap())
         );
         basicCapsPanelLayout.setVerticalGroup(
             basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(basicCapsPanelLayout.createSequentialGroup()
-                .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(gl)
-                    .addComponent(glField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(glsl)
-                    .addComponent(glslField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jogl)
-                    .addComponent(joglField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(gLCanvas, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, basicCapsPanelLayout.createSequentialGroup()
+                        .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(gl)
+                            .addComponent(glField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(glsl)
+                            .addComponent(glslField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jogl)
+                            .addComponent(joglField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(renderer)
@@ -313,59 +357,61 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         viewportField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         viewportField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.viewportField.text")); // NOI18N
 
-        bindingContext.addBinding(model, "${maxViewPortSize}", viewportField, "text");
+        bindingContext.addBinding(capabilitiesModel, "${maxViewPortSize}", viewportField, "text");
 
         textureSizeField.setEditable(false);
         textureSizeField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textureSizeField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.textureSizeField.text")); // NOI18N
 
-        bindingContext.addBinding(model, "${maxTextureSize}", textureSizeField, "text");
+        bindingContext.addBinding(capabilitiesModel, "${maxTextureSize}", textureSizeField, "text");
 
         textureUnitsField.setEditable(false);
         textureUnitsField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textureUnitsField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.textureUnitsField.text")); // NOI18N
 
-        bindingContext.addBinding(model, "${maxTextureUnits}", textureUnitsField, "text");
+        bindingContext.addBinding(capabilitiesModel, "${maxTextureUnits}", textureUnitsField, "text");
 
         textureUnitsVSField.setEditable(false);
         textureUnitsVSField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textureUnitsVSField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.textureUnitsVSField.text")); // NOI18N
 
-        bindingContext.addBinding(model, "${maxVertexTextureImageUnits}", textureUnitsVSField, "text");
+        bindingContext.addBinding(capabilitiesModel, "${maxVertexTextureImageUnits}", textureUnitsVSField, "text");
 
         lightsField.setEditable(false);
         lightsField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         lightsField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.lightsField.text")); // NOI18N
 
-        bindingContext.addBinding(model, "${maxLights}", lightsField, "text");
+        bindingContext.addBinding(capabilitiesModel, "${maxLights}", lightsField, "text");
 
         anisotropicFilteringField.setEditable(false);
         anisotropicFilteringField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         anisotropicFilteringField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.anisotropicFilteringField.text")); // NOI18N
 
-        bindingContext.addBinding(model, "${maxAnisotropy}", anisotropicFilteringField, "text");
+        bindingContext.addBinding(capabilitiesModel, "${maxAnisotropy}", anisotropicFilteringField, "text");
 
         fsaaField.setEditable(false);
         fsaaField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         fsaaField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.fsaaField.text")); // NOI18N
 
+        bindingContext.addBinding(capabilitiesModel, "${maxSampleBuffers}", fsaaField, "text");
+
         textureUnitsFSField.setEditable(false);
         textureUnitsFSField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textureUnitsFSField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.textureUnitsFSField.text")); // NOI18N
 
-        bindingContext.addBinding(model, "${maxTextureImageUnits}", textureUnitsFSField, "text");
+        bindingContext.addBinding(capabilitiesModel, "${maxTextureImageUnits}", textureUnitsFSField, "text");
 
         textureUnitsGSField.setEditable(false);
         textureUnitsGSField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textureUnitsGSField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.textureUnitsGSField.text")); // NOI18N
 
-        bindingContext.addBinding(model, "${maxGeometryTextureImageUnits}", textureUnitsGSField, "text");
+        bindingContext.addBinding(capabilitiesModel, "${maxGeometryTextureImageUnits}", textureUnitsGSField, "text");
 
         renderBuffersField.setEditable(false);
         renderBuffersField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         renderBuffersField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.renderBuffersField.text")); // NOI18N
 
-        bindingContext.addBinding(model, "${maxDrawBuffers}", renderBuffersField, "text");
+        bindingContext.addBinding(capabilitiesModel, "${maxDrawBuffers}", renderBuffersField, "text");
 
         jLabel1.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jLabel1.text")); // NOI18N
 
@@ -401,11 +447,11 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
                     .addComponent(jLabel11))
                 .addGap(5, 5, 5)
                 .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(viewportField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                    .addComponent(textureSizeField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                    .addComponent(textureUnitsField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                    .addComponent(textureUnitsVSField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                    .addComponent(lightsField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE))
+                    .addComponent(lightsField, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                    .addComponent(viewportField, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                    .addComponent(textureSizeField, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                    .addComponent(textureUnitsField, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                    .addComponent(textureUnitsVSField, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4)
@@ -415,11 +461,11 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(anisotropicFilteringField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                    .addComponent(fsaaField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                    .addComponent(textureUnitsFSField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                    .addComponent(textureUnitsGSField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                    .addComponent(renderBuffersField, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE))
+                    .addComponent(anisotropicFilteringField, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                    .addComponent(fsaaField, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                    .addComponent(textureUnitsFSField, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                    .addComponent(textureUnitsGSField, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                    .addComponent(renderBuffersField, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
                 .addContainerGap())
         );
         overviewCapsPanelLayout.setVerticalGroup(
@@ -482,108 +528,9 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         );
 
         tabbedPane.addTab(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.overviewPanel.TabConstraints.tabTitle"), overviewPanel); // NOI18N
-
-        capabilitiesTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        capabilitiesTable.setFillsViewportHeight(true);
-        capabilitiesScrollPane.setViewportView(capabilitiesTable);
-
-        filterLabel.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.filterLabel.text")); // NOI18N
-
-        capabilitiesSearchField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.capabilitiesSearchField.text")); // NOI18N
-
-        javax.swing.GroupLayout capabilitiesPanelLayout = new javax.swing.GroupLayout(capabilitiesPanel);
-        capabilitiesPanel.setLayout(capabilitiesPanelLayout);
-        capabilitiesPanelLayout.setHorizontalGroup(
-            capabilitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, capabilitiesPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(capabilitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(capabilitiesScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
-                    .addGroup(capabilitiesPanelLayout.createSequentialGroup()
-                        .addComponent(filterLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(capabilitiesSearchField, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        capabilitiesPanelLayout.setVerticalGroup(
-            capabilitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(capabilitiesPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(capabilitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(filterLabel)
-                    .addComponent(capabilitiesSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(capabilitiesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        tabbedPane.addTab(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.capabilitiesPanel.TabConstraints.tabTitle"), capabilitiesPanel); // NOI18N
-
-        extensionsSearchField.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.extensionsSearchField.text")); // NOI18N
-
-        filterLabel1.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.filterLabel1.text")); // NOI18N
-
-        extensionsScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-        extensionsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        extensionsTable.setFillsViewportHeight(true);
-        extensionsTable.setTableHeader(null);
-        extensionsScrollPane.setViewportView(extensionsTable);
-
-        javax.swing.GroupLayout extensionsPanelLayout = new javax.swing.GroupLayout(extensionsPanel);
-        extensionsPanel.setLayout(extensionsPanelLayout);
-        extensionsPanelLayout.setHorizontalGroup(
-            extensionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(extensionsPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(extensionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(extensionsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
-                    .addGroup(extensionsPanelLayout.createSequentialGroup()
-                        .addComponent(filterLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(extensionsSearchField, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        extensionsPanelLayout.setVerticalGroup(
-            extensionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(extensionsPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(extensionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(filterLabel1)
-                    .addComponent(extensionsSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(extensionsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        tabbedPane.addTab(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.extensionsPanel.TabConstraints.tabTitle"), extensionsPanel); // NOI18N
-
-        javax.swing.GroupLayout displayPanelLayout = new javax.swing.GroupLayout(displayPanel);
-        displayPanel.setLayout(displayPanelLayout);
-        displayPanelLayout.setHorizontalGroup(
-            displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 385, Short.MAX_VALUE)
-        );
-        displayPanelLayout.setVerticalGroup(
-            displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 389, Short.MAX_VALUE)
-        );
-
-        tabbedPane.addTab(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.displayPanel.TabConstraints.tabTitle"), displayPanel); // NOI18N
+        tabbedPane.addTab(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.capabilitiesJPanel.TabConstraints.tabTitle"), capabilitiesJPanel); // NOI18N
+        tabbedPane.addTab(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.extentionsJPanel.TabConstraints.tabTitle"), extentionsJPanel); // NOI18N
+        tabbedPane.addTab(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.displayModesJPanel.TabConstraints.tabTitle"), displayModesJPanel); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -591,14 +538,14 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
+                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -608,16 +555,16 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField anisotropicFilteringField;
-    private javax.swing.JTextField capabilitiesSearchField;
-    private javax.swing.JTable capabilitiesTable;
-    private javax.swing.JTextField extensionsSearchField;
-    private javax.swing.JTable extensionsTable;
+    private net.java.nboglpack.glcapabilities.FilteredTable capabilitiesJPanel;
+    private net.java.nboglpack.glcapabilities.GLCapabilitiesModel capabilitiesModel;
+    private net.java.nboglpack.glcapabilities.DisplayModesPanel displayModesJPanel;
+    private net.java.nboglpack.glcapabilities.FilteredTable extentionsJPanel;
     private javax.swing.JTextField fsaaField;
+    private javax.media.opengl.GLCanvas gLCanvas;
     private javax.swing.JTextField glField;
     private javax.swing.JTextField glslField;
     private javax.swing.JTextField joglField;
     private javax.swing.JTextField lightsField;
-    private net.java.nboglpack.glcapabilities.GLCapabilitiesModel model;
     private javax.swing.JTextField renderBuffersField;
     private javax.swing.JTextField rendererField;
     private javax.swing.JTextField textureSizeField;

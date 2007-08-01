@@ -3,14 +3,13 @@
  * 
  * Created on 25.06.2007, 16:31:39
  * 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
  */
 
 package net.java.nboglpack.glcapabilities;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.media.opengl.GLCapabilities;
 
 /**
  *
@@ -34,15 +33,26 @@ public class GLCapabilitiesModel {
  private String maxVertexTextureImageUnits;
  private String maxGeometryTextureImageUnits;
  private String maxDrawBuffers;
+ private String maxSampleBuffers;
+
 
  
  private ArrayList<String> extensions = new ArrayList<String>();
  private List<Capability> capabilities = new ArrayList<Capability>();
+ private ArrayList<GLCapabilities> displayModes = new ArrayList<GLCapabilities>();
 
 
  public GLCapabilitiesModel() {
  }
  
+    public String getMaxSampleBuffers() {
+        return maxSampleBuffers;
+    }
+
+    public void setMaxSampleBuffers(String maxSampleBuffers) {
+        this.maxSampleBuffers = maxSampleBuffers;
+    }
+    
     public List<Capability> getCapabilities() {
         return capabilities;
     }
@@ -50,6 +60,15 @@ public class GLCapabilitiesModel {
     public void setCapabilities(List<Capability> capabilities) {
         this.capabilities = capabilities;
     }
+
+    public ArrayList<GLCapabilities> getDisplayModes() {
+        return displayModes;
+    }
+
+    public void setDisplayModes(ArrayList<GLCapabilities> displayModes) {
+        this.displayModes = displayModes;
+    }
+    
     public ArrayList<String> getExtensions() {
         return extensions;
     }

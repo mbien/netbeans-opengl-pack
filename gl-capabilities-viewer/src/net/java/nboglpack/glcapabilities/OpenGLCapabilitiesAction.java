@@ -46,15 +46,12 @@ public final class OpenGLCapabilitiesAction extends CallableSystemAction {
         
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         dialog.setResizable(false);
-        dialog.addWindowListener(createWindowObserver());
+//        dialog.addWindowListener(createWindowObserver());
         capsPanel = new GLCapabilitiesPanel();
         dialog.setContentPane(capsPanel);
         dialog.pack();
         
-        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (screen.width -dialog.getWidth() ) / 2;
-        int y = (screen.height-dialog.getHeight()) / 2;
-        dialog.setLocation(x, y);
+        dialog.setLocationRelativeTo(null);
         
         
         dialog.setVisible(true);
