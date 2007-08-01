@@ -112,19 +112,19 @@ public class JOGLGearsDemo implements GLEventListener {
             gl.glRotatef(view_rotz, 0.0f, 0.0f, 1.0f);
 
             gl.glPushMatrix();
-                gl.glTranslatef(-2.9f, -2.0f, 0.0f);
+                gl.glTranslatef(-2.7f, -2.0f, 0.0f);
                 gl.glRotatef(angle, 0.0f, 0.0f, 1.0f);
                 gl.glCallList(gear1);
             gl.glPopMatrix();
 
             gl.glPushMatrix();
-                gl.glTranslatef(3.2f, -2.0f, 0.0f);
+                gl.glTranslatef(3.4f, -2.0f, 0.0f);
                 gl.glRotatef(-2.0f * angle - 9.0f, 0.0f, 0.0f, 1.0f);
                 gl.glCallList(gear2);
             gl.glPopMatrix();
 
             gl.glPushMatrix();
-                gl.glTranslatef(-3.2f, 4.2f, 0.0f);
+                gl.glTranslatef(-3.4f, 4.2f, 0.0f);
                 gl.glRotatef(-2.0f * angle - 25.0f, 0.0f, 0.0f, 1.0f);
                 gl.glCallList(gear3);
             gl.glPopMatrix();
@@ -249,5 +249,9 @@ public class JOGLGearsDemo implements GLEventListener {
 
     public void stop() {
         animator.stop();
+    }
+    
+    public boolean isRunning() {
+        return animator.isAnimating();
     }
 }

@@ -8,9 +8,7 @@ package net.java.nboglpack.glcapabilities;
 
 import com.mbien.engine.util.GLRunnable;
 import com.mbien.engine.util.GLWorker;
-import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -46,7 +44,7 @@ public final class OpenGLCapabilitiesAction extends CallableSystemAction {
         
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         dialog.setResizable(false);
-//        dialog.addWindowListener(createWindowObserver());
+        dialog.addWindowListener(createWindowObserver());
         capsPanel = new GLCapabilitiesPanel();
         dialog.setContentPane(capsPanel);
         dialog.pack();
@@ -78,6 +76,7 @@ public final class OpenGLCapabilitiesAction extends CallableSystemAction {
                 model.setGLSLVersion(gl.glGetString(GL.GL_SHADING_LANGUAGE_VERSION));
                 model.setGLImplVersion(Package.getPackage("javax.media.opengl").getImplementationVersion());// NOI18N
                 
+                // TODO we need a better way to get good buffer size
                 int[] buffer = new int[2];
                 gl.glGetIntegerv(GL.GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, buffer, 0);
                 model.setMaxAnisotropy(buffer[0]+"x");

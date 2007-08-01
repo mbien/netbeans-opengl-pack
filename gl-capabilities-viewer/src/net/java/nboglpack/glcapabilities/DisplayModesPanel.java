@@ -10,6 +10,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 import javax.swing.JComponent;
 import javax.swing.JTable;
@@ -32,18 +33,19 @@ public class DisplayModesPanel extends javax.swing.JPanel {
         initComponents();
         TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(displayModesTable.getModel());
         displayModesTable.setRowSorter(sorter);
-        displayModesTable.getTableHeader().setDefaultRenderer(new Renderer());
+        displayModesTable.getTableHeader().setDefaultRenderer(new VerticalTableHeaderRenderer());
     }
     
-    private class Renderer extends DefaultTableCellRenderer {
+    private class VerticalTableHeaderRenderer extends DefaultTableCellRenderer {
 
         private boolean rotated = false;
         
-        public Renderer() {
-            setUI(new MYLabelUI());
+        public VerticalTableHeaderRenderer() {
+            setUI(new VerticalLabelUI());
             setBorder(UIManager.getBorder("TableHeader.cellBorder"));
         }
 
+        @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
             
             if (table != null) {
@@ -58,6 +60,7 @@ public class DisplayModesPanel extends javax.swing.JPanel {
             setText(value.toString());
             Rectangle2D bounds = SwingUtilities2.getFontMetrics(table, table.getFont()).getStringBounds(getText(), getGraphics());
             setPreferredSize(new Dimension((int)bounds.getHeight(), (int)bounds.getWidth()+10));
+            
             return this;
         }
 
@@ -75,13 +78,14 @@ public class DisplayModesPanel extends javax.swing.JPanel {
             return super.getHeight();
         }
         
-        private class MYLabelUI extends BasicLabelUI {
+        private class VerticalLabelUI extends BasicLabelUI {
             
             @Override
             public void paint(Graphics g, JComponent c) {
                 Graphics2D g2d = (Graphics2D) g;
-                Renderer renderer = (DisplayModesPanel.Renderer)c;
+                g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
                 
+                VerticalTableHeaderRenderer renderer = (DisplayModesPanel.VerticalTableHeaderRenderer)c;
                 g2d.rotate(-Math.PI/2);
                 g2d.translate(-renderer.getHeight()+3, 0);
                 

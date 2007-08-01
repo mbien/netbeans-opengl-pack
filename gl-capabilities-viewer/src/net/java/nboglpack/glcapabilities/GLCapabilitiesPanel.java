@@ -7,6 +7,8 @@ package net.java.nboglpack.glcapabilities;
 
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.HierarchyEvent;
+import java.awt.event.HierarchyListener;
 import java.beans.Beans;
 import java.util.Comparator;
 import javax.beans.binding.Binding;
@@ -122,7 +124,19 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         
         
         demo = new JOGLGearsDemo(gLCanvas);
-        demo.start();
+        
+        gLCanvas.addHierarchyListener(new HierarchyListener() {
+
+            public void hierarchyChanged(HierarchyEvent e) {
+                if(e.getChangeFlags() == HierarchyEvent.SHOWING_CHANGED) {
+                    if(demo.isRunning())
+                        demo.stop();
+                    else
+                        demo.start();
+                }
+            }
+            
+        });
          
     }
     
