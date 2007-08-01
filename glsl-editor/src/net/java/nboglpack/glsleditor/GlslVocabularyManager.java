@@ -20,8 +20,6 @@ import net.java.nboglpack.glsleditor.vocabulary.GLSLVocabulary;
 import org.openide.ErrorManager;
 import org.openide.filesystems.FileObject;
 import org.openide.filesystems.Repository;
-import org.openide.modules.ModuleInfo;
-import org.openide.util.Lookup;
 
 /**
  *
@@ -102,10 +100,10 @@ public class GlslVocabularyManager {
     
     public static GlslVocabularyManager getInstance(String mimetype) {
         
-        GlslVocabularyManager instance= (GlslVocabularyManager) instances.get(mimetype);
+        GlslVocabularyManager instance = instances.get(mimetype);
         
-        if(instance==null) {
-            instance= new GlslVocabularyManager(mimetype);
+        if(instance == null) {
+            instance = new GlslVocabularyManager(mimetype);
             instances.put(mimetype,instance);
         }
         
@@ -121,6 +119,7 @@ public class GlslVocabularyManager {
             InputStream is = null;
             
             try {
+                
                 is = vocabularyfile.getInputStream();
                 
                 // workaround; nb does not allow usage of jdk's jaxb implementation
@@ -131,9 +130,13 @@ public class GlslVocabularyManager {
                 vocabulary = (GLSLVocabulary)unmarshaller.unmarshal(is);
 
             } catch (Exception ex) {
+                
+                // create empty vocab
+                vocabulary = new GLSLVocabulary();
                 LOGGER.notify(ex);
-                System.exit(0);
+                
             } finally {
+                
                 if(is != null) {
                     try {
                         is.close();
@@ -141,6 +144,7 @@ public class GlslVocabularyManager {
                         LOGGER.notify(e);
                     }
                 }
+                
             }
             
         }
