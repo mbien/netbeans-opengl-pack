@@ -20,6 +20,8 @@ import net.java.nboglpack.glsleditor.vocabulary.GLSLVocabulary;
 import org.openide.ErrorManager;
 import org.openide.filesystems.FileObject;
 import org.openide.filesystems.Repository;
+import org.openide.modules.ModuleInfo;
+import org.openide.util.Lookup;
 
 /**
  *
@@ -116,33 +118,25 @@ public class GlslVocabularyManager {
         
         if (vocabularyfile != null) {
             
-            InputStream in = null;
+            InputStream is = null;
             
             try {
-                in = vocabularyfile.getInputStream();
+                is = vocabularyfile.getInputStream();
                 
-                // workaround; we have some jaxb version conflicts between nb, the jdk and our redundant wrapper lib
-                // => load our jaxb in the system classloader
-                
-                // ^^ this dosn't work; we have now a implementation version dependency on jaxb
-                
-//                ClassLoader orig = Thread.currentThread().getContextClassLoader();
-//                ClassLoader master = Lookup.getDefault().lookup(ClassLoader.class);
-//                Thread.currentThread().setContextClassLoader(master);
-//                try {
-                    JAXBContext jc = JAXBContext.newInstance(GLSLVocabulary.class, GLSLElementDescriptor.class);
-                    Unmarshaller unmarshaller = jc.createUnmarshaller();
-                    vocabulary = (GLSLVocabulary)unmarshaller.unmarshal(in);
-//                } finally {
-//                    Thread.currentThread().setContextClassLoader(orig);
-//                }
-                
+                // workaround; nb does not allow usage of jdk's jaxb implementation
+                // => we have to provide JAXB as library wrapper module and load it via module classloader
+                JAXBContext jc = JAXBContext.newInstance("net.java.nboglpack.glsleditor.vocabulary", this.getClass().getClassLoader());
+
+                Unmarshaller unmarshaller = jc.createUnmarshaller();
+                vocabulary = (GLSLVocabulary)unmarshaller.unmarshal(is);
+
             } catch (Exception ex) {
                 LOGGER.notify(ex);
+                System.exit(0);
             } finally {
-                if(in != null) {
+                if(is != null) {
                     try {
-                        in.close();
+                        is.close();
                     } catch (Exception e) {
                         LOGGER.notify(e);
                     }
