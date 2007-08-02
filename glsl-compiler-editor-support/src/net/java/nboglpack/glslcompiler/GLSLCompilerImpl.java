@@ -13,7 +13,6 @@ import com.mbien.engine.glsl.GLSLCompilerMassageHandler;
 import com.mbien.engine.glsl.GLSLLinkException;
 import com.mbien.engine.glsl.GLSLProgram;
 import com.mbien.engine.glsl.GLSLShader;
-import java.beans.Beans;
 import net.java.nboglpack.glslcompiler.annotation.CompilerAnnotation;
 import net.java.nboglpack.glslcompiler.annotation.CompilerAnnotations;
 import java.io.IOException;
@@ -74,7 +73,7 @@ public class GLSLCompilerImpl implements CompilerEventListener, GLSLCompilerServ
 
             if(buffer[0].contains("NVIDIA")) {
                 patternString = "\\((\\d+)\\)\\s*:\\s*(\\w+)";
-            }else if(buffer[0].contains("ATI")) {
+            }else if(buffer[0].contains("ATI")|buffer[0].contains("AMD") ) {
                 patternString = "(\\w+):\\s*\\d+:(\\d+):";
             }else{
                 patternString = "()()";
@@ -98,8 +97,8 @@ public class GLSLCompilerImpl implements CompilerEventListener, GLSLCompilerServ
      * Compiles the shader and checks for compilation errors. Annotations are 
      * automatically placed if errors accure.
      * 
-     * This is a fire and forget method. The shader will be immediately removed after
-     * compilation, successfull or not.
+     * This is a fire and forget method. The OpenGL shader object will be immediately 
+     * removed after compilation, successfull or not.
      * 
      * @return Returns true if shader compilation succeeds.
      */
@@ -113,26 +112,29 @@ public class GLSLCompilerImpl implements CompilerEventListener, GLSLCompilerServ
             Exceptions.printStackTrace(ex);
         }
         
-        for (int i = 0; i < daos.length; i++) {
-            DataObject dao = daos[i];
-            CompilerAnnotations.removeAnnotations(dao);
-            massageHandler.setSource(dao);
-        
+        for (DataObject dao : daos) {
             try{
-                compile(createShader(dao), true);
+                compile(dao, true);
             }catch(GLSLCompileException ex){
                 success = false;
                 massageHandler.parse(ex.getMessage());
             }
         }
+        if(success)
+            io.getOut().println("compilation successfull");
         
         return success;
     }
     
     
-    /*
-     * see compileShader
-     * TODO doc mbien
+    /**
+     * Compiles and links the shaders and checks for errors. Annotations are 
+     * automatically placed if errors accure.
+     * 
+     * This is a fire and forget method. The OpenGL shader object will be immediately 
+     * removed after compilation, successfull or not.
+     * 
+     * @return Returns true if shader program was successfully compiled and linked.
      */
     public boolean compileAndLinkProgram(DataObject... daos) {
         
@@ -148,12 +150,8 @@ public class GLSLCompilerImpl implements CompilerEventListener, GLSLCompilerServ
         
         for (int i = 0; i < shaders.length; i++) {
             
-            CompilerAnnotations.removeAnnotations(daos[i]);
-            massageHandler.setSource(daos[i]);
-            
             try{
-                shaders[i] = createShader(daos[i]);
-                compile(shaders[i], false);
+                shaders[i] = compile(daos[i], false);
             }catch(GLSLCompileException ex) {
                 success = false;
                 massageHandler.parse(ex.getMessage());
@@ -165,6 +163,7 @@ public class GLSLCompilerImpl implements CompilerEventListener, GLSLCompilerServ
         if(success) {
             io.getOut().println("compilation successfull");
             try{
+                io.getOut().println("linking shaders");
                 link(shaders);
                 io.getOut().println("link successfull");
             }catch(GLSLLinkException ex) {
@@ -192,7 +191,7 @@ public class GLSLCompilerImpl implements CompilerEventListener, GLSLCompilerServ
             try{
                 String shaderSource = doc.getText(0, doc.getLength());
                 String shaderName = dao.getPrimaryFile().getNameExt();
-                GLSLShader.ShaderType shaderType = GLSLShader.ShaderType.parse(dao.getPrimaryFile().getExt());
+                GLSLShader.TYPE shaderType = GLSLShader.TYPE.parse(dao.getPrimaryFile().getExt());
                 shader = new GLSLShader(shaderSource, shaderName, shaderType);
             }catch(BadLocationException ex){
                 // not possible
@@ -206,9 +205,18 @@ public class GLSLCompilerImpl implements CompilerEventListener, GLSLCompilerServ
         return shader;
     }
     
-    private void compile(final GLSLShader shader, final boolean deleteAfterCompilation) throws GLSLCompileException {
+    private GLSLShader compile(final DataObject dao, final boolean deleteAfterCompilation) throws GLSLCompileException {
 
+        
+        final GLSLShader shader = createShader(dao);
+        io.getOut().println("compiling shader: "+shader.getName());
+        
+        massageHandler.setSource(dao);
+        CompilerAnnotations.removeAnnotations(dao);
         final GLSLCompileException[] exception = new GLSLCompileException[] {null};
+        
+        if(!shader.type.isSupported())
+            throw new GLSLCompileException(shader.getName(), shader.type.toString().toLowerCase()+" shader not supported");
         
         GLRunnable compilerTask = new GLRunnable(){
             public void run(GLContext context) {
@@ -229,6 +237,7 @@ public class GLSLCompilerImpl implements CompilerEventListener, GLSLCompilerServ
        if(exception[0] != null)
             throw exception[0];
        
+       return shader;
     }
     
     private void link(final GLSLShader[] shaders) throws GLSLLinkException {
