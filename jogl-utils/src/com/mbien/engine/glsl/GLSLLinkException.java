@@ -7,6 +7,11 @@ package com.mbien.engine.glsl;
 public class GLSLLinkException extends GLSLException {
     
     /** Creates a new instance of GLSLLinkException */
+    public GLSLLinkException(String shaderName, String massage) {
+        this(new String[]{shaderName}, new String[]{massage});
+    }
+    
+    /** Creates a new instance of GLSLLinkException */
     public GLSLLinkException(String shaderNames[], String massages[]) {
         super("Error linking shader: "+format(shaderNames, massages));
     }

@@ -1,11 +1,15 @@
 package com.mbien.engine.glsl;
 
+import com.mbien.engine.util.GLRunnable;
+import com.mbien.engine.util.GLWorker;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.EnumMap;
 import java.util.logging.Logger;
 import javax.media.opengl.GL;
+import javax.media.opengl.GLContext;
 
 /**
  * Created on 26. August 2006, 15:26
@@ -13,23 +17,27 @@ import javax.media.opengl.GL;
  */
 public class GLSLShader {
     
- public final ShaderType type;
+ public final TYPE type;
  
  private final String source;
  final String[] shaderNames;
  
  private int handle;
  
+ private final static EnumMap<TYPE, Boolean> SUPPORTED_SHADER = new EnumMap<TYPE, Boolean>(TYPE.class);
+ 
  private boolean throwExceptionOnCompilerWarning = false;
-    
+ 
     public GLSLShader(String... fileLocation) {
         
         if(fileLocation[0].endsWith(".frag"))
-            this.type = ShaderType.FRAGMENT;
+            this.type = TYPE.FRAGMENT;
         else if(fileLocation[0].endsWith(".vert"))
-            this.type = ShaderType.VERTEX;
+            this.type = TYPE.VERTEX;
+        else if(fileLocation[0].endsWith(".geom"))
+            this.type = TYPE.GEOMETRY;
         else
-            throw new IllegalArgumentException("Wrong file ending; only .frag and .vert are allowed");
+            throw new IllegalArgumentException("Wrong file ending; only .frag, .vert and .geom endings are allowed");
         
         shaderNames = new String[fileLocation.length];
         File[] files = new File[fileLocation.length];
@@ -43,23 +51,25 @@ public class GLSLShader {
     public GLSLShader(File... files) {
         
         if(files[0].getName().endsWith(".frag"))
-            this.type = ShaderType.FRAGMENT;
+            this.type = TYPE.FRAGMENT;
         else if(files[0].getName().endsWith(".vert"))
-            this.type = ShaderType.VERTEX;
+            this.type = TYPE.VERTEX;
+        else if(files[0].getName().endsWith(".geom"))
+            this.type = TYPE.GEOMETRY;
         else
-            throw new IllegalArgumentException("Wrong file ending; only .frag and .vert are allowed");
+            throw new IllegalArgumentException("Wrong file ending; only .frag, .vert and .geom endings are allowed");
         
         shaderNames = new String[files.length];
         source = readSourceFile(files);
     }
     
-    public GLSLShader(String source, String name, ShaderType type) {
+    public GLSLShader(String source, String name, TYPE type) {
         this.type = type;
         shaderNames = new String[]{ name };
         this.source = source;
     }
     
-    public GLSLShader(String[] sources, String[] names,  ShaderType type) {
+    public GLSLShader(String[] sources, String[] names,  TYPE type) {
         this.type = type;
         
         StringBuilder sb = new StringBuilder();
@@ -168,23 +178,54 @@ public class GLSLShader {
         return sb.toString();
     }
     
-    public enum ShaderType {
+    private static boolean isShaderSupported(TYPE type) {
         
-        VERTEX(GL.GL_VERTEX_SHADER),
-        FRAGMENT(GL.GL_FRAGMENT_SHADER);
-        
-        public final int GL_TYPE;
-        
-        private ShaderType(int gltype) {
-            GL_TYPE = gltype;
+        if(SUPPORTED_SHADER.get(type) == null) {
+            
+           GLWorker worker = new GLWorker();
+
+           worker.work(new GLRunnable() {
+              public void run(GLContext context) {
+                  GL gl = context.getGL();
+                  SUPPORTED_SHADER.put(TYPE.VERTEX, gl.isExtensionAvailable(TYPE.VERTEX.EXT_STRING));
+                  SUPPORTED_SHADER.put(TYPE.FRAGMENT, gl.isExtensionAvailable(TYPE.FRAGMENT.EXT_STRING));
+                  SUPPORTED_SHADER.put(TYPE.GEOMETRY, gl.isExtensionAvailable(TYPE.GEOMETRY.EXT_STRING));
+              }
+           });
+           
+           worker.destroy();
+            
         }
         
-        public static ShaderType parse(String string) {
+        return SUPPORTED_SHADER.get(type);
+    }
+    
+    public enum TYPE {
+        
+        VERTEX(GL.GL_VERTEX_SHADER, "GL_ARB_vertex_shader"),
+        FRAGMENT(GL.GL_FRAGMENT_SHADER, "GL_ARB_fragment_shader"),
+        GEOMETRY(GL.GL_GEOMETRY_SHADER_EXT, "GL_geometry_shader_ext");
+                
+        public final int GL_TYPE;
+        public final String EXT_STRING;
+        
+        private TYPE(int gltype, String extention) {
+            GL_TYPE = gltype;
+            EXT_STRING = extention;
+        }
+        
+        public static TYPE parse(String string) {
             if(string.equalsIgnoreCase("frag"))
-                return ShaderType.FRAGMENT;
+                return TYPE.FRAGMENT;
             else if(string.equalsIgnoreCase("vert"))
-                return ShaderType.VERTEX;
+                return TYPE.VERTEX;
+            else if(string.equalsIgnoreCase("geom"))
+                return TYPE.GEOMETRY;
             return null;
+        }
+        
+        public boolean isSupported() {
+            return isShaderSupported(this);
         }
         
     }

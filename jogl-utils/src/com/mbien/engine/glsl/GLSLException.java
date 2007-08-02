@@ -23,7 +23,7 @@ public class GLSLException extends Exception {
         sb.append("\n");
         
         for (int i = 0; i < massages.length; i++) {
-//            sb.append("  - ");
+            sb.append("    ");
             sb.append(massages[i]);
             if(i < massages.length-1)
                 sb.append("\n");

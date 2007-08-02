@@ -1,6 +1,5 @@
 package com.mbien.engine.glsl;
 
-import com.mbien.engine.glsl.GLSLShader;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 import javax.media.opengl.GL;

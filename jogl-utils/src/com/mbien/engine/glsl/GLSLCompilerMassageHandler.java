@@ -52,7 +52,6 @@ public class GLSLCompilerMassageHandler {
                 }
                 
             }else{
-                System.out.println("not matched: "+line);
                 fireEvent(new CompilerEvent(source, CompilerEvent.COMPILER_EVENT_TYPE.MSG, line));
             }
         }
