@@ -103,8 +103,6 @@ public class FilteredTable extends javax.swing.JPanel {
         javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
 
-        filterField.setText(org.openide.util.NbBundle.getMessage(FilteredTable.class, "FilteredTable.filterField.text")); // NOI18N
-
         filterLabel.setText(org.openide.util.NbBundle.getMessage(FilteredTable.class, "FilteredTable.filterLabel.text")); // NOI18N
 
         scrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);

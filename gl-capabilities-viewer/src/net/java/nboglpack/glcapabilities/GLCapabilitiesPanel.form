@@ -175,9 +175,6 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.glField.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
-                    </Property>
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="text" source="capabilitiesModel" sourcePath="${glVersion}" target="glField" targetPath="text" updateStrategy="0" immediately="false"/>
@@ -187,9 +184,6 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.glslField.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
-                    </Property>
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="text" source="capabilitiesModel" sourcePath="${glslVersion}" target="glslField" targetPath="text" updateStrategy="0" immediately="false"/>
@@ -199,9 +193,6 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.joglField.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
-                    </Property>
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="text" source="capabilitiesModel" sourcePath="${implVersion}" target="joglField" targetPath="text" updateStrategy="0" immediately="false"/>
@@ -211,9 +202,6 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.rendererField.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
-                    </Property>
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="text" source="capabilitiesModel" sourcePath="${renderer}" target="rendererField" targetPath="text" updateStrategy="0" immediately="false"/>
@@ -223,35 +211,10 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.vendorField.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
-                    </Property>
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="text" source="capabilitiesModel" sourcePath="${vendor}" target="vendorField" targetPath="text" updateStrategy="0" immediately="false"/>
                   </BindingProperties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="vendor">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.vendor.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="renderer">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.renderer.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
-                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="gl">
                   <Properties>
@@ -279,6 +242,28 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                       <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.jogl.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="renderer">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.renderer.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="vendor">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.vendor.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -314,11 +299,11 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="1"/>
-                              <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="1"/>
+                              <Component id="textureSizeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="viewportSizeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="textureUnitsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="textureUnitsVSLabel" alignment="0" min="-2" max="-2" attributes="1"/>
+                              <Component id="dynamicLightsLabel" alignment="0" min="-2" max="-2" attributes="1"/>
                           </Group>
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="2" attributes="0">
@@ -330,11 +315,11 @@
                           </Group>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="anisotropicFilteringLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="fsaaSamplesLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="textureUnitsFSLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="textureUnitsGSLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="renderBuffersLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="2" attributes="0">
@@ -353,43 +338,43 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="viewportSizeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="viewportField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="anisotropicFilteringLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="anisotropicFilteringField" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="textureSizeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="textureSizeField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fsaaSamplesLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="fsaaField" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="textureUnitsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="textureUnitsField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="textureUnitsFSLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="textureUnitsFSField" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="textureUnitsVSLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="textureUnitsGSField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="textureUnitsVSField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="textureUnitsGSLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="dynamicLightsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="renderBuffersField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lightsField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="renderBuffersLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -401,9 +386,6 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.viewportField.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
-                    </Property>
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxViewPortSize}" target="viewportField" targetPath="text" updateStrategy="0" immediately="false"/>
@@ -413,9 +395,6 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.textureSizeField.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
-                    </Property>
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxTextureSize}" target="textureSizeField" targetPath="text" updateStrategy="0" immediately="false"/>
@@ -425,9 +404,6 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.textureUnitsField.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
-                    </Property>
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxTextureUnits}" target="textureUnitsField" targetPath="text" updateStrategy="0" immediately="false"/>
@@ -437,9 +413,6 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.textureUnitsVSField.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
-                    </Property>
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxVertexTextureImageUnits}" target="textureUnitsVSField" targetPath="text" updateStrategy="0" immediately="false"/>
@@ -449,9 +422,6 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.lightsField.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
-                    </Property>
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxLights}" target="lightsField" targetPath="text" updateStrategy="0" immediately="false"/>
@@ -461,9 +431,6 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.anisotropicFilteringField.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
-                    </Property>
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxAnisotropy}" target="anisotropicFilteringField" targetPath="text" updateStrategy="0" immediately="false"/>
@@ -473,9 +440,6 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.fsaaField.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
-                    </Property>
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxSampleBuffers}" target="fsaaField" targetPath="text" updateStrategy="0" immediately="false"/>
@@ -485,9 +449,6 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.textureUnitsFSField.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
-                    </Property>
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxTextureImageUnits}" target="textureUnitsFSField" targetPath="text" updateStrategy="0" immediately="false"/>
@@ -497,9 +458,6 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.textureUnitsGSField.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
-                    </Property>
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxGeometryTextureImageUnits}" target="textureUnitsGSField" targetPath="text" updateStrategy="0" immediately="false"/>
@@ -509,18 +467,15 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.renderBuffersField.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
-                    </Property>
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxDrawBuffers}" target="renderBuffersField" targetPath="text" updateStrategy="0" immediately="false"/>
                   </BindingProperties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel1">
+                <Component class="javax.swing.JLabel" name="viewportSizeLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.jLabel1.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
+                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.viewportSizeLabel.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -528,10 +483,10 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel3">
+                <Component class="javax.swing.JLabel" name="textureSizeLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.jLabel3.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
+                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.textureSizeLabel.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -539,10 +494,10 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel4">
+                <Component class="javax.swing.JLabel" name="textureUnitsLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.jLabel4.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
+                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.textureUnitsLabel.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -550,10 +505,10 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel5">
+                <Component class="javax.swing.JLabel" name="textureUnitsVSLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.jLabel5.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
+                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.textureUnitsVSLabel.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -561,10 +516,10 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel6">
+                <Component class="javax.swing.JLabel" name="dynamicLightsLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.jLabel6.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
+                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.dynamicLightsLabel.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -572,10 +527,10 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel7">
+                <Component class="javax.swing.JLabel" name="anisotropicFilteringLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.jLabel7.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
+                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.anisotropicFilteringLabel.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -583,10 +538,10 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel8">
+                <Component class="javax.swing.JLabel" name="fsaaSamplesLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.jLabel8.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
+                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.fsaaSamplesLabel.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -594,10 +549,10 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel9">
+                <Component class="javax.swing.JLabel" name="textureUnitsFSLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.jLabel9.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
+                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.textureUnitsFSLabel.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -605,10 +560,10 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel10">
+                <Component class="javax.swing.JLabel" name="textureUnitsGSLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.jLabel10.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
+                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.textureUnitsGSLabel.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -616,10 +571,10 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel11">
+                <Component class="javax.swing.JLabel" name="renderBuffersLabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.jLabel11.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
+                      <ResourceString bundle="net/java/nboglpack/glcapabilities/Bundle.properties" key="GLCapabilitiesPanel.renderBuffersLabel.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
                     </Property>
                   </Properties>
                   <AuxValues>
