@@ -10,7 +10,6 @@ import java.awt.EventQueue;
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.BadLocationException;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -58,10 +57,10 @@ public class GLSLDockTool extends javax.swing.JFrame {
     private DocumentListener docTextListener;
     private DocumentListener htmlTextListener;
 
+    private JAXBContext jaxbContext = null;
 
     /** Creates new form DockTool */
     public GLSLDockTool() {
-
         List<Wrapper> mainVocab;
         List<Wrapper> vertVocab;
         List<Wrapper> fragVocab;
@@ -73,8 +72,8 @@ public class GLSLDockTool extends javax.swing.JFrame {
         geomVocab = new ArrayList<GLSLDockTool.Wrapper>();
 
         try {
-            JAXBContext jc = JAXBContext.newInstance(GLSLVocabulary.class, GLSLElementDescriptor.class);
-            Unmarshaller um = jc.createUnmarshaller();
+            jaxbContext = JAXBContext.newInstance(GLSLVocabulary.class, GLSLElementDescriptor.class);
+            Unmarshaller um = jaxbContext.createUnmarshaller();
             GLSLVocabulary vocab = (GLSLVocabulary) um.unmarshal(new File(file));
 
             Set<String> keys = vocab.mainVocabulary.keySet();
@@ -113,12 +112,14 @@ public class GLSLDockTool extends javax.swing.JFrame {
             fragTableModel = new VocabularyTableModel(fragVocab);
             vertTableModel = new VocabularyTableModel(vertVocab);
             geomTableModel = new VocabularyTableModel(geomVocab);
+            
         } catch (JAXBException ex) {
             Logger.getLogger("global").log(Level.SEVERE, null, ex);
+            return;
         }
 
         initComponents();
-
+        
         table.getSelectionModel().addListSelectionListener(createTableSelectionListener());
 
         table.getColumnModel().getColumn(1).setCellEditor(createTableCellEditor());
@@ -126,8 +127,8 @@ public class GLSLDockTool extends javax.swing.JFrame {
 
         RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(table.getModel());
         table.setRowSorter(sorter);
-        
-        
+                        
+                
         // not DRY ;)
         docTextListener = new DocumentListener() {
 
@@ -140,14 +141,9 @@ public class GLSLDockTool extends javax.swing.JFrame {
             }
 
             private void updateText(DocumentEvent e) {
-                try {
-                    htmlTextEditor.getDocument().removeDocumentListener(htmlTextListener);
-                    htmlTextEditor.setText(e.getDocument().getText(0, e.getDocument().getLength()));
-                } catch (BadLocationException ex) {
-                    Logger.getLogger(GLSLDockTool.class.getName()).log(Level.SEVERE, null, ex);
-                }finally{
-                    htmlTextEditor.getDocument().addDocumentListener(htmlTextListener);
-                }
+                htmlTextEditor.getDocument().removeDocumentListener(htmlTextListener);
+                htmlTextEditor.setText(docTextEditor.getText());
+                htmlTextEditor.getDocument().addDocumentListener(htmlTextListener);
             }
 
             public void changedUpdate(DocumentEvent e) {
@@ -165,8 +161,8 @@ public class GLSLDockTool extends javax.swing.JFrame {
             }
 
             private void updateText(DocumentEvent e) {
+                docTextEditor.getDocument().removeDocumentListener(docTextListener);
                 try {
-                    docTextEditor.getDocument().removeDocumentListener(docTextListener);
                     docTextEditor.setText(e.getDocument().getText(0, e.getDocument().getLength()));
                 } catch (BadLocationException ex) {
                     Logger.getLogger(GLSLDockTool.class.getName()).log(Level.SEVERE, null, ex);
@@ -483,13 +479,13 @@ public class GLSLDockTool extends javax.swing.JFrame {
         );
         htmlPanelLayout.setVerticalGroup(
             htmlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 280, Short.MAX_VALUE)
+            .addGap(0, 270, Short.MAX_VALUE)
             .addGroup(htmlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(htmlPanelLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(htmlLabel)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(htmlScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                    .addComponent(htmlScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -516,13 +512,13 @@ public class GLSLDockTool extends javax.swing.JFrame {
         );
         textPanelLayout.setVerticalGroup(
             textPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 190, Short.MAX_VALUE)
+            .addGap(0, 200, Short.MAX_VALUE)
             .addGroup(textPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(textPanelLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(textLabel)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(docScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                    .addComponent(docScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -663,83 +659,89 @@ private void asdf(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_asdf
         EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                try {
-                    JAXBContext jc = JAXBContext.newInstance(GLSLVocabulary.class, GLSLElementDescriptor.class);
-                    Marshaller marshaller = jc.createMarshaller();
+                
+                GLSLVocabulary vocab = new GLSLVocabulary();
 
-
-                    GLSLVocabulary vocab = new GLSLVocabulary();
-
-                    for (Wrapper wrapper : mainTableModel.list) {
-                        GLSLElementDescriptor[] elements = vocab.mainVocabulary.get(wrapper.key);
-                        if (elements == null) {
-                            vocab.mainVocabulary.put(wrapper.key, new GLSLElementDescriptor[]{wrapper.element});
-                        } else {
-                            GLSLElementDescriptor[] newElements = new GLSLElementDescriptor[elements.length + 1];
-                            for (int i = 0; i < elements.length; i++) {
-                                newElements[i] = elements[i];
-                            }
-                            newElements[newElements.length - 1] = wrapper.element;
-                            vocab.mainVocabulary.put(wrapper.key, newElements);
+                for (Wrapper wrapper : mainTableModel.list) {
+                    GLSLElementDescriptor[] elements = vocab.mainVocabulary.get(wrapper.key);
+                    if (elements == null) {
+                        vocab.mainVocabulary.put(wrapper.key, new GLSLElementDescriptor[]{wrapper.element});
+                    } else {
+                        GLSLElementDescriptor[] newElements = new GLSLElementDescriptor[elements.length + 1];
+                        for (int i = 0; i < elements.length; i++) {
+                            newElements[i] = elements[i];
                         }
+                        newElements[newElements.length - 1] = wrapper.element;
+                        vocab.mainVocabulary.put(wrapper.key, newElements);
                     }
+                }
 
-                    for (Wrapper wrapper : fragTableModel.list) {
-                        GLSLElementDescriptor[] elements = vocab.fragmentShaderVocabulary.get(wrapper.key);
-                        if (elements == null) {
-                            vocab.fragmentShaderVocabulary.put(wrapper.key, new GLSLElementDescriptor[]{wrapper.element});
-                        } else {
-                            GLSLElementDescriptor[] newElements = new GLSLElementDescriptor[elements.length + 1];
-                            for (int i = 0; i < elements.length; i++) {
-                                newElements[i] = elements[i];
-                            }
-                            newElements[newElements.length - 1] = wrapper.element;
-                            vocab.fragmentShaderVocabulary.put(wrapper.key, newElements);
+                for (Wrapper wrapper : fragTableModel.list) {
+                    GLSLElementDescriptor[] elements = vocab.fragmentShaderVocabulary.get(wrapper.key);
+                    if (elements == null) {
+                        vocab.fragmentShaderVocabulary.put(wrapper.key, new GLSLElementDescriptor[]{wrapper.element});
+                    } else {
+                        GLSLElementDescriptor[] newElements = new GLSLElementDescriptor[elements.length + 1];
+                        for (int i = 0; i < elements.length; i++) {
+                            newElements[i] = elements[i];
                         }
+                        newElements[newElements.length - 1] = wrapper.element;
+                        vocab.fragmentShaderVocabulary.put(wrapper.key, newElements);
                     }
+                }
 
-                    for (Wrapper wrapper : vertTableModel.list) {
-                        GLSLElementDescriptor[] elements = vocab.vertexShaderVocabulary.get(wrapper.key);
-                        if (elements == null) {
-                            vocab.vertexShaderVocabulary.put(wrapper.key, new GLSLElementDescriptor[]{wrapper.element});
-                        } else {
-                            GLSLElementDescriptor[] newElements = new GLSLElementDescriptor[elements.length + 1];
-                            for (int i = 0; i < elements.length; i++) {
-                                newElements[i] = elements[i];
-                            }
-                            newElements[newElements.length - 1] = wrapper.element;
-                            vocab.vertexShaderVocabulary.put(wrapper.key, newElements);
+                for (Wrapper wrapper : vertTableModel.list) {
+                    GLSLElementDescriptor[] elements = vocab.vertexShaderVocabulary.get(wrapper.key);
+                    if (elements == null) {
+                        vocab.vertexShaderVocabulary.put(wrapper.key, new GLSLElementDescriptor[]{wrapper.element});
+                    } else {
+                        GLSLElementDescriptor[] newElements = new GLSLElementDescriptor[elements.length + 1];
+                        for (int i = 0; i < elements.length; i++) {
+                            newElements[i] = elements[i];
                         }
+                        newElements[newElements.length - 1] = wrapper.element;
+                        vocab.vertexShaderVocabulary.put(wrapper.key, newElements);
                     }
-                    for (Wrapper wrapper : geomTableModel.list) {
-                        GLSLElementDescriptor[] elements = vocab.geometryShaderVocabulary.get(wrapper.key);
-                        if (elements == null) {
-                            vocab.geometryShaderVocabulary.put(wrapper.key, new GLSLElementDescriptor[]{wrapper.element});
-                        } else {
-                            GLSLElementDescriptor[] newElements = new GLSLElementDescriptor[elements.length + 1];
-                            for (int i = 0; i < elements.length; i++) {
-                                newElements[i] = elements[i];
-                            }
-                            newElements[newElements.length - 1] = wrapper.element;
-                            vocab.geometryShaderVocabulary.put(wrapper.key, newElements);
+                }
+                for (Wrapper wrapper : geomTableModel.list) {
+                    GLSLElementDescriptor[] elements = vocab.geometryShaderVocabulary.get(wrapper.key);
+                    if (elements == null) {
+                        vocab.geometryShaderVocabulary.put(wrapper.key, new GLSLElementDescriptor[]{wrapper.element});
+                    } else {
+                        GLSLElementDescriptor[] newElements = new GLSLElementDescriptor[elements.length + 1];
+                        for (int i = 0; i < elements.length; i++) {
+                            newElements[i] = elements[i];
                         }
+                        newElements[newElements.length - 1] = wrapper.element;
+                        vocab.geometryShaderVocabulary.put(wrapper.key, newElements);
                     }
-
-
-                    File file = new File(GLSLDockTool.this.file);
-                    if (!file.exists()) {
+                }
+                
+                File file = new File(GLSLDockTool.this.file);
+                if (!file.exists()){
+                    try{
                         file.createNewFile();
+                    } catch (IOException ex) {
+                        Logger.getLogger("global").log(Level.SEVERE, null, ex);
+                        return;
                     }
-                    OutputStream os = new FileOutputStream(file);
-                    marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-                    marshaller.marshal(vocab, os);
-                    os.flush();
-                    os.close();
+                }
+                
+                
+                try {
+
+                    OutputStream os = null;
+                    try{
+                        Marshaller marshaller = jaxbContext.createMarshaller();
+                        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+                        os = new FileOutputStream(file);
+                        marshaller.marshal(vocab, os);
+                        os.flush();
+                        os.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger("global").log(Level.SEVERE, null, ex);
+                    }
                 } catch (JAXBException ex) {
-                    Logger.getLogger("global").log(Level.SEVERE, null, ex);
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger("global").log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
                     Logger.getLogger("global").log(Level.SEVERE, null, ex);
                 }
             }
@@ -762,13 +764,13 @@ private void cleanupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN
     StringTokenizer tokenizer = new StringTokenizer(cleanupTextField.getText());
     String str = htmlTextEditor.getText();
     while(tokenizer.hasMoreElements())
-        str.replaceAll(tokenizer.nextToken(), "");
+        str = str.replaceAll(tokenizer.nextToken(), "");
     htmlTextEditor.setText(str);
 }//GEN-LAST:event_cleanupButtonActionPerformed
 
 private void saveHTMLButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveHTMLButtonActionPerformed
     if (table.getSelectedRow() != -1) {
-        Wrapper entry = mainTableModel.getEntry(table.getSelectedRow());
+        Wrapper entry = ((VocabularyTableModel)table.getModel()).getEntry(table.getSelectedRow());
         if (entry.getDesc() == null) {
             entry.element = new GLSLElementDescriptor();
         }
