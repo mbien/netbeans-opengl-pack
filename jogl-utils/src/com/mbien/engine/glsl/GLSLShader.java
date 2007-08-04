@@ -204,7 +204,7 @@ public class GLSLShader {
         
         VERTEX(GL.GL_VERTEX_SHADER, "GL_ARB_vertex_shader"),
         FRAGMENT(GL.GL_FRAGMENT_SHADER, "GL_ARB_fragment_shader"),
-        GEOMETRY(GL.GL_GEOMETRY_SHADER_EXT, "GL_geometry_shader_ext");
+        GEOMETRY(GL.GL_GEOMETRY_SHADER_EXT, "GL_EXT_geometry_shader4"); //TODO not sure if this is correct: GL_EXT_geometry_shader4
                 
         public final int GL_TYPE;
         public final String EXT_STRING;
