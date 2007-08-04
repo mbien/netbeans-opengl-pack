@@ -25,7 +25,7 @@ public class Installer extends ModuleInstall {
     @Override
     public void restored() {
         
-        final InputOutput out = IOProvider.getDefault().getIO("compiler debug output", false);
+        //final InputOutput out = IOProvider.getDefault().getIO("compiler debug output", false);
 
         final String[] buffer = new String[2];
         GLWorker worker = new GLWorker();
@@ -46,7 +46,7 @@ public class Installer extends ModuleInstall {
         
         int mayorVersion = Integer.parseInt(buffer[0].substring(0, buffer[0].indexOf(".")));
         if(mayorVersion < 2) {
-            out.getOut().println("OpenGL 2.0 or higher required. Detected version is "+buffer[0]);
+           // out.getOut().println("OpenGL 2.0 or higher required. Detected version is "+buffer[0]);
         }
        
     }
