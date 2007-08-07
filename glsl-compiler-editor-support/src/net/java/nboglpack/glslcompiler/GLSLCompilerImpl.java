@@ -168,8 +168,8 @@ public class GLSLCompilerImpl implements CompilerEventListener, GLSLCompilerServ
                 io.getOut().println("link successfull");
             }catch(GLSLLinkException ex) {
                 success = false;
-                io.getOut().println("link error");
-                io.getOut().println(ex.getMessage());
+                io.getErr().println("link error");
+                io.getErr().println(ex.getMessage()); // TODO we need a testcase for not linkable shader
 //                massageHandler.parse(ex.getMessage());
             }
         }
@@ -269,7 +269,7 @@ public class GLSLCompilerImpl implements CompilerEventListener, GLSLCompilerServ
     public void compilerEvent(CompilerEvent e) {
                
         if(e.type == CompilerEvent.COMPILER_EVENT_TYPE.MSG) {
-            io.getOut().println(e.msg);
+            io.getErr().println(e.msg);
         }else{
             
             CompilerAnnotation.AnnotationType type;
@@ -281,7 +281,7 @@ public class GLSLCompilerImpl implements CompilerEventListener, GLSLCompilerServ
             CompilerAnnotations.addAnnotation((DataObject)e.source, type, e.msg, e.line);
             
             try  {
-                io.getOut().println(e.msg, new HyperlinkProvider(e));
+                io.getErr().println(e.msg, new HyperlinkProvider(e));
             } catch (IOException ex) {
                 Exceptions.printStackTrace(ex);
             }
