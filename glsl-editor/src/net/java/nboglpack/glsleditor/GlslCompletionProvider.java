@@ -68,15 +68,16 @@ public class GlslCompletionProvider implements CompletionProvider {
         private void fillResultset(CompletionResultSet completionResultSet, Document doc, int pos) {
             
             Element paragraph = ((BaseDocument) doc).getParagraphElement(pos);
-            String prefix = "";
+            String prefix;
             try {
                 prefix = doc.getText(paragraph.getStartOffset(), pos - paragraph.getStartOffset());
                 // daf�r sorgen, dass wir in den meisten f�llen einen korrekten prefix haben
                 // TODO: besser machen, ist ne hau-ruck-methode
                 // problem: bei leerzeichen in strings werden auch dort funktoren als autocomplete angeboten...
-                prefix = prefix.replaceAll(".*?([\\w-\"]*)$", "$1").toLowerCase();
+                prefix = prefix.replaceAll(".*?([\\w-\"]*)$", "$1");
             } catch (BadLocationException e) {
                 LOGGER.notify(e);
+                prefix = "";
             }
 
             Iterator it = vocabulary.getKeys().iterator();
@@ -85,7 +86,7 @@ public class GlslCompletionProvider implements CompletionProvider {
 
                 String name = (String) it.next();
                 
-                if (name.toLowerCase().startsWith(prefix)) {
+                if (name.regionMatches(true, 0, prefix, 0, prefix.length())) {
 
                     GLSLElementDescriptor[] elements = vocabulary.getDesc(name);
                     
@@ -185,26 +186,12 @@ public class GlslCompletionProvider implements CompletionProvider {
             return text.toString();
         }
 
-        public String getKey() {
-            return key;
-        }
-
-        public GLSLElementDescriptor getContent() {
-            return content;
-        }
-
-        public int getCarretPosition() {
-            return carretPosition;
-        }
-
-        public String getPrefix() {
-            return prefix;
-        }
-
         public void defaultAction(JTextComponent component) {
             Completion.get().hideAll();
+            // replace prefix with key
             try {
-                component.getDocument().insertString(carretPosition, key.substring(prefix.length()), null);
+                component.getDocument().remove(carretPosition-prefix.length(), prefix.length());
+                component.getDocument().insertString(carretPosition-prefix.length(), key, null);
             } catch (BadLocationException e) {
                 LOGGER.notify(e);
             }
