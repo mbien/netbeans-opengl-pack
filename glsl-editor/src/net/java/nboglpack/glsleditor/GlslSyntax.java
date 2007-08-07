@@ -43,6 +43,7 @@ public class GlslSyntax extends Syntax {
         vocabularies = GlslVocabularyManager.getInstance(mimetype);
     }
     
+    @Override
     protected TokenID parseToken() {
         TokenID result = doParseToken();
         if (LOG) {
