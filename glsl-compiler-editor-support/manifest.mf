@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 OpenIDE-Module: net.java.nboglpack.glslcompiler
-OpenIDE-Module-Install: net/java/nboglpack/glslcompiler/Installer.class
+OpenIDE-Module-Install: GLSLModule.class
 OpenIDE-Module-Layer: net/java/nboglpack/glslcompiler/layer.xml
 OpenIDE-Module-Localizing-Bundle: net/java/nboglpack/glslcompiler/Bundle.properties
 OpenIDE-Module-Specification-Version: 1.0

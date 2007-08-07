@@ -11,15 +11,13 @@ import javax.media.opengl.GL;
 import javax.media.opengl.GLContext;
 import org.openide.modules.ModuleInstall;
 import org.openide.util.NbPreferences;
-import org.openide.windows.IOProvider;
-import org.openide.windows.InputOutput;
 
 /**
  * Manages a module's lifecycle.
  * Created on 6. March 2007, 15:48
  * @autor Michael Bien
  */
-public class Installer extends ModuleInstall {
+public class GLSLCompilerModule extends ModuleInstall {
     
     
     @Override
@@ -39,10 +37,11 @@ public class Installer extends ModuleInstall {
         worker.work();
         worker.destroy();
         
-        Preferences preferences = NbPreferences.forModule(Installer.class);
+        Preferences preferences = NbPreferences.forModule(GLSLCompilerModule.class);
         preferences.put("GLVersion", buffer[0]);
         preferences.put("GLVendor", buffer[1]);
         preferences.put("JOGLVersion", Package.getPackage("javax.media.opengl").getImplementationVersion());
+        preferences.put("GlslCompilerLogPattern", "");
         
         int mayorVersion = Integer.parseInt(buffer[0].substring(0, buffer[0].indexOf(".")));
         if(mayorVersion < 2) {
@@ -54,8 +53,8 @@ public class Installer extends ModuleInstall {
 
     @Override
     public void uninstalled() {
-        super.uninstalled();
         CompilerAnnotations.clearAll();
+        super.uninstalled();
  }
    
 }

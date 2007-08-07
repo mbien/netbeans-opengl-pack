@@ -56,7 +56,7 @@ public class GLSLCompilerImpl implements CompilerEventListener, GLSLCompilerServ
         String patternString = pref.get("GlslCompilerLogPattern", null);
         
         
-        if(patternString == null) {
+        if(patternString == null || patternString.equals("")) {
         
             final String[] buffer = new String[1];
             glWorker.addWork(new GLRunnable() {
@@ -73,7 +73,7 @@ public class GLSLCompilerImpl implements CompilerEventListener, GLSLCompilerServ
 
             if(buffer[0].contains("NVIDIA")) {
                 patternString = "\\((\\d+)\\)\\s*:\\s*(\\w+)";
-            }else if(buffer[0].contains("ATI")|buffer[0].contains("AMD") ) {
+            }else if(buffer[0].contains("ATI") || buffer[0].contains("AMD") ) {
                 patternString = "(\\w+):\\s*\\d+:(\\d+):";
             }else{
                 patternString = "()()";
