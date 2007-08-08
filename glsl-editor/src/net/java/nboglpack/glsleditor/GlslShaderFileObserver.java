@@ -24,7 +24,7 @@ public class GlslShaderFileObserver implements DocumentListener {
         compilerTask = RP.create(new Runnable() {
             public void run() {
                 GLSLCompilerService compiler = Lookup.getDefault().lookup(GLSLCompilerService.class);
-                compiler.compileShader(observedDao);
+                compiler.compileShader(new DataObject[] {observedDao}, false);
             }
         });
         compilerTask.setPriority(Thread.MIN_PRIORITY);

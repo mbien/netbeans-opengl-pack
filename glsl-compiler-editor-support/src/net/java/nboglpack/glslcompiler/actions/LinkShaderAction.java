@@ -24,7 +24,7 @@ public final class LinkShaderAction extends NodeAction {
         
         GLSLCompilerService compiler = Lookup.getDefault().lookup(GLSLCompilerService.class);
         
-        compiler.compileAndLinkProgram(daos);
+        compiler.compileAndLinkProgram(daos, true);
     }
     
     protected boolean enable(Node[] nodes) {

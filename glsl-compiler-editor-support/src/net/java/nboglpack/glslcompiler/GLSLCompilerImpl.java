@@ -2,14 +2,13 @@ package net.java.nboglpack.glslcompiler;
 
 import com.mbien.engine.util.GLRunnable;
 import com.mbien.engine.glsl.GLSLCompileException;
-import com.mbien.engine.glsl.CompilerEventListener;
-import com.mbien.engine.glsl.CompilerEvent;
+import com.mbien.engine.glsl.CompilerMessage;
 import com.mbien.engine.util.GLWorker;
 import com.mbien.engine.util.GLRunnable;
 import com.mbien.engine.util.GLRunnable;
 import com.mbien.engine.util.GLWorker;
 import com.mbien.engine.glsl.GLSLCompileException;
-import com.mbien.engine.glsl.GLSLCompilerMassageHandler;
+import com.mbien.engine.glsl.GLSLCompilerMessageParser;
 import com.mbien.engine.glsl.GLSLLinkException;
 import com.mbien.engine.glsl.GLSLProgram;
 import com.mbien.engine.glsl.GLSLShader;
@@ -39,10 +38,10 @@ import org.openide.windows.OutputListener;
  * Created on 14. March 2007, 23:51
  * @author Michael Bien
  */
-public class GLSLCompilerImpl implements CompilerEventListener, GLSLCompilerService {
+public class GLSLCompilerImpl implements GLSLCompilerService {
     
  
- private final GLSLCompilerMassageHandler massageHandler;
+ private final GLSLCompilerMessageParser compilerParser;
  private final GLWorker glWorker;
  private final InputOutput io;
  
@@ -85,65 +84,49 @@ public class GLSLCompilerImpl implements CompilerEventListener, GLSLCompilerServ
         Pattern pattern = Pattern.compile(patternString);
         
         
-        massageHandler = new GLSLCompilerMassageHandler(pattern);
+        compilerParser = new GLSLCompilerMessageParser(pattern);
         io = IOProvider.getDefault().getIO("GLSL Compiler Output", false);
-        
-        massageHandler.addCompilerEventListener(this);
         
     }
    
     
-    /**
-     * Compiles the shader and checks for compilation errors. Annotations are 
-     * automatically placed if errors accure.
-     * 
-     * This is a fire and forget method. The OpenGL shader object will be immediately 
-     * removed after compilation, successfull or not.
-     * 
-     * @return Returns true if shader compilation succeeds.
-     */
-    public boolean compileShader(DataObject... daos) {
+    public boolean compileShader(DataObject[] daos, boolean printOut) {
         
         boolean success = true;
         
-        try{
-            io.getOut().reset();
-        }catch(IOException ex) {
-            Exceptions.printStackTrace(ex);
+        if(printOut) {
+            try{
+                io.getOut().reset();
+            }catch(IOException ex) {
+                Exceptions.printStackTrace(ex);
+            }
         }
         
         for (DataObject dao : daos) {
             try{
-                compile(dao, true);
+                compile(dao, printOut, true);
             }catch(GLSLCompileException ex){
                 success = false;
-                massageHandler.parse(ex.getMessage());
+                annotateMessage(dao, compilerParser.parse(ex.getMessage()), printOut);
             }
         }
-        if(success)
+        if(success && printOut)
             io.getOut().println("compilation successfull");
         
         return success;
     }
     
     
-    /**
-     * Compiles and links the shaders and checks for errors. Annotations are 
-     * automatically placed if errors accure.
-     * 
-     * This is a fire and forget method. The OpenGL shader object will be immediately 
-     * removed after compilation, successfull or not.
-     * 
-     * @return Returns true if shader program was successfully compiled and linked.
-     */
-    public boolean compileAndLinkProgram(DataObject... daos) {
+    public boolean compileAndLinkProgram(DataObject[] daos, boolean printOut) {
         
         boolean success = true;
         
-        try{
-            io.getOut().reset();
-        }catch(IOException ex) {
-            Exceptions.printStackTrace(ex);
+        if(printOut) {
+            try{
+                io.getOut().reset();
+            }catch(IOException ex) {
+                Exceptions.printStackTrace(ex);
+            }
         }
         
         GLSLShader[] shaders = new GLSLShader[daos.length];
@@ -151,25 +134,31 @@ public class GLSLCompilerImpl implements CompilerEventListener, GLSLCompilerServ
         for (int i = 0; i < shaders.length; i++) {
             
             try{
-                shaders[i] = compile(daos[i], false);
+                shaders[i] = compile(daos[i], printOut, false);
             }catch(GLSLCompileException ex) {
                 success = false;
-                massageHandler.parse(ex.getMessage());
+                annotateMessage(daos[i], compilerParser.parse(ex.getMessage()), printOut);
             }
             
         }
         
         // success == true if all shaders compiled without errors
         if(success) {
-            io.getOut().println("compilation successfull");
-            try{
+            if(printOut){
+                io.getOut().println("compilation successfull");
                 io.getOut().println("linking shaders");
+            }
+            try{
                 link(shaders);
-                io.getOut().println("link successfull");
+                
+                if(printOut)
+                    io.getOut().println("link successfull");
             }catch(GLSLLinkException ex) {
                 success = false;
-                io.getErr().println("link error");
-                io.getErr().println(ex.getMessage()); // TODO we need a testcase for not linkable shader
+                if(printOut){
+                    io.getErr().println("link error");
+                    io.getErr().println(ex.getMessage()); // TODO we need a testcase for not linkable shader
+                }
 //                massageHandler.parse(ex.getMessage());
             }
         }
@@ -205,18 +194,18 @@ public class GLSLCompilerImpl implements CompilerEventListener, GLSLCompilerServ
         return shader;
     }
     
-    private GLSLShader compile(final DataObject dao, final boolean deleteAfterCompilation) throws GLSLCompileException {
+    private GLSLShader compile(final DataObject dao, boolean printOut, final boolean deleteAfterCompilation) throws GLSLCompileException {
 
         
         final GLSLShader shader = createShader(dao);
-        io.getOut().println("compiling shader: "+shader.getName());
+        if(printOut)
+            io.getOut().println("compiling shader: "+shader.getName());
         
-        massageHandler.setSource(dao);
         CompilerAnnotations.removeAnnotations(dao);
         final GLSLCompileException[] exception = new GLSLCompileException[] {null};
         
         if(!shader.type.isSupported())
-            throw new GLSLCompileException(shader.getName(), shader.type.toString().toLowerCase()+" shader not supported");
+            throw new GLSLCompileException(shader.getName(), shader.type.toString().toLowerCase()+" shaders not supported");
         
         GLRunnable compilerTask = new GLRunnable(){
             public void run(GLContext context) {
@@ -266,47 +255,54 @@ public class GLSLCompilerImpl implements CompilerEventListener, GLSLCompilerServ
     }
     
     
-    public void compilerEvent(CompilerEvent e) {
-               
-        if(e.type == CompilerEvent.COMPILER_EVENT_TYPE.MSG) {
-            io.getErr().println(e.msg);
-        }else{
+    private void annotateMessage(DataObject dao, CompilerMessage[] msgs, boolean printOut) {
+        
+        for (CompilerMessage msg : msgs) {
             
-            CompilerAnnotation.AnnotationType type;
-            if(e.type == CompilerEvent.COMPILER_EVENT_TYPE.ERROR)
-                type = CompilerAnnotation.AnnotationType.ERROR;
-            else
-                type = CompilerAnnotation.AnnotationType.WARNING;
-            
-            CompilerAnnotations.addAnnotation((DataObject)e.source, type, e.msg, e.line);
-            
-            try  {
-                io.getErr().println(e.msg, new HyperlinkProvider(e));
-            } catch (IOException ex) {
-                Exceptions.printStackTrace(ex);
+            if(msg.type == CompilerMessage.COMPILER_EVENT_TYPE.MSG) {
+                if(printOut)
+                    io.getErr().println(msg.msg);
+            }else{
+
+                CompilerAnnotation.AnnotationType type;
+                if(msg.type == CompilerMessage.COMPILER_EVENT_TYPE.ERROR)
+                    type = CompilerAnnotation.AnnotationType.ERROR;
+                else
+                    type = CompilerAnnotation.AnnotationType.WARNING;
+
+                CompilerAnnotations.addAnnotation(dao, type, msg.msg, msg.line);
+
+                if(printOut){
+                    try  {
+                        io.getErr().println(msg.msg, new HyperlinkProvider(dao, msg));
+                    } catch (IOException ex) {
+                        Exceptions.printStackTrace(ex);
+                    }
+                }
             }
-            
         }
+        
     }
     
 private class HyperlinkProvider implements OutputListener{
     
- private CompilerEvent event;
+ private CompilerMessage msg;
+ private DataObject dao;
         
-    private HyperlinkProvider(CompilerEvent event) {
-        this.event = event;
+    private HyperlinkProvider(DataObject dao, CompilerMessage msg) {
+        this.msg = msg;
+        this.dao = dao;
     }
     
     public void outputLineAction(OutputEvent e) {
         
         //open file in editor and go to annotated line        
-        DataObject dao = (DataObject)event.source;
         dao.getCookie(OpenCookie.class).open();
         
         LineCookie lineCookie = dao.getCookie(LineCookie.class);
         
-        if(event.line > 0 && event.line < lineCookie.getLineSet().getLines().size())
-            lineCookie.getLineSet().getCurrent(event.line-1).show(Line.SHOW_SHOW, 0);
+        if(msg.line > 0 && msg.line < lineCookie.getLineSet().getLines().size())
+            lineCookie.getLineSet().getCurrent(msg.line-1).show(Line.SHOW_SHOW, 0);
         
     }
 

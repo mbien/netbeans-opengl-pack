@@ -9,23 +9,21 @@ import java.util.regex.Pattern;
  * Created on 29. March 2007, 17:07
  * @autor Michael Bien
  */
-public class GLSLCompilerMassageHandler {
+public class GLSLCompilerMessageParser {
     
-  private Object source;
   private Pattern pattern;
-  private final ArrayList<CompilerEventListener> listeners;
     
     /** Creates a new instance of CompilerOutputHandler */
-    public GLSLCompilerMassageHandler(Pattern pattern) {
-        this.listeners = new ArrayList<CompilerEventListener>();
+    public GLSLCompilerMessageParser(Pattern pattern) {
         this.pattern = pattern;
     }
     
-    public void parse(String str) {
+    public CompilerMessage[] parse(String str) {
         
         StringTokenizer tokenizer = new StringTokenizer(str, "\n");
+        CompilerMessage[] messages = new CompilerMessage[tokenizer.countTokens()];
         
-        while(tokenizer.hasMoreTokens()) {
+        for (int i = 0; i < messages.length; i++) {
             
             String line = tokenizer.nextToken();
             
@@ -46,32 +44,17 @@ public class GLSLCompilerMassageHandler {
                 }
                                 
                 if(type.equalsIgnoreCase("error"))  {
-                    fireEvent(new CompilerEvent(source, CompilerEvent.COMPILER_EVENT_TYPE.ERROR, line, linenumber));
+                    messages[i] = new CompilerMessage(CompilerMessage.COMPILER_EVENT_TYPE.ERROR, line, linenumber);
                 }else{
-                    fireEvent(new CompilerEvent(source, CompilerEvent.COMPILER_EVENT_TYPE.WARNING, line, linenumber));
+                    messages[i] = new CompilerMessage(CompilerMessage.COMPILER_EVENT_TYPE.WARNING, line, linenumber);
                 }
                 
             }else{
-                fireEvent(new CompilerEvent(source, CompilerEvent.COMPILER_EVENT_TYPE.MSG, line));
+                messages[i] = new CompilerMessage(CompilerMessage.COMPILER_EVENT_TYPE.MSG, line);
             }
         }
+        
+        return messages;
     }
     
-    private final void fireEvent(CompilerEvent e) {
-        for (CompilerEventListener compilerEventListener : listeners) {
-            compilerEventListener.compilerEvent(e);
-        }
-    }
-    
-    public void setSource(Object source) {
-        this.source = source;
-    }
-    
-    public void addCompilerEventListener(CompilerEventListener listener) {
-        this.listeners.add(listener);
-    }
-    
-    public void removeCompilerEventListener(CompilerEventListener listener) {
-        this.listeners.remove(listener);
-    } 
 }

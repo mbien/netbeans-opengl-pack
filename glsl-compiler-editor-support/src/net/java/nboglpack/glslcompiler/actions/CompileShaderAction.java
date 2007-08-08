@@ -25,7 +25,7 @@ public final class CompileShaderAction extends NodeAction {
         
         GLSLCompilerService compiler = Lookup.getDefault().lookup(GLSLCompilerService.class);
         
-        compiler.compileShader(daos);
+        compiler.compileShader(daos, true);
         
     }
     
