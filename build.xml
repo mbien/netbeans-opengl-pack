@@ -5,4 +5,48 @@
 <project name="netbeans-opengl-pack" basedir=".">
     <description>Builds the module suite netbeans-opengl-pack.</description>
     <import file="nbproject/build-impl.xml"/>
+    <taskdef resource="org/kohsuke/javanettasks.properties" />
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+    
+    <property name="java.net.projectName" value="netbeans-opengl-pack"/>
+    <property name="java.net.overwrite" value="yes"/>
+    <property name="java.net.fileSection" value="dev"/>
+    <property name="java.net.fileStatus" value="Draft"/>
+    <property name="java.net.includeInUpload" value="*.nbm"/>
+    
+    <target name="javanet" depends="nbms">
+        <foreach target="-upload-file-to-javanet" param="upload.fromFile" inheritall="true">
+            <fileset dir="${build.updates.dir}" includes="${java.net.includeInUpload}"/>
+        </foreach>
+    </target>
+
+    <target name="-upload-file-to-javanet">
+        <basename property="fileName" file="${upload.fromFile}"/>
+        <echo message="Creating upload information for nbm '${fileName}'..."/>
+
+        <tempfile property="temp.file" prefix="${fileName}" suffix=".xml" deleteonexit="true"/>
+        <makeupdatedesc desc="${temp.file}" distbase="." automaticgrouping="false">
+            <fileset dir="${build.updates.dir}" includes="${fileName}"/>
+        </makeupdatedesc>
+        <xmlproperty file="${temp.file}"/>
+        <condition
+            property="upload.fileDescription"
+            value="${module_updates.module.manifest(OpenIDE-Module-Short-Description)}"
+            else="${module_updates.module.manifest(OpenIDE-Module-Name)}">
+            <isset property="module_updates.module.manifest(OpenIDE-Module-Short-Description)"/>
+        </condition>
+        <echo message="Uploading nbm '${fileName}' to '${java.net.projectName}.java.net'..."/>
+        <echo>
+        <javaNetUpload
+            projectName="${java.net.projectName}"
+            userName="${java.net.userName}"
+            password="${java.net.password}"
+            overwrite="${java.net.overwrite}"
+            fileStatus="${java.net.fileStatus}"
+            fileDescription="${upload.fileDescription}"
+            fromFile="${upload.fromFile}"
+            toFile="${java.net.fileSection}/${fileName}"
+        />
+        </echo>
+    </target>
 </project>
