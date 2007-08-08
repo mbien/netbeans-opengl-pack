@@ -36,7 +36,6 @@
             <isset property="module_updates.module.manifest(OpenIDE-Module-Short-Description)"/>
         </condition>
         <echo message="Uploading nbm '${fileName}' to '${java.net.projectName}.java.net'..."/>
-        <echo>
         <javaNetUpload
             projectName="${java.net.projectName}"
             userName="${java.net.userName}"
@@ -47,6 +46,5 @@
             fromFile="${upload.fromFile}"
             toFile="${java.net.fileSection}/${fileName}"
         />
-        </echo>
     </target>
 </project>
