@@ -22,8 +22,8 @@
 
     <target name="-upload-file-to-javanet">
         <basename property="fileName" file="${upload.fromFile}"/>
-        <echo message="Creating upload information for nbm '${fileName}'..."/>
 
+        <echo message="Creating upload information for nbm '${fileName}'..."/>
         <tempfile property="temp.file" prefix="${fileName}" suffix=".xml" deleteonexit="true"/>
         <makeupdatedesc desc="${temp.file}" distbase="." automaticgrouping="false">
             <fileset dir="${build.updates.dir}" includes="${fileName}"/>
@@ -35,6 +35,7 @@
             else="${module_updates.module.manifest(OpenIDE-Module-Name)}">
             <isset property="module_updates.module.manifest(OpenIDE-Module-Short-Description)"/>
         </condition>
+        
         <echo message="Uploading nbm '${fileName}' to '${java.net.projectName}.java.net'..."/>
         <javaNetUpload
             projectName="${java.net.projectName}"
