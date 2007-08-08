@@ -12,15 +12,18 @@
     <property name="java.net.overwrite" value="yes"/>
     <property name="java.net.fileSection" value="dev"/>
     <property name="java.net.fileStatus" value="Draft"/>
-    <property name="java.net.includeInUpload" value="*.nbm"/>
     
     <target name="javanet" depends="nbms">
-        <foreach target="-upload-file-to-javanet" param="upload.fromFile" inheritall="true">
-            <fileset dir="${build.updates.dir}" includes="${java.net.includeInUpload}"/>
+        <foreach target="-upload-nbm-to-javanet" param="upload.fromFile" inheritall="true">
+            <fileset dir="${build.updates.dir}" includes="*.nbm"/>
         </foreach>
+        <antcall target="-upload-file-to-javanet" inheritall="true">
+            <param name="upload.fromFile" value="${build.updates.dir}/updates.xml"/>
+            <param name="upload.fileDescription" value="Suite descriptor for the netbeans-opengl-pack update center"/>
+        </antcall>
     </target>
 
-    <target name="-upload-file-to-javanet">
+    <target name="-upload-nbm-to-javanet">
         <basename property="fileName" file="${upload.fromFile}"/>
 
         <echo message="Creating upload information for nbm '${fileName}'..."/>
@@ -37,6 +40,19 @@
         </condition>
         
         <echo message="Uploading nbm '${fileName}' to '${java.net.projectName}.java.net'..."/>
+        <antcall target="-upload-file-to-javanet" inheritall="true"/>
+    </target>
+
+    <target name="-upload-file-to-javanet">
+        <basename property="fileName" file="${upload.fromFile}"/>
+        <condition
+            property="upload.fileDescription"
+            value="${upload.fileDescription}"
+            else="${fileName}">
+            <isset property="upload.fileDescription"/>
+        </condition>
+
+        <echo message="Uploading file '${fileName}' to '${java.net.projectName}.java.net'..."/>
         <javaNetUpload
             projectName="${java.net.projectName}"
             userName="${java.net.userName}"
