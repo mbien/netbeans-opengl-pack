@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <page visibility="1">
     <component_list>
-        <!-- google analytics snippet must be first in body -->
+        <!-- google analytics snippet must be first in body -
         <component visibility="1" type="Html" order="1">
             <title localize="false"></title>
             <filename>../../snippets/GoogleAnalyticsSnippet.html</filename>
-        </component>
+        </component> -->
         <component visibility="1" type="Html" order="2">
             <title localize="false">New and Noteworthy</title>
             <filename>HtmlSnippet1.html</filename>
