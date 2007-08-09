@@ -64,4 +64,10 @@
             toFile="${java.net.fileSection}/${fileName}"
         />
     </target>
+    
+    <target name="buildrelease" depends="nbms">
+        <copy todir="www/updatecenter/">
+            <fileset dir="build/updates"/>
+        </copy>
+    </target>
 </project>

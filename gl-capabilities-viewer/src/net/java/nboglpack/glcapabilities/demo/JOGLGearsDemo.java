@@ -1,4 +1,4 @@
-package net.java.nboglpack.glcapabilities;
+package net.java.nboglpack.glcapabilities.demo;
 
 import com.sun.opengl.util.Animator;
 import javax.media.opengl.GL;
@@ -26,7 +26,7 @@ public class JOGLGearsDemo implements GLEventListener {
     
     private float angle = 0.0f;
 
-    private Animator animator;
+    private final Animator animator;
 
     public JOGLGearsDemo(GLAutoDrawable drawable) {
         drawable.addGLEventListener(this);
@@ -96,6 +96,7 @@ public class JOGLGearsDemo implements GLEventListener {
     }
 
     public void display(GLAutoDrawable drawable) {
+        
         angle += 0.5f;
 
         GL gl = drawable.getGL();

@@ -5,6 +5,7 @@
  */
 package net.java.nboglpack.glcapabilities;
 
+import net.java.nboglpack.glcapabilities.demo.JOGLGearsDemo;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.HierarchyEvent;
