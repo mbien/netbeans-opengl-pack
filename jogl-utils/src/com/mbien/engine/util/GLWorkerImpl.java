@@ -17,26 +17,35 @@ import javax.media.opengl.GLPbuffer;
 /**
  * @author Michael Bien
  */
-public class GLWorker {
+public class GLWorkerImpl {
     
  private final Stack<GLRunnable> work;
- private final GLPbuffer pbuffer;
+ private final GLAutoDrawable drawable;
     
     
     /** Creates a new instance of GLWorker */
-    public GLWorker() {
+    public GLWorkerImpl() {
+        this(null);
+    }
+    
+    public GLWorkerImpl(GLAutoDrawable autoDrawable) {
         
-        this.work = new Stack<GLRunnable>();
+        if(autoDrawable == null) {
+            GLDrawableFactory factory = GLDrawableFactory.getFactory();
+            GLCapabilities c = new GLCapabilities();
+            GLCapabilitiesChooser chooser = new DefaultGLCapabilitiesChooser();
+
+            drawable = factory.createGLPbuffer(c, chooser, 1, 1, null);
+        }else{
+            drawable = autoDrawable;
+        }
         
-        GLDrawableFactory factory = GLDrawableFactory.getFactory();
-        GLCapabilities c = new GLCapabilities();
-        GLCapabilitiesChooser chooser = new DefaultGLCapabilitiesChooser();
-        pbuffer = factory.createGLPbuffer(c, chooser, 1, 1, null);
-        pbuffer.addGLEventListener(new Renderer());
+        drawable.addGLEventListener(new Renderer());
+        work = new Stack<GLRunnable>();
     }
     
     public void work() {
-        pbuffer.display();
+        drawable.display();
     }
     
     public void work(GLRunnable runnable) {
@@ -45,7 +54,8 @@ public class GLWorker {
     }
     
     public void destroy() {
-        pbuffer.destroy();
+        if(drawable instanceof GLPbuffer)
+            ((GLPbuffer)drawable).destroy();
     }
 
     public void addWork(GLRunnable runnable) {

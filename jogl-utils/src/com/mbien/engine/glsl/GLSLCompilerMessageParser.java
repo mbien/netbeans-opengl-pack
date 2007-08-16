@@ -1,6 +1,5 @@
 package com.mbien.engine.glsl;
 
-import java.util.ArrayList;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

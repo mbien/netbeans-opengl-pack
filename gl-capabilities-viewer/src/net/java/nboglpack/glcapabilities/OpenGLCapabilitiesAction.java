@@ -7,7 +7,7 @@
 package net.java.nboglpack.glcapabilities;
 
 import com.mbien.engine.util.GLRunnable;
-import com.mbien.engine.util.GLWorker;
+import com.mbien.engine.util.GLWorkerImpl;
 import java.awt.EventQueue;
 import java.awt.Window;
 import java.awt.event.WindowAdapter;
@@ -59,7 +59,7 @@ public final class OpenGLCapabilitiesAction extends CallableSystemAction {
     
     private Runnable createGLCapabilitiesQuery() {
         
-        final GLWorker worker = new GLWorker();
+        final GLWorkerImpl worker = new GLWorkerImpl();
         
         final GLRunnable query = new GLRunnable() {
 

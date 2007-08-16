@@ -1,10 +1,10 @@
 package net.java.nboglpack.glslcompiler;
 
 import com.mbien.engine.util.GLRunnable;
-import com.mbien.engine.util.GLWorker;
+import com.mbien.engine.util.GLWorkerImpl;
 import com.mbien.engine.util.GLRunnable;
 import com.mbien.engine.util.GLRunnable;
-import com.mbien.engine.util.GLWorker;
+import com.mbien.engine.util.GLWorkerImpl;
 import net.java.nboglpack.glslcompiler.annotation.CompilerAnnotations;
 import java.util.prefs.Preferences;
 import javax.media.opengl.GL;
@@ -26,7 +26,7 @@ public class GLSLCompilerModule extends ModuleInstall {
         //final InputOutput out = IOProvider.getDefault().getIO("compiler debug output", false);
 
         final String[] buffer = new String[2];
-        GLWorker worker = new GLWorker();
+        GLWorkerImpl worker = new GLWorkerImpl();
         worker.addWork(new GLRunnable() {
             public void run(GLContext context) {
                 GL gl = context.getGL();

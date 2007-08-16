@@ -3,10 +3,10 @@ package net.java.nboglpack.glslcompiler;
 import com.mbien.engine.util.GLRunnable;
 import com.mbien.engine.glsl.GLSLCompileException;
 import com.mbien.engine.glsl.CompilerMessage;
-import com.mbien.engine.util.GLWorker;
+import com.mbien.engine.util.GLWorkerImpl;
 import com.mbien.engine.util.GLRunnable;
 import com.mbien.engine.util.GLRunnable;
-import com.mbien.engine.util.GLWorker;
+import com.mbien.engine.util.GLWorkerImpl;
 import com.mbien.engine.glsl.GLSLCompileException;
 import com.mbien.engine.glsl.GLSLCompilerMessageParser;
 import com.mbien.engine.glsl.GLSLLinkException;
@@ -42,14 +42,14 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
     
  
  private final GLSLCompilerMessageParser compilerParser;
- private final GLWorker glWorker;
+ private final GLWorkerImpl glWorker;
  private final InputOutput io;
  
  
     /** Creates a new instance of GLSLCompiler */
     public GLSLCompilerImpl() {
         
-        glWorker = new GLWorker();
+        glWorker = new GLWorkerImpl();
         
         Preferences pref = NbPreferences.forModule(GLSLCompilerService.class);
         String patternString = pref.get("GlslCompilerLogPattern", null);
