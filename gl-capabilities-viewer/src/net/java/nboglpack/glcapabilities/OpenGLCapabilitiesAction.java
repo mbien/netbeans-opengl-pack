@@ -7,7 +7,7 @@
 package net.java.nboglpack.glcapabilities;
 
 import com.mbien.engine.util.GLRunnable;
-import com.mbien.engine.util.GLWorkerImpl;
+import com.mbien.engine.util.GLWorker;
 import java.awt.EventQueue;
 import java.awt.Window;
 import java.awt.event.WindowAdapter;
@@ -24,6 +24,7 @@ import javax.media.opengl.GLContext;
 import javax.swing.JDialog;
 import org.openide.util.Exceptions;
 import org.openide.util.HelpCtx;
+import org.openide.util.Lookup;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.CallableSystemAction;
 import org.openide.windows.WindowManager;
@@ -59,7 +60,7 @@ public final class OpenGLCapabilitiesAction extends CallableSystemAction {
     
     private Runnable createGLCapabilitiesQuery() {
         
-        final GLWorkerImpl worker = new GLWorkerImpl();
+        final GLWorker worker = Lookup.getDefault().lookup(GLWorker.class);
         
         final GLRunnable query = new GLRunnable() {
 
@@ -176,7 +177,6 @@ public final class OpenGLCapabilitiesAction extends CallableSystemAction {
 
             public void run() {
                 worker.work(query);
-                worker.destroy();
             }
             
         };

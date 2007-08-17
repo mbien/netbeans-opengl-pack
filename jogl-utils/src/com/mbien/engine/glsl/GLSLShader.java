@@ -1,6 +1,7 @@
 package com.mbien.engine.glsl;
 
 import com.mbien.engine.util.GLRunnable;
+import com.mbien.engine.util.GLWorker;
 import com.mbien.engine.util.GLWorkerImpl;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -182,7 +183,7 @@ public class GLSLShader {
         
         if(SUPPORTED_SHADER.get(type) == null) {
             
-           GLWorkerImpl worker = new GLWorkerImpl();
+           GLWorker worker = GLWorkerImpl.getDefault();
 
            worker.work(new GLRunnable() {
               public void run(GLContext context) {
@@ -193,8 +194,6 @@ public class GLSLShader {
               }
            });
            
-           worker.destroy();
-            
         }
         
         return SUPPORTED_SHADER.get(type);

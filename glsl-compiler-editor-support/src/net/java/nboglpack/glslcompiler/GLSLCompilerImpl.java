@@ -1,19 +1,19 @@
 package net.java.nboglpack.glslcompiler;
 
-import com.mbien.engine.util.GLRunnable;
+
+/*
+ * Created on 14. March 2007, 23:51
+ */
 import com.mbien.engine.glsl.GLSLCompileException;
 import com.mbien.engine.glsl.CompilerMessage;
-import com.mbien.engine.util.GLWorkerImpl;
 import com.mbien.engine.util.GLRunnable;
-import com.mbien.engine.util.GLRunnable;
-import com.mbien.engine.util.GLWorkerImpl;
-import com.mbien.engine.glsl.GLSLCompileException;
 import com.mbien.engine.glsl.GLSLCompilerMessageParser;
 import com.mbien.engine.glsl.GLSLLinkException;
 import com.mbien.engine.glsl.GLSLProgram;
 import com.mbien.engine.glsl.GLSLShader;
-import net.java.nboglpack.glslcompiler.annotation.CompilerAnnotation;
+import com.mbien.engine.util.GLWorker;
 import net.java.nboglpack.glslcompiler.annotation.CompilerAnnotations;
+import net.java.nboglpack.glslcompiler.annotation.CompilerAnnotation;
 import java.io.IOException;
 import java.util.prefs.Preferences;
 import java.util.regex.Pattern;
@@ -28,6 +28,7 @@ import org.openide.loaders.DataObject;
 import org.openide.text.Line;
 import org.openide.util.Exceptions;
 import org.openide.filesystems.FileUtil;
+import org.openide.util.Lookup;
 import org.openide.util.NbPreferences;
 import org.openide.windows.IOProvider;
 import org.openide.windows.InputOutput;
@@ -35,21 +36,20 @@ import org.openide.windows.OutputEvent;
 import org.openide.windows.OutputListener;
 
 /**
- * Created on 14. March 2007, 23:51
  * @author Michael Bien
  */
 public class GLSLCompilerImpl implements GLSLCompilerService {
     
  
  private final GLSLCompilerMessageParser compilerParser;
- private final GLWorkerImpl glWorker;
+ private final GLWorker glWorker;
  private final InputOutput io;
  
  
     /** Creates a new instance of GLSLCompiler */
     public GLSLCompilerImpl() {
         
-        glWorker = new GLWorkerImpl();
+        glWorker = Lookup.getDefault().lookup(GLWorker.class);
         
         Preferences pref = NbPreferences.forModule(GLSLCompilerService.class);
         String patternString = pref.get("GlslCompilerLogPattern", null);

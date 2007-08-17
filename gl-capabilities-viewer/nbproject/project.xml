@@ -23,7 +23,7 @@
                     </run-dependency>
                 </dependency>
                 <dependency>
-                    <code-name-base>net.java.nbjoglpack.joglutils</code-name-base>
+                    <code-name-base>net.java.nboglpack.joglutils</code-name-base>
                     <build-prerequisite/>
                     <compile-dependency/>
                     <run-dependency>

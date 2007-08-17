@@ -4,7 +4,8 @@
  */
 package com.mbien.engine.util;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import javax.media.opengl.DefaultGLCapabilitiesChooser;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLCapabilities;
@@ -17,11 +18,12 @@ import javax.media.opengl.GLPbuffer;
 /**
  * @author Michael Bien
  */
-public class GLWorkerImpl {
+public class GLWorkerImpl implements GLWorker {
     
- private final Stack<GLRunnable> work;
+ private final Deque<GLRunnable> work;
  private final GLAutoDrawable drawable;
-    
+ 
+ private static GLWorker DEFAULT;
     
     /** Creates a new instance of GLWorker */
     public GLWorkerImpl() {
@@ -29,7 +31,7 @@ public class GLWorkerImpl {
     }
     
     public GLWorkerImpl(GLAutoDrawable autoDrawable) {
-        
+
         if(autoDrawable == null) {
             GLDrawableFactory factory = GLDrawableFactory.getFactory();
             GLCapabilities c = new GLCapabilities();
@@ -40,8 +42,17 @@ public class GLWorkerImpl {
             drawable = autoDrawable;
         }
         
-        drawable.addGLEventListener(new Renderer());
-        work = new Stack<GLRunnable>();
+        drawable.addGLEventListener(new Worker());
+        work = new ArrayDeque<GLRunnable>();
+        
+        if(DEFAULT == null)
+            DEFAULT = this;
+    }
+    
+    public static GLWorker getDefault() {
+        if(DEFAULT == null)
+            DEFAULT = new GLWorkerImpl();
+        return DEFAULT;
     }
     
     public void work() {
@@ -62,15 +73,16 @@ public class GLWorkerImpl {
         work.add(runnable);
     }
     
- private class Renderer implements GLEventListener {
+    
+ private final class Worker implements GLEventListener {
      
     public void init(GLAutoDrawable arg0) {
     }
 
     public void display(GLAutoDrawable arg0) {
         GLContext context = GLContext.getCurrent();
-        while(!work.empty()) {
-            work.pop().run(context);
+        while(work.size() > 0) {
+            work.pollFirst().run(context);
             Thread.yield();
         }
     }
