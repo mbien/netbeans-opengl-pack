@@ -1,8 +1,9 @@
 Manifest-Version: 1.0
 OpenIDE-Module: net.java.nboglpack.glsleditor
+OpenIDE-Module-Implementation-Version: 1
 OpenIDE-Module-Layer: net/java/nboglpack/glsleditor/layer.xml
 OpenIDE-Module-Localizing-Bundle: net/java/nboglpack/glsleditor/Bundle.properties
-OpenIDE-Module-Specification-Version: 1.0
+OpenIDE-Module-Specification-Version: 1.1
 OpenIDE-Module-Install: net/java/nboglpack/glsleditor/GlslEditorModule.class
 
 Name: net/java/nboglpack/glsleditor/dataobject/GlslGeometryShaderDataLoader.class
