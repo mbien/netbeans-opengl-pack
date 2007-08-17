@@ -20,7 +20,7 @@ public final class LinkShaderAction extends NodeAction {
         
         DataObject[] daos = new DataObject[activatedNodes.length];
         for(int i = 0; i < activatedNodes.length; i++)
-            daos[i] = (DataObject) activatedNodes[i].getLookup().lookup(DataObject.class);
+            daos[i] = activatedNodes[i].getLookup().lookup(DataObject.class);
         
         GLSLCompilerService compiler = Lookup.getDefault().lookup(GLSLCompilerService.class);
         
@@ -40,7 +40,7 @@ public final class LinkShaderAction extends NodeAction {
         
         for (int i = 0; i < daos.length; i++) {
             
-            daos[i] = (DataObject) nodes[i].getLookup().lookup(DataObject.class);
+            daos[i] = nodes[i].getLookup().lookup(DataObject.class);
                         
             if(daos[i] == null)
                 return false;
@@ -74,6 +74,7 @@ public final class LinkShaderAction extends NodeAction {
         return NbBundle.getMessage(LinkShaderAction.class, "CTL_LinkShaderAction");
     }
     
+    @Override
     protected void initialize() {
         super.initialize();
         // see org.openide.util.actions.SystemAction.iconResource() javadoc for more details
@@ -83,7 +84,7 @@ public final class LinkShaderAction extends NodeAction {
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
-    
+    @Override
     protected boolean asynchronous() {
         return false;
     }

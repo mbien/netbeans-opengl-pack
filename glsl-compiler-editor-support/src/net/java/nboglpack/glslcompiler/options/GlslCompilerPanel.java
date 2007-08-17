@@ -1,8 +1,13 @@
 package net.java.nboglpack.glslcompiler.options;
 
 import com.mbien.engine.glsl.GLSLShader.TYPE;
+import com.mbien.engine.util.GLRunnable;
+import com.mbien.engine.util.GLWorker;
 import java.util.prefs.Preferences;
 import java.util.regex.Pattern;
+import javax.media.opengl.GL;
+import javax.media.opengl.GLContext;
+import org.openide.util.Lookup;
 import org.openide.util.NbPreferences;
 
 /**
@@ -20,11 +25,24 @@ final class GlslCompilerPanel extends javax.swing.JPanel {
     
     
     void load() {
+        
+        final String[] buffer = new String[2];
+        GLWorker worker = Lookup.getDefault().lookup(GLWorker.class);
+        worker.addWork(new GLRunnable() {
+            public void run(GLContext context) {
+                GL gl = context.getGL();
+                buffer[0] = gl.glGetString(GL.GL_VERSION);
+                buffer[1] = gl.glGetString(GL.GL_VENDOR);
+            }
+        });
+        worker.work();
+        
+        glVersionLabel.setText(buffer[0]);
+        vendorLabel.setText(buffer[1]);
+        
         Preferences preferences = NbPreferences.forModule(GlslCompilerPanel.class);
         patternTextField.setText(preferences.get("GlslCompilerLogPattern", "<null>"));
-        glVersionLabel.setText(preferences.get("GLVersion", "<null>"));
-        vendorLabel.setText(preferences.get("GLVendor", "<null>"));
-        joglVersionLabel.setText(preferences.get("JOGLVersion", "<null>"));
+        joglVersionLabel.setText(Package.getPackage("javax.media.opengl").getImplementationVersion());
         
         vertexShaderSupport.setText(getShaderSupportedString(TYPE.VERTEX));
         fragmentShaderSupport.setText(getShaderSupportedString(TYPE.FRAGMENT));
@@ -50,8 +68,9 @@ final class GlslCompilerPanel extends javax.swing.JPanel {
         }
         
     }
+    
     private String getShaderSupportedString(TYPE shaderType) {
-        return shaderType.isSupported() ? "supported" : "not supported";
+        return shaderType.isSupported() ? "supported" : "<html><font color=#FF0000>not supported</font>";
     }
     
     /** This method is called from within the constructor to
