@@ -16,7 +16,7 @@ import org.netbeans.editor.TokenContextPath;
 import org.netbeans.editor.Utilities;
 
 /**
- *
+ * @deprecated migrate to lexer
  * @author Administrator
  */
 public class GlslTokenContext extends TokenContext

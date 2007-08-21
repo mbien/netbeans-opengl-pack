@@ -15,7 +15,7 @@ import org.openide.modules.ModuleInstall;
 import org.openide.util.NbBundle;
 
 /**
- *
+ * @deprecated migrate to lexer
  * @author Administrator
  */
 public class GlslEditorModule extends ModuleInstall {
@@ -44,6 +44,7 @@ public class GlslEditorModule extends ModuleInstall {
     }
     
     /**
+     * @deprecated migrate to lexer
      * Adds initializer and registers editor kit.
      */
     public void addInitializer() {
@@ -51,6 +52,7 @@ public class GlslEditorModule extends ModuleInstall {
     }
     
     /**
+     * @deprecated migrate to lexer
      * Installs properties editor and print options.
      */
     public void installOptions() {
@@ -62,7 +64,9 @@ public class GlslEditorModule extends ModuleInstall {
         });
     }
     
-    /** Uninstalls properties editor and print options. */
+    /** Uninstalls properties editor and print options.
+ * @deprecated migrate to lexer
+     */
     public void uninstallOptions() {
         // remove localizer
         LocaleSupport.removeLocalizer(localizer);

@@ -21,7 +21,7 @@ import org.netbeans.editor.TokenContext;
 import org.netbeans.editor.TokenContextPath;
 
 /**
- *
+ * @deprecated migrate to lexer
  * @author Administrator
  */
 public class GlslSettingsInitializer extends Settings.AbstractInitializer

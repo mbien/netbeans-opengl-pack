@@ -15,7 +15,7 @@ import org.netbeans.modules.editor.NbEditorKit;
 import org.openide.ErrorManager;
 
 /**
- *
+ * @deprecated migrate to lexer
  * @author Administrator
  */
 public class GlslFragmentShaderEditorKit extends NbEditorKit {

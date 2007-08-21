@@ -19,6 +19,7 @@ import org.openide.ErrorManager;
  *
  * @author Mathias Henze
  * @author Michael Bien
+ * @deprecated migrate to lexer
  */
 public class GlslSyntax extends Syntax {
     
