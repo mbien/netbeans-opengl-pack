@@ -1,6 +1,5 @@
 package net.java.nboglpack.glsleditor;
 
-import javax.swing.JEditorPane;
 import org.netbeans.api.editor.completion.Completion;
 import org.openide.ErrorManager;
 import org.netbeans.editor.BaseDocument;
@@ -22,6 +21,9 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.util.Iterator;
+import net.java.nboglpack.glsleditor.dataobject.GlslFragmentShaderDataLoader;
+import net.java.nboglpack.glsleditor.dataobject.GlslGeometryShaderDataLoader;
+import net.java.nboglpack.glsleditor.dataobject.GlslVertexShaderDataLoader;
 import net.java.nboglpack.glsleditor.vocabulary.GLSLElementDescriptor;
 import org.netbeans.spi.editor.completion.support.CompletionUtilities;
 
@@ -36,21 +38,33 @@ public class GlslCompletionProvider implements CompletionProvider {
 
     private static final ErrorManager LOGGER = ErrorManager.getDefault().getInstance(GlslCompletionProvider.class.getName());
 
-    public GlslCompletionProvider() {
+    private final String mimeType;
+    
+    private GlslCompletionProvider(String mimeType) {
+        this.mimeType = mimeType;
     }
 
     public CompletionTask createTask(int queryType, JTextComponent component) {
-        String mimetype = "text/plain";
-        if (component instanceof JEditorPane) {
-            mimetype = ((JEditorPane) component).getContentType();
-        }
-        return new AsyncCompletionTask(new GlslCompletionQuery(mimetype), component);
+        return new AsyncCompletionTask(new GlslCompletionQuery(mimeType), component);
     }
 
     public int getAutoQueryTypes(JTextComponent component, String typedText) {
         return 0;
     }
+    
+    public static GlslCompletionProvider createVSCompletionProvider(){
+        return new GlslCompletionProvider(GlslVertexShaderDataLoader.REQUIRED_MIME);
+    }
+    
+    public static GlslCompletionProvider createGSCompletionProvider(){
+        return new GlslCompletionProvider(GlslGeometryShaderDataLoader.REQUIRED_MIME);
+    }
+    
+    public static GlslCompletionProvider createFSCompletionProvider(){
+        return new GlslCompletionProvider(GlslFragmentShaderDataLoader.REQUIRED_MIME);
+    }
 
+    
     private static class GlslCompletionQuery extends AsyncCompletionQuery {
 
         private GlslVocabularyManager vocabulary;
@@ -110,7 +124,6 @@ public class GlslCompletionProvider implements CompletionProvider {
         private String leftText;
         private String rightText;
 
-        private String fontColor = "<font color=#b200b2>";
         private String ARGUMENTS_COLOR = "<font color=#b28b00>";
         private String BUILD_IN_VAR_COLOR = "<font color=#008618>";
         private String KEYWORD_COLOR = "<font color=#000099>";
@@ -218,7 +231,7 @@ public class GlslCompletionProvider implements CompletionProvider {
             }
             
             return new AsyncCompletionTask(new AsyncCompletionQuery() {
-                private DocItem item = new DocItem(key, content);
+                private GlslDocItem item = new GlslDocItem(key, content);
 
                 protected void query(CompletionResultSet completionResultSet, Document document, int i) {
                     completionResultSet.setDocumentation(item);
@@ -249,11 +262,11 @@ public class GlslCompletionProvider implements CompletionProvider {
         }
     }
 
-    public static class DocItem implements CompletionDocumentation {
+    private static class GlslDocItem implements CompletionDocumentation {
 
         private String text;
 
-        public DocItem(String item, GLSLElementDescriptor content) {
+        public GlslDocItem(String item, GLSLElementDescriptor content) {
             
             StringBuilder sb = new StringBuilder();
             sb.append("<code>");
@@ -267,8 +280,7 @@ public class GlslCompletionProvider implements CompletionProvider {
             if(content.arguments != null) {
                 sb.append(content.arguments);
             }
-            sb.append("</code>");
-            sb.append("<p>");
+            sb.append("</code><p>");
             sb.append(content.doc);
             sb.append("</p>");
             

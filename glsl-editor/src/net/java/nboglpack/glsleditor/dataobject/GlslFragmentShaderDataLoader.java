@@ -14,7 +14,7 @@ public class GlslFragmentShaderDataLoader extends UniFileLoader {
     private static final long serialVersionUID = 1L;
 
     public GlslFragmentShaderDataLoader() {
-        super("net.java.nboglpack.glsleditor.dataobject.GlslDataObject");
+        super("net.java.nboglpack.glsleditor.dataobject.GlslFragmentShaderDataObject");
     }
 
     @Override

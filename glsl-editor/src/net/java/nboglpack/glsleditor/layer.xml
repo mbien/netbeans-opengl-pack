@@ -3,38 +3,13 @@
 <filesystem>
     <folder name="Editors">
         <folder name="text">
-            <folder name="x-glsl-fragment-shader">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
-                <file name="vocabulary.xml" url="resources/GlslVocabulary.xml"/>
-                <folder name="CompletionProviders">
-                    <file name="GlslCompletionProvider.instance">
-                        <attr name="instanceClass" stringvalue="net.java.nboglpack.glsleditor.GlslCompletionProvider"/>
-                    </file>
-                </folder>
-                <folder name="NetBeans">
-                    <folder name="Defaults">
-                        <file name="coloring.xml" url="resources/NetBeans-glsl-fontsColors.xml">
-                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
-                        </file>
-                    </folder>
-                </folder> 
-                <folder name="CityLights">
-                    <folder name="Defaults">
-                        <file name="coloring.xml" url="resources/CityLights-glsl-fontsColors.xml">
-                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
-                        </file>
-                    </folder>
-                </folder>
-                <file name="Settings.settings" url="options/GlslFragmentShaderOptions.settings"/>
-                <file name="EditorKit.instance">
-                    <attr name="instanceClass" stringvalue="net.java.nboglpack.glsleditor.GlslFragmentShaderEditorKit"/>
-                </file>
-            </folder>
+            
             <folder name="x-glsl-vertex-shader">
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
                 <file name="vocabulary.xml" url="resources/GlslVocabulary.xml"/>
                 <folder name="CompletionProviders">
                     <file name="GlslCompletionProvider.instance">
+                        <attr name="instanceCreate" methodvalue="net.java.nboglpack.glsleditor.GlslCompletionProvider.createVSCompletionProvider"/>
                         <attr name="instanceClass" stringvalue="net.java.nboglpack.glsleditor.GlslCompletionProvider"/>
                     </file>
                 </folder>
@@ -47,21 +22,60 @@
                 </folder> 
                 <folder name="CityLights">
                     <folder name="Defaults">
-                        <file name="coloring.xml" url="resources/CityLights-glsl-fontsColors.xml">
+                        <file name="coloring.xml" url="resources/NetBeans-glsl-fontsColors.xml">
                             <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
                         </file>
                     </folder>
                 </folder>
-                <file name="Settings.settings" url="options/GlslVertexShaderOptions.settings"/>
+                <file name="language.instance">
+                    <attr name="instanceCreate" methodvalue="net.java.nboglpack.glsleditor.lexer.Glsl.vertexLanguage"/>
+                    <attr name="instanceOf" stringvalue="org.netbeans.api.lexer.Language"/>
+                </file>
                 <file name="EditorKit.instance">
-                    <attr name="instanceClass" stringvalue="net.java.nboglpack.glsleditor.GlslVertexShaderEditorKit"/>
+                    <attr name="instanceCreate" methodvalue="org.netbeans.modules.lexer.editorbridge.LexerEditorKit.create"/>
+                    <attr name="instanceClass" stringvalue="org.netbeans.modules.lexer.editorbridge.LexerEditorKit"/>
                 </file>
             </folder>
+            
+            <folder name="x-glsl-fragment-shader">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
+                <file name="vocabulary.xml" url="resources/GlslVocabulary.xml"/>
+                <folder name="CompletionProviders">
+                    <file name="GlslCompletionProvider.instance">
+                        <attr name="instanceCreate" methodvalue="net.java.nboglpack.glsleditor.GlslCompletionProvider.createFSCompletionProvider"/>
+                        <attr name="instanceClass" stringvalue="net.java.nboglpack.glsleditor.GlslCompletionProvider"/>
+                    </file>
+                </folder>
+                <folder name="NetBeans">
+                    <folder name="Defaults">
+                        <file name="coloring.xml" url="resources/NetBeans-glsl-fontsColors.xml">
+                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
+                        </file>
+                    </folder>
+                </folder> 
+                <folder name="CityLights">
+                    <folder name="Defaults">
+                        <file name="coloring.xml" url="resources/NetBeans-glsl-fontsColors.xml">
+                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
+                        </file>
+                    </folder>
+                </folder>
+                <file name="language.instance">
+                    <attr name="instanceCreate" methodvalue="net.java.nboglpack.glsleditor.lexer.Glsl.fragmentLanguage"/>
+                    <attr name="instanceOf" stringvalue="org.netbeans.api.lexer.Language"/>
+                </file>
+                <file name="EditorKit.instance">
+                    <attr name="instanceCreate" methodvalue="org.netbeans.modules.lexer.editorbridge.LexerEditorKit.create"/>
+                    <attr name="instanceClass" stringvalue="org.netbeans.modules.lexer.editorbridge.LexerEditorKit"/>
+                </file>
+            </folder>
+            
             <folder name="x-glsl-geometry-shader">
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
                 <file name="vocabulary.xml" url="resources/GlslVocabulary.xml"/>
                 <folder name="CompletionProviders">
                     <file name="GlslCompletionProvider.instance">
+                        <attr name="instanceCreate" methodvalue="net.java.nboglpack.glsleditor.GlslCompletionProvider.createGSCompletionProvider"/>
                         <attr name="instanceClass" stringvalue="net.java.nboglpack.glsleditor.GlslCompletionProvider"/>
                     </file>
                 </folder>
@@ -74,14 +88,18 @@
                 </folder> 
                 <folder name="CityLights">
                     <folder name="Defaults">
-                        <file name="coloring.xml" url="resources/CityLights-glsl-fontsColors.xml">
+                        <file name="coloring.xml" url="resources/NetBeans-glsl-fontsColors.xml">
                             <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
                         </file>
                     </folder>
                 </folder>
-                <file name="Settings.settings" url="options/GlslGeometryShaderOptions.settings"/>
+                <file name="language.instance">
+                    <attr name="instanceCreate" methodvalue="net.java.nboglpack.glsleditor.lexer.Glsl.geometryLanguage"/>
+                    <attr name="instanceOf" stringvalue="org.netbeans.api.lexer.Language"/>
+                </file>
                 <file name="EditorKit.instance">
-                    <attr name="instanceClass" stringvalue="net.java.nboglpack.glsleditor.GlslGeometryShaderEditorKit"/>
+                    <attr name="instanceCreate" methodvalue="org.netbeans.modules.lexer.editorbridge.LexerEditorKit.create"/>
+                    <attr name="instanceClass" stringvalue="org.netbeans.modules.lexer.editorbridge.LexerEditorKit"/>
                 </file>
             </folder>
         </folder>
@@ -241,6 +259,7 @@
             </folder>
         </folder>
     </folder>
+    
     <folder name="Services">
         <folder name="MIMEResolver">
             <file name="GlslFragmentShaderResolver.xml" url="resources/GlslFragmentShaderResolver.xml">
@@ -256,6 +275,7 @@
             </file>
         </folder>
     </folder>
+    
     <folder name="Templates">
         <folder name="OpenGL">
             <file name="FragmentShader.frag" url="resources/FragmentShaderTemplate.frag">

@@ -14,7 +14,7 @@ public class GlslVertexShaderDataLoader extends UniFileLoader {
     private static final long serialVersionUID = 1L;
 
     public GlslVertexShaderDataLoader() {
-        super("net.java.nboglpack.glsleditor.dataobject.GlslDataObject");
+        super("net.java.nboglpack.glsleditor.dataobject.GlslVertexShaderDataObject");
     }
 
     @Override

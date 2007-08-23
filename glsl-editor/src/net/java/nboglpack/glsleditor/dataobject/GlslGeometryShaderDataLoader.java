@@ -23,7 +23,7 @@ public class GlslGeometryShaderDataLoader extends UniFileLoader {
     
     @Override
     protected String defaultDisplayName() {
-        return NbBundle.getMessage(GlslGeometryShaderDataLoader.class, "LBL_GlslGeometryShader_loader_name");
+        return NbBundle.getMessage(GlslGeometryShaderDataLoader.class, "LBL_glsl_geometry_shader_loader_name");
     }
     
     @Override
