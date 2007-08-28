@@ -15,18 +15,21 @@ import org.netbeans.api.lexer.TokenId;
  */
 public enum GlslTokenId implements TokenId {
     
- ERROR("glsl-error"),
- NAME("glsl-name"),
+ IDENTIFIER("glsl-name"),
  FUNCTION("glsl-function"),
  KEYWORD("glsl-keyword"),
  BUILD_IN_FUNC("glsl-build-in-func"),
  BUILD_IN_VAR("glsl-build-in-var"),
- BRACE("glsl-brace"),
  VALUE("glsl-value"),
- CURLY_BRACE("glsl-curly-brace"),
  STRING_VALUE("glsl-string-value"),
  COMMENT("glsl-comment"),
- SEPARATOR("glsl-separator"),
+ 
+ BRACE("glsl-brace"),
+ CURLY_BRACE("glsl-curly-brace"),
+ SEMICOLON("glsl-separator"),
+ COMMA("glsl-separator"),
+ DOT("glsl-separator"),
+ 
  WHITESPACE("glsl-whitespace"),
  END_OF_LINE("glsl-end-of-line"),
  PREPROCESSOR("glsl-preprocessor");

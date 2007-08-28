@@ -1,0 +1,33 @@
+################################################################################
+# OpenGL Shading Language ######################################################
+################################################################################
+
+SKIP:WHITESPACE
+SKIP:END_OF_LINE
+
+##### GLSL 1.2 grammer #########################################################
+
+# test grammer
+#S = (Statement)*;
+#Statement = <IDENTIFIER> <DOT> "xyz" <SEMICOLON>;
+
+
+
+
+
+
+################################################################################
+
+# error highlighting
+MARK:ERROR: {
+    type:"Error";
+    message:"Syntax error.";
+}
+MARK:error: {
+    type:"Error";
+    message:"Unexpected character.";
+}
+
+
+
+

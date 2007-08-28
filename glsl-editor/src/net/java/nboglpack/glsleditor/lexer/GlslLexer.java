@@ -23,9 +23,9 @@ import org.netbeans.spi.lexer.TokenFactory;
 public class GlslLexer implements Lexer<GlslTokenId> {
  
  private static final int INIT          = 0;
- private static final int NAME          = 1;
+ private static final int IDENTIFIER    = 1;
  private static final int VALUE         = 2;// TODO editor; implement value tokenizing
- private static final int STRING_VALUE  = 3;
+ //private static final int STRING_VALUE  = 3;
  private static final int PREPROCESSOR  = 4;
  private static final int COMMENT       = 5;
  private static final int ML_COMMENT    = 6;
@@ -35,7 +35,7 @@ public class GlslLexer implements Lexer<GlslTokenId> {
  private final GlslVocabularyManager manager;
  private final StringBuilder stringBuilder;
  
- private boolean inEscape = false;
+ //private boolean inEscape = false;
     
  private int state = INIT;
  
@@ -49,9 +49,10 @@ public class GlslLexer implements Lexer<GlslTokenId> {
 
     public Token<GlslTokenId> nextToken() {
         
-        int character = input.read();
         
-        while(character != LexerInput.EOF) {
+        while(true) {
+            
+            int character = input.read();
 
             switch(state) {
 
@@ -66,12 +67,20 @@ public class GlslLexer implements Lexer<GlslTokenId> {
                         case '}':
                             state = INIT;
                             return factory.createToken(GlslTokenId.CURLY_BRACE);
+                        case '.':
+                            state = INIT;
+                            return factory.createToken(GlslTokenId.DOT);
                         case ',':
+                            state = INIT;
+                            return factory.createToken(GlslTokenId.COMMA);
                         case ';':
                             state = INIT;
-                            return factory.createToken(GlslTokenId.SEPARATOR);
+                            return factory.createToken(GlslTokenId.SEMICOLON);
                         case '\r':
                             input.consumeNewline();
+                        case LexerInput.EOF:
+                            if(input.readLength() == 0)
+                                return null;
                         case '\n':
                             state = INIT;
                             return factory.createToken(GlslTokenId.END_OF_LINE);
@@ -82,9 +91,9 @@ public class GlslLexer implements Lexer<GlslTokenId> {
                         case '#':
                             state = PREPROCESSOR;
                             break;
-                        case '"':
-                            state = STRING_VALUE;
-                            break;
+                     //   case '"':
+                       //     state = STRING_VALUE;
+                         //   break;
                         case '/':
                             int c = input.read();
                             if(c == '/') {
@@ -100,19 +109,20 @@ public class GlslLexer implements Lexer<GlslTokenId> {
                             break;
                         default:
                             if(Character.isJavaIdentifierPart(character)) {
-                                state = NAME;
+                                state = IDENTIFIER;
                             } else {
                                 state = INIT;
                             }
                     }
                     break;
 
-                case NAME:
+                case IDENTIFIER:
 
                     switch (character) {
                         case '\r':
                             input.consumeNewline();
                         case '\n':
+                        case LexerInput.EOF:
                             state = INIT;
                             return tokenize();
                         default:
@@ -122,7 +132,7 @@ public class GlslLexer implements Lexer<GlslTokenId> {
                             }
                     }
                     break;
-
+/*
                 case STRING_VALUE:
 
                     switch (character) {
@@ -134,18 +144,22 @@ public class GlslLexer implements Lexer<GlslTokenId> {
                                 state = INIT;
                                 return factory.createToken(GlslTokenId.STRING_VALUE);
                             }
+                        case LexerInput.EOF:
+                            state = INIT;
+                            return factory.createToken(GlslTokenId.STRING_VALUE);
                         default:
                             inEscape = false;
                             break;
                     }
                     break;
-
+*/
                 case PREPROCESSOR:
 
                     switch (character) {
                         case '\r':
                             input.consumeNewline();
                         case '\n':
+                        case LexerInput.EOF:
                             state = INIT;
                             return factory.createToken(GlslTokenId.PREPROCESSOR);
                     }
@@ -157,30 +171,33 @@ public class GlslLexer implements Lexer<GlslTokenId> {
                         case '\r':
                             input.consumeNewline();
                         case '\n':
+                        case LexerInput.EOF:
                             state = INIT;
                             return factory.createToken(GlslTokenId.COMMENT);
                     }
                     break;
 
                 case ML_COMMENT:
-
-                    if (character == '*') {
-                        if(input.read() == '/') {
+                    switch(character) {
+                        
+                        case '*':
+                            if(input.read() == '/') {
+                                state = INIT;
+                                return factory.createToken(GlslTokenId.COMMENT);
+                            }else{
+                                input.backup(1);
+                            }
+                            break;
+                        case LexerInput.EOF:
                             state = INIT;
                             return factory.createToken(GlslTokenId.COMMENT);
-                        }else{
-                            input.backup(1);
-                        }
                     }
                     break;
-
+                    
             }
             
-            character = input.read();
-            
         }
-        
-        return null;
+      
     }
     
     private Token<GlslTokenId> tokenize() {
@@ -217,7 +234,7 @@ public class GlslLexer implements Lexer<GlslTokenId> {
             }
         }
        
-        return factory.createToken(GlslTokenId.NAME);
+        return factory.createToken(GlslTokenId.IDENTIFIER);
     }
 
     public Object state() {
