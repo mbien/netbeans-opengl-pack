@@ -1,8 +1,8 @@
 /*
  * GLWorkerImpl.java
- * 
+ *
  * Created on 16.08.2007, 14:35:07
- * 
+ *
  */
 
 package net.java.nboglpack.joglutils;
@@ -19,6 +19,7 @@ import javax.media.opengl.GLCanvas;
 import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.GLCapabilitiesChooser;
 import javax.media.opengl.GLDrawableFactory;
+import javax.media.opengl.GLException;
 
 /**
  * GLWorker implementation with fallback mode.
@@ -26,35 +27,44 @@ import javax.media.opengl.GLDrawableFactory;
  */
 public class NBGLWorkerImpl implements GLWorker {
 
- private final static Logger logger = Logger.getLogger(NBGLWorkerImpl.class.getName());
-    
- private final GLWorker glworker;
-    
- public NBGLWorkerImpl() {
-     
-     if(GLDrawableFactory.getFactory().canCreateGLPbuffer()){
-         glworker = new GLWorkerImpl();
-     }else{
-         logger.info("going to fallback mode");
-         // fallback mode
-         // use a heavy weight drawable if pixel buffers are not supported
-         Beans.setDesignTime(false); // TODO designtime = false workaround
+    private static final Logger logger = Logger.getLogger(NBGLWorkerImpl.class.getName());
+    private GLWorker glworker;
 
-         GLCapabilities caps = new GLCapabilities();
-         GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-         GLCapabilitiesChooser chooser = new DefaultGLCapabilitiesChooser();
+    public NBGLWorkerImpl() {
 
-         GLCanvas canvas = new GLCanvas(caps, chooser, null, device);
-         // canvas.setMaximumSize(new Dimension(16, 16));
-         // canvas.setMinimumSize(new Dimension(16, 16));
-         glworker = new GLWorkerImpl(canvas);
-         
-         // the bottom right corner of the status bar seems to be the safest position for a heavyweight component
-         GLWorkerStatusLineElementProvider.component = canvas;
-     }
-         
- }
- 
+        if (GLDrawableFactory.getFactory().canCreateGLPbuffer()) {
+            try {
+                glworker = new GLWorkerImpl();
+            } catch (GLException ex) {
+                logger.warning(ex.getMessage());
+                logger.info("pbuffer creation faild; going to fallback mode");
+                glworker = createFallbackWorkerImpl();
+            }
+        } else {
+            logger.info("pbuffers not supported; going to fallback mode");
+            glworker = createFallbackWorkerImpl();
+        }
+    }
+
+    private final GLWorkerImpl createFallbackWorkerImpl() {
+        // fallback mode
+        // use a heavy weight drawable if pixel buffers are not supported
+        Beans.setDesignTime(false); // TODO designtime = false workaround
+        GLCapabilities caps = new GLCapabilities();
+        GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        GLCapabilitiesChooser chooser = new DefaultGLCapabilitiesChooser();
+
+        GLCanvas canvas = new GLCanvas(caps, chooser, null, device);
+        // canvas.setMaximumSize(new Dimension(16, 16));
+        // canvas.setMinimumSize(new Dimension(16, 16));
+        GLWorkerImpl worker = new GLWorkerImpl(canvas);
+
+        // the bottom right corner of the status bar seems to be the safest position for a heavyweight component
+        GLWorkerStatusLineElementProvider.component = canvas;
+
+        return worker;
+    }
+
     @Override
     public void addWork(GLRunnable runnable) {
         glworker.addWork(runnable);
@@ -74,5 +84,4 @@ public class NBGLWorkerImpl implements GLWorker {
     public void work(GLRunnable runnable) {
         glworker.work(runnable);
     }
-    
 }
