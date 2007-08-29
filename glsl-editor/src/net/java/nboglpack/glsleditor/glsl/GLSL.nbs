@@ -4,6 +4,7 @@
 
 SKIP:WHITESPACE
 SKIP:END_OF_LINE
+SKIP:PREPROCESSOR
 
 ##### GLSL 1.2 grammer #########################################################
 

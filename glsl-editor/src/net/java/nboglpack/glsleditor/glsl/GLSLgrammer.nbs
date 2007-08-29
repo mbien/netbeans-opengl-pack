@@ -2,6 +2,114 @@
 
 S = (variable_identifier | primary_expression)*;
 
+
+# hard coded token; see GLSL spec lexer output token
+CONST = "const";
+BOOL = "bool";
+FLOAT = "float";
+INT = "int";
+BREAK = "break";
+CONTINUE = "continue";
+RETURN = "return";
+DISCARD = "discard";
+DO = "do";
+WHILE = "while";
+IF = "if";
+ELSE = "else";
+FOR = "for";
+BVEC2 = "bvec2";
+BVEC3 = "bvec3";
+BVEC4 = "bvec4";
+IVEC2 = "ivec2";
+IVEC3 = "ivec3";
+IVEC4 = "ivec4";
+VEC2 = "vec2";
+VEC3 = "vec3";
+VEC4 = "vec4";
+IN = "in";
+OUT = "out";
+INOUT = "inout";
+ATTRIBUTE = "attribute";
+UNIFORM = "uniform";
+VARYING = "varying";
+CENTROID = "centroid";
+INVARIANT = "invariant";
+MAT2 = "mat2";
+MAT3 = "mat3";
+MAT4 = "mat4";
+MAT2X2 = "mat2x2";
+MAT2X3 = "mat2x3"; 
+MAT2X4 = "mat2x4";
+MAT3X2 = "mat3x2";
+MAT3X3 = "mat3x4";
+MAT3X4 = "mat3x5";
+MAT4X2 = "mat4x2";
+MAT4X3 = "mat4x3";
+MAT4X4 = "mat4x4";
+SAMPLER1D = "sampler1d";
+SAMPLER2D = "sampler2d";
+SAMPLER3D = "sampler3d";
+SAMPLERCUBE = "samplerCube";
+SAMPLER1DSHADOW = "sampler1dShadow";
+SAMPLER2DSHADOW = "sampler2dShadow";
+STRUCT = "struct";
+VOID = "void";
+
+#IDENTIFIER 
+FLOATCONSTANT = "1"; # TODO lexer
+INTCONSTANT = "1"; # TODO lexer
+BOOLCONSTANT = "1"; # TODO lexer
+TYPE_NAME = "todo"; # TODO lexer      note: type name = name of struct type
+FIELD_SELECTION = "xyz"; # TODO lexer       ?? not sure what that is
+LEFT_OP = "<<";
+RIGHT_OP = ">>";
+INC_OP = "++";
+DEC_OP = "--";
+LE_OP = "<=";
+GE_OP = ">=";
+EQ_OP = "==";
+NE_OP = "!=";
+AND_OP = "&&";
+OR_OP  = "||";
+XOR_OP = "^^";
+MUL_ASSIGN = "*=";
+DIV_ASSIGN = "/=";
+ADD_ASSIGN = "+=";
+MOD_ASSIGN = "%=";
+LEFT_ASSIGN = "<<=";
+RIGHT_ASSIGN = ">>=";
+AND_ASSIGN = "&=";
+XOR_ASSIGN = "^=";
+OR_ASSIGN = "|=";
+SUB_ASSIGN = "-=";
+
+LEFT_PAREN = "(";
+RIGHT_PAREN = ")";
+LEFT_BRACKET = "[";
+RIGHT_BRACKET = "]";
+LEFT_BRACE = "{";
+RIGHT_BRACE = "}";
+LEFT_ANGLE = "<";
+RIGHT_ANGLE = ">";
+DOT = ".";
+COMMA = ",";
+COLON = ":";
+EQUAL = "=";
+SEMICOLON = ";";
+BANG = "!";
+DASH = "-";
+TILDE = "~";
+PLUS = "+";
+STAR = "*";
+SLASH = "/";
+PERCENT = "%";
+VERTICAL_BAR = "|";
+CARET = "^";
+AMPERSAND = "&";
+QUESTION = "?";
+
+# GLSL grammer; see GLSLangSpec 1.2
+
 variable_identifier = <IDENTIFIER>;
 
 primary_expression = variable_identifier
