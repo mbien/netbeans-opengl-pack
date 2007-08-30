@@ -36,7 +36,7 @@
                     <attr name="instanceClass" stringvalue="org.netbeans.modules.lexer.editorbridge.LexerEditorKit"/>
                 </file>
                 <attr name="createDataObject" boolvalue="false"/>
-                <file name="language.nbs" url="glsl/GLSL.nbs"/>
+                <!--   <file name="language.nbs" url="glsl/GLSL.nbs"/> -->
             </folder>
             
             <folder name="x-glsl-fragment-shader">
@@ -71,7 +71,7 @@
                     <attr name="instanceClass" stringvalue="org.netbeans.modules.lexer.editorbridge.LexerEditorKit"/>
                 </file>
                 <attr name="createDataObject" boolvalue="false"/>
-                <file name="language.nbs" url="glsl/GLSL.nbs"/>
+                <!--   <file name="language.nbs" url="glsl/GLSL.nbs"/> -->
             </folder>
             
             <folder name="x-glsl-geometry-shader">
@@ -106,7 +106,7 @@
                     <attr name="instanceClass" stringvalue="org.netbeans.modules.lexer.editorbridge.LexerEditorKit"/>
                 </file>
                 <attr name="createDataObject" boolvalue="false"/>
-                <file name="language.nbs" url="glsl/GLSL.nbs"/>
+             <!--   <file name="language.nbs" url="glsl/GLSL.nbs"/> -->
             </folder>
         </folder>
     </folder>

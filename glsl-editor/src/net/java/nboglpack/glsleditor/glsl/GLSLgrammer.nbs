@@ -4,335 +4,241 @@ S = (variable_identifier | primary_expression)*;
 
 
 # hard coded token; see GLSL spec lexer output token
-CONST = "const";
-BOOL = "bool";
-FLOAT = "float";
-INT = "int";
-BREAK = "break";
-CONTINUE = "continue";
-RETURN = "return";
-DISCARD = "discard";
-DO = "do";
-WHILE = "while";
-IF = "if";
-ELSE = "else";
-FOR = "for";
-BVEC2 = "bvec2";
-BVEC3 = "bvec3";
-BVEC4 = "bvec4";
-IVEC2 = "ivec2";
-IVEC3 = "ivec3";
-IVEC4 = "ivec4";
-VEC2 = "vec2";
-VEC3 = "vec3";
-VEC4 = "vec4";
-IN = "in";
-OUT = "out";
-INOUT = "inout";
-ATTRIBUTE = "attribute";
-UNIFORM = "uniform";
-VARYING = "varying";
-CENTROID = "centroid";
-INVARIANT = "invariant";
-MAT2 = "mat2";
-MAT3 = "mat3";
-MAT4 = "mat4";
-MAT2X2 = "mat2x2";
-MAT2X3 = "mat2x3"; 
-MAT2X4 = "mat2x4";
-MAT3X2 = "mat3x2";
-MAT3X3 = "mat3x4";
-MAT3X4 = "mat3x5";
-MAT4X2 = "mat4x2";
-MAT4X3 = "mat4x3";
-MAT4X4 = "mat4x4";
-SAMPLER1D = "sampler1d";
-SAMPLER2D = "sampler2d";
-SAMPLER3D = "sampler3d";
-SAMPLERCUBE = "samplerCube";
-SAMPLER1DSHADOW = "sampler1dShadow";
-SAMPLER2DSHADOW = "sampler2dShadow";
-STRUCT = "struct";
-VOID = "void";
+
 
 #IDENTIFIER 
-FLOATCONSTANT = "1"; # TODO lexer
-INTCONSTANT = "1"; # TODO lexer
-BOOLCONSTANT = "1"; # TODO lexer
-TYPE_NAME = "todo"; # TODO lexer      note: type name = name of struct type
-FIELD_SELECTION = "xyz"; # TODO lexer       ?? not sure what that is
-LEFT_OP = "<<";
-RIGHT_OP = ">>";
-INC_OP = "++";
-DEC_OP = "--";
-LE_OP = "<=";
-GE_OP = ">=";
-EQ_OP = "==";
-NE_OP = "!=";
-AND_OP = "&&";
-OR_OP  = "||";
-XOR_OP = "^^";
-MUL_ASSIGN = "*=";
-DIV_ASSIGN = "/=";
-ADD_ASSIGN = "+=";
-MOD_ASSIGN = "%=";
-LEFT_ASSIGN = "<<=";
-RIGHT_ASSIGN = ">>=";
-AND_ASSIGN = "&=";
-XOR_ASSIGN = "^=";
-OR_ASSIGN = "|=";
-SUB_ASSIGN = "-=";
+#"FLOATCONSTANT" = "1"; # TODO lexer
+#"INTCONSTANT" = "2"; # TODO lexer
+#"BOOLCONSTANT" = "3"; # TODO lexer
+#"TYPE_NAME" = "todo"; # TODO lexer      note: type name = name of struct type
+#"FIELD_SELECTION" = "xyz"; # TODO lexer       ?? not sure what that is
 
-LEFT_PAREN = "(";
-RIGHT_PAREN = ")";
-LEFT_BRACKET = "[";
-RIGHT_BRACKET = "]";
-LEFT_BRACE = "{";
-RIGHT_BRACE = "}";
-LEFT_ANGLE = "<";
-RIGHT_ANGLE = ">";
-DOT = ".";
-COMMA = ",";
-COLON = ":";
-EQUAL = "=";
-SEMICOLON = ";";
-BANG = "!";
-DASH = "-";
-TILDE = "~";
-PLUS = "+";
-STAR = "*";
-SLASH = "/";
-PERCENT = "%";
-VERTICAL_BAR = "|";
-CARET = "^";
-AMPERSAND = "&";
-QUESTION = "?";
 
 # GLSL grammer; see GLSLangSpec 1.2
 
 variable_identifier = <IDENTIFIER>;
 
 primary_expression = variable_identifier
-                   | INTCONSTANT 
-                   | FLOATCONSTANT 
-                   | BOOLCONSTANT 
-                   | LEFT_PAREN expression RIGHT_PAREN;
+                   | "INTCONSTANT" 
+                   | "FLOATCONSTANT" 
+                   | "BOOLCONSTANT" 
+                   | "(" expression ")";
 
 postfix_expression = primary_expression
-                   | postfix_expression LEFT_BRACKET integer_expression RIGHT_BRACKET
+                   | postfix_expression "[" integer_expression "]"
                    | function_call
-                   | postfix_expression <DOT> FIELD_SELECTION
-                   | postfix_expression INC_OP
-                   | postfix_expression DEC_OP;
+                   | postfix_expression "." "FIELD_SELECTION"
+                   | postfix_expression "++"
+                   | postfix_expression "--";
 
 integer_expression = expression;
 
 function_call = function_call_or_method;
 
 function_call_or_method = function_call_generic
-                        | postfix_expression <DOT> function_call_generic;
+                        | postfix_expression "." function_call_generic;
 
-function_call_generic = function_call_header_with_parameters RIGHT_PAREN
-                      | function_call_header_no_parameters RIGHT_PAREN;
+function_call_generic = function_call_header_with_parameters ")"
+                      | function_call_header_no_parameters ")";
 
-function_call_header_no_parameters = function_call_header VOID
+function_call_header_no_parameters = function_call_header "void"
                                    | function_call_header;
 
 function_call_header_with_parameters = function_call_header assignment_expression
-                                     | function_call_header_with_parameters <COMMA> assignment_expression;
+                                     | function_call_header_with_parameters "," assignment_expression;
 
-function_call_header = function_identifier LEFT_PAREN;
+function_call_header = function_identifier "(";
 
 # Grammar Note: Constructors look like functions, but lexical analysis recognized most of them as
 # keywords. They are now recognized through “type_specifier”.
 function_identifier = type_specifier
                     | <IDENTIFIER>
-                    | FIELD_SELECTION;
+                    | "FIELD_SELECTION";
 
 unary_expression = postfix_expression
-                 | INC_OP unary_expression
-                 | DEC_OP unary_expression
+                 | "++" unary_expression
+                 | "--" unary_expression
                  | unary_operator unary_expression;
 
 # Grammar Note: No traditional style type casts.
-unary_operator = PLUS
-               | DASH
-               | BANG
-               | TILDE; # reserved
+unary_operator = "+"
+               | "-"
+               | "!"
+               | "~"; # reserved
 
 # Grammar Note: No '*' or '&' unary ops. Pointers are not supported.
 multiplicative_expression = unary_expression
-                          | multiplicative_expression STAR unary_expression
-                          | multiplicative_expression SLASH unary_expression
-                          | multiplicative_expression PERCENT unary_expression; # reserved
+                          | multiplicative_expression "*" unary_expression
+                          | multiplicative_expression "/" unary_expression
+                          | multiplicative_expression "%" unary_expression; # reserved
 
 additive_expression = multiplicative_expression
-                    | additive_expression PLUS multiplicative_expression
-                    | additive_expression DASH multiplicative_expression;
+                    | additive_expression "+" multiplicative_expression
+                    | additive_expression "-" multiplicative_expression;
 
 shift_expression = additive_expression
-                 | shift_expression LEFT_OP additive_expression   # reserved
-                 | shift_expression RIGHT_OP additive_expression; # reserved
+                 | shift_expression "<<" additive_expression   # reserved
+                 | shift_expression ">>" additive_expression; # reserved
 
 relational_expression = shift_expression
-                     | relational_expression LEFT_ANGLE shift_expression
-                     | relational_expression RIGHT_ANGLE shift_expression
-                     | relational_expression LE_OP shift_expression
-                     | relational_expression GE_OP shift_expression;
+                     | relational_expression "<" shift_expression
+                     | relational_expression ">" shift_expression
+                     | relational_expression "<=" shift_expression
+                     | relational_expression ">=" shift_expression;
 
 equality_expression = relational_expression
-                    | equality_expression EQ_OP relational_expression
-                    | equality_expression NE_OP relational_expression;
+                    | equality_expression "==" relational_expression
+                    | equality_expression "!=" relational_expression;
 
 and_expression = equality_expression
-               | and_expression AMPERSAND equality_expression; # reserved
+               | and_expression "&" equality_expression; # reserved
 
 exclusive_or_expression = and_expression
-                        | exclusive_or_expression CARET and_expression; # reserved
+                        | exclusive_or_expression "^" and_expression; # reserved
 
 inclusive_or_expression = exclusive_or_expression
-                        | inclusive_or_expression VERTICAL_BAR exclusive_or_expression; # reserved
+                        | inclusive_or_expression "|" exclusive_or_expression; # reserved
 
 logical_and_expression = inclusive_or_expression
-                       | logical_and_expression AND_OP inclusive_or_expression;
+                       | logical_and_expression "&&" inclusive_or_expression;
 
 logical_xor_expression = logical_and_expression
-                       | logical_xor_expression XOR_OP logical_and_expression;
+                       | logical_xor_expression "^^" logical_and_expression;
 
 logical_or_expression = logical_xor_expression
-                      | logical_or_expression OR_OP logical_xor_expression;
+                      | logical_or_expression "||" logical_xor_expression;
 
 conditional_expression = logical_or_expression
-                       | logical_or_expression QUESTION expression COLON assignment_expression;
+                       | logical_or_expression "?" expression ":" assignment_expression;
 
 assignment_expression = conditional_expression
                       | unary_expression assignment_operator assignment_expression;
 
-assignment_operator = EQUAL
-                    | MUL_ASSIGN
-                    | DIV_ASSIGN
-                    | MOD_ASSIGN   # reserved
-                    | ADD_ASSIGN
-                    | SUB_ASSIGN
-                    | LEFT_ASSIGN  # reserved
-                    | RIGHT_ASSIGN # reserved
-                    | AND_ASSIGN   # reserved
-                    | XOR_ASSIGN   # reserved
-                    | OR_ASSIGN;   # reserved
+assignment_operator = "="
+                    | "*="
+                    | "/="
+                    | "%="   # reserved
+                    | "+="
+                    | "-="
+                    | "<<="  # reserved
+                    | ">>=" # reserved
+                    | "&="   # reserved
+                    | "^="   # reserved
+                    | "|=";   # reserved
 
 expression = assignment_expression
-           | expression <COMMA> assignment_expression;
+           | expression "," assignment_expression;
 
 constant_expression = conditional_expression;
 
-declaration = function_prototype <SEMICOLON>
-            | init_declarator_list <SEMICOLON>;
+declaration = function_prototype ";"
+            | init_declarator_list ";";
 
-function_prototype = function_declarator RIGHT_PAREN;
+function_prototype = function_declarator ")";
 
 function_declarator = function_header
                     | function_header_with_parameters;
 
 function_header_with_parameters = function_header parameter_declaration
-                                | function_header_with_parameters <COMMA> parameter_declaration;
+                                | function_header_with_parameters "," parameter_declaration;
 
-function_header = fully_specified_type <IDENTIFIER> LEFT_PAREN;
+function_header = fully_specified_type <IDENTIFIER> "(";
 
 parameter_declarator = type_specifier <IDENTIFIER>
-                     | type_specifier <IDENTIFIER> LEFT_BRACKET constant_expression RIGHT_BRACKET;
+                     | type_specifier <IDENTIFIER> "[" constant_expression "]";
 
 parameter_declaration = type_qualifier parameter_qualifier parameter_declarator
                       | parameter_qualifier parameter_declarator
                       | type_qualifier parameter_qualifier parameter_type_specifier
                       | parameter_qualifier parameter_type_specifier;
 
-parameter_qualifier = [ IN | OUT | INOUT ];
+parameter_qualifier = [ "in" | "out" | "inout" ];
 
 parameter_type_specifier = type_specifier;
 
 init_declarator_list = single_declaration
-                     | init_declarator_list <COMMA> <IDENTIFIER>
-                     | init_declarator_list <COMMA> <IDENTIFIER> LEFT_BRACKET RIGHT_BRACKET
-                     | init_declarator_list <COMMA> <IDENTIFIER> LEFT_BRACKET constant_expression
-                     | RIGHT_BRACKET
-                     | init_declarator_list <COMMA> <IDENTIFIER> LEFT_BRACKET
-                     | RIGHT_BRACKET EQUAL initializer
-                     | init_declarator_list <COMMA> <IDENTIFIER> LEFT_BRACKET constant_expression
-                     | RIGHT_BRACKET EQUAL initializer
-                     | init_declarator_list <COMMA> <IDENTIFIER> EQUAL initializer;
+                     | init_declarator_list "," <IDENTIFIER>
+                     | init_declarator_list "," <IDENTIFIER> "[" "]"
+                     | init_declarator_list "," <IDENTIFIER> "[" constant_expression
+                     | "]"
+                     | init_declarator_list "," <IDENTIFIER> "["
+                     | "]" "=" initializer
+                     | init_declarator_list "," <IDENTIFIER> "[" constant_expression
+                     | "]" "=" initializer
+                     | init_declarator_list "," <IDENTIFIER> "=" initializer;
 
 single_declaration = fully_specified_type
                    | fully_specified_type <IDENTIFIER>
-                   | fully_specified_type <IDENTIFIER> LEFT_BRACKET RIGHT_BRACKET
-                   | fully_specified_type <IDENTIFIER> LEFT_BRACKET constant_expression RIGHT_BRACKET
-                   | fully_specified_type <IDENTIFIER> LEFT_BRACKET RIGHT_BRACKET EQUAL initializer
-                   | fully_specified_type <IDENTIFIER> LEFT_BRACKET constant_expression
-                   | RIGHT_BRACKET EQUAL initializer
-                   | fully_specified_type <IDENTIFIER> EQUAL initializer
-                   | INVARIANT <IDENTIFIER>; # Vertex only.
+                   | fully_specified_type <IDENTIFIER> "[" "]"
+                   | fully_specified_type <IDENTIFIER> "[" constant_expression "]"
+                   | fully_specified_type <IDENTIFIER> "[" "]" "=" initializer
+                   | fully_specified_type <IDENTIFIER> "[" constant_expression
+                   | "]" "=" initializer
+                   | fully_specified_type <IDENTIFIER> "=" initializer
+                   | "invariant" <IDENTIFIER>; # Vertex only.
 
 # Grammar Note: No 'enum', or 'typedef'.
 fully_specified_type = type_specifier
                      | type_qualifier type_specifier;
 
-type_qualifier = CONST
-               | ATTRIBUTE # Vertex only.
-               | VARYING
-               | CENTROID VARYING
-               | INVARIANT VARYING
-               | INVARIANT CENTROID VARYING
-               | UNIFORM;
+type_qualifier = "const"
+               | "attribute" # Vertex only.
+               | "varying"
+               | "centroid" "varying"
+               | "invariant" "varying"
+               | "invariant" "centroid" "varying"
+               | "uniform";
 
 type_specifier = type_specifier_nonarray
-               | type_specifier_nonarray LEFT_BRACKET constant_expression RIGHT_BRACKET;
+               | type_specifier_nonarray "[" constant_expression "]";
 
-type_specifier_nonarray = VOID
-                        | FLOAT
-                        | INT
-                        | BOOL
-                        | VEC2
-                        | VEC3
-                        | VEC4
-                        | BVEC2
-                        | BVEC3
-                        | BVEC4
-                        | IVEC2
-                        | IVEC3
-                        | IVEC4
-                        | MAT2
-                        | MAT3
-                        | MAT4
-                        | MAT2X2
-                        | MAT2X3
-                        | MAT2X4
-                        | MAT3X2
-                        | MAT3X3
-                        | MAT3X4
-                        | MAT4X2
-                        | MAT4X3
-                        | MAT4X4
-                        | SAMPLER1D
-                        | SAMPLER2D
-                        | SAMPLER3D
-                        | SAMPLERCUBE
-                        | SAMPLER1DSHADOW
-                        | SAMPLER2DSHADOW
+type_specifier_nonarray = "void"
+                        | "float"
+                        | "int"
+                        | "bool"
+                        | "vec2"
+                        | "vec3"
+                        | "vec4"
+                        | "bvec2"
+                        | "bvec3"
+                        | "bvec4"
+                        | "ivec2"
+                        | "ivec3"
+                        | "ivec4"
+                        | "mat2"
+                        | "mat3"
+                        | "mat4"
+                        | "mat2x2"
+                        | "mat2x3"
+                        | "mat2x4"
+                        | "mat3x2"
+                        | "mat3x3"
+                        | "mat3x4"
+                        | "mat4x2"
+                        | "mat4x3"
+                        | "mat4x4"
+                        | "sampler1d"
+                        | "sampler2d"
+                        | "sampler3d"
+                        | "samplerCube"
+                        | "sampler1dShadow"
+                        | "sampler2dShadow"
                         | struct_specifier
-                        | TYPE_NAME;
+                        | "TYPE_NAME";
 
-struct_specifier = STRUCT <IDENTIFIER> LEFT_BRACE struct_declaration_list RIGHT_BRACE
-                 | STRUCT LEFT_BRACE struct_declaration_list RIGHT_BRACE;
+struct_specifier = "struct" <IDENTIFIER> "{" struct_declaration_list "}"
+                 | "struct" "{" struct_declaration_list "}";
 
 struct_declaration_list = struct_declaration
-struct_declaration_list struct_declaration;
+                        | struct_declaration_list struct_declaration;
 
-struct_declaration = type_specifier struct_declarator_list <SEMICOLON>;
+struct_declaration = type_specifier struct_declarator_list ";";
 
 struct_declarator_list = struct_declarator
-                       | struct_declarator_list <COMMA> struct_declarator;
+                       | struct_declarator_list "," struct_declarator;
 
 struct_declarator = <IDENTIFIER>
-                  | <IDENTIFIER> LEFT_BRACKET constant_expression RIGHT_BRACKET;
+                  | <IDENTIFIER> "[" constant_expression "]";
 
 initializer = assignment_expression;
 
@@ -348,33 +254,33 @@ simple_statement = declaration_statement
                  | iteration_statement
                  | jump_statement;
 
-compound_statement = LEFT_BRACE RIGHT_BRACE
-                   | LEFT_BRACE statement_list RIGHT_BRACE;
+compound_statement = "{" "}"
+                   | "{" statement_list "}";
 
 statement_no_new_scope = compound_statement_no_new_scope
                        | simple_statement;
 
-compound_statement_no_new_scope = LEFT_BRACE RIGHT_BRACE
-                                | LEFT_BRACE statement_list RIGHT_BRACE;
+compound_statement_no_new_scope = "{" "}"
+                                | "{" statement_list "}";
 
 statement_list = statement
                | statement_list statement;
 
-expression_statement = <SEMICOLON>
-                     | expression <SEMICOLON>;
+expression_statement = ";"
+                     | expression ";";
 
-selection_statement = IF LEFT_PAREN expression RIGHT_PAREN selection_rest_statement;
+selection_statement = "if" "(" expression ")" selection_rest_statement;
 
-selection_rest_statement = statement ELSE statement
+selection_rest_statement = statement "else" statement
                          | statement;
 
 # Grammar Note: No 'switch'. Switch statements not supported.
 condition = expression
-          | fully_specified_type <IDENTIFIER> EQUAL initializer;
+          | fully_specified_type <IDENTIFIER> "=" initializer;
 
-iteration_statement = WHILE LEFT_PAREN condition RIGHT_PAREN statement_no_new_scope
-                    | DO statement WHILE LEFT_PAREN expression RIGHT_PAREN <SEMICOLON>
-                    | FOR LEFT_PAREN for_init_statement for_rest_statement RIGHT_PAREN
+iteration_statement = "while" "(" condition ")" statement_no_new_scope
+                    | "do" statement "while" "(" expression ")" ";"
+                    | "for" "(" for_init_statement for_rest_statement ")"
                     | statement_no_new_scope;
 
 for_init_statement = expression_statement
@@ -382,14 +288,14 @@ for_init_statement = expression_statement
 
 conditionopt = [ condition ];
 
-for_rest_statement = conditionopt <SEMICOLON>
-                   | conditionopt <SEMICOLON> expression;
+for_rest_statement = conditionopt ";"
+                   | conditionopt ";" expression;
 
-jump_statement = CONTINUE <SEMICOLON>
-               | BREAK <SEMICOLON>
-               | RETURN <SEMICOLON>
-               | RETURN expression <SEMICOLON>
-               | DISCARD <SEMICOLON>; # Fragment shader only.
+jump_statement = "continue" ";"
+               | "break" ";"
+               | "return" ";"
+               | "return" expression ";"
+               | "discard" ";"; # Fragment shader only.
 
 # Grammar Note: No 'goto'. Gotos are not supported.
 translation_unit = external_declaration
