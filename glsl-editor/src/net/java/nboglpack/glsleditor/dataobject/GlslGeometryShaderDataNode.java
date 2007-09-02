@@ -10,15 +10,13 @@ import org.openide.util.Lookup;
  */
 public class GlslGeometryShaderDataNode extends DataNode {
     
-    private static final String IMAGE_ICON_BASE = "SET/PATH/TO/ICON/HERE";
-    
     public GlslGeometryShaderDataNode(GlslGeometryShaderDataObject obj) {
         super(obj, Children.LEAF);
-        //        setIconBaseWithExtension(IMAGE_ICON_BASE);
+        setIconBaseWithExtension(GlslGeometryShaderDataLoaderBeanInfo.IMAGE_ICON_BASE);
     }
     GlslGeometryShaderDataNode(GlslGeometryShaderDataObject obj, Lookup lookup) {
         super(obj, Children.LEAF, lookup);
-        //        setIconBaseWithExtension(IMAGE_ICON_BASE);
+        setIconBaseWithExtension(GlslGeometryShaderDataLoaderBeanInfo.IMAGE_ICON_BASE);
     }
     
     //    /** Creates a property sheet. */

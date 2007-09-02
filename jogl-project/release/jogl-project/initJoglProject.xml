@@ -27,24 +27,20 @@
 			</fileset>
 		</replaceregexp>
 
-		<mkdir dir="${project.root}/tmp"/>
+        <mkdir dir="${project.root}/tmp"/>
 		<unzip src="${template.archive}" dest="${project.root}/tmp">
-			<patternset includes="${template.includes}" excludes="${template.excludes}">
-				<include name="${template.srcPath}${template.demoPath}/**/*"/>
-			</patternset>
+			<patternset>
+                <include name="${template.srcPath}${template.demoPath}/${template.demoClass}.java"/>
+            </patternset>
 		</unzip>
 
-		<mkdir dir="${project.root}/src/${project.packagePath}"/>
-		<move todir="${project.root}/src/${project.packagePath}">
-			<fileset dir="${project.root}/tmp/${template.srcPath}${template.demoPath}" excludes="${template.demoClass}.java"/>
-		</move>
+        <mkdir dir="${project.root}/src/${project.packagePath}"/>
 		<move
 			file="${project.root}/tmp/${template.srcPath}${template.demoPath}/${template.demoClass}.java"
 			tofile="${project.root}/src/${project.packagePath}/${project.mainClass}.java"
 		/>
-
-		<delete dir="${project.root}/tmp"/>
-		<antcall target="addDeps"/>
+        <delete dir="${project.root}/tmp"/>
+        <antcall target="addDeps"/>
 				
 		<replaceregexp byline="true" flags="g">
 			<regexp pattern='(\W+)${template.demoPath.regex}(\W+)'/>
@@ -70,12 +66,23 @@
 
 	</target>
 		
-	<target name="addDeps" if="template.extraFiles">
+	<target name="addDeps" if="template.includes">
 		<mkdir dir="${project.root}/tmp"/>
 		<unzip src="${template.archive}" dest="${project.root}/tmp">
-			<patternset includes="${template.extraFiles}" excludes="**${template.demoPath}/${template.demoClass}.java"/>
+			<patternset includes="${template.includes}" excludes="${template.excludes}">
+                <exclude name="${template.srcPath}${template.demoPath}/${template.demoClass}.java"/>
+            </patternset>
 		</unzip>
-		<move todir="${project.root}/src">
+		<move todir="${project.root}/src/${project.packagePath}" failonerror="false">
+			<fileset dir="${project.root}/tmp/${template.srcPath}${template.demoPath}" includes="**/*"/>
+		</move>
+		<delete dir="${project.root}/tmp"/>
+		<unzip src="${template.archive}" dest="${project.root}/tmp">
+			<patternset includes="${template.includes}" excludes="${template.excludes}">
+                <exclude name="${template.srcPath}${template.demoPath}/**/*"/>
+            </patternset>
+		</unzip>
+        <move todir="${project.root}/src" failonerror="false">
 			<fileset dir="${project.root}/tmp/${template.srcPath}" includes="**/*"/>
 		</move>
 		<delete dir="${project.root}/tmp"/>

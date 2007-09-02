@@ -6,6 +6,7 @@ import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.SimpleBeanInfo;
 import org.openide.loaders.UniFileLoader;
+import org.openide.util.Utilities;
 
 
 /**
@@ -13,6 +14,8 @@ import org.openide.loaders.UniFileLoader;
  */
 public class GlslGeometryShaderDataLoaderBeanInfo extends SimpleBeanInfo {
     
+    public static final String IMAGE_ICON_BASE = "net/java/nboglpack/glsleditor/resources/GeometryShaderIcon.gif";
+
     @Override
     public BeanInfo[] getAdditionalBeanInfo() {
         try {
@@ -24,8 +27,11 @@ public class GlslGeometryShaderDataLoaderBeanInfo extends SimpleBeanInfo {
     
     @Override
     public Image getIcon(int type) {
-        return super.getIcon(type); // TODO @cylab we need a fancy geo shader icon
-        
+        if (type == BeanInfo.ICON_COLOR_16x16 || type == BeanInfo.ICON_MONO_16x16) {
+            return Utilities.loadImage(IMAGE_ICON_BASE);
+        } else {
+            return null;
+        }
     }
     
 }

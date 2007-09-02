@@ -273,6 +273,7 @@
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.dataobject.Bundle"/>
             </file>
             <file name="GlslGeometryShaderResolver.xml" url="resources/GlslGeometryShaderResolver.xml">
+                <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/glsleditor/resources/GeometryShaderIcon.gif"/>
                 <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.dataobject.Bundle"/>
             </file>
             <file name="GlslVertexShaderResolver.xml" url="resources/GlslVertexShaderResolver.xml">

@@ -36,7 +36,7 @@
                         <attr name="projectName" stringvalue="JOGLInfiniteShadowVolumesDemo"/>
                         <attr name="archive" stringvalue="jogl-demos-src.zip"/>
                         <attr name="srcPath" stringvalue="jogl-demos/src"/>
-                        <attr name="extraFiles" stringvalue="gleem/**/*,demos/common/**/*,demos/util/**/*,demos/data/models/**/*"/>
+                        <attr name="includes" stringvalue="gleem/**/*,demos/common/**/*,demos/util/**/*,demos/data/models/**/*"/>
                         <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
                         <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
                         <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/jogldemosproject/resources/InfiniteShadowVolumesDemoDescription.html"/>
@@ -49,7 +49,7 @@
                         <attr name="projectName" stringvalue="JOGLProceduralTexturePhysicsDemo"/>
                         <attr name="archive" stringvalue="jogl-demos-src.zip"/>
                         <attr name="srcPath" stringvalue="jogl-demos/src"/>
-                        <attr name="extraFiles" stringvalue="gleem/**/*,demos/common/**/*,demos/util/**/*,demos/data/**/*"/>
+                        <attr name="includes" stringvalue="gleem/**/*,demos/common/**/*,demos/util/**/*,demos/data/**/*"/>
                         <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
                         <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
                         <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/jogldemosproject/resources/ProceduralTexturePhysicsDemoDescription.html"/>
@@ -62,7 +62,7 @@
                         <attr name="projectName" stringvalue="JOGLVertexProgRefractDemo"/>
                         <attr name="archive" stringvalue="jogl-demos-src.zip"/>
                         <attr name="srcPath" stringvalue="jogl-demos/src"/>
-                        <attr name="extraFiles" stringvalue="gleem/**/*,demos/common/**/*,demos/util/**/*,demos/data/**/*"/>
+                        <attr name="includes" stringvalue="gleem/**/*,demos/common/**/*,demos/util/**/*,demos/data/**/*"/>
                         <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
                         <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
                         <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/jogldemosproject/resources/VertexProgRefractDemoDescription.html"/>
@@ -75,6 +75,7 @@
                         <attr name="projectName" stringvalue="JOGLParticlesDemo"/>
                         <attr name="archive" stringvalue="jogl-demos-src.zip"/>
                         <attr name="srcPath" stringvalue="jogl-demos/src"/>
+                        <attr name="includes" stringvalue="demos/particles/engine/**/*"/>
                         <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
                         <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
                         <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/jogldemosproject/resources/ParticlesDemoDescription.html"/>
@@ -88,7 +89,7 @@
                         <attr name="projectName" stringvalue="JOGLTextFlowDemo"/>
                         <attr name="archive" stringvalue="jogl-demos-src.zip"/>
                         <attr name="srcPath" stringvalue="jogl-demos/src"/>
-                        <attr name="extraFiles" stringvalue="gleem/**/*,demos/common/**/*,demos/util/**/*"/>
+                        <attr name="includes" stringvalue="gleem/**/*,demos/common/**/*,demos/util/**/*,demos/gears/Gears.java"/>
                         <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
                         <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
                         <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/jogldemosproject/resources/TextFlowDemoDescription.html"/>

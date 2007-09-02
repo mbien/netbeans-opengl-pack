@@ -266,22 +266,35 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
 		props.setProperty("template.demoClass.regex",demoClass.replaceAll("([\\.\\/])","\\\\$1"));
 		props.setProperty("template.archive",archiveFile.getAbsolutePath());
 		props.setProperty("template.srcPath",srcPath);
-		props.setProperty("template.includes",includes);
-		props.setProperty("template.excludes",excludes);
+		props.setProperty("template.excludes","");
 		props.setProperty("natives.platform",platform);
-		if(extraFiles!=null && !extraFiles.trim().equals(""))
+		if(includes!=null && !includes.trim().equals(""))
 		{
-			String mergedExtraFiles=null;
-			StringTokenizer tokenizer= new StringTokenizer(extraFiles,", ");
+			String mergedIncludes=null;
+			StringTokenizer tokenizer= new StringTokenizer(includes,", ");
 			while (tokenizer.hasMoreTokens())
 			{
 				String token= tokenizer.nextToken();
-				if(mergedExtraFiles==null)
-					mergedExtraFiles=srcPath+token;
+				if(mergedIncludes==null)
+					mergedIncludes=srcPath+token;
 				else
-					mergedExtraFiles+=","+srcPath+token;
-			}
-			props.setProperty("template.extraFiles",mergedExtraFiles);
+					mergedIncludes+=","+srcPath+token;
+         	}
+			props.setProperty("template.includes",mergedIncludes);
+		}
+		if(excludes!=null && !excludes.trim().equals(""))
+		{
+			String mergedExcludes=null;
+			StringTokenizer tokenizer= new StringTokenizer(excludes,", ");
+			while (tokenizer.hasMoreTokens())
+			{
+				String token= tokenizer.nextToken();
+				if(mergedExcludes==null)
+					mergedExcludes=srcPath+token;
+				else
+					mergedExcludes+=","+srcPath+token;
+         	}
+			props.setProperty("template.excludes",mergedExcludes);
 		}
 		try
 		{

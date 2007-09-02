@@ -13,11 +13,12 @@
     </vpp:config>
     
     <target name="prepare-generation" depends="init">
+        <delete dir="tmp" failonerror="false"/>
         <mkdir dir="tmp"/>
         <mkdir dir="tmp/api"/>
         <unzip src="release/jogl-project/glredbook-src.zip" dest="tmp"/>
         <javadoc
-            packagenames="glredbook10.*"
+            packagenames="net.letskit.redbook.*"
             sourcepath="tmp/src"
             defaultexcludes="yes"
             author="true"
@@ -27,7 +28,80 @@
         />		
     </target>
     
-    <target name="generate-config" depends="init">
+    <target name="generate-config" depends="prepare-generation">
+        
+        <!-- iterate the api-doc to generate the example-list and the missing files -->
+        <script language="javascript"><![CDATA[
+			importPackage(Packages.org.w3c.tidy);
+			importPackage(Packages.org.dom4j);
+			importPackage(Packages.org.dom4j.io);
+			importPackage(Packages.java.io);
+			importPackage(Packages.java.net);
+			importPackage(Packages.java.util);
+
+            source= new File(glredbook.getProperty("basedir"),"tmp/api/allclasses-noframe.html");
+			tidy= new Tidy();
+            echo = glredbook.createTask("echo");
+            try{
+                context= vpp0.getVelocityContext();
+                inStream= new FileInputStream(source);
+				reader= new DOMReader();
+				doc= reader.read(tidy.parseDOM(inStream, null));
+				nodes= doc.selectNodes("//a");
+                list= "";
+                infos= new HashMap();
+                for( i= 0; i < nodes.size(); i++)
+                {
+                    node= nodes.get(i);
+                    name= node.getStringValue();
+                    if(name!='glskeleton' && name!='jitter.java')
+                    {
+                        html= node.attributeValue("href");
+                        location= html.replace(".html",".java");
+                        className= location.replace("/",".").replace(".java","");
+                        packageName= className.replace("."+name,"");
+                        packagePath= location.replace("/"+name+".java","");
+                        echo.setMessage("Found example '" + name + "': "+location);echo.perform();
+                        list += (i==0?"":",") + name;
+                        infos.put(name+":location","src/"+location);
+                        infos.put(name+":class",className);
+                        infos.put(name+":package",packageName);
+                        infos.put(name+":packagePath",packagePath);
+
+                        glredbook.setProperty("example",name)
+                        glredbook.setProperty("example.html",html)
+                        antcall = glredbook.createTask("antcall");
+                        antcall.setTarget("-generate-single-config");
+                        antcall.perform();
+                    }
+                }
+                context.internalPut("list",list);
+                context.internalPut("infos",infos);
+			}
+			catch(error)
+			{
+				echo.setMessage("Exception: "+ error); echo.perform();
+			}
+			finally
+			{
+				try{
+					inStream.close();
+				}
+				catch(error)
+				{
+					/* ignore */
+				}
+			}
+//            examples= glredbook.getProperty("examples").split("[, ]+")
+//			for(i=0; i < examples.length;i++ )
+//			{
+//				glredbook.setProperty("example",examples[i])
+//				antcall = glredbook.createTask("antcall");
+//				antcall.setTarget("-generate-single-config");
+//				antcall.perform();
+//			}
+        ]]></script>
+
         <!-- generate layer file (project template configration) using velocity -->
         <copy
             file="etc/layer.xml"
@@ -40,18 +114,7 @@
                 </vpp:filter>
             </filterchain>
         </copy>
-        
-        <!-- iterate the example apps to generate the missing files -->
-        <script language="javascript"><![CDATA[
-			examples= glredbook.getProperty("examples").split("[, ]+")
-			for(i=0; i < examples.length;i++ )
-			{
-				glredbook.setProperty("example",examples[i])
-				antcall = glredbook.createTask("antcall");
-				antcall.setTarget("-generate-single-config");
-				antcall.perform();
-			}
-        ]]></script>
+        <delete dir="tmp" failonerror="false"/>
     </target>
     
     <target name="-generate-single-config">
@@ -64,7 +127,7 @@
 			importPackage(Packages.java.net);
 			importPackage(Packages.java.util);
 			
-			source= new File(glredbook.getProperty("basedir"),"tmp/api/glredbook10/"+glredbook.getProperty("example")+".html");
+			source= new File(glredbook.getProperty("basedir"),"tmp/api/"+glredbook.getProperty("example.html"));
 			tidy= new Tidy();
             try{
 				inStream= new FileInputStream(source);
