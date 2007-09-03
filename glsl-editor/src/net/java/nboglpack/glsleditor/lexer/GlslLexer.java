@@ -22,185 +22,256 @@ import org.netbeans.spi.lexer.TokenFactory;
  */
 public class GlslLexer implements Lexer<GlslTokenId> {
  
- private static final int INIT          = 0;
- private static final int IDENTIFIER    = 1;
- private static final int VALUE         = 2;// TODO editor; implement value tokenizing
- //private static final int STRING_VALUE  = 3;
- private static final int PREPROCESSOR  = 4;
- private static final int COMMENT       = 5;
- private static final int ML_COMMENT    = 6;
- 
  private final LexerInput input;
  private final TokenFactory<GlslTokenId> factory;
  private final GlslVocabularyManager manager;
  private final StringBuilder stringBuilder;
  
- //private boolean inEscape = false;
-    
- private int state = INIT;
  
  public GlslLexer(LexerRestartInfo<GlslTokenId> info, GlslVocabularyManager manager) {
      this.input = info.input();
      this.factory = info.tokenFactory();
-     this.state = (info.state() != null) ? (Integer)info.state() : INIT;
      this.manager = manager;
      this.stringBuilder = new StringBuilder();
  }
 
+    @SuppressWarnings("fallthrough")
     public Token<GlslTokenId> nextToken() {
         
+        int character = input.read();
         
-        while(true) {
+        switch(character) {
             
-            int character = input.read();
-
-            switch(state) {
-
-                case INIT:
-
-                    switch (character) {
-                        case '(':
-                        case ')':
-                            state = INIT;
-                            return factory.createToken(GlslTokenId.BRACE);
-                        case '{':
-                        case '}':
-                            state = INIT;
-                            return factory.createToken(GlslTokenId.CURLY_BRACE);
-                        case '.':
-                            state = INIT;
-                            return factory.createToken(GlslTokenId.DOT);
-                        case ',':
-                            state = INIT;
-                            return factory.createToken(GlslTokenId.COMMA);
-                        case ';':
-                            state = INIT;
-                            return factory.createToken(GlslTokenId.SEMICOLON);
-                        case '\r':
-                            input.consumeNewline();
-                        case LexerInput.EOF:
-                            if(input.readLength() == 0)
-                                return null;
-                        case '\n':
-                            state = INIT;
-                            return factory.createToken(GlslTokenId.END_OF_LINE);
-                        case ' ':
-                        case '\t':
-                            state = INIT;
-                            return factory.createToken(GlslTokenId.WHITESPACE);
-                        case '#':
-                            state = PREPROCESSOR;
-                            break;
-                     //   case '"':
-                       //     state = STRING_VALUE;
-                         //   break;
-                        case '/':
-                            int c = input.read();
-                            if(c == '/') {
-                                state = COMMENT;
-                                character = c;
-                            }else if(c == '*'){
-                                state = ML_COMMENT;
-                                character = c;
-                            }else{
-                                state = INIT;
-                                input.backup(1);
-                            }
-                            break;
-                        default:
-                            if(Character.isJavaIdentifierPart(character)) {
-                                state = IDENTIFIER;
-                            } else {
-                                state = INIT;
-                            }
-                    }
-                    break;
-
-                case IDENTIFIER:
-
-                    switch (character) {
-                        case '\r':
-                            input.consumeNewline();
-                        case '\n':
-                        case LexerInput.EOF:
-                            state = INIT;
-                            return tokenize();
-                        default:
-                            if(!Character.isJavaIdentifierPart(character)) {
-                                state = INIT;
-                                return tokenize();
-                            }
-                    }
-                    break;
-/*
-                case STRING_VALUE:
-
-                    switch (character) {
-                        case '\\':
-                            inEscape = true;
-                            break;
-                        case '"':
-                            if(!inEscape) {
-                                state = INIT;
-                                return factory.createToken(GlslTokenId.STRING_VALUE);
-                            }
-                        case LexerInput.EOF:
-                            state = INIT;
-                            return factory.createToken(GlslTokenId.STRING_VALUE);
-                        default:
-                            inEscape = false;
-                            break;
-                    }
-                    break;
-*/
-                case PREPROCESSOR:
-
-                    switch (character) {
-                        case '\r':
-                            input.consumeNewline();
-                        case '\n':
-                        case LexerInput.EOF:
-                            state = INIT;
-                            return factory.createToken(GlslTokenId.PREPROCESSOR);
-                    }
-                    break;
-
-                case COMMENT:
-
-                    switch (character) {
-                        case '\r':
-                            input.consumeNewline();
-                        case '\n':
-                        case LexerInput.EOF:
-                            state = INIT;
-                            return factory.createToken(GlslTokenId.COMMENT);
-                    }
-                    break;
-
-                case ML_COMMENT:
-                    switch(character) {
-                        
-                        case '*':
-                            if(input.read() == '/') {
-                                state = INIT;
-                                return factory.createToken(GlslTokenId.COMMENT);
-                            }else{
-                                input.backup(1);
-                            }
-                            break;
-                        case LexerInput.EOF:
-                            state = INIT;
-                            return factory.createToken(GlslTokenId.COMMENT);
-                    }
-                    break;
-                    
-            }
-            
+            case '(':
+            case ')':
+                return factory.createToken(GlslTokenId.PAREN);
+            case '{':
+            case '}':
+                return factory.createToken(GlslTokenId.BRACE);
+            case '[':
+            case ']':
+                return factory.createToken(GlslTokenId.BRACKET);
+            case '.':
+                return factory.createToken(GlslTokenId.DOT);
+            case ',':
+                return factory.createToken(GlslTokenId.COMMA);
+            case ':':
+                return factory.createToken(GlslTokenId.COLON);
+            case ';':
+                return factory.createToken(GlslTokenId.SEMICOLON);
+            case '?':
+                return factory.createToken(GlslTokenId.QUESTION);
+            case '~':
+                return factory.createToken(GlslTokenId.TILDE);
+            case '*':
+                if(input.read() == '=') {
+                    return factory.createToken(GlslTokenId.MUL_ASSIGN);
+                }else{
+                    input.backup(1);
+                    return factory.createToken(GlslTokenId.STAR);
+                }
+            case '%':
+                if(input.read() == '=') {
+                    return factory.createToken(GlslTokenId.MOD_ASSIGN);
+                }else{
+                    input.backup(1);
+                    return factory.createToken(GlslTokenId.PERCENT);
+                }
+            case '!':
+                if(input.read() == '=') {
+                    return factory.createToken(GlslTokenId.NE);
+                }else{
+                    input.backup(1);
+                    return factory.createToken(GlslTokenId.BANG);
+                }
+            case '=':
+                if(input.read() == '=') {
+                    return factory.createToken(GlslTokenId.EQEQ);
+                }else{
+                    input.backup(1);
+                    return factory.createToken(GlslTokenId.EQ);
+                }
+            case '^':
+                switch(input.read()) {
+                    case('^'):
+                        return factory.createToken(GlslTokenId.CARETCARET);
+                    case('='):
+                        return factory.createToken(GlslTokenId.XOR_ASSIGN);
+                    default:
+                        input.backup(1);
+                        return factory.createToken(GlslTokenId.CARET);
+                }
+            case '+':
+                switch(input.read()) {
+                    case('+'):
+                        return factory.createToken(GlslTokenId.PLUSPLUS);
+                    case('='):
+                        return factory.createToken(GlslTokenId.ADD_ASSIGN);
+                    default:
+                        input.backup(1);
+                        return factory.createToken(GlslTokenId.PLUS);
+                }
+            case '-':
+                switch(input.read()) {
+                    case('-'):
+                        return factory.createToken(GlslTokenId.MINUSMINUS);
+                    case('='):
+                        return factory.createToken(GlslTokenId.SUB_ASSIGN);
+                    default:
+                        input.backup(1);
+                        return factory.createToken(GlslTokenId.MINUS);
+                }
+            case '&':
+                switch(input.read()) {
+                    case('&'):
+                        return factory.createToken(GlslTokenId.AMPAMP);
+                    case('='):
+                        return factory.createToken(GlslTokenId.AND_ASSIGN);
+                    default:
+                        input.backup(1);
+                        return factory.createToken(GlslTokenId.AMP);
+                }
+            case '|':
+                switch(input.read()) {
+                    case('|'):
+                        return factory.createToken(GlslTokenId.BARBAR);
+                    case ('='):
+                        return factory.createToken(GlslTokenId.OR_ASSIGN);
+                    default:
+                        input.backup(1);
+                        return factory.createToken(GlslTokenId.BAR);
+                }
+            case '<':
+                switch(input.read()) {
+                    case('<'):
+                        if(input.read() == '=') {
+                            return factory.createToken(GlslTokenId.LEFT_BITSHIFT_ASSIGN);
+                        }else{
+                            input.backup(1);
+                            return factory.createToken(GlslTokenId.LEFT_BITSHIFT);
+                        }
+                    case('='):
+                        return factory.createToken(GlslTokenId.LE);
+                    default:
+                        input.backup(1);
+                        return factory.createToken(GlslTokenId.LEFT_ANGLE);
+                }
+            case '>':
+                switch(input.read()) {
+                    case('>'):
+                        if(input.read() == '=') {
+                            return factory.createToken(GlslTokenId.RIGHT_BITSHIFT_ASSIGN);
+                        }else{
+                            input.backup(1);
+                            return factory.createToken(GlslTokenId.RIGHT_BITSHIFT);
+                        }
+                    case('='):
+                        return factory.createToken(GlslTokenId.GE);
+                    default:
+                        input.backup(1);
+                        return factory.createToken(GlslTokenId.RIGHT_ANGLE);
+                }
+            case '/':
+                int c = input.read();
+                if(c == '/') {
+                    readRemainingLine();
+                    return factory.createToken(GlslTokenId.COMMENT);
+                }else if(c == '*') {
+                    return tokenizeMLComment();
+                }else if(c == '=') {
+                    return factory.createToken(GlslTokenId.DIV_ASSIGN);
+                }else{
+                    input.backup(1);
+                    return factory.createToken(GlslTokenId.SLASH);
+                }
+            case '#':
+                readRemainingLine();
+                return factory.createToken(GlslTokenId.PREPROCESSOR);
+            case ' ':
+            case '\t':
+                do{
+                    character = input.read();
+                }while(character == ' ' || character == '\t');
+                input.backup(1);                
+                return factory.createToken(GlslTokenId.WHITESPACE);
+            case '\r':
+                input.consumeNewline();
+            case LexerInput.EOF:
+                if(input.readLength() == 0)
+                    return null;
+            case '\n':
+                return factory.createToken(GlslTokenId.END_OF_LINE);
+            default:
+                if(Character.isDigit(character)) {
+                    return tokenizeNumber();
+                }else if(Character.isUnicodeIdentifierStart(character)) {
+                    return tokenizeName();
+                }else{
+                    return factory.createToken(GlslTokenId.error);
+                }
         }
       
     }
     
-    private Token<GlslTokenId> tokenize() {
+    private final void readRemainingLine() {
+        
+        int character = input.read();
+        
+        while(character != LexerInput.EOF) {
+            switch (character) {
+                case '\r':
+                    input.consumeNewline();
+                case '\n':
+                case LexerInput.EOF:
+                    return;
+            }
+            character = input.read();
+        }
+        
+    }
+    
+    private final Token<GlslTokenId> tokenizeMLComment() {
+        
+        int character = input.read();
+        
+        while(character != LexerInput.EOF) {
+            if(character == '*' && input.read() == '/') {
+                return factory.createToken(GlslTokenId.COMMENT);
+            }
+            character = input.read();
+        }
+        return factory.createToken(GlslTokenId.COMMENT);
+        
+    }
+    
+    private final Token<GlslTokenId> tokenizeNumber() {
+        
+        int character;
+        
+        do{
+            character = input.read();
+        }while(Character.isDigit(character));
+        
+        if(character == '.') {
+            
+            do{
+                character = input.read();
+            }while(Character.isDigit(character));
+            
+            if(character != 'f' && character != 'F')
+                input.backup(1);
+            
+            return factory.createToken(GlslTokenId.FLOAT_LITERAL);
+            
+        }else{
+            
+            input.backup(1);
+            return factory.createToken(GlslTokenId.INTEGER_LITERAL);
+            
+        }
+    }
+    
+    private final Token<GlslTokenId> tokenizeName() {
         
         if(stringBuilder.length() > 0)
             stringBuilder.delete(0, stringBuilder.length());
@@ -210,7 +281,7 @@ public class GlslLexer implements Lexer<GlslTokenId> {
         
         // assamble token
         char c;
-        while(Character.isJavaIdentifierPart(c = ((char)input.read())))          
+        while(Character.isUnicodeIdentifierPart(c = ((char)input.read())))        
             stringBuilder.append(c);
         
         if(stringBuilder.length() > 0)
@@ -233,12 +304,33 @@ public class GlslLexer implements Lexer<GlslTokenId> {
                 
             }
         }
-       
-        return factory.createToken(GlslTokenId.IDENTIFIER);
+        
+        // check if token = function name
+        int tokenEnd = input.readLength();
+        int character = input.read();
+        
+        while(true) {
+            switch (character) {
+                case ' ':
+                case '\t':
+                case '\r':
+                case '\n':
+                    character = input.read();
+                    break;
+                case '(':
+                    input.backup(input.readLength()-tokenEnd);
+                    return factory.createToken(GlslTokenId.FUNCTION);
+                default:
+                    input.backup(input.readLength()-tokenEnd);
+                    return factory.createToken(GlslTokenId.IDENTIFIER);
+            }
+        }
+        
     }
 
     public Object state() {
-        return state;
+        // we don't need any states
+        return null;
     }
 
     public void release() {
