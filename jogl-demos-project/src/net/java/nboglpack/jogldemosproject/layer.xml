@@ -107,8 +107,6 @@
                         <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/jogldemosproject/resources/HardwareShadowMappingDemoDescription.html"/>
                         <attr name="template" boolvalue="true"/>
                     </file>
-                    <!--
-                    TODO 
                     <file name="HDRDemo.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
                         <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                         <attr name="demo" stringvalue="demos.hdr.HDR"/>
@@ -122,6 +120,8 @@
                         <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/jogldemosproject/resources/HDRDemoDescription.html"/>
                         <attr name="template" boolvalue="true"/>
                     </file>
+                    <!--
+                    TODO 
                     <file name="Java2D_JOGLInteroperabilityDemo.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
                         <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                         <attr name="demo" stringvalue="demos.jrefract.JRefract"/>
