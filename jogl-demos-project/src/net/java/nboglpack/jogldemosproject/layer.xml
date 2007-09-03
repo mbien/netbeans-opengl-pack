@@ -49,7 +49,7 @@
                         <attr name="projectName" stringvalue="JOGLProceduralTexturePhysicsDemo"/>
                         <attr name="archive" stringvalue="jogl-demos-src.zip"/>
                         <attr name="srcPath" stringvalue="jogl-demos/src"/>
-                        <attr name="includes" stringvalue="gleem/**/*,demos/common/**/*,demos/util/**/*,demos/data/**/*"/>
+                        <attr name="includes" stringvalue="gleem/**/*,demos/common/**/*,demos/util/**/*,demos/data/**/*,demos/proceduralTexturePhysics/Water.java"/>
                         <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
                         <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
                         <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/jogldemosproject/resources/ProceduralTexturePhysicsDemoDescription.html"/>
@@ -81,7 +81,6 @@
                         <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/jogldemosproject/resources/ParticlesDemoDescription.html"/>
                         <attr name="template" boolvalue="true"/>
                     </file>
-                    <!--TODO we need an option to specify the classes inside projectPackage-->
                     <file name="TextFlowDemo.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
                         <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                         <attr name="demo" stringvalue="demos.j2d.TextFlow"/>
@@ -89,12 +88,54 @@
                         <attr name="projectName" stringvalue="JOGLTextFlowDemo"/>
                         <attr name="archive" stringvalue="jogl-demos-src.zip"/>
                         <attr name="srcPath" stringvalue="jogl-demos/src"/>
-                        <attr name="includes" stringvalue="gleem/**/*,demos/common/**/*,demos/util/**/*,demos/gears/Gears.java"/>
+                        <attr name="includes" stringvalue="demos/common/**/*,demos/util/**/*"/>
                         <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
                         <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
                         <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/jogldemosproject/resources/TextFlowDemoDescription.html"/>
                         <attr name="template" boolvalue="true"/>
                     </file>
+                    <file name="HardwareShadowMappingDemo.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                        <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
+                        <attr name="demo" stringvalue="demos.hwShadowmapsSimple.HWShadowmapsSimple"/>
+                        <attr name="projectPackage" stringvalue="demos.hwShadowmapsSimple"/>
+                        <attr name="projectName" stringvalue="JOGLHardwareShadowMappingDemo"/>
+                        <attr name="archive" stringvalue="jogl-demos-src.zip"/>
+                        <attr name="srcPath" stringvalue="jogl-demos/src"/>
+                        <attr name="includes" stringvalue="gleem/**/*,demos/common/**/*,demos/util/**/*,demos/data/**/*"/>
+                        <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
+                        <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
+                        <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/jogldemosproject/resources/HardwareShadowMappingDemoDescription.html"/>
+                        <attr name="template" boolvalue="true"/>
+                    </file>
+                    <!--
+                    TODO 
+                    <file name="HDRDemo.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                        <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
+                        <attr name="demo" stringvalue="demos.hdr.HDR"/>
+                        <attr name="projectPackage" stringvalue="demos.hdr"/>
+                        <attr name="projectName" stringvalue="JOGLHighDynamicRangeDemo"/>
+                        <attr name="archive" stringvalue="jogl-demos-src.zip"/>
+                        <attr name="srcPath" stringvalue="jogl-demos/src"/>
+                        <attr name="includes" stringvalue="demos/hdr/**/*,gleem/**/*,demos/common/**/*,demos/util/**/*,demos/data/**/*"/>
+                        <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
+                        <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
+                        <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/jogldemosproject/resources/HDRDemoDescription.html"/>
+                        <attr name="template" boolvalue="true"/>
+                    </file>
+                    <file name="Java2D_JOGLInteroperabilityDemo.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                        <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
+                        <attr name="demo" stringvalue="demos.jrefract.JRefract"/>
+                        <attr name="projectPackage" stringvalue="demos.jrefract"/>
+                        <attr name="projectName" stringvalue="JOGLInteroperabilityDemo"/>
+                        <attr name="archive" stringvalue="jogl-demos-src.zip"/>
+                        <attr name="srcPath" stringvalue="jogl-demos/src"/>
+                        <attr name="includes" stringvalue="gleem/**/*,demos/common/**/*,demos/util/**/*,demos/data/**/*,demos/hdr/**/*,demos/hwShadowmapsSimple/**/*,demos/infiniteShadowVolumes/**/*,demos/proceduralTexturePhysics/**/*,demos/j2d/FlyingText,demos/jgears/JGears,demos/vertexBufferObject/VertexBufferObject,demos/vertexProgRefract/VertexProgRefract,demos/vertexProgWarp/VertexProgWarp"/>
+                        <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
+                        <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
+                        <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/jogldemosproject/resources/InteroperabilityDemoDescription.html"/>
+                        <attr name="template" boolvalue="true"/>
+                    </file>
+                    -->
                 </folder>
             </folder>
         </folder>
