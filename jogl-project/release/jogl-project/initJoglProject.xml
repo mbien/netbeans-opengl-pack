@@ -59,7 +59,7 @@
 		</replaceregexp>
 
 		<replaceregexp byline="true" flags="g">
-			<regexp pattern="(\W+)${template.demoClass.regex}(\W+)?"/>
+			<regexp pattern="(\W+)${template.demoClass.regex}(\W+|$)"/>
 			<substitution expression="\1${project.mainClass}\2"/>
 			<fileset file="${project.root}/src/${project.packagePath}/${project.mainClass}.java"/>
 		</replaceregexp>
