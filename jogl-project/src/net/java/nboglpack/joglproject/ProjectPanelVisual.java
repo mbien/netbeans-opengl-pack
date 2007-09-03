@@ -18,14 +18,12 @@ public class ProjectPanelVisual extends JPanel implements DocumentListener
 	public static final String PROP_PROJECT_PACKAGE = "projectPackage";
 	
 	private ProjectWizardPanel panel;
-	private int type;
 	
 	/** Creates new form PanelProjectLocationVisual */
 	public ProjectPanelVisual(ProjectWizardPanel panel)
 	{
 		initComponents();
 		this.panel = panel;
-		this.type = type;
 		// Register listener on the textFields to make the automatic updates
 		projectNameTextField.getDocument().addDocumentListener(this);
 		projectLocationTextField.getDocument().addDocumentListener(this);
