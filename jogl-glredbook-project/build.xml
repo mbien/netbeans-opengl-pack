@@ -2,6 +2,13 @@
 <!-- You may freely edit this file. See harness/README in the NetBeans platform -->
 <!-- for some information on what you could do (e.g. targets to override). -->
 <!-- If you delete this file and reopen the project it will be recreated. -->
+
+<!--
+	You need to install the vpp tasks (http://vpp.sourceforge.net/) by copying the
+	foundrylogic-vpp.jar and velocity-dep.jar into the lib directory of your ant installation
+	(See Tools->Options->Miscellaneous to locate or configure the installation folder)
+	You may need to restart Netbeans to detect the changes.
+-->
 <project name="glredbook" default="netbeans" basedir="." xmlns:vpp="antlib:foundrylogic.vpp">
     
     <description>Builds, tests, and runs the project net.java.nboglpack.joglglredbookproject.</description>
