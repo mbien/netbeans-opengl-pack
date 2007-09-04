@@ -1,30 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <page visibility="1">
     <component_list>
+        
         <component visibility="1" type="ProjectMetadata" order="1">
             <title localize="false"></title>
         </component>
+        
         <component visibility="1" type="Html" order="2">
             <title localize="false"></title>
             <filename>GoogleAnalyticsSnippet.html</filename>
-        </component><component visibility="1" type="Html" order="3">
+        </component>
+        
+        <component visibility="1" type="Html" order="3">
             <title localize="false">Project Overview</title>
             <filename>OverviewSnippet.html</filename>
         </component>
+        
         <component visibility="1" type="Html" order="4">
             <title localize="false">How to get Involved</title>
             <filename>GetInvolvedSnippet.html</filename>
         </component>
-        </component><component visibility="1" type="Html" order="5">
+        
+        <component visibility="1" type="Html" order="5">
             <title localize="false">License</title>
             <filename>TermsOfUseSnippet.html</filename>
-        </component>        
+        </component>
+        
         <component visibility="1" type="Html" order="6">
             <title localize="false">Download</title>
             <filename>DownloadSnippet.html</filename>
         </component>
+        
         <component visibility="1" type="Subproject" order="7">
             <title localize="true">Subprojects</title>
         </component>
+        
     </component_list>
 </page>
