@@ -9,17 +9,21 @@
             <filename>GoogleAnalyticsSnippet.html</filename>
         </component><component visibility="1" type="Html" order="3">
             <title localize="false">Project Overview</title>
-            <filename>HtmlSnippet1.html</filename>
+            <filename>OverviewSnippet.html</filename>
         </component>
         <component visibility="1" type="Html" order="4">
-            <title localize="false">How to get involved</title>
-            <filename>HtmlSnippet3.html</filename>
+            <title localize="false">How to get Involved</title>
+            <filename>GetInvolvedSnippet.html</filename>
         </component>
-        <component visibility="1" type="Html" order="5">
+        </component><component visibility="1" type="Html" order="5">
+            <title localize="false">License</title>
+            <filename>TermsOfUseSnippet.html</filename>
+        </component>        
+        <component visibility="1" type="Html" order="6">
             <title localize="false">Download</title>
-            <filename>HtmlSnippet2.html</filename>
+            <filename>DownloadSnippet.html</filename>
         </component>
-        <component visibility="1" type="Subproject" order="6">
+        <component visibility="1" type="Subproject" order="7">
             <title localize="true">Subprojects</title>
         </component>
     </component_list>
