@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module: edu.cornell.lassp.houle.RngPack
+OpenIDE-Module-Localizing-Bundle: edu/cornell/lassp/houle/RngPack/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

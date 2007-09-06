@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <style>
+        <DividerLocation splitToolShader="390" splitSListPreview="455" splitShaderLog="515" />
+        <WindowBounds width="1296" height="786" top="281" left="151" />
+        <WindowState>0</WindowState>
+        <ShowVariableNames>true</ShowVariableNames>
+    </style>
+    <general>
+        <RefreshThread refreshFrequency="40" IdleFrequencyFactor="2" />
+    </general>
+    <GraphNode>
+        <Style>
+            <SlideSpeed x="50" y="50" />
+            <NodeSlideFactor>0.51</NodeSlideFactor>
+            <MaxSliderSize>300</MaxSliderSize>
+        </Style>
+        <Connectors>
+            <Arrow Length="15.0" AngleOffset="0.4" />
+        </Connectors>
+    </GraphNode>
+    <ShaderProgramList>
+        <ShaderProgramCollection>net.java.nboglpack.visualdesigner.shader.programs.glsl.GLSLFunctions</ShaderProgramCollection>
+        <ShaderProgramCollection>net.java.nboglpack.visualdesigner.shader.programs.UtilShaderPrograms</ShaderProgramCollection>
+        <ShaderProgramCollection>net.java.nboglpack.visualdesigner.shader.programs.SimpleGeneratorsCollection</ShaderProgramCollection>
+        <ShaderProgramCollection>net.java.nboglpack.visualdesigner.shader.programs.LightingShaderPrograms</ShaderProgramCollection>
+        <ShaderProgramCollection>net.java.nboglpack.visualdesigner.shader.programs.ProceduralTexturingShaderPrograms</ShaderProgramCollection>
+    </ShaderProgramList>
+    <Nodes>
+        <Style>
+            <BackgroundColor r="75" g="75" b="75" a="255" />
+            <ShadowColor r="0" g="0" b="0" a="50" />
+            <ForegroundColor r="255" g="255" b="255" a="255" />
+        </Style>
+    </Nodes>
+    <paths>
+        <LastExport>C:\Studium\Bacholor Thesis\Programming\ProceduralTexturing\Shader</LastExport>
+        <LastProject>C:\Studium\Bacholor Thesis\Programming\RapidShading\Shader</LastProject>
+    </paths>
+    <ShaderCollectionPanel>
+        <selectedCollection>GLSL Functions</selectedCollection>
+    </ShaderCollectionPanel>
+    <Preview>
+        <FpsLimit>25</FpsLimit>
+    </Preview>
+</settings>
