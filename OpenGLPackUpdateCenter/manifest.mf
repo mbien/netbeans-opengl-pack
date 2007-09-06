@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 OpenIDE-Module: net.java.nboglpack.updatecenter
-OpenIDE-Module-Implementation-Version: 1
 OpenIDE-Module-Layer: net/java/nboglpack/updatecenter/layer.xml
 OpenIDE-Module-Localizing-Bundle: net/java/nboglpack/updatecenter/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0.1
 
