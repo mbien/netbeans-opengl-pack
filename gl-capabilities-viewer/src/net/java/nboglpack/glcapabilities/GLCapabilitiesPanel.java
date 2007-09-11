@@ -27,7 +27,6 @@ import javax.swing.table.TableRowSorter;
  */
 public class GLCapabilitiesPanel extends javax.swing.JPanel {
     
- private JOGLGearsDemo demo;
    
     /** Creates new form GLCapabilityPanel */
     public GLCapabilitiesPanel() {
@@ -123,17 +122,16 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         bindingContext.addBinding(binding);
         binding.bind();
         
-        
-        demo = new JOGLGearsDemo(gLCanvas);
+        final JOGLGearsDemo demo = new JOGLGearsDemo(gLCanvas);
         
         gLCanvas.addHierarchyListener(new HierarchyListener() {
 
             public void hierarchyChanged(HierarchyEvent e) {
                 if(e.getChangeFlags() == HierarchyEvent.SHOWING_CHANGED) {
-                    if(demo.isRunning())
-                        demo.stop();
-                    else
+                    if(e.getComponent().isShowing())
                         demo.start();
+                    else
+                        demo.stop();
                 }
             }
             
@@ -141,7 +139,10 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
          
     }
     
+    @SuppressWarnings("unchecked")
     public void updateFromModel() {
+        
+        // TODO property changed listener are better as "forced" updates
         
         bindingContext.unbind();
         bindingContext.bind();
@@ -180,7 +181,7 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         capabilitiesJPanel.getTable().getColumnModel().getColumn(1).setMaxWidth(80);
         
     }
-    
+
     
     private GLCanvas createGLDemoCanvas() {
         
@@ -202,7 +203,8 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
                         max = elem.getNumSamples();
                 }
                 capabilitiesModel.setMaxSampleBuffers(max+"x");
-
+                updateFromModel();
+                
                 return super.chooseCapabilities(desired, available, arg2);
             }
         };
@@ -210,7 +212,7 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         
         return new GLCanvas(caps, chooser, null, device);
     }
-            
+    
     
     public GLCapabilitiesModel getModel() {
         return capabilitiesModel;

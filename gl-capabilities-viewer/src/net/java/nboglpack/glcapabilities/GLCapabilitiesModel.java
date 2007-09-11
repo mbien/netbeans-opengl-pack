@@ -16,24 +16,26 @@ import javax.media.opengl.GLCapabilities;
  * @author Michael Bien
  */
 public class GLCapabilitiesModel {
-    
- private String glVersion;
- private String glslVersion;
-
- private String implVersion;
- private String vendor;
- private String renderer;
  
- private String maxLights;
- private String maxAnisotropy;
- private String maxViewPortSize;
- private String maxTextureSize;
- private String maxTextureUnits;
- private String maxTextureImageUnits;
- private String maxVertexTextureImageUnits;
- private String maxGeometryTextureImageUnits;
- private String maxDrawBuffers;
- private String maxSampleBuffers;
+ private final static String NULL = "<null>";
+    
+ private String glVersion = NULL;
+ private String glslVersion = NULL;
+
+ private String implVersion = NULL;
+ private String vendor = NULL;
+ private String renderer = NULL;
+ 
+ private String maxLights = NULL;
+ private String maxAnisotropy = NULL;
+ private String maxViewPortSize = NULL;
+ private String maxTextureSize = NULL;
+ private String maxTextureUnits = NULL;
+ private String maxTextureImageUnits = NULL;
+ private String maxVertexTextureImageUnits = NULL;
+ private String maxGeometryTextureImageUnits = NULL;
+ private String maxDrawBuffers = NULL;
+ private String maxSampleBuffers = NULL;
 
 
  

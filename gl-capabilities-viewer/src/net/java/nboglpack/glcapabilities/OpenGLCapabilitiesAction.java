@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 import javax.media.opengl.GL;
 import javax.media.opengl.GLContext;
+import javax.media.opengl.GLException;
 import javax.swing.JDialog;
 import org.openide.util.Exceptions;
 import org.openide.util.HelpCtx;
@@ -31,7 +32,7 @@ import org.openide.windows.WindowManager;
 
 
 /**
- *
+ * Action for starting the GL capabilities viewer.
  * @author Michael Bien
  */
 public final class OpenGLCapabilitiesAction extends CallableSystemAction {
@@ -60,7 +61,6 @@ public final class OpenGLCapabilitiesAction extends CallableSystemAction {
     
     private Runnable createGLCapabilitiesQuery() {
         
-        final GLWorker worker = Lookup.getDefault().lookup(GLWorker.class);
         
         final GLRunnable query = new GLRunnable() {
 
@@ -176,7 +176,12 @@ public final class OpenGLCapabilitiesAction extends CallableSystemAction {
         return new Runnable(){
 
             public void run() {
-                worker.work(query);
+                try{
+                    GLWorker worker = Lookup.getDefault().lookup(GLWorker.class);
+                    worker.work(query);
+                }catch(GLException ex) {
+                    Exceptions.printStackTrace(ex);
+                }
             }
             
         };
