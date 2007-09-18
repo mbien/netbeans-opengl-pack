@@ -20,5 +20,5 @@ public interface GLWorker {
     public void work();
 
     public void work(GLRunnable runnable);
-
+    
 }

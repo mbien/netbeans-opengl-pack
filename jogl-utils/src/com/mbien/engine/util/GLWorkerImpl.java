@@ -7,6 +7,7 @@ package com.mbien.engine.util;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import javax.media.opengl.DefaultGLCapabilitiesChooser;
+import javax.media.opengl.GL;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.GLCapabilitiesChooser;
@@ -16,6 +17,7 @@ import javax.media.opengl.GLEventListener;
 import javax.media.opengl.GLPbuffer;
 
 /**
+ * Implementation of an OpenGL worker.
  * @author Michael Bien
  */
 public class GLWorkerImpl implements GLWorker {
@@ -23,7 +25,7 @@ public class GLWorkerImpl implements GLWorker {
  private final Deque<GLRunnable> work;
  private final GLAutoDrawable drawable;
  
- private static GLWorker DEFAULT;
+ public static GLWorker DEFAULT;
     
     /** Creates a new instance of GLWorker */
     public GLWorkerImpl() {
@@ -31,7 +33,7 @@ public class GLWorkerImpl implements GLWorker {
     }
     
     public GLWorkerImpl(GLAutoDrawable autoDrawable) {
-
+        
         if(autoDrawable == null) {
             GLDrawableFactory factory = GLDrawableFactory.getFactory();
             GLCapabilities c = new GLCapabilities();
@@ -72,18 +74,24 @@ public class GLWorkerImpl implements GLWorker {
     public void addWork(GLRunnable runnable) {
         work.add(runnable);
     }
-    
+
     
  private final class Worker implements GLEventListener {
      
-    public void init(GLAutoDrawable arg0) {
+    public void init(GLAutoDrawable drawable) {
+        drawable.getGL().glClearColor(0, 0, 0, 0);
     }
 
-    public void display(GLAutoDrawable arg0) {
-        GLContext context = GLContext.getCurrent();
-        while(work.size() > 0) {
-            work.pollFirst().run(context);
-            Thread.yield();
+    public void display(GLAutoDrawable drawable) {
+        GLContext context = drawable.getContext();
+        try{
+            while(work.size() > 0) {
+                work.pollFirst().run(context);
+                Thread.yield();
+            }
+        }finally{
+            drawable.getGL().glClear(GL.GL_COLOR_BUFFER_BIT);
+//            drawable.getGL().glFinish();
         }
     }
 

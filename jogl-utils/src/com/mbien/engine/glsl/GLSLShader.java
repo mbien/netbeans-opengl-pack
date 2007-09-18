@@ -145,16 +145,18 @@ public class GLSLShader {
         
         // log info log
         gl.glGetObjectParameterivARB(handle, GL.GL_OBJECT_INFO_LOG_LENGTH_ARB, buffer, 0);
-        byte[] log = new byte[buffer[0]];
-        gl.glGetInfoLogARB(handle, buffer[0], buffer, 0, log, 0);
-        
-        if(log[0] != 0)  {// 0 if empty
-            error = throwExceptionOnCompilerWarning | error; // TODO setup exception level
-//            getLog().warning("compiler info log:\n"+new String(log, 0, log.length-1));
+        if(buffer[0] > 0) {
+            byte[] log = new byte[buffer[0]];
+            gl.glGetInfoLogARB(handle, buffer[0], buffer, 0, log, 0);
+
+            if(log[0] != 0)  {// 0 if empty
+                error = throwExceptionOnCompilerWarning | error; // TODO setup exception level
+    //            getLog().warning("compiler info log:\n"+new String(log, 0, log.length-1));
+            }
+
+            if(error)
+                throw new GLSLCompileException(shaderNames, new String(log, 0, log.length-1).split("\n"));
         }
-        
-        if(error)
-            throw new GLSLCompileException(shaderNames, new String(log, 0, log.length-1).split("\n"));
     }
     
     public static Logger getLog() {
@@ -200,6 +202,7 @@ public class GLSLShader {
     }
     
     public enum TYPE {
+        
         
         VERTEX(GL.GL_VERTEX_SHADER, "GL_ARB_vertex_shader"),
         FRAGMENT(GL.GL_FRAGMENT_SHADER, "GL_ARB_fragment_shader"),

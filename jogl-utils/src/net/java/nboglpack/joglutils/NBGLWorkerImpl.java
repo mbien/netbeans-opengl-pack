@@ -10,16 +10,17 @@ package net.java.nboglpack.joglutils;
 import com.mbien.engine.util.GLRunnable;
 import com.mbien.engine.util.GLWorker;
 import com.mbien.engine.util.GLWorkerImpl;
+import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.beans.Beans;
-import java.util.logging.Logger;
 import javax.media.opengl.DefaultGLCapabilitiesChooser;
 import javax.media.opengl.GLCanvas;
 import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.GLCapabilitiesChooser;
 import javax.media.opengl.GLDrawableFactory;
 import javax.media.opengl.GLException;
+import org.openide.util.Exceptions;
 
 /**
  * GLWorker implementation with fallback mode.
@@ -27,7 +28,6 @@ import javax.media.opengl.GLException;
  */
 public class NBGLWorkerImpl implements GLWorker {
 
-    private static final Logger logger = Logger.getLogger(NBGLWorkerImpl.class.getName());
     private GLWorker glworker;
 
     public NBGLWorkerImpl() {
@@ -36,14 +36,13 @@ public class NBGLWorkerImpl implements GLWorker {
             try {
                 glworker = new GLWorkerImpl();
             } catch (GLException ex) {
-                logger.warning(ex.getMessage());
-                logger.info("pbuffer creation faild; going to fallback mode");
+                Exceptions.printStackTrace(ex);
                 glworker = createFallbackWorkerImpl();
             }
         } else {
-            logger.info("pbuffers not supported; going to fallback mode");
             glworker = createFallbackWorkerImpl();
         }
+        GLWorkerImpl.DEFAULT = this;
     }
 
     private final GLWorkerImpl createFallbackWorkerImpl() {
@@ -55,14 +54,12 @@ public class NBGLWorkerImpl implements GLWorker {
         GLCapabilitiesChooser chooser = new DefaultGLCapabilitiesChooser();
 
         GLCanvas canvas = new GLCanvas(caps, chooser, null, device);
-        // canvas.setMaximumSize(new Dimension(16, 16));
-        // canvas.setMinimumSize(new Dimension(16, 16));
-        GLWorkerImpl worker = new GLWorkerImpl(canvas);
-
+        canvas.setPreferredSize(new Dimension(8, 8));
+        
         // the bottom right corner of the status bar seems to be the safest position for a heavyweight component
         GLWorkerStatusLineElementProvider.component = canvas;
 
-        return worker;
+        return new GLWorkerImpl(canvas);
     }
 
     @Override
@@ -82,6 +79,7 @@ public class NBGLWorkerImpl implements GLWorker {
 
     @Override
     public void work(GLRunnable runnable) {
-        glworker.work(runnable);
+        glworker.addWork(runnable);
+        work();
     }
 }
