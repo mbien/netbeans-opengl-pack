@@ -40,5 +40,5 @@ public interface GLSLCompilerService {
      * @param printOut if true, prints compiler messages to output window
      */
     public boolean compileAndLinkProgram(DataObject[] daos, boolean printOut);
-
+    
 }

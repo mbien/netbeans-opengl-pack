@@ -54,9 +54,8 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
         Preferences pref = NbPreferences.forModule(GLSLCompilerService.class);
         String patternString = pref.get("GlslCompilerLogPattern", null);
         
-        
         if(patternString == null || patternString.equals("")) {
-        
+            
             final String[] buffer = new String[1];
             glWorker.addWork(new GLRunnable() {
                 public void run(GLContext context) {
@@ -164,7 +163,7 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
         }
         return success;
     }
-    
+
     /**
      * creates a new GLSLShader object from the given DataObject. This shader is
      * not initialized or bound to any GL context.
@@ -184,7 +183,7 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
                 shader = new GLSLShader(shaderSource, shaderName, shaderType);
             }catch(BadLocationException ex){
                 // not possible
-                ex.printStackTrace();
+                Exceptions.printStackTrace(ex);
             }
         }else{
             shader = new GLSLShader(FileUtil.toFile(dao.getPrimaryFile()));
@@ -224,7 +223,7 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
        glWorker.work(compilerTask);
        
        if(exception[0] != null)
-            throw exception[0];
+           throw exception[0];
        
        return shader;
     }

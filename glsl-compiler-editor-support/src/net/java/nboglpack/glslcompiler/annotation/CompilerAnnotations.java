@@ -32,20 +32,19 @@ public class CompilerAnnotations {
             annotations = annotationMap.get(dao);
         }
         
-        CompilerAnnotation annotation = new CompilerAnnotation(type, msg);
         Line line = lines.getCurrent(lineNumber-1);
         char[] text = line.getText().toCharArray();
         int start;
         int end;
         for(start = 0; start < text.length; start++)
-            if(text[start] != ' ')
+            if(!Character.isWhitespace(text[start]))
                 break;
-        
         
         for(end = text.length-1; end > start; end--)
-            if(text[end] != ' ')
+            if(!Character.isWhitespace(text[end-1]))
                 break;
         
+        CompilerAnnotation annotation = new CompilerAnnotation(type, msg);
         annotation.attach(line.createPart(start, end-start));
         annotations.add(annotation);
         
