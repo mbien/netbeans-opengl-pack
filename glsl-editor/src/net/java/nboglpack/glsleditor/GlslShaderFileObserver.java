@@ -1,5 +1,10 @@
 package net.java.nboglpack.glsleditor;
 
+/**
+ * Created on 26. March 2007, 00:49
+ * 
+ */
+
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import net.java.nboglpack.glslcompiler.GLSLCompilerService;
@@ -8,7 +13,7 @@ import org.openide.util.Lookup;
 import org.openide.util.RequestProcessor;
 
 /**
- * Created on 26. March 2007, 00:49
+ * Observes an DataObject for document updates and starts compilation automatically.
  * @author Michael Bien
  */
 public class GlslShaderFileObserver implements DocumentListener {
@@ -16,6 +21,7 @@ public class GlslShaderFileObserver implements DocumentListener {
  private final DataObject observedDao;
  private final static RequestProcessor RP = new RequestProcessor("compiler");
  private final RequestProcessor.Task compilerTask;
+ private boolean runOnDocUpdate = true;
  private int compileDelay = 500;
     
     public GlslShaderFileObserver(DataObject dao) {
@@ -33,10 +39,12 @@ public class GlslShaderFileObserver implements DocumentListener {
     
     // DocumentListener
     public void insertUpdate(DocumentEvent arg0) {
-        runCompileTask();
+        if(runOnDocUpdate)
+            runCompileTask();
     }
     public void removeUpdate(DocumentEvent arg0) {
-        runCompileTask();
+        if(runOnDocUpdate)
+            runCompileTask();
     }
     public void changedUpdate(DocumentEvent arg0) {
     }
@@ -46,4 +54,12 @@ public class GlslShaderFileObserver implements DocumentListener {
         compilerTask.schedule(compileDelay);
     }
 
+    public void setCompileDelay(int compileDelay) {
+        this.compileDelay = compileDelay;
+    }
+
+    public void setRunOnDocUpdate(boolean runOnDocUpdate) {
+        this.runOnDocUpdate = runOnDocUpdate;
+    }
+    
 }
