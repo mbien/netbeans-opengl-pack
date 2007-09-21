@@ -213,6 +213,7 @@ public class GlslLexer implements Lexer<GlslTokenId> {
       
     }
     
+    @SuppressWarnings("fallthrough")
     private final void readRemainingLine() {
         
         int character = input.read();
@@ -236,11 +237,11 @@ public class GlslLexer implements Lexer<GlslTokenId> {
         
         while(character != LexerInput.EOF) {
             if(character == '*' && input.read() == '/') {
-                return factory.createToken(GlslTokenId.COMMENT);
+                return factory.createToken(GlslTokenId.ML_COMMENT);
             }
             character = input.read();
         }
-        return factory.createToken(GlslTokenId.COMMENT);
+        return factory.createToken(GlslTokenId.ML_COMMENT);
         
     }
     
@@ -329,7 +330,7 @@ public class GlslLexer implements Lexer<GlslTokenId> {
     }
 
     public Object state() {
-        // we don't need any states
+        // we don't need states
         return null;
     }
 

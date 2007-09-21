@@ -31,12 +31,12 @@
                     <attr name="instanceCreate" methodvalue="net.java.nboglpack.glsleditor.lexer.Glsl.vertexLanguage"/>
                     <attr name="instanceOf" stringvalue="org.netbeans.api.lexer.Language"/>
                 </file>
-                <file name="EditorKit.instance">
+              <!--  <file name="EditorKit.instance">
                     <attr name="instanceCreate" methodvalue="org.netbeans.modules.lexer.editorbridge.LexerEditorKit.create"/>
                     <attr name="instanceClass" stringvalue="org.netbeans.modules.lexer.editorbridge.LexerEditorKit"/>
-                </file>
+                </file>-->
                 <attr name="createDataObject" boolvalue="false"/>
-                <!--   <file name="language.nbs" url="glsl/GLSL.nbs"/> -->
+                <file name="language.nbs" url="glsl/GLSL.nbs"/>
             </folder>
             
             <folder name="x-glsl-fragment-shader">
@@ -66,12 +66,12 @@
                     <attr name="instanceCreate" methodvalue="net.java.nboglpack.glsleditor.lexer.Glsl.fragmentLanguage"/>
                     <attr name="instanceOf" stringvalue="org.netbeans.api.lexer.Language"/>
                 </file>
-                <file name="EditorKit.instance">
+               <!-- <file name="EditorKit.instance">
                     <attr name="instanceCreate" methodvalue="org.netbeans.modules.lexer.editorbridge.LexerEditorKit.create"/>
                     <attr name="instanceClass" stringvalue="org.netbeans.modules.lexer.editorbridge.LexerEditorKit"/>
-                </file>
+                </file>-->
                 <attr name="createDataObject" boolvalue="false"/>
-                <!--   <file name="language.nbs" url="glsl/GLSL.nbs"/> -->
+                <file name="language.nbs" url="glsl/GLSL.nbs"/>
             </folder>
             
             <folder name="x-glsl-geometry-shader">
@@ -101,12 +101,12 @@
                     <attr name="instanceCreate" methodvalue="net.java.nboglpack.glsleditor.lexer.Glsl.geometryLanguage"/>
                     <attr name="instanceOf" stringvalue="org.netbeans.api.lexer.Language"/>
                 </file>
-                <file name="EditorKit.instance">
+              <!--  <file name="EditorKit.instance">
                     <attr name="instanceCreate" methodvalue="org.netbeans.modules.lexer.editorbridge.LexerEditorKit.create"/>
                     <attr name="instanceClass" stringvalue="org.netbeans.modules.lexer.editorbridge.LexerEditorKit"/>
-                </file>
+                </file>-->
                 <attr name="createDataObject" boolvalue="false"/>
-             <!--   <file name="language.nbs" url="glsl/GLSL.nbs"/> -->
+                <file name="language.nbs" url="glsl/GLSL.nbs"/>
             </folder>
         </folder>
     </folder>

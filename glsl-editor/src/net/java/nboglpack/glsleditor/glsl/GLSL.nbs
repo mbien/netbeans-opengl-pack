@@ -1,25 +1,17 @@
 ################################################################################
-# OpenGL Shading Language ######################################################
+# OpenGL Shading Language GLF file #############################################
+################################################################################
+# 10.09.2007                                                                   #
+# author Michael Bien                                                          #
 ################################################################################
 
 SKIP:WHITESPACE
 SKIP:END_OF_LINE
 SKIP:PREPROCESSOR
+SKIP:COMMENT
+SKIP:ML_COMMENT
 
-##### GLSL 1.2 grammer #########################################################
-
-# test grammer
-#S = (Statement)*;
-#Statement = <IDENTIFIER> <DOT> "xyz" <SEMICOLON>;
-
-
-
-
-
-
-################################################################################
-
-# error highlighting
+## error highlighting ##########################################################
 MARK:ERROR: {
     type:"Error";
     message:"Syntax error.";
@@ -29,6 +21,422 @@ MARK:error: {
     message:"Unexpected character.";
 }
 
+FOLD:function_body: {
+    fold_display_name:"{...}";
+}
+FOLD:ML_COMMENT: {
+    fold_display_name:"/*...*/";
+}
 
+COMPLETE "(:)"
+COMPLETE "{:}"
+COMPLETE "[:]"
+
+INDENT "(:)"
+INDENT "{:}"
+INDENT "[:]"
+INDENT "\\s*(((if|while)\\s*\\(|else\\s*|else\\s+if\\s*\\(|for\\s*\\(.*\\))[^{;]*)"
+
+SELECTION ( ["a"-"z" "A"-"Z" "0"-"9" "_"] )
+
+#PROPERTIES {
+#    traceSteps:"true";
+#    printRules:"true";
+#    printFirst:"true";
+#}
+
+##### GLSL 1.2 grammar #########################################################
+
+S = declaration*;
+
+
+## constants ###################################################################
+type_specifier = "float"
+               | "int"
+               | "bool"
+               | "vec2"
+               | "vec3"
+               | "vec4"
+               | "bvec2"
+               | "bvec3"
+               | "bvec4"
+               | "ivec2"
+               | "ivec3"
+               | "ivec4"
+               | "mat2"
+               | "mat3"
+               | "mat4"
+               | "mat2x2"
+               | "mat2x3"
+               | "mat2x4"
+               | "mat3x2"
+               | "mat3x3"
+               | "mat3x4"
+               | "mat4x2"
+               | "mat4x3"
+               | "mat4x4"
+               | "sampler1D"
+               | "sampler2D"
+               | "sampler3D"
+               | "samplerCube"
+               | "sampler1DShadow"
+               | "sampler2DShadow"
+               | "TYPE_NAME"; # TODO
+
+type_qualifier = "const";
+
+global_type_qualifier = type_qualifier
+                      | "attribute" # Vertex only.
+                      | "varying"
+                      | ("centroid" "varying")
+                      | ("invariant" ["centroid"] "varying")
+                      | "uniform";
+
+parameter_declaration_qualifier = "in" | "out" | "inout";
+
+boolean_literal = "true" | "false"; # TODO move boolean literal to lexer?
+
+
+assignment_operator = "="
+                    | "*="
+                    | "/="
+                    | "+="
+                    | "-="
+                    | "%="   # reserved
+                    | "<<="  # reserved
+                    | ">>="  # reserved
+                    | "&="   # reserved
+                    | "^="   # reserved
+                    | "|=";  # reserved
+
+comperator = "<" | ">" | "<=" | ">=" | "==" | "!=";
+
+operator = "+" 
+         | "-" 
+         | "*" 
+         | "/" 
+         | "&"
+         | "&&"
+         | "|"   # reserved
+         | "||"
+         | "^^"
+         | "^"   # reserved
+         | "%"   # reserved
+         | ">>"  # reserved
+         | "<<"; # reserved
+
+unary_operator = "+"
+               | "-" 
+               | "!" 
+               | "~"; # reserved
+
+increment_or_decrement_operator = "++" | "--";
+
+
+## declarations ################################################################
+declaration = (type_specifier (function | (<IDENTIFIER> <SEMICOLON>)))
+            | "void" function
+            | global_type_declaration;
+
+global_type_declaration = global_type_qualifier type_specifier <IDENTIFIER> <SEMICOLON>;
+local_type_declaration = [type_qualifier] type_specifier <IDENTIFIER>;
+
+
+## function ####################################################################
+function = <FUNCTION> "(" [parameter_declaration_list] ")" function_body;
+function_body = code_block;
+
+parameter_declaration = [type_qualifier] [parameter_declaration_qualifier] type_specifier <IDENTIFIER>;
+parameter_declaration_list = "void" | (parameter_declaration (<COMMA> parameter_declaration)*);
+
+statement = expression <SEMICOLON>;
+statement = local_type_declaration <SEMICOLON>;
+statement = local_type_declaration "=" expression <SEMICOLON>;
+statement = conditional_statement;
+statement = "return" [expression] <SEMICOLON>;
+
+code_block = "{" statement* "}";
+
+## expresstions and operations #################################################
+expression = (expression1 operation_or_comparison*)
+           | ("(" expression ")" operation_or_comparison* );
+
+expression1 = ( [increment_or_decrement_operator] (<IDENTIFIER> | <BUILD_IN_VAR>) (field_access)* [increment_or_decrement_operator] [assignment])
+            | (function_call (field_access)*)
+            | (constructor_call (field_access)*)
+            | <INTEGER_LITERAL>
+            | <FLOAT_LITERAL>
+            | boolean_literal;
+
+assignment = assignment_operator expression;
+operation_or_comparison = (comperator | operator) expression;
+
+field_access = <DOT> <IDENTIFIER>;
+function_call = (<FUNCTION> | <BUILD_IN_FUNC>) "(" [expression_list] ")";
+constructor_call = <KEYWORD> "(" [expression_list] ")"; #TODO custom structs
+
+expression_list = "void" | (expression (<COMMA> expression)*);
+
+
+conditional_statement = if_statement 
+                      | while_statement
+                      | do_while_statement;
+
+# TODO if rule not 100% correct, multiple else allowed
+if_statement = "if" condition statement_or_code_block ("else" ["if" condition] statement_or_code_block)*;
+while_statement = "while" condition statement_or_code_block;
+do_while_statement = "do" statement_or_code_block "while" condition <SEMICOLON>;
+#for_statement = "for" "(" [expression assignment] [";" [expression] ";" [expression]] ")" statement_or_code_block;
+
+condition = "(" expression ")";
+statement_or_code_block = (statement | code_block);
+
+
+/#
+primary_expression = variable_identifier
+                   | "INTCONSTANT"
+                   | "FLOATCONSTANT"
+                   | "BOOLCONSTANT"
+                   | "(" expression ")";
+
+postfix_expression = primary_expression
+                   | postfix_expression "[" integer_expression "]"
+                   | function_call
+                   | postfix_expression "." "FIELD_SELECTION"
+                   | postfix_expression "++"
+                   | postfix_expression "--";
+                   
+integer_expression = expression;
+
+function_call = function_call_or_method;
+
+function_call_or_method = function_call_generic
+                        | postfix_expression "." function_call_generic;
+
+function_call_generic = function_call_header_with_parameters ")"
+                      | function_call_header_no_parameters ")";
+
+function_call_header_no_parameters = function_call_header "void"
+                                   | function_call_header;
+
+function_call_header_with_parameters = function_call_header assignment_expression
+                                     | function_call_header_with_parameters "," assignment_expression;
+
+function_call_header = function_identifier "(";
+
+# Grammar Note: Constructors look like functions, but lexical analysis recognized most of them as
+# keywords. They are now recognized through “type_specifier”.
+function_identifier = type_specifier
+                    | <IDENTIFIER>
+                    | "FIELD_SELECTION";
+
+unary_expression = postfix_expression
+                 | "++" unary_expression
+                 | "--" unary_expression
+                 | unary_operator unary_expression;
+
+# Grammar Note: No traditional style type casts.
+unary_operator = "+"
+               | "-"
+               | "!"
+               | "~"; # reserved
+
+# Grammar Note: No '*' or '&' unary ops. Pointers are not supported.
+multiplicative_expression = unary_expression
+                          | multiplicative_expression "*" unary_expression
+                          | multiplicative_expression "/" unary_expression
+                          | multiplicative_expression "%" unary_expression; # reserved
+
+additive_expression = multiplicative_expression
+                    | additive_expression "+" multiplicative_expression
+                    | additive_expression "-" multiplicative_expression;
+
+shift_expression = additive_expression
+                 | shift_expression "<<" additive_expression   # reserved
+                 | shift_expression ">>" additive_expression; # reserved
+
+relational_expression = shift_expression
+                     | relational_expression "<" shift_expression
+                     | relational_expression ">" shift_expression
+                     | relational_expression "<=" shift_expression
+                     | relational_expression ">=" shift_expression;
+
+equality_expression = relational_expression
+                    | equality_expression "==" relational_expression
+                    | equality_expression "!=" relational_expression;
+
+and_expression = equality_expression
+               | and_expression "&" equality_expression; # reserved
+
+exclusive_or_expression = and_expression
+                        | exclusive_or_expression "^" and_expression; # reserved
+
+inclusive_or_expression = exclusive_or_expression
+                        | inclusive_or_expression "|" exclusive_or_expression; # reserved
+
+logical_and_expression = inclusive_or_expression
+                       | logical_and_expression "&&" inclusive_or_expression;
+
+logical_xor_expression = logical_and_expression
+                       | logical_xor_expression "^^" logical_and_expression;
+
+logical_or_expression = logical_xor_expression
+                      | logical_or_expression "||" logical_xor_expression;
+
+conditional_expression = logical_or_expression
+                       | logical_or_expression "?" expression ":" assignment_expression;
+
+assignment_expression = conditional_expression
+                      | unary_expression assignment_operator assignment_expression;
+
+
+expression = assignment_expression
+           | expression "," assignment_expression;
+
+constant_expression = conditional_expression;
+declaration = function_prototype ";"
+            | init_declarator_list ";";
+
+function_prototype = function_declarator ")";
+
+function_declarator = function_header
+                    | function_header_with_parameters;
+
+function_header_with_parameters = function_header parameter_declaration
+                                | function_header_with_parameters "," parameter_declaration;
+
+function_header = fully_specified_type <IDENTIFIER> "(";
+
+parameter_declarator = type_specifier <IDENTIFIER>
+                     | type_specifier <IDENTIFIER> "[" constant_expression "]";
+
+parameter_declaration = type_qualifier parameter_qualifier parameter_declarator
+                      | parameter_qualifier parameter_declarator
+                      | type_qualifier parameter_qualifier parameter_type_specifier
+                      | parameter_qualifier parameter_type_specifier;
+
+parameter_qualifier = [ "in" | "out" | "inout" ];
+
+parameter_type_specifier = type_specifier;
+
+init_declarator_list = single_declaration
+                     | init_declarator_list "," <IDENTIFIER>
+                     | init_declarator_list "," <IDENTIFIER> "[" "]"
+                     | init_declarator_list "," <IDENTIFIER> "[" constant_expression
+                     | "]"
+                     | init_declarator_list "," <IDENTIFIER> "["
+                     | "]" "=" initializer
+                     | init_declarator_list "," <IDENTIFIER> "[" constant_expression
+                     | "]" "=" initializer
+                     | init_declarator_list "," <IDENTIFIER> "=" initializer;
+
+single_declaration = fully_specified_type
+                   | fully_specified_type <IDENTIFIER>
+                   | fully_specified_type <IDENTIFIER> "[" "]"
+                   | fully_specified_type <IDENTIFIER> "[" constant_expression "]"
+                   | fully_specified_type <IDENTIFIER> "[" "]" "=" initializer
+                   | fully_specified_type <IDENTIFIER> "[" constant_expression
+                   | "]" "=" initializer
+                   | fully_specified_type <IDENTIFIER> "=" initializer
+                   | "invariant" <IDENTIFIER>; # Vertex only.
+
+# Grammar Note: No 'enum', or 'typedef'.
+fully_specified_type = type_specifier
+                     | type_qualifier type_specifier;
+
+type_qualifier = "const"
+               | "attribute" # Vertex only.
+               | "varying"
+               | "centroid" "varying"
+               | "invariant" "varying"
+               | "invariant" "centroid" "varying"
+               | "uniform";
+
+type_specifier = type_specifier_nonarray
+               | type_specifier_nonarray "[" constant_expression "]";
+
+
+initializer = assignment_expression;
+
+struct_specifier = "struct" <IDENTIFIER> "{" struct_declaration_list "}"
+                 | "struct" "{" struct_declaration_list "}";
+
+struct_declaration_list = struct_declaration
+                        | struct_declaration_list struct_declaration;
+
+struct_declaration = type_specifier struct_declarator_list ";";
+
+struct_declarator_list = struct_declarator
+                       | struct_declarator_list "," struct_declarator;
+
+struct_declarator = <IDENTIFIER>
+                  | <IDENTIFIER> "[" constant_expression "]";
+
+
+declaration_statement = declaration;
+
+statement = compound_statement
+          | simple_statement;
+
+# Grammar Note: No labeled statements; 'goto' is not supported.
+simple_statement = declaration_statement
+                 | expression_statement
+                 | selection_statement
+                 | iteration_statement
+                 | jump_statement;
+
+compound_statement = "{" "}"
+                   | "{" statement_list "}";
+
+statement_no_new_scope = compound_statement_no_new_scope
+                       | simple_statement;
+
+compound_statement_no_new_scope = "{" "}"
+                                | "{" statement_list "}";
+
+statement_list = statement
+               | statement_list statement;
+
+expression_statement = ";"
+                     | expression ";";
+
+selection_statement = "if" "(" expression ")" selection_rest_statement;
+
+selection_rest_statement = statement "else" statement
+                         | statement;
+
+# Grammar Note: No 'switch'. Switch statements not supported.
+condition = expression
+          | fully_specified_type <IDENTIFIER> "=" initializer;
+
+iteration_statement = "while" "(" condition ")" statement_no_new_scope
+                    | "do" statement "while" "(" expression ")" ";"
+                    | "for" "(" for_init_statement for_rest_statement ")"
+                    | statement_no_new_scope;
+
+for_init_statement = expression_statement
+                   | declaration_statement;
+
+conditionopt = [ condition ];
+
+for_rest_statement = conditionopt ";"
+                   | conditionopt ";" expression;
+
+jump_statement = "continue" ";"
+               | "break" ";"
+               | "return" ";"
+               | "return" expression ";"
+               | "discard" ";"; # Fragment shader only.
+
+# Grammar Note: No 'goto'. Gotos are not supported.
+translation_unit = external_declaration
+                 | translation_unit external_declaration;
+
+external_declaration = function_definition
+                     | declaration;
+
+function_definition = function_prototype compound_statement_no_new_scope;
+
+#/
 
 

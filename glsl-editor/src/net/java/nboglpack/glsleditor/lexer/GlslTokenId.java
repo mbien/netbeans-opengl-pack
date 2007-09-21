@@ -24,6 +24,7 @@ public enum GlslTokenId implements TokenId {
  BUILD_IN_FUNC("glsl-build-in-func"),
  BUILD_IN_VAR("glsl-build-in-var"),
  COMMENT("glsl-comment"),
+ ML_COMMENT("glsl-comment"),
  
  PAREN("glsl-paren"),
  BRACE("glsl-brace"),
