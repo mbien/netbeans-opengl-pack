@@ -57,21 +57,22 @@ public class GLWorkerImpl implements GLWorker {
         return DEFAULT;
     }
     
-    public void work() {
-        drawable.display();
+    public synchronized void work() {
+        if(work.size() > 0)
+            drawable.display();
     }
     
-    public void work(GLRunnable runnable) {
+    public synchronized void work(GLRunnable runnable) {
         addWork(runnable);
         work();
     }
     
-    public void destroy() {
+    public synchronized void destroy() {
         if(drawable instanceof GLPbuffer)
             ((GLPbuffer)drawable).destroy();
     }
 
-    public void addWork(GLRunnable runnable) {
+    public synchronized void addWork(GLRunnable runnable) {
         work.add(runnable);
     }
 

@@ -1,6 +1,7 @@
 Manifest-Version: 1.0
 OpenIDE-Module: net.java.nboglpack.joglutils
-OpenIDE-Module-Implementation-Version: 1
+OpenIDE-Module-Implementation-Version: 0
 OpenIDE-Module-Install: net/java/nboglpack/joglutils/Installer.class
 OpenIDE-Module-Localizing-Bundle: net/java/nboglpack/joglutils/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.2
 

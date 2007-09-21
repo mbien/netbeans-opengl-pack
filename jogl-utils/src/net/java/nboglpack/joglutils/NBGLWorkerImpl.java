@@ -37,7 +37,7 @@ public class NBGLWorkerImpl implements GLWorker {
                 glworker = new GLWorkerImpl();
             } catch (GLException ex) {
                 Exceptions.printStackTrace(ex);
-                glworker = createFallbackWorkerImpl();
+            glworker = createFallbackWorkerImpl();
             }
         } else {
             glworker = createFallbackWorkerImpl();
@@ -63,22 +63,22 @@ public class NBGLWorkerImpl implements GLWorker {
     }
 
     @Override
-    public void addWork(GLRunnable runnable) {
+    public synchronized void addWork(GLRunnable runnable) {
         glworker.addWork(runnable);
     }
 
     @Override
-    public void destroy() {
+    public synchronized void destroy() {
         glworker.destroy();
     }
 
     @Override
-    public void work() {
+    public synchronized void work() {
         glworker.work();
     }
 
     @Override
-    public void work(GLRunnable runnable) {
+    public synchronized void work(GLRunnable runnable) {
         glworker.addWork(runnable);
         work();
     }
