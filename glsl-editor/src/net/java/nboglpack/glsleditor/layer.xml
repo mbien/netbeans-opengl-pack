@@ -19,13 +19,6 @@
                             <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
                         </file>
                     </folder>
-                </folder> 
-                <folder name="CityLights">
-                    <folder name="Defaults">
-                        <file name="coloring.xml" url="resources/NetBeans-glsl-fontsColors.xml">
-                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
-                        </file>
-                    </folder>
                 </folder>
                 <file name="language.instance">
                     <attr name="instanceCreate" methodvalue="net.java.nboglpack.glsleditor.lexer.Glsl.vertexLanguage"/>
@@ -55,13 +48,6 @@
                         </file>
                     </folder>
                 </folder> 
-                <folder name="CityLights">
-                    <folder name="Defaults">
-                        <file name="coloring.xml" url="resources/NetBeans-glsl-fontsColors.xml">
-                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
-                        </file>
-                    </folder>
-                </folder>
                 <file name="language.instance">
                     <attr name="instanceCreate" methodvalue="net.java.nboglpack.glsleditor.lexer.Glsl.fragmentLanguage"/>
                     <attr name="instanceOf" stringvalue="org.netbeans.api.lexer.Language"/>
@@ -90,13 +76,6 @@
                         </file>
                     </folder>
                 </folder> 
-                <folder name="CityLights">
-                    <folder name="Defaults">
-                        <file name="coloring.xml" url="resources/NetBeans-glsl-fontsColors.xml">
-                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
-                        </file>
-                    </folder>
-                </folder>
                 <file name="language.instance">
                     <attr name="instanceCreate" methodvalue="net.java.nboglpack.glsleditor.lexer.Glsl.geometryLanguage"/>
                     <attr name="instanceOf" stringvalue="org.netbeans.api.lexer.Language"/>
@@ -116,6 +95,7 @@
             <folder name="text">
                 <file name="x-glsl-vertex-shader" url="resources/GlslVertexShaderExample.vert"/>
                 <file name="x-glsl-fragment-shader" url="resources/GlslFragmentShaderExample.frag"/>
+                <file name="x-glsl-geometry-shader" url="resources/GlslGeometryShaderExample.frag"/>
             </folder>
         </folder>
     </folder> 

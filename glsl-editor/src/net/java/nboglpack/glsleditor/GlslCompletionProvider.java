@@ -125,7 +125,7 @@ public class GlslCompletionProvider implements CompletionProvider {
         private String rightText;
 
         private String ARGUMENTS_COLOR = "<font color=#b28b00>";
-        private String BUILD_IN_VAR_COLOR = "<font color=#008618>";
+        private String BUILD_IN_VAR_COLOR = "<font color=#ce7b00>";
         private String KEYWORD_COLOR = "<font color=#000099>";
 
         private int priority;
