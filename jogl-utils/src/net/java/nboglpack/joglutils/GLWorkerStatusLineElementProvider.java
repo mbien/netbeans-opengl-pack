@@ -8,6 +8,7 @@
 package net.java.nboglpack.joglutils;
 
 import java.awt.Component;
+import javax.swing.JPanel;
 import org.openide.awt.StatusLineElementProvider;
 
 /**
@@ -16,7 +17,7 @@ import org.openide.awt.StatusLineElementProvider;
  */
 public class GLWorkerStatusLineElementProvider implements StatusLineElementProvider {
 
-  static Component component = null;
+  static JPanel component = new JPanel();
     
     @Override
     public Component getStatusLineElement() {

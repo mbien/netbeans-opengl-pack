@@ -95,7 +95,7 @@
             <folder name="text">
                 <file name="x-glsl-vertex-shader" url="resources/GlslVertexShaderExample.vert"/>
                 <file name="x-glsl-fragment-shader" url="resources/GlslFragmentShaderExample.frag"/>
-                <file name="x-glsl-geometry-shader" url="resources/GlslGeometryShaderExample.frag"/>
+                <file name="x-glsl-geometry-shader" url="resources/GlslGeometryShaderExample.geom"/>
             </folder>
         </folder>
     </folder> 

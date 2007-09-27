@@ -7,6 +7,7 @@
 
 package net.java.nboglpack.glsleditor.glsl;
 
+import java.util.List;
 import net.java.nboglpack.glsleditor.lexer.GlslTokenId;
 import org.netbeans.api.languages.ASTItem;
 import org.netbeans.api.languages.ASTNode;
@@ -99,7 +100,7 @@ public class Glsl {
     }
     
     
-    public static String createGlobalDeclarationString(SyntaxContext context) {
+    public static String createFieldDeclarationString(SyntaxContext context) {
         
         TokenSequence sequence = context.getTokenSequence();
         
@@ -162,6 +163,38 @@ public class Glsl {
         
         
         return sb.toString();
+    }
+    
+//    public static String createStructFieldDeclarationString(SyntaxContext context) {
+//        TokenSequence sequence = context.getTokenSequence();
+//        Token fieldToken = sequence.token();
+//    }
+    
+        
+    public static String createPreprocessorString(SyntaxContext context) {
+        
+        ASTNode node = (ASTNode)context.getASTPath().getLeaf();
+        List<ASTItem> children = node.getChildren();
+        
+        String str = null;
+        
+        for (ASTItem item : children)
+            if (isTokenType(item, GlslTokenId.PREPROCESSOR.name()))
+                str = ((ASTToken)item).getIdentifier();
+        
+        
+        for(int i = 0; i < str.length(); i++) {
+            
+            char c = str.charAt(i);
+            
+            if(c != '#' && !Character.isWhitespace(c))
+                for(int j = str.length()-1; j > i; j--)
+                    if(!Character.isWhitespace(str.charAt(j)))
+                        return str.substring(i, j+1);
+            
+        }
+        
+        return str;
     }
     
     public static boolean isIgnoredToken(Token token) {

@@ -37,7 +37,7 @@ public class NBGLWorkerImpl implements GLWorker {
                 glworker = new GLWorkerImpl();
             } catch (GLException ex) {
                 Exceptions.printStackTrace(ex);
-            glworker = createFallbackWorkerImpl();
+                glworker = createFallbackWorkerImpl();
             }
         } else {
             glworker = createFallbackWorkerImpl();
@@ -46,6 +46,8 @@ public class NBGLWorkerImpl implements GLWorker {
     }
 
     private final GLWorkerImpl createFallbackWorkerImpl() {
+        System.out.println("fallback mode");
+        
         // fallback mode
         // use a heavy weight drawable if pixel buffers are not supported
         Beans.setDesignTime(false); // TODO designtime = false workaround
@@ -57,7 +59,7 @@ public class NBGLWorkerImpl implements GLWorker {
         canvas.setPreferredSize(new Dimension(8, 8));
         
         // the bottom right corner of the status bar seems to be the safest position for a heavyweight component
-        GLWorkerStatusLineElementProvider.component = canvas;
+        GLWorkerStatusLineElementProvider.component.add(canvas);
 
         return new GLWorkerImpl(canvas);
     }
