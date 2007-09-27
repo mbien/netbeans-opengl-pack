@@ -177,7 +177,9 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${glVersion}" target="glField" targetPath="text" updateStrategy="0" immediately="false"/>
+                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${glVersion}" target="glField" targetPath="text" updateStrategy="1" immediately="false">
+                      <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                    </BindingProperty>
                   </BindingProperties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="glslField">
@@ -186,7 +188,9 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${glslVersion}" target="glslField" targetPath="text" updateStrategy="0" immediately="false"/>
+                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${glslVersion}" target="glslField" targetPath="text" updateStrategy="1" immediately="false">
+                      <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                    </BindingProperty>
                   </BindingProperties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="joglField">
@@ -195,7 +199,9 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${implVersion}" target="joglField" targetPath="text" updateStrategy="0" immediately="false"/>
+                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${implVersion}" target="joglField" targetPath="text" updateStrategy="1" immediately="false">
+                      <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                    </BindingProperty>
                   </BindingProperties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="rendererField">
@@ -204,7 +210,9 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${renderer}" target="rendererField" targetPath="text" updateStrategy="0" immediately="false"/>
+                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${renderer}" target="rendererField" targetPath="text" updateStrategy="1" immediately="false">
+                      <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                    </BindingProperty>
                   </BindingProperties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="vendorField">
@@ -213,7 +221,9 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${vendor}" target="vendorField" targetPath="text" updateStrategy="0" immediately="false"/>
+                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${vendor}" target="vendorField" targetPath="text" updateStrategy="1" immediately="false">
+                      <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                    </BindingProperty>
                   </BindingProperties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="gl">
@@ -388,7 +398,9 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxViewPortSize}" target="viewportField" targetPath="text" updateStrategy="0" immediately="false"/>
+                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxViewPortSize}" target="viewportField" targetPath="text" updateStrategy="1" immediately="false">
+                      <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                    </BindingProperty>
                   </BindingProperties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="textureSizeField">
@@ -397,7 +409,9 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxTextureSize}" target="textureSizeField" targetPath="text" updateStrategy="0" immediately="false"/>
+                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxTextureSize}" target="textureSizeField" targetPath="text" updateStrategy="1" immediately="false">
+                      <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                    </BindingProperty>
                   </BindingProperties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="textureUnitsField">
@@ -406,7 +420,9 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxTextureUnits}" target="textureUnitsField" targetPath="text" updateStrategy="0" immediately="false"/>
+                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxTextureUnits}" target="textureUnitsField" targetPath="text" updateStrategy="1" immediately="false">
+                      <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                    </BindingProperty>
                   </BindingProperties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="textureUnitsVSField">
@@ -415,7 +431,9 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxVertexTextureImageUnits}" target="textureUnitsVSField" targetPath="text" updateStrategy="0" immediately="false"/>
+                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxVertexTextureImageUnits}" target="textureUnitsVSField" targetPath="text" updateStrategy="1" immediately="false">
+                      <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                    </BindingProperty>
                   </BindingProperties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="lightsField">
@@ -424,7 +442,9 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxLights}" target="lightsField" targetPath="text" updateStrategy="0" immediately="false"/>
+                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxLights}" target="lightsField" targetPath="text" updateStrategy="1" immediately="false">
+                      <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                    </BindingProperty>
                   </BindingProperties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="anisotropicFilteringField">
@@ -433,7 +453,9 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxAnisotropy}" target="anisotropicFilteringField" targetPath="text" updateStrategy="0" immediately="false"/>
+                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxAnisotropy}" target="anisotropicFilteringField" targetPath="text" updateStrategy="1" immediately="false">
+                      <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                    </BindingProperty>
                   </BindingProperties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fsaaField">
@@ -442,7 +464,9 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxSampleBuffers}" target="fsaaField" targetPath="text" updateStrategy="0" immediately="false"/>
+                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxSampleBuffers}" target="fsaaField" targetPath="text" updateStrategy="1" immediately="false">
+                      <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                    </BindingProperty>
                   </BindingProperties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="textureUnitsFSField">
@@ -451,7 +475,9 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxTextureImageUnits}" target="textureUnitsFSField" targetPath="text" updateStrategy="0" immediately="false"/>
+                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxTextureImageUnits}" target="textureUnitsFSField" targetPath="text" updateStrategy="1" immediately="false">
+                      <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                    </BindingProperty>
                   </BindingProperties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="textureUnitsGSField">
@@ -460,7 +486,9 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxGeometryTextureImageUnits}" target="textureUnitsGSField" targetPath="text" updateStrategy="0" immediately="false"/>
+                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxGeometryTextureImageUnits}" target="textureUnitsGSField" targetPath="text" updateStrategy="1" immediately="false">
+                      <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                    </BindingProperty>
                   </BindingProperties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="renderBuffersField">
@@ -469,7 +497,9 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxDrawBuffers}" target="renderBuffersField" targetPath="text" updateStrategy="0" immediately="false"/>
+                    <BindingProperty name="text" source="capabilitiesModel" sourcePath="${maxDrawBuffers}" target="renderBuffersField" targetPath="text" updateStrategy="1" immediately="false">
+                      <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                    </BindingProperty>
                   </BindingProperties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="viewportSizeLabel">

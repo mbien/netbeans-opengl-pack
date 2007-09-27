@@ -49,18 +49,27 @@ public class DisplayModesPanel extends javax.swing.JPanel {
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
             
             if (table != null) {
+                
                 JTableHeader header = table.getTableHeader();
                 if (header != null) {
                     setForeground(header.getForeground());
                     setBackground(header.getBackground());
                     setFont(header.getFont());
                 }
+                
+                Dimension dim = new Dimension();
+                for (int i = 0; i < table.getColumnCount(); i++) {
+                    
+                    String text = table.getColumnName(i);
+                    
+                    Rectangle2D bounds = SwingUtilities2.getFontMetrics(this, getFont()).getStringBounds(text, getGraphics());
+                    dim.setSize( Math.max(dim.width, bounds.getHeight()),
+                                 Math.max(dim.height, bounds.getWidth()+10));
+                }
+                setPreferredSize(dim);
             }
             
             setText(value.toString());
-            Rectangle2D bounds = SwingUtilities2.getFontMetrics(table, table.getFont()).getStringBounds(getText(), getGraphics());
-            setPreferredSize(new Dimension((int)bounds.getHeight(), (int)bounds.getWidth()+10));
-            
             return this;
         }
 

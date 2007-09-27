@@ -15,8 +15,6 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.StringTokenizer;
 import javax.media.opengl.GL;
@@ -125,7 +123,8 @@ public final class OpenGLCapabilitiesAction extends CallableSystemAction {
                                 
                 // capabilities
                 Field[] fields = GL.class.getDeclaredFields();
-                HashMap<String, String> capabilities = new HashMap<String, String>();
+                List<GLCapabilitiesModel.Capability> capabilities = model.getCapabilities();
+                capabilities.clear();
                 
                 for (Field field : fields) {
                     
@@ -147,7 +146,7 @@ public final class OpenGLCapabilitiesAction extends CallableSystemAction {
                             while(sb.toString().endsWith(", 0"))// NOI18N
                                 sb.delete(sb.length()-3, sb.length());
 
-                            capabilities.put(field.getName(), sb.toString());
+                            capabilities.add(new GLCapabilitiesModel.Capability(field.getName(), sb.toString()));
                             sb.delete(0, sb.length());
                             
                         }
@@ -160,15 +159,13 @@ public final class OpenGLCapabilitiesAction extends CallableSystemAction {
                     
                 }
                 
-                List<GLCapabilitiesModel.Capability> elements = model.getCapabilities();
-                Iterator<String> keys = capabilities.keySet().iterator();
-                Iterator<String> values = capabilities.values().iterator();
+                EventQueue.invokeLater(new Runnable() {
 
-                elements.clear();
-                while(keys.hasNext()) 
-                    elements.add(new GLCapabilitiesModel.Capability(keys.next(), values.next()));
-                
-                capsPanel.updateFromModel();
+                    public void run() {
+                        capsPanel.updateFromModel();
+                    }
+                    
+                });
             }
             
         };
@@ -176,12 +173,21 @@ public final class OpenGLCapabilitiesAction extends CallableSystemAction {
         return new Runnable(){
 
             public void run() {
-                try{
-                    GLWorker worker = Lookup.getDefault().lookup(GLWorker.class);
-                    worker.work(query);
-                }catch(GLException ex) {
-                    Exceptions.printStackTrace(ex);
-                }
+                
+                new Thread() {
+
+                    @Override
+                    public void run() {
+                        try{
+                            GLWorker worker = Lookup.getDefault().lookup(GLWorker.class);
+                            worker.work(query);
+                        }catch(GLException ex) {
+                            Exceptions.printStackTrace(ex);
+                        }
+                    }
+                    
+                }.start();
+                
             }
             
         };

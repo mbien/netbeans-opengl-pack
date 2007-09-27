@@ -1,6 +1,7 @@
 Manifest-Version: 1.0
 OpenIDE-Module: net.java.nboglpack.glcapabilities
-OpenIDE-Module-Implementation-Version: 1
+OpenIDE-Module-Implementation-Version: 2
 OpenIDE-Module-Layer: net/java/nboglpack/glcapabilities/layer.xml
 OpenIDE-Module-Localizing-Bundle: net/java/nboglpack/glcapabilities/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.1
 

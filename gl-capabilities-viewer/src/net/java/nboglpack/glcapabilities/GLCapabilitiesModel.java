@@ -7,6 +7,8 @@
 
 package net.java.nboglpack.glcapabilities;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 import javax.media.opengl.GLCapabilities;
@@ -17,7 +19,7 @@ import javax.media.opengl.GLCapabilities;
  */
 public class GLCapabilitiesModel {
  
- private final static String NULL = "<null>";
+ private final static String NULL = "";
     
  private String glVersion = NULL;
  private String glslVersion = NULL;
@@ -37,12 +39,11 @@ public class GLCapabilitiesModel {
  private String maxDrawBuffers = NULL;
  private String maxSampleBuffers = NULL;
 
+ private final ArrayList<String> extensions = new ArrayList<String>();
+ private final List<Capability> capabilities = new ArrayList<Capability>();
+ private final ArrayList<GLCapabilities> displayModes = new ArrayList<GLCapabilities>();
 
- 
- private ArrayList<String> extensions = new ArrayList<String>();
- private List<Capability> capabilities = new ArrayList<Capability>();
- private ArrayList<GLCapabilities> displayModes = new ArrayList<GLCapabilities>();
-
+// private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
  public GLCapabilitiesModel() {
  }
@@ -59,24 +60,12 @@ public class GLCapabilitiesModel {
         return capabilities;
     }
 
-    public void setCapabilities(List<Capability> capabilities) {
-        this.capabilities = capabilities;
-    }
-
     public ArrayList<GLCapabilities> getDisplayModes() {
         return displayModes;
     }
 
-    public void setDisplayModes(ArrayList<GLCapabilities> displayModes) {
-        this.displayModes = displayModes;
-    }
-    
     public ArrayList<String> getExtensions() {
         return extensions;
-    }
-
-    public void setExtensions(ArrayList<String> extentions) {
-        this.extensions = extentions;
     }
 
     public String getGlslVersion() {
@@ -108,14 +97,17 @@ public class GLCapabilitiesModel {
     }
 
     public void setGLImplVersion(String implementationVersion) {
+//        pcs.firePropertyChange("implVersion", implVersion, implementationVersion);
         this.implVersion = implementationVersion;
     }
 
     public void setGLVendor(String glVendor) {
+//        pcs.firePropertyChange("vendor", vendor, glVendor);
         this.vendor = glVendor;
     }
 
     public void setGLVersion(String version) {
+//        pcs.firePropertyChange("glVersion", glVersion, version);
         this.glVersion = version;
     }
 
@@ -198,6 +190,23 @@ public class GLCapabilitiesModel {
     public void setMaxGeometryTextureImageUnits(String maxGeometryTextureImageUnits) {
         this.maxGeometryTextureImageUnits = maxGeometryTextureImageUnits;
     }
+    
+    
+//    public void addPropertyChangeListener(String property, PropertyChangeListener pcl) {
+//        pcs.addPropertyChangeListener(property, pcl);
+//    }
+//    
+//    public void addPropertyChangeListener(PropertyChangeListener pcl) {
+//        pcs.addPropertyChangeListener(pcl);
+//    }
+//    
+//    public void removePropertyChangeListener(PropertyChangeListener pcl) {
+//        pcs.removePropertyChangeListener(pcl);
+//    }
+//    
+//    public void removePropertyChangeListener(String property, PropertyChangeListener pcl) {
+//        pcs.removePropertyChangeListener(property, pcl);
+//    }
     
  public static class Capability {
 

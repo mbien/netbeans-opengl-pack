@@ -12,14 +12,19 @@ import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
 import java.beans.Beans;
 import java.util.Comparator;
-import javax.beans.binding.Binding;
+import java.util.ResourceBundle;
 import javax.media.opengl.DefaultGLCapabilitiesChooser;
 import javax.media.opengl.GLCanvas;
 import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.GLCapabilitiesChooser;
-import javax.swing.binding.ParameterKeys;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
+import org.jdesktop.beansbinding.BeanProperty;
+import org.jdesktop.beansbinding.ObjectProperty;
+import org.jdesktop.swingbinding.JTableBinding;
+import org.jdesktop.swingbinding.SwingBindings;
+import org.openide.util.NbBundle;
 
 /**
  *
@@ -29,6 +34,7 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
     
    
     /** Creates new form GLCapabilityPanel */
+    @SuppressWarnings("unchecked")
     public GLCapabilitiesPanel() {
         
         // TODO workaround; NB forgets to set design time flag => we do it
@@ -36,91 +42,47 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         
         initComponents();
         
+        ResourceBundle bundle = NbBundle.getBundle(GLCapabilitiesPanel.class);
         // bind capabilities table to model
-        Binding binding = new Binding(capabilitiesModel, "${capabilities}", capabilitiesJPanel.getTable(), "elements");
-        binding.putParameter(ParameterKeys.EDITABLE, false);
+        JTableBinding tableBinding = SwingBindings.createJTableBinding(UpdateStrategy.READ, capabilitiesModel.getCapabilities(), capabilitiesJPanel.getTable());
+        tableBinding.setEditable(false);
         
-        binding.addChildBinding("${name}", null)     
-               .putParameter(ParameterKeys.COLUMN, 0)
-               .putParameter(ParameterKeys.COLUMN_CLASS, String.class);
-        binding.addChildBinding("${value}", null)     
-               .putParameter(ParameterKeys.COLUMN, 1)
-               .putParameter(ParameterKeys.COLUMN_CLASS, String.class);
-
-        bindingContext.addBinding(binding);
-        binding.bind();
+        tableBinding.addColumnBinding(BeanProperty.create("name")).setColumnName(bundle.getString("GLCapabilitiesPanel.tablecolumn.Name"));
+        tableBinding.addColumnBinding(BeanProperty.create("value")).setColumnName(bundle.getString("GLCapabilitiesPanel.tablecolumn.Value"));
+        
+        bindingGroup.addBinding(tableBinding);
         
         
         // bind extensions table to model
-        binding = new Binding(capabilitiesModel, "${extensions}", extentionsJPanel.getTable(), "elements");
-        binding.putParameter(ParameterKeys.EDITABLE, false);
+        tableBinding = SwingBindings.createJTableBinding(UpdateStrategy.READ, capabilitiesModel.getExtensions(), extentionsJPanel.getTable());
+        tableBinding.setEditable(false);
+        tableBinding.addColumnBinding(ObjectProperty.create()).setColumnName(bundle.getString("GLCapabilitiesPanel.tablecolumn.Name"));
         
-        bindingContext.addBinding(binding);
-        binding.bind();
+        bindingGroup.addBinding(tableBinding);
         
         
         // bind display modes table
-        binding = new Binding(capabilitiesModel, "${displayModes}", displayModesJPanel.getTable(), "elements");
-        binding.putParameter(ParameterKeys.EDITABLE, false);
+        tableBinding = SwingBindings.createJTableBinding(UpdateStrategy.READ, capabilitiesModel.getDisplayModes(), displayModesJPanel.getTable());
+        tableBinding.setEditable(false);
         
-        binding.addChildBinding("${hardwareAccelerated}", null)
-               .putParameter(ParameterKeys.COLUMN, 0)
-               .putParameter(ParameterKeys.COLUMN_CLASS, Boolean.class);
+        tableBinding.addColumnBinding(BeanProperty.create("hardwareAccelerated")).setColumnClass(Boolean.class).setColumnName(bundle.getString("GLCapabilitiesPanel.tablecolumn.HWAccel"));
+        tableBinding.addColumnBinding(BeanProperty.create("doubleBuffered")).setColumnClass(Boolean.class).setColumnName(bundle.getString("GLCapabilitiesPanel.tablecolumn.DoubleBuff"));
+        tableBinding.addColumnBinding(BeanProperty.create("stereo")).setColumnClass(Boolean.class).setColumnName(bundle.getString("GLCapabilitiesPanel.tablecolumn.Stereo"));
+        tableBinding.addColumnBinding(BeanProperty.create("sampleBuffers")).setColumnClass(Boolean.class).setColumnName(bundle.getString("GLCapabilitiesPanel.tablecolumn.sampleBuffers"));
         
-        binding.addChildBinding("${doubleBuffered}", null)
-               .putParameter(ParameterKeys.COLUMN, 1)
-               .putParameter(ParameterKeys.COLUMN_CLASS, Boolean.class);
+        tableBinding.addColumnBinding(BeanProperty.create("numSamples")).setColumnClass(Integer.class).setColumnName(bundle.getString("GLCapabilitiesPanel.tablecolumn.NumSamples"));
+        tableBinding.addColumnBinding(BeanProperty.create("depthBits")).setColumnClass(Integer.class).setColumnName(bundle.getString("GLCapabilitiesPanel.tablecolumn.Depth_bits"));
+        tableBinding.addColumnBinding(BeanProperty.create("redBits")).setColumnClass(Integer.class).setColumnName(bundle.getString("GLCapabilitiesPanel.tablecolumn.R_bits"));
+        tableBinding.addColumnBinding(BeanProperty.create("greenBits")).setColumnClass(Integer.class).setColumnName(bundle.getString("GLCapabilitiesPanel.tablecolumn.G_bits"));
+        tableBinding.addColumnBinding(BeanProperty.create("blueBits")).setColumnClass(Integer.class).setColumnName(bundle.getString("GLCapabilitiesPanel.tablecolumn.B_bits"));
+        tableBinding.addColumnBinding(BeanProperty.create("alphaBits")).setColumnClass(Integer.class).setColumnName(bundle.getString("GLCapabilitiesPanel.tablecolumn.A_bits"));
+        tableBinding.addColumnBinding(BeanProperty.create("accumRedBits")).setColumnClass(Integer.class).setColumnName(bundle.getString("GLCapabilitiesPanel.tablecolumn.AccumR_bits"));
+        tableBinding.addColumnBinding(BeanProperty.create("accumGreenBits")).setColumnClass(Integer.class).setColumnName(bundle.getString("GLCapabilitiesPanel.tablecolumn.AccumG_bits"));
+        tableBinding.addColumnBinding(BeanProperty.create("accumBlueBits")).setColumnClass(Integer.class).setColumnName(bundle.getString("GLCapabilitiesPanel.tablecolumn.AccumB_bits"));
+        tableBinding.addColumnBinding(BeanProperty.create("accumAlphaBits")).setColumnClass(Integer.class).setColumnName(bundle.getString("GLCapabilitiesPanel.tablecolumn.AccumA_bits"));
         
-        binding.addChildBinding("${stereo}", null)
-               .putParameter(ParameterKeys.COLUMN, 2)
-               .putParameter(ParameterKeys.COLUMN_CLASS, Boolean.class);
+        bindingGroup.addBinding(tableBinding);
         
-        binding.addChildBinding("${sampleBuffers}", null)
-               .putParameter(ParameterKeys.COLUMN, 3)
-               .putParameter(ParameterKeys.COLUMN_CLASS, Boolean.class);
-        
-        binding.addChildBinding("${numSamples}", null)
-               .putParameter(ParameterKeys.COLUMN, 4)
-               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
-        
-        binding.addChildBinding("${depthBits}", null)
-               .putParameter(ParameterKeys.COLUMN, 5)
-               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
-        
-        binding.addChildBinding("${redBits}", null)
-               .putParameter(ParameterKeys.COLUMN, 6)
-               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
-        
-        binding.addChildBinding("${greenBits}", null)
-               .putParameter(ParameterKeys.COLUMN, 7)
-               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
-        
-        binding.addChildBinding("${blueBits}", null)
-               .putParameter(ParameterKeys.COLUMN, 8)
-               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
-        
-        binding.addChildBinding("${alphaBits}", null)
-               .putParameter(ParameterKeys.COLUMN, 8)
-               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
-        
-        binding.addChildBinding("${accumRedBits}", null)
-               .putParameter(ParameterKeys.COLUMN, 9)
-               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
-        
-        binding.addChildBinding("${accumGreenBits}", null)
-               .putParameter(ParameterKeys.COLUMN, 10)
-               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
-        
-        binding.addChildBinding("${accumBlueBits}", null)
-               .putParameter(ParameterKeys.COLUMN, 11)
-               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
-        
-        binding.addChildBinding("${accumAlphaBits}", null)
-               .putParameter(ParameterKeys.COLUMN, 12)
-               .putParameter(ParameterKeys.COLUMN_CLASS, Integer.class);
-        
-        bindingContext.addBinding(binding);
-        binding.bind();
         
         final JOGLGearsDemo demo = new JOGLGearsDemo(gLCanvas);
         
@@ -144,8 +106,8 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         
         // TODO property changed listener are better as "forced" updates
         
-        bindingContext.unbind();
-        bindingContext.bind();
+        bindingGroup.unbind();
+        bindingGroup.bind();
         
         TableRowSorter<TableModel> sorter = (TableRowSorter<TableModel>)extentionsJPanel.getTable().getRowSorter();
         sorter.setModel(extentionsJPanel.getTable().getModel());
@@ -203,7 +165,7 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
                         max = elem.getNumSamples();
                 }
                 capabilitiesModel.setMaxSampleBuffers(max+"x");
-                updateFromModel();
+//                updateFromModel();
                 
                 return super.chooseCapabilities(desired, available, arg2);
             }
@@ -227,9 +189,9 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
      * always regenerated by the Form Editor.
      */
 
-    // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingContext = new javax.beans.binding.BindingContext();
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         capabilitiesModel = new net.java.nboglpack.glcapabilities.GLCapabilitiesModel();
         javax.swing.JTabbedPane tabbedPane = new javax.swing.JTabbedPane();
@@ -278,27 +240,32 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         glField.setEditable(false);
         glField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        bindingContext.addBinding(capabilitiesModel, "${glVersion}", glField, "text");
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${glVersion}"), glField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         glslField.setEditable(false);
         glslField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        bindingContext.addBinding(capabilitiesModel, "${glslVersion}", glslField, "text");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${glslVersion}"), glslField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         joglField.setEditable(false);
         joglField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        bindingContext.addBinding(capabilitiesModel, "${implVersion}", joglField, "text");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${implVersion}"), joglField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         rendererField.setEditable(false);
         rendererField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        bindingContext.addBinding(capabilitiesModel, "${renderer}", rendererField, "text");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${renderer}"), rendererField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         vendorField.setEditable(false);
         vendorField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        bindingContext.addBinding(capabilitiesModel, "${vendor}", vendorField, "text");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${vendor}"), vendorField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         gl.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.gl.text")); // NOI18N
 
@@ -368,52 +335,62 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
         viewportField.setEditable(false);
         viewportField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        bindingContext.addBinding(capabilitiesModel, "${maxViewPortSize}", viewportField, "text");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxViewPortSize}"), viewportField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         textureSizeField.setEditable(false);
         textureSizeField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        bindingContext.addBinding(capabilitiesModel, "${maxTextureSize}", textureSizeField, "text");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxTextureSize}"), textureSizeField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         textureUnitsField.setEditable(false);
         textureUnitsField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        bindingContext.addBinding(capabilitiesModel, "${maxTextureUnits}", textureUnitsField, "text");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxTextureUnits}"), textureUnitsField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         textureUnitsVSField.setEditable(false);
         textureUnitsVSField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        bindingContext.addBinding(capabilitiesModel, "${maxVertexTextureImageUnits}", textureUnitsVSField, "text");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxVertexTextureImageUnits}"), textureUnitsVSField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         lightsField.setEditable(false);
         lightsField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        bindingContext.addBinding(capabilitiesModel, "${maxLights}", lightsField, "text");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxLights}"), lightsField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         anisotropicFilteringField.setEditable(false);
         anisotropicFilteringField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        bindingContext.addBinding(capabilitiesModel, "${maxAnisotropy}", anisotropicFilteringField, "text");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxAnisotropy}"), anisotropicFilteringField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         fsaaField.setEditable(false);
         fsaaField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        bindingContext.addBinding(capabilitiesModel, "${maxSampleBuffers}", fsaaField, "text");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxSampleBuffers}"), fsaaField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         textureUnitsFSField.setEditable(false);
         textureUnitsFSField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        bindingContext.addBinding(capabilitiesModel, "${maxTextureImageUnits}", textureUnitsFSField, "text");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxTextureImageUnits}"), textureUnitsFSField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         textureUnitsGSField.setEditable(false);
         textureUnitsGSField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        bindingContext.addBinding(capabilitiesModel, "${maxGeometryTextureImageUnits}", textureUnitsGSField, "text");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxGeometryTextureImageUnits}"), textureUnitsGSField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         renderBuffersField.setEditable(false);
         renderBuffersField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        bindingContext.addBinding(capabilitiesModel, "${maxDrawBuffers}", renderBuffersField, "text");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxDrawBuffers}"), renderBuffersField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         viewportSizeLabel.setText(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.viewportSizeLabel.text")); // NOI18N
 
@@ -551,7 +528,7 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        bindingContext.bind();
+        bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
   
     
@@ -576,7 +553,7 @@ public class GLCapabilitiesPanel extends javax.swing.JPanel {
     private javax.swing.JTextField textureUnitsVSField;
     private javax.swing.JTextField vendorField;
     private javax.swing.JTextField viewportField;
-    private javax.beans.binding.BindingContext bindingContext;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
     
 }
