@@ -14,18 +14,18 @@ SKIP:COMMENT
 SKIP:ML_COMMENT
 
 ## error highlighting ##########################################################
-#MARK:ERROR: {
-#    type:"Error";
-#    message:"LBL_SYNTAX_ERROR";
-#}
-#MARK:error: {
-#    type:"Error";
-#    message:"LBL_UNEXPECTED_CHARACTER";
-#}
-#MARK:reserved: {
-#    type:"Warning";
-#    message:"LBL_RESERVED_KEYWORD";
-#}
+MARK:ERROR: {
+    type:"Error";
+    message:"LBL_SYNTAX_ERROR";
+}
+MARK:error: {
+    type:"Error";
+    message:"LBL_UNEXPECTED_CHARACTER";
+}
+MARK:reserved: {
+    type:"Warning";
+    message:"LBL_RESERVED_KEYWORD";
+}
 
 FOLD:function_body: {
     fold_display_name:"{...}";
@@ -57,7 +57,7 @@ NAVIGATOR:global_preprocessor: {
     icon: "net/java/nboglpack/glsleditor/resources/preprocessor.png";
     isLeaf: "true";
 }
-NAVIGATOR:global_declared_identifier: {
+NAVIGATOR:global_declared_identifier, struct_declarator: {
     display_name: net.java.nboglpack.glsleditor.glsl.Glsl.createFieldDeclarationString;
     icon: "net/java/nboglpack/glsleditor/resources/field.gif";
     isLeaf: "true";

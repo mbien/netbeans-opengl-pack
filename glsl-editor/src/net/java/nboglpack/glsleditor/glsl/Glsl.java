@@ -18,16 +18,20 @@ import org.netbeans.api.lexer.TokenSequence;
 import org.netbeans.api.lexer.TokenUtilities;
 
 /**
- *
+ * Utilitie methods called from GLSL.nbs.
  * @author Michael Bien
  */
-public class Glsl {
+public final class Glsl {
     
  private final static String KEYWORD_FONT_COLOR = "<font color=808080>";
     
  private Glsl() {}
     
-    public static String createFunctionDeclarationString(SyntaxContext context) {
+     /**
+     * Assambles a human readable String containing the declaraton of a function.
+     * Asumes that the current token of the SyntaxContext represents the function name.
+     */
+    public static final String createFunctionDeclarationString(SyntaxContext context) {
         
         TokenSequence sequence = context.getTokenSequence();        
         
@@ -88,6 +92,7 @@ public class Glsl {
         }
         
         sb.append("</font>)");
+        
         if(!"void".equals(type)) {
             sb.append(" : ");
             sb.append(KEYWORD_FONT_COLOR);
@@ -99,8 +104,11 @@ public class Glsl {
         return sb.toString();
     }
     
-    
-    public static String createFieldDeclarationString(SyntaxContext context) {
+    /**
+     * Assambles a human readable String containing the declaraton of a field and the field name itself.
+     * Asumes that the current token of the SyntaxContext represents the field name.
+     */
+    public static final String createFieldDeclarationString(SyntaxContext context) {
         
         TokenSequence sequence = context.getTokenSequence();
         
@@ -108,7 +116,12 @@ public class Glsl {
         
         sb.append("<html>");
         sb.append(sequence.token().text());
+        sb.append(KEYWORD_FONT_COLOR);
+        sb.append(" :");
         
+        int insertIndex = sb.length();
+        
+        // read forward
         int moved = 0;
         Token token;
         while(     sequence.moveNext()
@@ -123,27 +136,30 @@ public class Glsl {
         while(moved-- >= 0)
             sequence.movePrevious();
         
-        sb.append(" : ");
-        sb.append(KEYWORD_FONT_COLOR);
-        int insertIndex = sb.length();
-        
+        // read backwards throw the declaration
         boolean skipToken = false;
-        boolean skipArrayIndex = false;
+        
         while(     sequence.movePrevious() 
                 && sequence.token().id() != GlslTokenId.SEMICOLON 
                 && sequence.token().id() != GlslTokenId.END_OF_LINE ) {
             
             token = sequence.token();
+            
             if(!isIgnoredToken(token)) {
                 
+                // we have a struct declaration; skip everything between { }
+                if(token.id() == GlslTokenId.BRACE && TokenUtilities.equals(token.text(), "}")) {
+                    movePreviousUntil(sequence, GlslTokenId.BRACE, "}", "{");
+                    continue;
+                }                
+                
+                // skip token in case of an comma seperated identifier list
                 if(skipToken) {
                     if(     token.id() == GlslTokenId.BRACKET
                          && TokenUtilities.equals(token.text(), "]")    ) {
-                        skipArrayIndex = true;
-                    }else if(   skipArrayIndex
-                             && token.id() == GlslTokenId.BRACKET
-                             && TokenUtilities.equals(token.text(), "[")    ) {
-                        skipArrayIndex = false;
+                        movePreviousUntil(sequence, GlslTokenId.BRACKET, "]", "[");
+                        skipToken = false;
+                    }else {
                         skipToken = false;
                     }
                     continue;
@@ -153,25 +169,22 @@ public class Glsl {
                     skipToken = true;
                     continue;
                 }
-                sb.insert(insertIndex, " ");
-                sb.insert(insertIndex, token.text());
+                
+                if(!TokenUtilities.equals(token.text(), "struct")) {
+                    sb.insert(insertIndex, token.text());
+                    sb.insert(insertIndex, " ");
+                }
             }
             
         }
-        sb.append("</font>");
-        sb.append("</html>");
         
+        sb.append("</font></html>");
         
         return sb.toString();
     }
-    
-//    public static String createStructFieldDeclarationString(SyntaxContext context) {
-//        TokenSequence sequence = context.getTokenSequence();
-//        Token fieldToken = sequence.token();
-//    }
-    
+   
         
-    public static String createPreprocessorString(SyntaxContext context) {
+    public static final String createPreprocessorString(SyntaxContext context) {
         
         ASTNode node = (ASTNode)context.getASTPath().getLeaf();
         List<ASTItem> children = node.getChildren();
@@ -197,21 +210,34 @@ public class Glsl {
         return str;
     }
     
-    public static boolean isIgnoredToken(Token token) {
+    private static final void movePreviousUntil(TokenSequence sequence, GlslTokenId id, String countToken, String stopToken) {
+        int counter = 1;
+        while(sequence.movePrevious() && counter > 0) {
+            if(sequence.token().id() == id) {
+                if(TokenUtilities.equals(sequence.token().text(), stopToken)) {
+                    counter--;
+                }else if(TokenUtilities.equals(sequence.token().text(), countToken)){
+                    counter++;
+                }
+            }
+        }
+    }
+    
+    private static final boolean isIgnoredToken(Token token) {
         return     token.id() == GlslTokenId.WHITESPACE
                 || token.id() == GlslTokenId.COMMENT
                 || token.id() == GlslTokenId.PREPROCESSOR;
     }
     
-    public static final boolean isNode(ASTItem item, String nt) {
+    private static final boolean isNode(ASTItem item, String nt) {
         return item != null && item instanceof ASTNode && ((ASTNode)item).getNT().equals(nt);
     }
 
-    public static final boolean isToken(ASTItem item, String id) {
+    private static final boolean isToken(ASTItem item, String id) {
         return item != null && item instanceof ASTToken && ((ASTToken)item).getIdentifier().equals(id);
     }
 
-    public static final boolean isTokenType(ASTItem item, String type) {
+    private static final boolean isTokenType(ASTItem item, String type) {
         return item != null && item instanceof ASTToken && ((ASTToken) item).getType().equals(type);
     }
 
