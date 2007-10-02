@@ -12,6 +12,7 @@ import net.java.nboglpack.glsleditor.lexer.GlslTokenId;
 import org.netbeans.api.languages.ASTItem;
 import org.netbeans.api.languages.ASTNode;
 import org.netbeans.api.languages.ASTToken;
+import org.netbeans.api.languages.Context;
 import org.netbeans.api.languages.SyntaxContext;
 import org.netbeans.api.lexer.Token;
 import org.netbeans.api.lexer.TokenSequence;
@@ -208,6 +209,10 @@ public final class Glsl {
         }
         
         return str;
+    }
+    
+    public static void process(SyntaxContext context) {
+        System.out.println(context.getASTPath().getLeaf());
     }
     
     private static final void movePreviousUntil(TokenSequence sequence, GlslTokenId id, String countToken, String stopToken) {

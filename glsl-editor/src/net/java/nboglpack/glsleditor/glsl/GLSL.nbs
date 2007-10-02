@@ -62,17 +62,14 @@ NAVIGATOR:global_declared_identifier, struct_declarator: {
     icon: "net/java/nboglpack/glsleditor/resources/field.gif";
     isLeaf: "true";
 }
-#NAVIGATOR:struct_declarator: {
-#    display_name: net.java.nboglpack.glsleditor.glsl.Glsl.createStructFieldDeclarationString;
-#    icon: "net/java/nboglpack/glsleditor/resources/field.gif";
-#    isLeaf: "true";
-#}
 NAVIGATOR:function: {
     display_name: net.java.nboglpack.glsleditor.glsl.Glsl.createFunctionDeclarationString;
     icon: "net/java/nboglpack/glsleditor/resources/function.gif";
     isLeaf: "true";
 }
-
+#AST {
+#    process: net.java.nboglpack.glsleditor.glsl.Glsl.process;
+#}
 #PROPERTIES {
 #    traceSteps:"true";
 #    printRules:"true";
@@ -217,24 +214,22 @@ reserved = "asm"
 
 
 ## declarations ################################################################
-declaration = type_specifier_or_identifier [array_index] (function | (global_declared_identifier global_identifier_list <SEMICOLON>));
+declaration = type_specifier_or_identifier [array_index] (function | (global_identifier_list <SEMICOLON>));
 declaration = "void" function;
 declaration = global_type_qualifier struct_declaration <SEMICOLON>;
 declaration = global_type_qualifier global_type_declaration <SEMICOLON>;
 declaration = struct_declaration <SEMICOLON>;
 declaration = global_preprocessor;
 
-global_identifier_list = (<COMMA> global_declared_identifier)*;
-global_declared_identifier = <IDENTIFIER> [array_index];
+global_identifier_list = global_declared_identifier [array_index] (<COMMA> global_declared_identifier [array_index])*;
+global_declared_identifier = <IDENTIFIER>;
 global_preprocessor = <PREPROCESSOR>;
 
-struct_declaration = "struct" <IDENTIFIER> struct_body [struct_declarator_list];
+struct_declaration = "struct" <IDENTIFIER> struct_body [global_identifier_list];
 struct_body = "{" (local_type_declaration <SEMICOLON>)+ "}";
-struct_declarator_list = struct_declarator (<COMMA> struct_declarator)*;
-struct_declarator = <IDENTIFIER>;
 
-global_type_declaration = type_specifier_or_identifier [array_index] global_declared_identifier global_identifier_list [<EQ> expression];
-type_declaration = type_specifier_or_identifier [array_index] <IDENTIFIER> [array_index] (<COMMA> <IDENTIFIER> [array_index])*;
+global_type_declaration = type_specifier_or_identifier [array_index] global_identifier_list [<EQ> expression];
+type_declaration        = type_specifier_or_identifier [array_index] <IDENTIFIER> [array_index] (<COMMA> <IDENTIFIER> [array_index])*;
 
 local_type_declaration = [type_qualifier] type_declaration;
 
@@ -278,8 +273,8 @@ expression_hack = <IDENTIFIER> (field_access)* [increment_or_decrement_operator]
 expression_hack = <IDENTIFIER> (field_access)* <IDENTIFIER> [array_index] (<COMMA> <IDENTIFIER> [array_index])*;
 expression_hack = type_specifier (field_access)* <IDENTIFIER> [array_index] (<COMMA> <IDENTIFIER> [array_index])*;
 
-expression1_hack = ( increment_or_decrement_operator (<IDENTIFIER> | <BUILD_IN_VAR>) (field_access)* [increment_or_decrement_operator] [assignment])
-                 | ( <BUILD_IN_VAR> (field_access)* [increment_or_decrement_operator] [assignment])
+expression1_hack = (increment_or_decrement_operator (<IDENTIFIER> | <BUILD_IN_VAR>) (field_access)* [increment_or_decrement_operator] [assignment])
+                 | (<BUILD_IN_VAR> (field_access)* [increment_or_decrement_operator] [assignment])
                  | (function_call (field_access)*)
                  | (constructor_call (field_access)*)
                  | <INTEGER_LITERAL>
