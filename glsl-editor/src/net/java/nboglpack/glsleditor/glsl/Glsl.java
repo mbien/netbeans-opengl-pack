@@ -43,7 +43,9 @@ public final class Glsl {
         try {
             
             TokenSequence sequence = TokenHierarchy.get(context.getDocument()).tokenSequence();
-           
+            sequence.move(context.getOffset());
+            sequence.moveNext();
+            
             sb.append("<html>");
 
             int moved = 0;
@@ -129,7 +131,9 @@ public final class Glsl {
         
         try {
             TokenSequence sequence = TokenHierarchy.get(context.getDocument()).tokenSequence();
-
+            sequence.move(context.getOffset());
+            sequence.moveNext();
+            
             sb.append("<html>");
             sb.append(sequence.token().text());
             sb.append(KEYWORD_FONT_COLOR);
