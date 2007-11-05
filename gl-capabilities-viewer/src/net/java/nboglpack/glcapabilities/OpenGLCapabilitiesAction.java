@@ -13,6 +13,7 @@ import java.awt.Window;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.beans.Beans;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +39,9 @@ public final class OpenGLCapabilitiesAction extends CallableSystemAction {
  private GLCapabilitiesPanel capsPanel;
     
     public void performAction() {
+        
+        // TODO workaround; remove AFAIK
+        Beans.setDesignTime(false);
         
         JDialog dialog = new JDialog(   WindowManager.getDefault().getMainWindow(),
                                         "OpenGL Capabilities", false);
@@ -211,6 +215,10 @@ public final class OpenGLCapabilitiesAction extends CallableSystemAction {
                 window.setVisible(false);
                 window.removeWindowListener(this);
                 window.dispose();
+                
+                // TODO workaround; remove AFAIK
+                Beans.setDesignTime(true);
+                
             }
         };
         

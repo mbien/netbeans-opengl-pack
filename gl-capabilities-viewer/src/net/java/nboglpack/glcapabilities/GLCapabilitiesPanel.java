@@ -10,7 +10,6 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
-import java.beans.Beans;
 import java.util.Comparator;
 import java.util.ResourceBundle;
 import javax.media.opengl.DefaultGLCapabilitiesChooser;
@@ -37,9 +36,6 @@ public class GLCapabilitiesPanel extends JPanel {
     /** Creates new form GLCapabilityPanel */
     @SuppressWarnings("unchecked")
     public GLCapabilitiesPanel() {
-        
-        // TODO workaround; NB forgets to set design time flag => we do it
-        Beans.setDesignTime(false);
         
         initComponents();
         
