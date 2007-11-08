@@ -3,6 +3,30 @@
 <MIME-resolver>
     <file>
         <ext name="frag"/>
+        <ext name="fragment"/>
+        <ext name="glfrag"/>
+        <ext name="glslfrag"/>
+        <ext name="glslfragment"/>
+        <ext name="glfragmentshader"/>
+        <ext name="glslfragmentshader"/>
+        <ext name="glsl-frag"/>
+        <ext name="glsl-fragment"/>
+        <ext name="gl-fragment-shader"/>
+        <ext name="glsl-fragment-shader"/>
+        <ext name="gl.frag"/>
+        <ext name="glsl.frag"/>
+        <ext name="glsl.fragment"/>
+        <ext name="gl.fragmentshader"/>
+        <ext name="gl.fragment.shader"/>
+        <ext name="glsl.fragmentshader"/>
+        <ext name="glsl.fragment.shader"/>
+        <ext name="frag.gl"/>
+        <ext name="frag.glsl"/>
+        <ext name="fragment.glsl"/>
+        <ext name="fragmentshader.gl"/>
+        <ext name="fragment.shader.gl"/>
+        <ext name="fragmentshader.glsl"/>
+        <ext name="fragment.shader.glsl"/>
         <resolver mime="text/x-glsl-fragment-shader"/>
     </file>
 </MIME-resolver>

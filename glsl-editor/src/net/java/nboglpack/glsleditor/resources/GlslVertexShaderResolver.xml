@@ -3,6 +3,30 @@
 <MIME-resolver>
     <file>
         <ext name="vert"/>
+        <ext name="vertex"/>
+        <ext name="glvert"/>
+        <ext name="glslvert"/>
+        <ext name="glslvertex"/>
+        <ext name="glvertexshader"/>
+        <ext name="glslvertexshader"/>
+        <ext name="glsl-vert"/>
+        <ext name="glsl-vertex"/>
+        <ext name="gl-vertex-shader"/>
+        <ext name="glsl-vertex-shader"/>
+        <ext name="gl.vert"/>
+        <ext name="glsl.vert"/>
+        <ext name="glsl.vertex"/>
+        <ext name="gl.vertexshader"/>
+        <ext name="gl.vertex.shader"/>
+        <ext name="glsl.vertexshader"/>
+        <ext name="glsl.vertex.shader"/>
+        <ext name="vert.gl"/>
+        <ext name="vert.glsl"/>
+        <ext name="vertex.glsl"/>
+        <ext name="vertexshader.gl"/>
+        <ext name="vertex.shader.gl"/>
+        <ext name="vertexshader.glsl"/>
+        <ext name="vertex.shader.glsl"/>
         <resolver mime="text/x-glsl-vertex-shader"/>
     </file>
 </MIME-resolver>
