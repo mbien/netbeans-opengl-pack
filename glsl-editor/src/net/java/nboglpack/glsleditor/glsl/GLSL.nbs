@@ -234,15 +234,14 @@ type_declaration        = type_specifier_or_identifier [array_index] <IDENTIFIER
 local_type_declaration = [type_qualifier] type_declaration;
 
 ## function ####################################################################
-function = <FUNCTION> "(" [parameter_declaration_list] ")" function_body;
+function = <FUNCTION> "(" [parameter_declaration_list] ")" (function_body | <SEMICOLON>);
 function_body = code_block;
 
-parameter_declaration = [type_qualifier] [parameter_declaration_qualifier] type_specifier_or_identifier [array_index] <IDENTIFIER>;
+parameter_declaration = [type_qualifier] [parameter_declaration_qualifier] type_specifier_or_identifier ((array_index <IDENTIFIER>) | (<IDENTIFIER> [array_index]));
 parameter_declaration_list = "void" | (parameter_declaration (<COMMA> parameter_declaration)*);
 
 statement = <PREPROCESSOR>;
-statement = expression_hack <SEMICOLON>;
-#statement = local_type_declaration [<EQ> expression] <SEMICOLON>;
+statement = expression_hack <SEMICOLON>;  # statement = local_type_declaration [<EQ> expression] <SEMICOLON>;
 statement = conditional_statement;
 statement = "return" [expression] <SEMICOLON>;
 statement = "break" <SEMICOLON>;   # break just in loops allowed
@@ -252,10 +251,13 @@ statement = "discard" <SEMICOLON>; # Fragment shader only.
 code_block = "{" statement* "}";
 
 ## expresstions and operations #################################################
-expression = [unary_operator] expression1 operation_or_comparison*;
-expression = [unary_operator] "(" expression ")" operation_or_comparison*;
+# ternary operator
+expression = expression1  ["?" expression1 ":" expression1];
 
-expression1 = ( [increment_or_decrement_operator] (<IDENTIFIER> | <BUILD_IN_VAR>) (field_access)* [increment_or_decrement_operator] [assignment])
+expression1 = [unary_operator] expression2 operation_or_comparison*;
+expression1 = [unary_operator] "(" expression ")" operation_or_comparison*;
+
+expression2 = ( [increment_or_decrement_operator] (<IDENTIFIER> | <BUILD_IN_VAR>) (field_access)* [increment_or_decrement_operator] [assignment])
             | (function_call (field_access)*)
             | (constructor_call (field_access)*)
             | <INTEGER_LITERAL>
