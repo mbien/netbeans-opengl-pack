@@ -30,40 +30,22 @@ public class GLSLShader {
  private boolean throwExceptionOnCompilerWarning = false;
  
     public GLSLShader(String... fileLocation) {
-        
-        if(fileLocation[0].endsWith(".frag"))
-            this.type = TYPE.FRAGMENT;
-        else if(fileLocation[0].endsWith(".vert"))
-            this.type = TYPE.VERTEX;
-        else if(fileLocation[0].endsWith(".geom"))
-            this.type = TYPE.GEOMETRY;
-        else
-            throw new IllegalArgumentException("Wrong file ending; only .frag, .vert and .geom endings are allowed");
-        
-        shaderNames = new String[fileLocation.length];
-        File[] files = new File[fileLocation.length];
-        
-        for(int i = 0; i < files.length; i++) 
-            files[i] = new File(fileLocation[i]);
-        
-        source = readSourceFile(files);
+        this(toFiles(fileLocation));
     }
     
     public GLSLShader(File... files) {
-        
-        if(files[0].getName().endsWith(".frag"))
-            this.type = TYPE.FRAGMENT;
-        else if(files[0].getName().endsWith(".vert"))
-            this.type = TYPE.VERTEX;
-        else if(files[0].getName().endsWith(".geom"))
-            this.type = TYPE.GEOMETRY;
-        else
-            throw new IllegalArgumentException("Wrong file ending; only .frag, .vert and .geom endings are allowed");
-        
+        this.type = TYPE.parse(files[0].getName());;
+        if(type==null) throw new IllegalArgumentException("Wrong file ending; only .[gl(sl)]frag, .[gl(sl)]vert and .[gl(sl)]geom endings are allowed");
         shaderNames = new String[files.length];
         source = readSourceFile(files);
     }
-    
+
+    public GLSLShader(TYPE type, File... files) {
+        this.type = type;
+        shaderNames = new String[files.length];
+        source = readSourceFile(files);
+    }
+
     public GLSLShader(String source, String name, TYPE type) {
         this.type = type;
         shaderNames = new String[]{ name };
@@ -82,7 +64,16 @@ public class GLSLShader {
         source = sb.toString();
     }
     
-    
+    private static File[] toFiles(String... names)
+    {
+        File[] files = new File[names.length];
+        
+        for(int i = 0; i < files.length; i++) 
+            files[i] = new File(names[i]);
+        
+        return files;
+    }
+
     private final String readSourceFile(File... files) {
         
         StringBuilder sb = new StringBuilder();
@@ -216,21 +207,29 @@ public class GLSLShader {
             EXT_STRING = extention;
         }
         
-        public static TYPE parse(String string) {
-            if(string.equalsIgnoreCase("frag"))
+        public static TYPE parse(String ext) {
+            String _ext="."+ext;
+            if(_ext.endsWith(".frag") || _ext.endsWith(".glfrag") || _ext.endsWith(".glslfrag") || _ext.endsWith(".gl-frag") || _ext.endsWith(".glsl-frag"))
                 return TYPE.FRAGMENT;
-            else if(string.equalsIgnoreCase("vert"))
+            if(_ext.endsWith(".vert") || _ext.endsWith(".glvert") || _ext.endsWith(".glslvert") || _ext.endsWith(".gl-vert") || _ext.endsWith(".glsl-vert"))
                 return TYPE.VERTEX;
-            else if(string.equalsIgnoreCase("geom"))
+            if(_ext.endsWith(".geom") || _ext.endsWith(".glgeom") || _ext.endsWith(".glslgeom") || _ext.endsWith(".gl-geom") || _ext.endsWith(".glsl-geom"))
                 return TYPE.GEOMETRY;
             return null;
         }
         
+        public static TYPE fromMime(String string) {
+            if(string.equalsIgnoreCase("text/x-glsl-fragment-shader"))
+                return TYPE.FRAGMENT;
+            else if(string.equalsIgnoreCase("text/x-glsl-vertex-shader"))
+                return TYPE.VERTEX;
+            else if(string.equalsIgnoreCase("text/x-glsl-geometry-shader"))
+                return TYPE.GEOMETRY;
+            return null;
+        }
+
         public boolean isSupported() {
             return isShaderSupported(this);
         }
-        
     }
-    
-       
 }

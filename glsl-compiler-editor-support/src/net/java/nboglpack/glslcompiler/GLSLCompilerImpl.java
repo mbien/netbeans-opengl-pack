@@ -179,14 +179,15 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
             try{
                 String shaderSource = doc.getText(0, doc.getLength());
                 String shaderName = dao.getPrimaryFile().getNameExt();
-                GLSLShader.TYPE shaderType = GLSLShader.TYPE.parse(dao.getPrimaryFile().getExt());
+                GLSLShader.TYPE shaderType = GLSLShader.TYPE.fromMime(dao.getPrimaryFile().getMIMEType());
                 shader = new GLSLShader(shaderSource, shaderName, shaderType);
             }catch(BadLocationException ex){
                 // not possible
                 Exceptions.printStackTrace(ex);
             }
         }else{
-            shader = new GLSLShader(FileUtil.toFile(dao.getPrimaryFile()));
+            GLSLShader.TYPE shaderType = GLSLShader.TYPE.fromMime(dao.getPrimaryFile().getMIMEType());
+            shader = new GLSLShader(shaderType, FileUtil.toFile(dao.getPrimaryFile()));
         }
         shader.setThrowExceptionOnCompilerWarning(true);
         
