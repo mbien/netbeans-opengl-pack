@@ -1,0 +1,123 @@
+#version 120
+
+varying vec4 vertex[], normal[], texcoords[];
+varying vec4 vertex1, normal1, texcoords1;
+uniform vec4 lightPosition[];
+attribute vec4 position;
+
+float lights[];
+
+const int numLights = 2;
+float lights[numLights], lights2[numLights];
+
+uniform struct gl_MaterialParameters {
+        vec4 emission;
+        vec4 ambient;
+        vec4 diffuse;
+        vec4 specular;
+        float shininess;
+} material1, material2;
+	
+uniform gl_MaterialParameters material3;
+
+/* Prototype from Open GL Programming Guide, Fith Edition, pg 652 */
+float HornerEvalPolynomial(float coeff[10], float x);
+
+/*
+* grammar test.
+* this shader does nothing usefull, it is just for grammar tests.
+*/
+void main() {
+    
+    // comment
+    gl_Position = ftransform();
+    
+    float y = sin(20.0);
+    float x = 10.0*10.0*y;
+    float z = (x*y++);
+    z++;
+    float external = 0.0;
+    z = -z;
+    z = - --z;
+    #define F2 0.366025403784
+    vec2 v = vec2(0);
+    
+    (x /*+ y*/) * F2; // strange but valid ;)
+    
+    float s = (-(x + y)) * -F2;
+    s = (x + y) * F2;
+    z *= ((2.0));
+    z += 2.0 * (x);
+    z = (x + y) * z;
+    z = (gl_Position.x + gl_Position.y) * gl_Position.z;
+    
+    // ternary opp
+    int t = 5 > 4 ? 25 : 62;
+    t = (5) > 4 ? fade(1) : 62;
+    t = (5 > 4) ? 25 : 62;
+    
+    vec3 test = vec3(1.0, 1.0, 1.0);
+    test.xyz;
+    test.x = 0.0;
+    
+    gl_Position.x = test.y++;
+    --gl_Position.x;
+    
+    
+    vec2 o1;
+    if(x > y) 
+      o1 = vec2(1.0, 0.0);
+    else if(y > y)
+      o1 = vec2(1.0, 1.0);
+    else 
+      o1 = vec2(0.0, 1.0);
+
+    if(x > y) {
+      o1 = vec2(1.0, 0.0);
+    }else{
+      o1 = vec2(0.0, 1.0);
+    }
+    
+    while(true) 
+        o1.x++;
+    
+    do{
+    }while(true);
+    
+    for(int i = 0; i < 5; ++i) { 
+        gl_FrontColor = gl_FrontColorIn[i]; 
+        gl_Position = gl_PositionIn[i]; 
+        break; 
+    }
+    
+    float a[5] = float[5](3.4, 4.2, 5.0, 5.2, 1.1);
+    float b[5] = float[](3.4, 4.2, 5.0, 5.2, 1.1); // same thing
+    
+    float[] c = float[](3.4, 4.2, 5.0, 5.2, 1.1);
+    
+    mat3 m, n, r;
+    
+    r[0].x = m[0].x * n[0].x + m[1].x * n[0].y + m[2].x * n[0].z;
+    r[1].x = m[0].x * n[1].x + m[1].x * n[1].y + m[2].x * n[1].z;
+    r[2].x = m[0].x * n[2].x + m[1].x * n[2].y + m[2].x * n[2].z;
+    r[0].y = m[0].y * n[0].x + m[1].y * n[0].y + m[2].y * n[0].z;
+    r[1].y = m[0].y * n[1].x + m[1].y * n[1].y + m[2].y * n[1].z;
+    r[2].y = m[0].y * n[2].x + m[1].y * n[2].y + m[2].y * n[2].z;
+    r[0].z = m[0].z * n[0].x + m[1].z * n[0].y + m[2].z * n[0].z;
+    r[1].z = m[0].z * n[1].x + m[1].z * n[1].y + m[2].z * n[1].z;
+    r[2].z = m[0].z * n[2].x + m[1].z * n[2].y + m[2].z * n[2].z;
+    
+}
+
+void test(out float a, vec3[5] b, const int c) {
+    
+}
+
+/*
+ * The interpolation function. This could be a 1D texture lookup
+ * to get some more speed, but it's not the main part of the algorithm.
+ */
+float fade(in float t) {
+  // return t*t*(3.0-2.0*t); // Old fade, yields discontinuous second derivative
+  return (t*t)*t*(t*(t*6.0-15.0)+10.0); // Improved fade, yields C2-continuous noise
+}
