@@ -258,8 +258,7 @@ expression1 = [unary_operator] expression2 operation_or_comparison*;
 expression1 = [unary_operator] "(" expression ")" operation_or_comparison*;
 
 expression2 = ( [increment_or_decrement_operator] (<IDENTIFIER> | <BUILD_IN_VAR>) (field_access)* [increment_or_decrement_operator] [assignment])
-            | (function_call (field_access)*)
-            | (constructor_call (field_access)*)
+            | ((function_call | constructor_call) (field_access)*)
             | <INTEGER_LITERAL>
             | <FLOAT_LITERAL>
             | boolean_literal;
@@ -277,8 +276,7 @@ expression_hack = type_specifier (field_access)* <IDENTIFIER> [array_index] (<CO
 
 expression1_hack = (increment_or_decrement_operator (<IDENTIFIER> | <BUILD_IN_VAR>) (field_access)* [increment_or_decrement_operator] [assignment])
                  | (<BUILD_IN_VAR> (field_access)* [increment_or_decrement_operator] [assignment])
-                 | (function_call (field_access)*)
-                 | (constructor_call (field_access)*)
+                 | ((function_call | constructor_call) (field_access)*)
                  | <INTEGER_LITERAL>
                  | <FLOAT_LITERAL>
                  | boolean_literal;
@@ -295,7 +293,7 @@ array_index = "[" [expression] "]";
 
 function_call = (<FUNCTION> | <BUILD_IN_FUNC>) "(" [expression_list] ")";
 # Note constructor call is something like that: vec2(1.0, 2.0) or float[2] (1.0, 2.0)
-constructor_call = <KEYWORD> [array_index] "(" [expression_list] ")"; #TODO custom structs
+constructor_call = type_specifier [array_index] "(" [expression_list] ")"; #TODO custom structs
 
 expression_list = "void" | (expression (<COMMA> expression)*);
 

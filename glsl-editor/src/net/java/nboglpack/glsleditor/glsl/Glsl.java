@@ -266,7 +266,7 @@ public final class Glsl {
     }
 
     private static final boolean isTokenType(ASTItem item, String type) {
-        return item != null && item instanceof ASTToken && ((ASTToken) item).getType().equals(type);
+        return item != null && item instanceof ASTToken && ((ASTToken) item).getTypeName().equals(type);
     }
 
 

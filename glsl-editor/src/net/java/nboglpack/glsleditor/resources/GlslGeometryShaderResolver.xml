@@ -13,20 +13,6 @@
         <ext name="glsl-geometry"/>
         <ext name="gl-geometry-shader"/>
         <ext name="glsl-geometry-shader"/>
-        <ext name="gl.geom"/>
-        <ext name="glsl.geom"/>
-        <ext name="glsl.geometry"/>
-        <ext name="gl.geometryshader"/>
-        <ext name="gl.geometry.shader"/>
-        <ext name="glsl.geometryshader"/>
-        <ext name="glsl.geometry.shader"/>
-        <ext name="geom.gl"/>
-        <ext name="geom.glsl"/>
-        <ext name="geometry.glsl"/>
-        <ext name="geometryshader.gl"/>
-        <ext name="geometry.shader.gl"/>
-        <ext name="geometryshader.glsl"/>
-        <ext name="geometry.shader.glsl"/>
         <resolver mime="text/x-glsl-geometry-shader"/>
     </file>
 </MIME-resolver>
