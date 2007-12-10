@@ -19,12 +19,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="tabbedPane" alignment="1" pref="498" max="32767" attributes="0"/>
+          <Component id="tabbedPane" alignment="1" pref="403" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="tabbedPane" alignment="0" pref="568" max="32767" attributes="0"/>
+          <Component id="tabbedPane" alignment="0" pref="448" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -108,15 +108,15 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="glslField" alignment="0" pref="266" max="32767" attributes="2"/>
-                                              <Component id="joglField" alignment="0" pref="266" max="32767" attributes="2"/>
-                                              <Component id="glField" alignment="0" pref="266" max="32767" attributes="2"/>
+                                              <Component id="glslField" alignment="0" pref="201" max="32767" attributes="2"/>
+                                              <Component id="joglField" alignment="0" pref="201" max="32767" attributes="2"/>
+                                              <Component id="glField" alignment="0" pref="201" max="32767" attributes="2"/>
                                           </Group>
                                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                           <Component id="wrapperPanel" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="vendorField" alignment="0" pref="360" max="32767" attributes="2"/>
-                                      <Component id="rendererField" alignment="0" pref="360" max="32767" attributes="2"/>
+                                      <Component id="vendorField" alignment="0" pref="293" max="32767" attributes="2"/>
+                                      <Component id="rendererField" alignment="0" pref="293" max="32767" attributes="2"/>
                                   </Group>
                               </Group>
                               <Component id="jogl" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -137,12 +137,12 @@
                                       <Component id="gl" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="glField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" pref="16" max="32767" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="glsl" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="glslField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" pref="16" max="32767" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jogl" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="joglField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -290,7 +290,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="gLCanvas" alignment="0" pref="113" max="32767" attributes="0"/>
+                          <Component id="gLCanvas" alignment="0" pref="82" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -333,11 +333,11 @@
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="2" attributes="0">
-                              <Component id="lightsField" alignment="2" pref="81" max="32767" attributes="2"/>
-                              <Component id="viewportField" alignment="2" pref="81" max="32767" attributes="2"/>
-                              <Component id="textureSizeField" alignment="2" pref="81" max="32767" attributes="2"/>
-                              <Component id="textureUnitsField" alignment="2" pref="81" max="32767" attributes="2"/>
-                              <Component id="textureUnitsVSField" alignment="2" pref="81" max="32767" attributes="2"/>
+                              <Component id="lightsField" alignment="2" pref="75" max="32767" attributes="2"/>
+                              <Component id="viewportField" alignment="2" pref="75" max="32767" attributes="2"/>
+                              <Component id="textureSizeField" alignment="2" pref="75" max="32767" attributes="2"/>
+                              <Component id="textureUnitsField" alignment="2" pref="75" max="32767" attributes="2"/>
+                              <Component id="textureUnitsVSField" alignment="2" pref="75" max="32767" attributes="2"/>
                           </Group>
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -349,11 +349,11 @@
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="2" attributes="0">
-                              <Component id="anisotropicFilteringField" alignment="2" pref="81" max="32767" attributes="2"/>
-                              <Component id="fsaaField" alignment="2" pref="81" max="32767" attributes="2"/>
-                              <Component id="textureUnitsFSField" alignment="2" pref="81" max="32767" attributes="2"/>
-                              <Component id="textureUnitsGSField" alignment="2" pref="81" max="32767" attributes="2"/>
-                              <Component id="renderBuffersField" alignment="2" pref="81" max="32767" attributes="2"/>
+                              <Component id="anisotropicFilteringField" alignment="2" pref="75" max="32767" attributes="2"/>
+                              <Component id="fsaaField" alignment="2" pref="75" max="32767" attributes="2"/>
+                              <Component id="textureUnitsFSField" alignment="2" pref="75" max="32767" attributes="2"/>
+                              <Component id="textureUnitsGSField" alignment="2" pref="75" max="32767" attributes="2"/>
+                              <Component id="renderBuffersField" alignment="2" pref="75" max="32767" attributes="2"/>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
