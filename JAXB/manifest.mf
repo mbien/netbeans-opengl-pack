@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 OpenIDE-Module: javax.xml.bind
 OpenIDE-Module-Localizing-Bundle: javax/xml/bind/Bundle.properties
-OpenIDE-Module-Specification-Version: 2.1.4
+OpenIDE-Module-Specification-Version: 2.1.5
 
