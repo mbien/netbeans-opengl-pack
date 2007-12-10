@@ -279,7 +279,7 @@ public class GLCapabilitiesPanel extends JPanel {
         );
         wrapperPanelLayout.setVerticalGroup(
             wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(gLCanvas, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+            .addComponent(gLCanvas, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout basicCapsPanelLayout = new javax.swing.GroupLayout(basicCapsPanel);
@@ -297,13 +297,13 @@ public class GLCapabilitiesPanel extends JPanel {
                         .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(basicCapsPanelLayout.createSequentialGroup()
                                 .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(glslField, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                                    .addComponent(joglField, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                                    .addComponent(glField, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))
+                                    .addComponent(glslField, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                                    .addComponent(joglField, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                                    .addComponent(glField, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(wrapperPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(vendorField, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
-                            .addComponent(rendererField, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)))
+                            .addComponent(vendorField, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                            .addComponent(rendererField, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)))
                     .addComponent(jogl)
                     .addComponent(glsl)
                     .addComponent(gl))
@@ -318,11 +318,11 @@ public class GLCapabilitiesPanel extends JPanel {
                         .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(gl)
                             .addComponent(glField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 16, Short.MAX_VALUE)
                         .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(glsl)
                             .addComponent(glslField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 16, Short.MAX_VALUE)
                         .addGroup(basicCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jogl)
                             .addComponent(joglField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -342,70 +342,70 @@ public class GLCapabilitiesPanel extends JPanel {
 
         viewportField.setEditable(false);
         viewportField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        viewportField.setMinimumSize(new java.awt.Dimension(70, 0));
+        viewportField.setMinimumSize(new java.awt.Dimension(75, 0));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxViewPortSize}"), viewportField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         textureSizeField.setEditable(false);
         textureSizeField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textureSizeField.setMinimumSize(new java.awt.Dimension(70, 0));
+        textureSizeField.setMinimumSize(new java.awt.Dimension(75, 0));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxTextureSize}"), textureSizeField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         textureUnitsField.setEditable(false);
         textureUnitsField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textureUnitsField.setMinimumSize(new java.awt.Dimension(70, 0));
+        textureUnitsField.setMinimumSize(new java.awt.Dimension(75, 0));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxTextureUnits}"), textureUnitsField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         textureUnitsVSField.setEditable(false);
         textureUnitsVSField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textureUnitsVSField.setMinimumSize(new java.awt.Dimension(70, 0));
+        textureUnitsVSField.setMinimumSize(new java.awt.Dimension(75, 0));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxVertexTextureImageUnits}"), textureUnitsVSField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         lightsField.setEditable(false);
         lightsField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        lightsField.setMinimumSize(new java.awt.Dimension(70, 0));
+        lightsField.setMinimumSize(new java.awt.Dimension(75, 0));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxLights}"), lightsField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         anisotropicFilteringField.setEditable(false);
         anisotropicFilteringField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        anisotropicFilteringField.setMinimumSize(new java.awt.Dimension(70, 0));
+        anisotropicFilteringField.setMinimumSize(new java.awt.Dimension(75, 0));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxAnisotropy}"), anisotropicFilteringField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         fsaaField.setEditable(false);
         fsaaField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fsaaField.setMinimumSize(new java.awt.Dimension(70, 0));
+        fsaaField.setMinimumSize(new java.awt.Dimension(75, 0));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxSampleBuffers}"), fsaaField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         textureUnitsFSField.setEditable(false);
         textureUnitsFSField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textureUnitsFSField.setMinimumSize(new java.awt.Dimension(70, 0));
+        textureUnitsFSField.setMinimumSize(new java.awt.Dimension(75, 0));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxTextureImageUnits}"), textureUnitsFSField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         textureUnitsGSField.setEditable(false);
         textureUnitsGSField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textureUnitsGSField.setMinimumSize(new java.awt.Dimension(70, 0));
+        textureUnitsGSField.setMinimumSize(new java.awt.Dimension(75, 0));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxGeometryTextureImageUnits}"), textureUnitsGSField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         renderBuffersField.setEditable(false);
         renderBuffersField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        renderBuffersField.setMinimumSize(new java.awt.Dimension(70, 0));
+        renderBuffersField.setMinimumSize(new java.awt.Dimension(75, 0));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, capabilitiesModel, org.jdesktop.beansbinding.ELProperty.create("${maxDrawBuffers}"), renderBuffersField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -442,14 +442,14 @@ public class GLCapabilitiesPanel extends JPanel {
                     .addComponent(textureUnitsLabel)
                     .addComponent(textureUnitsVSLabel)
                     .addComponent(dynamicLightsLabel))
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(lightsField, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                    .addComponent(viewportField, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                    .addComponent(textureSizeField, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                    .addComponent(textureUnitsField, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                    .addComponent(textureUnitsVSField, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addComponent(lightsField, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                    .addComponent(viewportField, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                    .addComponent(textureSizeField, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                    .addComponent(textureUnitsField, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                    .addComponent(textureUnitsVSField, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(anisotropicFilteringLabel)
                     .addComponent(fsaaSamplesLabel)
@@ -458,11 +458,11 @@ public class GLCapabilitiesPanel extends JPanel {
                     .addComponent(renderBuffersLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(overviewCapsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(anisotropicFilteringField, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                    .addComponent(fsaaField, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                    .addComponent(textureUnitsFSField, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                    .addComponent(textureUnitsGSField, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                    .addComponent(renderBuffersField, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))
+                    .addComponent(anisotropicFilteringField, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                    .addComponent(fsaaField, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                    .addComponent(textureUnitsFSField, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                    .addComponent(textureUnitsGSField, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                    .addComponent(renderBuffersField, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE))
                 .addContainerGap())
         );
         overviewCapsPanelLayout.setVerticalGroup(
@@ -518,10 +518,10 @@ public class GLCapabilitiesPanel extends JPanel {
             overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(overviewPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(basicCapsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(basicCapsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(overviewCapsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addComponent(overviewCapsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         tabbedPane.addTab(org.openide.util.NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.overviewPanel.TabConstraints.tabTitle"), overviewPanel); // NOI18N
@@ -533,17 +533,11 @@ public class GLCapabilitiesPanel extends JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(tabbedPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
         );
 
         bindingGroup.bind();

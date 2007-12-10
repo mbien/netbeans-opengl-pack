@@ -19,20 +19,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="tabbedPane" pref="406" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="tabbedPane" alignment="1" pref="498" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="tabbedPane" pref="455" max="32767" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-          </Group>
+          <Component id="tabbedPane" alignment="0" pref="568" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -76,11 +68,11 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="basicCapsPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="overviewCapsPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="18" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="basicCapsPanel" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="overviewCapsPanel" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -116,15 +108,15 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="glslField" alignment="0" pref="204" max="32767" attributes="2"/>
-                                              <Component id="joglField" alignment="0" pref="204" max="32767" attributes="2"/>
-                                              <Component id="glField" alignment="0" pref="204" max="32767" attributes="2"/>
+                                              <Component id="glslField" alignment="0" pref="266" max="32767" attributes="2"/>
+                                              <Component id="joglField" alignment="0" pref="266" max="32767" attributes="2"/>
+                                              <Component id="glField" alignment="0" pref="266" max="32767" attributes="2"/>
                                           </Group>
                                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                           <Component id="wrapperPanel" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="vendorField" alignment="0" pref="296" max="32767" attributes="2"/>
-                                      <Component id="rendererField" alignment="0" pref="296" max="32767" attributes="2"/>
+                                      <Component id="vendorField" alignment="0" pref="360" max="32767" attributes="2"/>
+                                      <Component id="rendererField" alignment="0" pref="360" max="32767" attributes="2"/>
                                   </Group>
                               </Group>
                               <Component id="jogl" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -145,12 +137,12 @@
                                       <Component id="gl" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="glField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" pref="16" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="glsl" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="glslField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" pref="16" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jogl" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="joglField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -298,7 +290,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="gLCanvas" alignment="0" pref="82" max="32767" attributes="0"/>
+                          <Component id="gLCanvas" alignment="0" pref="113" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -339,15 +331,15 @@
                               <Component id="textureUnitsVSLabel" alignment="0" min="-2" max="-2" attributes="1"/>
                               <Component id="dynamicLightsLabel" alignment="0" min="-2" max="-2" attributes="1"/>
                           </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="2" attributes="0">
-                              <Component id="lightsField" alignment="2" pref="72" max="32767" attributes="2"/>
-                              <Component id="viewportField" alignment="2" pref="72" max="32767" attributes="2"/>
-                              <Component id="textureSizeField" alignment="2" pref="72" max="32767" attributes="2"/>
-                              <Component id="textureUnitsField" alignment="2" pref="72" max="32767" attributes="2"/>
-                              <Component id="textureUnitsVSField" alignment="2" pref="72" max="32767" attributes="2"/>
+                              <Component id="lightsField" alignment="2" pref="81" max="32767" attributes="2"/>
+                              <Component id="viewportField" alignment="2" pref="81" max="32767" attributes="2"/>
+                              <Component id="textureSizeField" alignment="2" pref="81" max="32767" attributes="2"/>
+                              <Component id="textureUnitsField" alignment="2" pref="81" max="32767" attributes="2"/>
+                              <Component id="textureUnitsVSField" alignment="2" pref="81" max="32767" attributes="2"/>
                           </Group>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="anisotropicFilteringLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="fsaaSamplesLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -357,11 +349,11 @@
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="2" attributes="0">
-                              <Component id="anisotropicFilteringField" alignment="2" pref="72" max="32767" attributes="2"/>
-                              <Component id="fsaaField" alignment="2" pref="72" max="32767" attributes="2"/>
-                              <Component id="textureUnitsFSField" alignment="2" pref="72" max="32767" attributes="2"/>
-                              <Component id="textureUnitsGSField" alignment="2" pref="72" max="32767" attributes="2"/>
-                              <Component id="renderBuffersField" alignment="2" pref="72" max="32767" attributes="2"/>
+                              <Component id="anisotropicFilteringField" alignment="2" pref="81" max="32767" attributes="2"/>
+                              <Component id="fsaaField" alignment="2" pref="81" max="32767" attributes="2"/>
+                              <Component id="textureUnitsFSField" alignment="2" pref="81" max="32767" attributes="2"/>
+                              <Component id="textureUnitsGSField" alignment="2" pref="81" max="32767" attributes="2"/>
+                              <Component id="renderBuffersField" alignment="2" pref="81" max="32767" attributes="2"/>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -378,7 +370,7 @@
                               </Group>
                               <Component id="anisotropicFilteringField" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="textureSizeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -421,7 +413,7 @@
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[70, 0]"/>
+                      <Dimension value="[75, 0]"/>
                     </Property>
                   </Properties>
                   <BindingProperties>
@@ -435,7 +427,7 @@
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[70, 0]"/>
+                      <Dimension value="[75, 0]"/>
                     </Property>
                   </Properties>
                   <BindingProperties>
@@ -449,7 +441,7 @@
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[70, 0]"/>
+                      <Dimension value="[75, 0]"/>
                     </Property>
                   </Properties>
                   <BindingProperties>
@@ -463,7 +455,7 @@
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[70, 0]"/>
+                      <Dimension value="[75, 0]"/>
                     </Property>
                   </Properties>
                   <BindingProperties>
@@ -477,7 +469,7 @@
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[70, 0]"/>
+                      <Dimension value="[75, 0]"/>
                     </Property>
                   </Properties>
                   <BindingProperties>
@@ -491,7 +483,7 @@
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[70, 0]"/>
+                      <Dimension value="[75, 0]"/>
                     </Property>
                   </Properties>
                   <BindingProperties>
@@ -505,7 +497,7 @@
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[70, 0]"/>
+                      <Dimension value="[75, 0]"/>
                     </Property>
                   </Properties>
                   <BindingProperties>
@@ -519,7 +511,7 @@
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[70, 0]"/>
+                      <Dimension value="[75, 0]"/>
                     </Property>
                   </Properties>
                   <BindingProperties>
@@ -533,7 +525,7 @@
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[70, 0]"/>
+                      <Dimension value="[75, 0]"/>
                     </Property>
                   </Properties>
                   <BindingProperties>
@@ -547,7 +539,7 @@
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[70, 0]"/>
+                      <Dimension value="[75, 0]"/>
                     </Property>
                   </Properties>
                   <BindingProperties>
