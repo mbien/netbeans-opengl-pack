@@ -6,8 +6,9 @@ uniform vec4 lightPosition[];
 attribute vec4 position;
 
 float lights[];
-
+float[] lights2;
 const int numLights = 2;
+
 float lights[numLights], lights2[numLights];
 
 uniform struct gl_MaterialParameters {
@@ -60,10 +61,11 @@ void main() {
     test.xyz;
     test.x = 0.0;
     
+    // increment/decrement
     gl_Position.x = test.y++;
     --gl_Position.x;
     
-    
+    // flow control
     vec2 o1;
     if(x > y) 
       o1 = vec2(1.0, 0.0);
@@ -82,18 +84,26 @@ void main() {
         o1.x++;
     
     do{
+        if(false) {
+            while(1) {
+            }
+        }
     }while(true);
     
-    for(int i = 0; i < 5; ++i) { 
+    for(int i = 0; i < 5; ++i) {
         gl_FrontColor = gl_FrontColorIn[i]; 
         gl_Position = gl_PositionIn[i]; 
         break; 
     }
     
+    // arrays
     float a[5] = float[5](3.4, 4.2, 5.0, 5.2, 1.1);
     float b[5] = float[](3.4, 4.2, 5.0, 5.2, 1.1); // same thing
-    
-    float[] c = float[](3.4, 4.2, 5.0, 5.2, 1.1);
+    float c[5];
+    c[0] = -1;
+
+    float[5] d;
+    float[] e = float[](3.4, 4.2, 5.0, 5.2, 1.1);
     
     mat3 m, n, r;
     
