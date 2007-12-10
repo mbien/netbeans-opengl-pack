@@ -192,7 +192,7 @@
                         <attr name="projectName" stringvalue="JOGLVertexProgramWarpDemo"/>
                         <attr name="archive" stringvalue="jogl-demos-src.zip"/>
                         <attr name="srcPath" stringvalue="jogl-demos/src"/>
-                        <attr name="includes" stringvalue="gleem/**/*,gleem/linalg/**/*,demos/common/**/*,demos/util/**/*"/>
+                        <attr name="includes" stringvalue="gleem/**/*,gleem/linalg/**/*,demos/data/**/*,demos/common/**/*,demos/util/**/*"/>
                         <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
                         <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
                         <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/jogldemosproject/resources/VertexProgWarpDemoDescription.html"/>
