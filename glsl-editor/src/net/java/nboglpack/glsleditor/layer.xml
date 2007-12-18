@@ -13,11 +13,13 @@
                         <attr name="instanceClass" stringvalue="net.java.nboglpack.glsleditor.GlslCompletionProvider"/>
                     </file>
                 </folder>
-                <folder name="NetBeans">
-                    <folder name="Defaults">
-                        <file name="coloring.xml" url="resources/NetBeans-glsl-fontsColors.xml">
-                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
-                        </file>
+                <folder name="FontsColors">
+                    <folder name="NetBeans">
+                        <folder name="Defaults">
+                            <file name="coloring.xml" url="resources/NetBeans-glsl-fontsColors.xml">
+                                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
+                            </file>
+                        </folder>
                     </folder>
                 </folder>
                 <file name="language.instance">
@@ -41,13 +43,15 @@
                         <attr name="instanceClass" stringvalue="net.java.nboglpack.glsleditor.GlslCompletionProvider"/>
                     </file>
                 </folder>
-                <folder name="NetBeans">
-                    <folder name="Defaults">
-                        <file name="coloring.xml" url="resources/NetBeans-glsl-fontsColors.xml">
-                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
-                        </file>
+                <folder name="FontsColors">
+                    <folder name="NetBeans">
+                        <folder name="Defaults">
+                            <file name="coloring.xml" url="resources/NetBeans-glsl-fontsColors.xml">
+                                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
+                            </file>
+                        </folder>
                     </folder>
-                </folder> 
+                </folder>
                 <file name="language.instance">
                     <attr name="instanceCreate" methodvalue="net.java.nboglpack.glsleditor.lexer.Glsl.fragmentLanguage"/>
                     <attr name="instanceOf" stringvalue="org.netbeans.api.lexer.Language"/>
@@ -69,13 +73,15 @@
                         <attr name="instanceClass" stringvalue="net.java.nboglpack.glsleditor.GlslCompletionProvider"/>
                     </file>
                 </folder>
-                <folder name="NetBeans">
-                    <folder name="Defaults">
-                        <file name="coloring.xml" url="resources/NetBeans-glsl-fontsColors.xml">
-                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
-                        </file>
+                <folder name="FontsColors">
+                    <folder name="NetBeans">
+                        <folder name="Defaults">
+                            <file name="coloring.xml" url="resources/NetBeans-glsl-fontsColors.xml">
+                                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.glsleditor.Bundle"/>
+                            </file>
+                        </folder>
                     </folder>
-                </folder> 
+                </folder>
                 <file name="language.instance">
                     <attr name="instanceCreate" methodvalue="net.java.nboglpack.glsleditor.lexer.Glsl.geometryLanguage"/>
                     <attr name="instanceOf" stringvalue="org.netbeans.api.lexer.Language"/>
