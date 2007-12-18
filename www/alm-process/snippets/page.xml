@@ -38,7 +38,7 @@
         
         <component visibility="1" type="Html" order="8">
             <title localize="false">Blogs</title>
-            <filename>Blogs.html</filename>
+            <filename>BlogsSnippet.html</filename>
         </component>
         
         <component visibility="1" type="Subproject" order="9">
