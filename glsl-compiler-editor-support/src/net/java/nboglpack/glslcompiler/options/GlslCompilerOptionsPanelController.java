@@ -14,7 +14,7 @@ import org.openide.util.Lookup;
  */
 final class GlslCompilerOptionsPanelController extends OptionsPanelController {
     
-    private GlslCompilerPanel panel;
+    private GlslCompilerOptionsPanel panel;
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     private boolean changed;
     
@@ -56,9 +56,9 @@ final class GlslCompilerOptionsPanelController extends OptionsPanelController {
         pcs.removePropertyChangeListener(l);
     }
     
-    private GlslCompilerPanel getPanel() {
+    private GlslCompilerOptionsPanel getPanel() {
         if (panel == null) {
-            panel = new GlslCompilerPanel(this);
+            panel = new GlslCompilerOptionsPanel(this);
         }
         return panel;
     }

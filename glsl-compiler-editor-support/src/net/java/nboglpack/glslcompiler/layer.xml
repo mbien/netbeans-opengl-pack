@@ -61,7 +61,7 @@
     </folder>
     <folder name="OptionsDialog">
         <folder name="Advanced">
-            <file name="net-java-nboglpack-glslcompiler-options-GlslCompilerAdvancedOption.instance"/>
+            <file name="net-java-nboglpack-glslcompiler-options-GlslCompilerOptions.instance"/>
         </folder>
     </folder>
 </filesystem>

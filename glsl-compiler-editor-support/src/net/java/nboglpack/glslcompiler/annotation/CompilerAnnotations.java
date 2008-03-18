@@ -1,3 +1,7 @@
+/*
+ * Created on 15. March 2007, 16:10
+ */
+
 package net.java.nboglpack.glslcompiler.annotation;
 
 import java.util.ArrayList;
@@ -7,7 +11,6 @@ import org.openide.loaders.DataObject;
 import org.openide.text.Line;
 
 /**
- * Created on 15. March 2007, 16:10
  * @author Michael Bien
  */
 public class CompilerAnnotations {
@@ -32,16 +35,28 @@ public class CompilerAnnotations {
             annotations = annotationMap.get(dao);
         }
         
-        Line line = lines.getCurrent(lineNumber-1);
-        char[] text = line.getText().toCharArray();
+        Line line;
+        try {
+            line = lines.getCurrent(lineNumber-1);
+        } catch (IndexOutOfBoundsException ex) {
+            // the document has been changed and the line is deleted
+            return;
+        }
+        
+        String text = line.getText();
+        
+        if (text == null) 
+            return; // document is already closed
+        
+        char[] chars = text.toCharArray();
         int start;
         int end;
-        for(start = 0; start < text.length; start++)
-            if(!Character.isWhitespace(text[start]))
+        for(start = 0; start < chars.length; start++)
+            if(!Character.isWhitespace(chars[start]))
                 break;
         
-        for(end = text.length-1; end > start; end--)
-            if(!Character.isWhitespace(text[end-1]))
+        for(end = chars.length-1; end > start; end--)
+            if(!Character.isWhitespace(chars[end-1]))
                 break;
         
         CompilerAnnotation annotation = new CompilerAnnotation(type, msg);

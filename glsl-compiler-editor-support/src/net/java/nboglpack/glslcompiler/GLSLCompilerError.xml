@@ -7,13 +7,13 @@
     Description:
         Configuration file of the GLSL compiler error Annotation.
 -->
-<type name='net-java-nboglpack-glslcompiler-GlslCompilerErrorAnnotation'
-      description_key='GlslCompilerErrorLabel'
-      localizing_bundle='net.java.nboglpack.glslcompiler.annotation.Bundle'
-      visible='true'
-      glyph='nbresloc:/net/java/nboglpack/glslcompiler/annotation/Error.gif'
-      waveunderline='#FF0000'
-      type='linepart'
-      severity='error'
-      priority='0'
+<type name="net-java-nboglpack-glslcompiler-GlslCompilerErrorAnnotation"
+      description_key="GlslCompilerErrorLabel"
+      localizing_bundle="net.java.nboglpack.glslcompiler.annotation.Bundle"
+      visible="true"
+      glyph="nbresloc:/net/java/nboglpack/glslcompiler/annotation/Error.gif"
+      waveunderline="#FF0000"
+      type="linepart"
+      severity="error"
+      priority="0"
 />
