@@ -296,8 +296,7 @@
                         <attr name="template" boolvalue="true"/>
                     </file>
                     <!--
-                    TODO: add an option to add VM arguments to the project.properties for the opengl pipeline
-                    TODO: same for Java2D_JOGLInteroperabilityDemo
+                    TODO: add an option to add VM arguments to the project.properties for the opengl pipeline eg: Java2D_JOGLInteroperabilityDemo
                     <file name="XTrans.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
                         <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                         <attr name="demo" stringvalue="demos.xtrans.Main"/>
