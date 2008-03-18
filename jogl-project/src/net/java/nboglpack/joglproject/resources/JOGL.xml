@@ -6,12 +6,12 @@
 	<localizing-bundle>net.java.nboglpack.joglproject.Bundle</localizing-bundle>
 	<volume>
 		<type>classpath</type>
-		<resource>jar:nbinst:///libs/jogl.jar!/</resource>
+		<resource>jar:nbinst:///jogl-runtime/jogl.jar!/</resource>
 	</volume>
 	<volume>
 		<type>src</type>
         
-	</volume>
+    </volume>
 	<volume>
 		<type>javadoc</type>            
         

@@ -5,26 +5,10 @@
 <project name="net.java.nboglpack.joglproject" default="netbeans" basedir=".">
     <description>Builds, tests, and runs the project net.java.nboglpack.joglproject.</description>
     <import file="nbproject/build-impl.xml"/>
-    <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
-
+    
     <target name="-pre-compile">
         <zip basedir="jogl-project" destfile="src/net/java/nboglpack/joglproject/resources/jogl-project.zip" update="false"/>
-        <unzip src="jogl-dist/jogl-webstart.zip" dest="release/libs/"/>
-        <unzip src="jogl-dist/gluegen-rt-webstart.zip" dest="release/libs/"/>
-        <foreach param="filepath" target="unzip-natives" inheritall="true">
-            <fileset dir="release/libs" includes="jogl-natives-*.jar,gluegen-rt-natives-*.jar"/>
-        </foreach>
     </target>
+    
     <target name="compile" depends="-pre-compile,projectized-common.compile"/>
-
-    <target name="unzip-natives">
-        <basename property="filename" file="${filepath}" suffix=".jar"/>
-        <propertyregex property="libname" input="${filename}" regexp="(^.*)-natives-(.*)$" select="\1.jar"/>
-        <propertyregex property="platform" input="${filename}" regexp="^.*-natives-(.*)$" select="\1"/>
-        <unzip src="${filepath}" dest="release/libs/${libname}-natives-${platform}">
-            <patternset excludes="META-INF/*,META-INF"/>
-        </unzip>
-        <delete file="${filepath}"/>
-    </target>
-
 </project>
