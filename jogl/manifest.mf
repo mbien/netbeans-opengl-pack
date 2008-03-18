@@ -1,5 +1,6 @@
 Manifest-Version: 1.0
 OpenIDE-Module: javax.media.opengl
+OpenIDE-Module-Install: net/java/nboglpack/Installer.class
 OpenIDE-Module-Localizing-Bundle: javax/media/opengl/Bundle.properties
-OpenIDE-Module-Specification-Version: 1.1.0
+OpenIDE-Module-Specification-Version: 1.1.1
 

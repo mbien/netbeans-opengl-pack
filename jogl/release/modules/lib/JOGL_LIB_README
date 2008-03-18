@@ -1,0 +1,5 @@
+platform dependent native files are inserted automatically on module install.
+
+to force re-deployment remove
+config/Preferences/javax/media/opengl.properties
+in your .netbeans user folder
