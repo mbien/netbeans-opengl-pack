@@ -31,28 +31,27 @@ public class Installer extends ModuleInstall {
         final String JOGL_DIST = "jogl-runtime";
         final String VERSION_KEY = "DeployedJOGLVersion";
         
-        
         String os = System.getProperty("os.name").toLowerCase();
-        String arch = System.getProperty("os.arch");
+        String arch = System.getProperty("os.arch").toLowerCase();
+        
+        if(os.contains("windows"))
+            os = "windows";
 
-        if(arch.startsWith("i") && arch.endsWith("86"))
+        if(arch.startsWith("i") && arch.endsWith("86") || arch.equals("x86"))
             arch = "i586";
 
         String postfix = os + "-" + arch;
 
-        String joglNativesFolderPath = JOGL_DIST+JOGL_PREFIX + postfix;
-        String gluegenNativesFolderPath = JOGL_DIST+GLUEGEN_PREFIX + postfix;
-
         File joglDistFolder = InstalledFileLocator.getDefault().locate(JOGL_DIST, "javax.media.opengl", false);
         
         String root = joglDistFolder.getAbsolutePath();
-        root = root.substring(0, root.lastIndexOf("/"));
+        root = root.substring(0, root.lastIndexOf(File.separator));
 
         try{
             
             // read jogl version from manifest
             JarFileSystem jarSystem = new JarFileSystem();
-            jarSystem.setJarFile(new File(joglDistFolder+"/jogl.jar"));
+            jarSystem.setJarFile(new File(joglDistFolder+File.separator+"jogl.jar"));
             
             Preferences preferences = NbPreferences.forModule(Installer.class);
             
@@ -65,18 +64,21 @@ public class Installer extends ModuleInstall {
                 
                 LocalFileSystem fileSystem = new LocalFileSystem();
                 fileSystem.setRootDirectory(new File(root));
+                
+                String joglNativesFolderPath = JOGL_DIST+JOGL_PREFIX + postfix;
+                String gluegenNativesFolderPath = JOGL_DIST+GLUEGEN_PREFIX + postfix;
 
                 FileObject joglNativesFolder = fileSystem.findResource(joglNativesFolderPath);
                 FileObject gluegenNativesFolder = fileSystem.findResource(gluegenNativesFolderPath);
-
-                if( joglNativesFolder != null && gluegenNativesFolder != null) {
+                
+                if(joglNativesFolder != null && gluegenNativesFolder != null) {
                     
-                    FileObject libDestFolder = FileUtil.createFolder(new File(root+"/modules/lib"));
+                    FileObject libDestFolder = FileUtil.createFolder(new File(root+File.separator+"modules"+File.separator+"lib"));
                     
                     copyFolderEntries(joglNativesFolder, libDestFolder);
                     copyFolderEntries(gluegenNativesFolder, libDestFolder);
                     
-                    // update deployed verison property
+                    // update deployed version property
                     Logger.getLogger(this.getClass().getName()).info(
                         "deployed JOGL runtime version: "+version );
                     
