@@ -4,7 +4,7 @@
 ***             EDIT ../build.xml INSTEAD              ***
 -->
 <project name="jogl-template-impl" default="default" basedir=".." >
-    <description>Builds the jogl-project.</description>
+    <description>Builds the SimpleJOGL2.</description>
 
     <target name="-jogl-template-post-jar">
         <echo message="Creating native distibutions"/>
@@ -33,12 +33,30 @@
         <antcall target="-create-native-distribution" inheritall="true">
             <param name="platform.name" value="windows-i586"/>
         </antcall>
+        <antcall target="-jogl-template-copy-natives" inheritall="true"/>
+    </target>
+
+    <target name="-jogl-template-copy-natives" depends="-jogl-template-test-jnlp-enabled" unless="is.jnlp.enabled">
         <copy todir="${dist.dir}">
             <fileset dir="${libs.JOGL.classpath}-natives-${natives.platform}" defaultexcludes="yes"/>
             <fileset dir="${libs.GLUEGEN-RT.classpath}-natives-${natives.platform}" defaultexcludes="yes"/>
         </copy >
     </target>
 
+    <target name="-jogl-template-jnlp" depends="-jogl-template-test-jnlp-enabled" if="is.jnlp.enabled">
+        <antcall target="jnlp-impl.jnlp" inheritall="true"/>
+        <delete file="${dist.dir}/lib/jogl.jar"/>
+        <delete file="${dist.dir}/lib/gluegen-rt.jar"/>
+        <replace file="${dist.dir}/launch.jnlp">
+            <replacetoken><![CDATA[<jar href="lib/jogl.jar" download="eager"/>]]></replacetoken>
+            <replacevalue><![CDATA[<extension name="jogl" href="http://download.java.net/media/jogl/builds/archive/jsr-231-webstart-current/jogl.jnlp" />]]></replacevalue>
+        </replace>
+        <replace file="${dist.dir}/launch.jnlp">
+            <replacetoken><![CDATA[<jar href="lib/gluegen-rt.jar" download="eager"/>]]></replacetoken>
+            <replacevalue></replacevalue>
+        </replace>
+    </target>
+    
     <target name="-create-native-distribution">
         <mkdir dir="${dist.dir}-${platform.name}"/>
         <!-- This is a bit of a hack to simulate string replacements with ant :/ -->
@@ -72,6 +90,12 @@
         <delete dir="${dist.dir}-solaris-sparcv9"/>
         <delete dir="${dist.dir}-solaris-i586"/>
         <delete dir="${dist.dir}-windows-i586"/>
+    </target>
+
+    <target name="-jogl-template-test-jnlp-enabled">
+        <condition property="is.jnlp.enabled">
+            <equals arg1="${jnlp.enabled}" arg2="true" casesensitive="false" trim="true"/>
+        </condition>
     </target>
 
 </project>
