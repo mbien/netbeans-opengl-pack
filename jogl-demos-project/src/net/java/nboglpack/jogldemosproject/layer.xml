@@ -281,6 +281,7 @@
                         <attr name="includes" stringvalue="demos/gears/*"/>
                         <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
                         <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
+                        <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/jogldemosproject/resources/GLCapsTableDemoDescription.html"/>
                         <attr name="template" boolvalue="true"/>
                     </file>
                     <file name="PickingDemo.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
@@ -293,6 +294,19 @@
                         <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
                         <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
                         <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/jogldemosproject/resources/PickingDemoDescription.html"/>
+                        <attr name="template" boolvalue="true"/>
+                    </file>
+                    <file name="GearsAppletDemo.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                        <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
+                        <attr name="demo" stringvalue="demos.applets.GearsApplet"/>
+                        <attr name="projectPackage" stringvalue="demos.applets"/>
+                        <attr name="projectName" stringvalue="JOGLGearsAppletDemo"/>
+                        <attr name="includes" stringvalue="demos/gears/Gears.java"/>
+                        <attr name="archive" stringvalue="jogl-demos-src.zip"/>
+                        <attr name="srcPath" stringvalue="jogl-demos/src"/>
+                        <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
+                        <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
+                        <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/jogldemosproject/resources/GearsAppletDemoDescription.html"/>
                         <attr name="template" boolvalue="true"/>
                     </file>
                     <!--
