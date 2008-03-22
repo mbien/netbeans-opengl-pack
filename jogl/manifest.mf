@@ -1,4 +1,5 @@
 Manifest-Version: 1.0
+AutoUpdate-Show-In-Client: true
 OpenIDE-Module: javax.media.opengl
 OpenIDE-Module-Implementation-Version: 1
 OpenIDE-Module-Install: net/java/nboglpack/Installer.class
