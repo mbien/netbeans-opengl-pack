@@ -36,9 +36,19 @@ public class Installer extends ModuleInstall {
         
         if(os.contains("windows"))
             os = "windows";
+        else if(os.contains("mac"))
+            os = "macosx";
+        else if(os.contains("sunos"))
+            os = "solaris";
 
-        if(arch.startsWith("i") && arch.endsWith("86") || arch.equals("x86"))
-            arch = "i586";
+        if(arch.startsWith("i") && arch.endsWith("86") || arch.equals("x86")) {
+            if(os.equals("macosx"))
+                arch = "universal";
+            else
+                arch = "i586";
+        }else if(arch.equals("x86_64")){
+            arch = "amd64";
+        }
 
         String postfix = os + "-" + arch;
 
