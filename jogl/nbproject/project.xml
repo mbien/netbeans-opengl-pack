@@ -47,6 +47,7 @@
                 <package>com.sun.opengl.util.texture.spi</package>
                 <package>javax.media.opengl</package>
                 <package>javax.media.opengl.glu</package>
+                <package>net.java.nboglpack.jogl.util</package>
             </public-packages>
         </data>
     </configuration>

@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.prefs.Preferences;
+import net.java.nboglpack.jogl.util.JOGLDistribution;
 import org.openide.filesystems.FileObject;
 import org.openide.filesystems.FileUtil;
 import org.openide.filesystems.JarFileSystem;
@@ -31,50 +32,31 @@ public class Installer extends ModuleInstall {
         final String JOGL_DIST = "jogl-runtime";
         final String VERSION_KEY = "DeployedJOGLVersion";
         
-        String os = System.getProperty("os.name").toLowerCase();
-        String arch = System.getProperty("os.arch").toLowerCase();
-        
-        if(os.contains("windows"))
-            os = "windows";
-        else if(os.contains("mac"))
-            os = "macosx";
-        else if(os.contains("sunos"))
-            os = "solaris";
-
-        if(arch.startsWith("i") && arch.endsWith("86") || arch.equals("x86")) {
-            if(os.equals("macosx"))
-                arch = "universal";
-            else
-                arch = "i586";
-        }else if(arch.equals("x86_64")){
-            arch = "amd64";
-        }
-
-        String postfix = os + "-" + arch;
-
         File joglDistFolder = InstalledFileLocator.getDefault().locate(JOGL_DIST, "javax.media.opengl", false);
-        
-        String root = joglDistFolder.getAbsolutePath();
-        root = root.substring(0, root.lastIndexOf(File.separator));
+        JarFileSystem jarSystem = new JarFileSystem();
 
+        Preferences preferences = NbPreferences.forModule(Installer.class);
+        String deployedVersion = preferences.get(VERSION_KEY, null);
+        
         try{
-            
-            // read jogl version from manifest
-            JarFileSystem jarSystem = new JarFileSystem();
+            // read jogl version from manifest and compare with deployed version
             jarSystem.setJarFile(new File(joglDistFolder+File.separator+"jogl.jar"));
-            
-            Preferences preferences = NbPreferences.forModule(Installer.class);
-            
             String version = jarSystem.getManifest().getMainAttributes().getValue("Implementation-Version");
-            String deplVersion = preferences.get(VERSION_KEY, null);
-            
             
             //  check if we've already deployed
-            if(version == null || !version.equals(deplVersion)) {
+            if(version == null || !version.equals(deployedVersion)) {
+                
+                String root = joglDistFolder.getAbsolutePath();
+                root = root.substring(0, root.lastIndexOf(File.separator));
                 
                 LocalFileSystem fileSystem = new LocalFileSystem();
                 fileSystem.setRootDirectory(new File(root));
                 
+                JOGLDistribution distribution = JOGLDistribution.getCompatible();
+                if(distribution == null)
+                    throw new NullPointerException("distribution not found");
+                
+                String postfix = distribution.key();
                 String joglNativesFolderPath = JOGL_DIST+JOGL_PREFIX + postfix;
                 String gluegenNativesFolderPath = JOGL_DIST+GLUEGEN_PREFIX + postfix;
 
@@ -83,7 +65,8 @@ public class Installer extends ModuleInstall {
                 
                 if(joglNativesFolder != null && gluegenNativesFolder != null) {
                     
-                    FileObject libDestFolder = FileUtil.createFolder(new File(root+File.separator+"modules"+File.separator+"lib"));
+                    FileObject libDestFolder = FileUtil.createFolder(
+                            new File(root+File.separator+"modules"+File.separator+"lib"));
                     
                     copyFolderEntries(joglNativesFolder, libDestFolder);
                     copyFolderEntries(gluegenNativesFolder, libDestFolder);
@@ -94,14 +77,20 @@ public class Installer extends ModuleInstall {
                     
                     preferences.put(VERSION_KEY, version);
                 }else{
+                    String os = System.getProperty("os.name").toLowerCase();
+                    String arch = System.getProperty("os.arch").toLowerCase();
                     throw new IOException(
                             String.format("The JOGL native libraries are either not available"+
                             " for this system (OS: %1$s CPU: %2$s) or an error accrued while deploying", os, arch));
                 }
+            }else{
+                Logger.getLogger(this.getClass().getName()).info(
+                        "JOGL runtime version "+version +" is up to date");
             }
             
         }catch(Exception ex) {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "can not deploy jogl natives", ex);
+            Logger.getLogger(this.getClass().getName()).log(
+                    Level.SEVERE, "can not deploy jogl natives", ex);
         }
         
         

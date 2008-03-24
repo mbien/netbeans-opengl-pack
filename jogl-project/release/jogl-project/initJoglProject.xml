@@ -1,91 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="initJoglProject" default="all" basedir=".">
-	<target name="initProject">
-				
-		<replaceregexp byline="true" flags="g">
-			<regexp pattern="(\W+)jogl-project.Main(\W+)?"/>
-			<substitution expression="\1${project.packageName}.${project.mainClass}\2"/>
-			<fileset dir="${project.root}">
-				<include name="**/*.properties"/>
-			</fileset>
-		</replaceregexp>
-
-		<replaceregexp byline="true" flags="g">
-			<regexp pattern="(\W+)jogl-project(\W+)"/>
-			<substitution expression="\1${project.name}\2"/>
-			<fileset dir="${project.root}">
-				<include name="**/*.xml"/>
-				<include name="**/*.properties"/>
-			</fileset>
-		</replaceregexp>
-
-		<replaceregexp byline="true" flags="g">
-			<regexp pattern="natives.platform=natives.platform"/>
-			<substitution expression="natives.platform=${natives.platform}"/>
-			<fileset dir="${project.root}">
-				<include name="**/*.properties"/>
-			</fileset>
-		</replaceregexp>
-
+    <target name="initProject">
+        
+        <replaceregexp byline="true" flags="g">
+            <regexp pattern="(\W+)jogl-project.Main(\W+)?"/>
+            <substitution expression="\1${project.packageName}.${project.mainClass}\2"/>
+            <fileset dir="${project.root}">
+                <include name="**/*.properties"/>
+            </fileset>
+        </replaceregexp>
+        
+        <replaceregexp byline="true" flags="g">
+            <regexp pattern="(\W+)jogl-project(\W+)"/>
+            <substitution expression="\1${project.name}\2"/>
+            <fileset dir="${project.root}">
+                <include name="**/*.xml"/>
+                <include name="**/*.properties"/>
+            </fileset>
+        </replaceregexp>
+        
+        <replaceregexp byline="true" flags="g">
+            <regexp pattern="natives.platform=natives.platform"/>
+            <substitution expression="natives.platform=${natives.platform}"/>
+            <fileset dir="${project.root}">
+                <include name="**/*.properties"/>
+            </fileset>
+        </replaceregexp>
+        
         <mkdir dir="${project.root}/tmp"/>
-		<unzip src="${template.archive}" dest="${project.root}/tmp">
-			<patternset>
+        <unzip src="${template.archive}" dest="${project.root}/tmp">
+            <patternset>
                 <include name="${template.srcPath}${template.demoPath}/${template.demoClass}.java"/>
             </patternset>
-		</unzip>
-
+        </unzip>
+        
         <mkdir dir="${project.root}/src/${project.packagePath}"/>
-		<move
-			file="${project.root}/tmp/${template.srcPath}${template.demoPath}/${template.demoClass}.java"
-			tofile="${project.root}/src/${project.packagePath}/${project.mainClass}.java"
-		/>
+        <move
+            file="${project.root}/tmp/${template.srcPath}${template.demoPath}/${template.demoClass}.java"
+            tofile="${project.root}/src/${project.packagePath}/${project.mainClass}.java"
+        />
         <delete dir="${project.root}/tmp"/>
         <antcall target="addDeps"/>
-				
-		<replaceregexp byline="true" flags="g">
-			<regexp pattern='(\W+)${template.demoPath.regex}(\W+)'/>
-			<substitution expression="\1${project.packagePath}\2"/>
-			<fileset dir="${project.root}/src/${project.packagePath}">
-				<include name="**/*.java"/>
-			</fileset>
-		</replaceregexp>
-
-		<replaceregexp byline="true" flags="g">
-			<regexp pattern='(\W+)${template.demoPackage.regex}(\W+)'/>
-			<substitution expression="\1${project.packageName}\2"/>
-			<fileset dir="${project.root}/src/${project.packagePath}">
-				<include name="**/*.java"/>
-			</fileset>
-		</replaceregexp>
-
-		<replaceregexp byline="true" flags="g">
-			<regexp pattern="(\W+)${template.demoClass.regex}(\W+|$)"/>
-			<substitution expression="\1${project.mainClass}\2"/>
-			<fileset file="${project.root}/src/${project.packagePath}/${project.mainClass}.java"/>
-		</replaceregexp>
-
-	</target>
-		
-	<target name="addDeps" if="template.includes">
-		<mkdir dir="${project.root}/tmp"/>
-		<unzip src="${template.archive}" dest="${project.root}/tmp">
-			<patternset includes="${template.includes}" excludes="${template.excludes}">
+        
+        <replaceregexp byline="true" flags="g">
+            <regexp pattern='(\W+)${template.demoPath.regex}(\W+)'/>
+            <substitution expression="\1${project.packagePath}\2"/>
+            <fileset dir="${project.root}/src/${project.packagePath}">
+                <include name="**/*.java"/>
+            </fileset>
+        </replaceregexp>
+        
+        <replaceregexp byline="true" flags="g">
+            <regexp pattern='(\W+)${template.demoPackage.regex}(\W+)'/>
+            <substitution expression="\1${project.packageName}\2"/>
+            <fileset dir="${project.root}/src/${project.packagePath}">
+                <include name="**/*.java"/>
+            </fileset>
+        </replaceregexp>
+        
+        <replaceregexp byline="true" flags="g">
+            <regexp pattern="(\W+)${template.demoClass.regex}(\W+|$)"/>
+            <substitution expression="\1${project.mainClass}\2"/>
+            <fileset file="${project.root}/src/${project.packagePath}/${project.mainClass}.java"/>
+        </replaceregexp>
+        
+    </target>
+    
+    <target name="addDeps" if="template.includes">
+        <mkdir dir="${project.root}/tmp"/>
+        <unzip src="${template.archive}" dest="${project.root}/tmp">
+            <patternset includes="${template.includes}" excludes="${template.excludes}">
                 <exclude name="${template.srcPath}${template.demoPath}/${template.demoClass}.java"/>
             </patternset>
-		</unzip>
-		<move todir="${project.root}/src/${project.packagePath}" failonerror="false">
-			<fileset dir="${project.root}/tmp/${template.srcPath}${template.demoPath}" includes="**/*"/>
-		</move>
-		<delete dir="${project.root}/tmp"/>
-		<unzip src="${template.archive}" dest="${project.root}/tmp">
-			<patternset includes="${template.includes}" excludes="${template.excludes}">
+        </unzip>
+        <move todir="${project.root}/src/${project.packagePath}" failonerror="false">
+            <fileset dir="${project.root}/tmp/${template.srcPath}${template.demoPath}" includes="**/*"/>
+        </move>
+        <delete dir="${project.root}/tmp"/>
+        <unzip src="${template.archive}" dest="${project.root}/tmp">
+            <patternset includes="${template.includes}" excludes="${template.excludes}">
                 <exclude name="${template.srcPath}${template.demoPath}/**/*"/>
             </patternset>
-		</unzip>
+        </unzip>
         <move todir="${project.root}/src" failonerror="false">
-			<fileset dir="${project.root}/tmp/${template.srcPath}" includes="**/*"/>
-		</move>
-		<delete dir="${project.root}/tmp"/>
-	</target>
-
+            <fileset dir="${project.root}/tmp/${template.srcPath}" includes="**/*"/>
+        </move>
+        <delete dir="${project.root}/tmp"/>
+    </target>
+    
 </project>

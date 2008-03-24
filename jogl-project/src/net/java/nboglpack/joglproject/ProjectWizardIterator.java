@@ -16,6 +16,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import javax.swing.JComponent;
 import javax.swing.event.ChangeListener;
+import net.java.nboglpack.jogl.util.JOGLDistribution;
 import org.apache.tools.ant.module.api.support.ActionUtils;
 import org.netbeans.api.project.ProjectManager;
 import org.netbeans.spi.project.ui.support.ProjectChooser;
@@ -28,6 +29,11 @@ import org.openide.filesystems.FileUtil;
 import org.openide.modules.InstalledFileLocator;
 import org.openide.util.NbBundle;
 
+/**
+ * Iterates through the new-JOGL-project wizzard.
+ * @author Mathias Henze
+ * @author Michael Bien
+ */
 public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIterator
 {
 	
@@ -59,7 +65,7 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
         };
     }
 
-    public Set/*<FileObject>*/ instantiate() throws IOException
+    public Set<FileObject> instantiate() throws IOException
     {
         FileObject template = Templates.getTemplate(wiz);
         String demo=(String)template.getAttribute("demo");
@@ -71,7 +77,7 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
 
         FileObject dir = FileUtil.toFileObject(dirF);
         unZipFile(template.getInputStream(), dir);
-        String[] opt= new String[] { "windows-i586", "linux-i586", "linux-amd64", "macosx-universal", "macosx-ppc", "solaris-sparc", "solaris-sparcv9", "solaris-i586" };
+    
         callInitScript(
                 dirF,
                 (String)wiz.getProperty("name"),
@@ -81,10 +87,11 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
                 (String)template.getAttribute("archive"),
                 (String)template.getAttribute("srcPath"),
                 (String)template.getAttribute("extraFiles"),
-                opt[((Integer)wiz.getProperty("platform")).intValue()],
+                (String)wiz.getProperty("platform"),
                 (String)template.getAttribute("includes"),
                 (String)template.getAttribute("excludes")
         );
+        
         // Always open top dir as a project:
         resultSet.add(dir);
         // Look for nested projects to open as well:
@@ -186,7 +193,7 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
 
     public WizardDescriptor.Panel current()
     {
-            return panels[index];
+        return panels[index];
     }
 
     // If nothing unusual changes in the middle of the wizard, simply:
@@ -242,9 +249,11 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
         if(excludes==null) excludes="";
         if(srcPath==null) srcPath="";
 
-        srcPath.trim();
-        if(srcPath.length()!=0 && !srcPath.endsWith("/"))
-        {
+        srcPath = srcPath.trim();
+        excludes = excludes.trim();
+        includes = includes.trim();
+        
+        if(srcPath.length()!=0 && !srcPath.endsWith("/")) {
             srcPath+="/";
         }
 
@@ -270,7 +279,7 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
         props.setProperty("template.excludes","");
         props.setProperty("natives.platform",platform);
 
-        if(includes!=null && includes.trim().length() != 0)
+        if(includes!=null && includes.length() != 0)
         {
             String mergedIncludes=null;
             StringTokenizer tokenizer= new StringTokenizer(includes,", ");
@@ -281,11 +290,11 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
                     mergedIncludes=srcPath+token;
                 else
                     mergedIncludes+=","+srcPath+token;
-        }
+            }
             props.setProperty("template.includes",mergedIncludes);
         }
 
-        if(excludes!=null && excludes.trim().length() != 0)
+        if(excludes!=null && excludes.length() != 0)
         {
             String mergedExcludes=null;
             StringTokenizer tokenizer= new StringTokenizer(excludes,", ");
@@ -296,7 +305,7 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
                     mergedExcludes=srcPath+token;
                 else
                     mergedExcludes+=","+srcPath+token;
-        }
+            }
             props.setProperty("template.excludes",mergedExcludes);
         }
 
