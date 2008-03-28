@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE library PUBLIC "-//NetBeans//DTD Library Declaration 1.0//EN" "http://www.netbeans.org/dtds/library-declaration-1_0.dtd">
 <library version="1.0">
-	<name>JOGL</name>
-	<type>j2se</type>
-	<localizing-bundle>net.java.nboglpack.joglproject.Bundle</localizing-bundle>
-	<volume>
-		<type>classpath</type>
-		<resource>jar:nbinst:///jogl-runtime/jogl.jar!/</resource>
-	</volume>
-	<volume>
-		<type>src</type>
-        
+    <name>JOGL</name>
+    <type>j2se</type>
+    <localizing-bundle>net.java.nboglpack.joglproject.Bundle</localizing-bundle>
+    <volume>
+        <type>classpath</type>
+        <resource>jar:nbinst:///jogl-runtime/jogl.jar!/</resource>
     </volume>
-	<volume>
-		<type>javadoc</type>            
-        
-	</volume>
+<!--    <volume>
+        <type>javadoc</type>            
+        <resource>jar:nbinst:///jogl-runtime/jogl-docs.zip!/</resource>
+    </volume>
+    <volume>
+        <type>src</type>
+        <resource>jar:nbinst:///jogl-runtime/jogl-src.zip!/jogl/src/classes/</resource>
+        <resource>jar:nbinst:///jogl-runtime/jogl-src.zip!/jogl/build/gensrc/classes/</resource>
+    </volume>-->
 </library>
