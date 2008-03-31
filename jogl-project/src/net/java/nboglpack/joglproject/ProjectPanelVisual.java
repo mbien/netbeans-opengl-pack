@@ -323,6 +323,10 @@ public class ProjectPanelVisual extends JPanel implements DocumentListener
             JOGLDistribution dist = JOGLDistribution.getCompatible();
             if(dist != null)
                 this.platformDropDown.setSelectedItem(dist);
+        }else{
+            JOGLDistribution dist = JOGLDistribution.parseKey(platform);
+            if(dist != null)
+                this.platformDropDown.setSelectedItem(dist);
         }
 
         String projectName = (String) settings.getProperty("name");

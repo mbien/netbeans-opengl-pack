@@ -10,22 +10,26 @@ import java.util.Enumeration;
 import java.util.LinkedHashSet;
 import java.util.NoSuchElementException;
 import java.util.Properties;
+import java.util.Scanner;
 import java.util.Set;
-import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import javax.swing.JComponent;
 import javax.swing.event.ChangeListener;
-import net.java.nboglpack.jogl.util.JOGLDistribution;
 import org.apache.tools.ant.module.api.support.ActionUtils;
 import org.netbeans.api.project.ProjectManager;
 import org.netbeans.spi.project.ui.support.ProjectChooser;
 import org.netbeans.spi.project.ui.templates.support.Templates;
 import org.openide.WizardDescriptor;
+import org.openide.cookies.OpenCookie;
 import org.openide.execution.ExecutorTask;
 import org.openide.filesystems.FileLock;
 import org.openide.filesystems.FileObject;
 import org.openide.filesystems.FileUtil;
+import org.openide.loaders.DataObject;
+import org.openide.loaders.DataObjectNotFoundException;
 import org.openide.modules.InstalledFileLocator;
 import org.openide.util.NbBundle;
 
@@ -282,10 +286,10 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
         if(includes!=null && includes.length() != 0)
         {
             String mergedIncludes=null;
-            StringTokenizer tokenizer= new StringTokenizer(includes,", ");
-            while (tokenizer.hasMoreTokens())
+            Scanner scanner = new Scanner(includes).useDelimiter(",");
+            while (scanner.hasNext())
             {
-                String token= tokenizer.nextToken();
+                String token = scanner.next();
                 if(mergedIncludes==null)
                     mergedIncludes=srcPath+token;
                 else
@@ -297,10 +301,10 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
         if(excludes!=null && excludes.length() != 0)
         {
             String mergedExcludes=null;
-            StringTokenizer tokenizer= new StringTokenizer(excludes,", ");
-            while (tokenizer.hasMoreTokens())
+            Scanner scanner = new Scanner(excludes).useDelimiter(",");
+            while (scanner.hasNext())
             {
-                String token= tokenizer.nextToken();
+                String token= scanner.next();
                 if(mergedExcludes==null)
                     mergedExcludes=srcPath+token;
                 else
@@ -315,11 +319,26 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
             FileObject script= FileUtil.toFileObject(scriptFile);
             ExecutorTask task= ActionUtils.runTarget(script,new String[]{"initProject"},props);
             task.waitFinished();
-            Thread.sleep(1000);
+            
+//            Thread.sleep(1000);
+            
+            // open main file in editor
+            File mainFile = new File(   dir.getAbsolutePath()+File.separator
+                                       +"src"+File.separator
+                                       +demoPath+File.separator
+                                       +mainClass+".java"   );
+            try{
+                DataObject mainDAO = DataObject.find(FileUtil.toFileObject(mainFile));
+                mainDAO.getLookup().lookup(OpenCookie.class).open();
+            }catch(DataObjectNotFoundException ex) {
+                Logger.getLogger(this.getClass().getName()).log(
+                    Level.WARNING, "could not open main file in editor", ex);
+            }
         }
         catch (Exception ex)
         {
-            ex.printStackTrace();
+            Logger.getLogger(this.getClass().getName()).log(
+                    Level.SEVERE, "error while deploying project", ex);
         }
     }
 }
