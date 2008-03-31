@@ -8,20 +8,20 @@ package net.java.nboglpack.jogl.util;
  * @author Michael Bien
  */
 public enum JOGLDistribution {
-
-    WINDOWS_AMD64("Windows", "AMD64"),
-    WINDOWS_I586("Windows", "I586"),
     
-    LINUX_I586("Linux", "I586"),
-    LINUX_AMD64("Linux", "AMD64"),
+    WINDOWS_AMD64("windows", "amd64"),
+    WINDOWS_I586("windows", "i586"),
     
-    MACOSX_UNIVERSAL("MacOS X", "UNIVERSAL"),
-    MACOSX_PPC("MacOS X", "PPC"),
+    LINUX_I586("linux", "i586"),
+    LINUX_AMD64("linux", "amd64"),
     
-    SOLARIS_AMD64("Solaris", "AMD64"),
-    SOLARIS_I586("Solaris", "I586"),
-    SOLARIS_SPARC("Solaris", "SPARC"),
-    SOLARIS_SPARC_V9("Solaris", "SPARC V9");
+    MACOSX_UNIVERSAL("macosx", "universal"),
+    MACOSX_PPC("macosx", "ppc"),
+    
+    SOLARIS_AMD64("solaris", "amd64"),
+    SOLARIS_I586("solaris", "i586"),
+    SOLARIS_SPARC("solaris", "sparc"),
+    SOLARIS_SPARC_V9("solaris", "sparcv9");
     
     /**
      * OS name.
@@ -40,18 +40,29 @@ public enum JOGLDistribution {
 
     @Override
     public String toString() {
-        return os + " (" + arch + ")";
+        String osName;
+        if(os.equals(MACOSX_UNIVERSAL.os))
+            osName = "MacOS X";
+        else
+            osName = os.substring(0,1).toUpperCase() + os.substring(1);
+        return osName + " (" + arch + ")";
     }
 
     /**
      * Returns the unique key for the distribution (eg linux-amd64).
      */
     public String key() {
-        String osKey = os.toLowerCase();
-        if (osKey.startsWith("mac")) {
-            osKey = "maxosx";
+        return os + "-" + arch;
+    }
+    
+    public static JOGLDistribution parseKey(String key) {
+        JOGLDistribution[] values = JOGLDistribution.values();
+        for (int i = 0; i < values.length; i++) {
+            JOGLDistribution value = values[i];
+	    if(value.key().equals(key))
+                return value;
         }
-        return osKey + "-" + arch.toLowerCase();
+        return null;
     }
     
     /**
