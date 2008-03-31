@@ -325,12 +325,12 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
             // open main file in editor
             File mainFile = new File(   dir.getAbsolutePath()+File.separator
                                        +"src"+File.separator
-                                       +demoPath+File.separator
+                                       +packageName.replace('.',File.separatorChar)+File.separator
                                        +mainClass+".java"   );
             try{
                 DataObject mainDAO = DataObject.find(FileUtil.toFileObject(mainFile));
                 mainDAO.getLookup().lookup(OpenCookie.class).open();
-            }catch(DataObjectNotFoundException ex) {
+            }catch(Exception ex) {
                 Logger.getLogger(this.getClass().getName()).log(
                     Level.WARNING, "could not open main file in editor", ex);
             }
