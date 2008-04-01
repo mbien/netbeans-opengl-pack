@@ -20,7 +20,7 @@
         </foreach>
         
         <!--copy jars into lib wrapper module ext classpath-->
-        <copy todir="release/modules/ext/">
+        <copy todir="release/modules/ext/" overwrite="true">
             <fileset file="release/jogl-runtime/jogl.jar"/>
             <fileset file="release/jogl-runtime/gluegen-rt.jar"/>
         </copy>
