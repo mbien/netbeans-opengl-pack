@@ -29,7 +29,6 @@ import org.openide.filesystems.FileLock;
 import org.openide.filesystems.FileObject;
 import org.openide.filesystems.FileUtil;
 import org.openide.loaders.DataObject;
-import org.openide.loaders.DataObjectNotFoundException;
 import org.openide.modules.InstalledFileLocator;
 import org.openide.util.NbBundle;
 
@@ -75,7 +74,7 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
         String demo=(String)template.getAttribute("demo");
         createLabel="LBL_Create_"+demo;
 
-        Set resultSet = new LinkedHashSet();
+        Set<FileObject> resultSet = new LinkedHashSet<FileObject>();
         File dirF = FileUtil.normalizeFile((File) wiz.getProperty("projdir"));
         dirF.mkdirs();
 

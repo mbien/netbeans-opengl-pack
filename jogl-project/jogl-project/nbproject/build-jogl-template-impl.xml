@@ -33,6 +33,9 @@
         <antcall target="-create-native-distribution" inheritall="true">
             <param name="platform.name" value="windows-i586"/>
         </antcall>
+        <antcall target="-create-native-distribution" inheritall="true">
+            <param name="platform.name" value="windows-amd64"/>
+        </antcall>
         <antcall target="-jogl-template-copy-natives" inheritall="true"/>
     </target>
 
@@ -90,6 +93,7 @@
         <delete dir="${dist.dir}-solaris-sparcv9"/>
         <delete dir="${dist.dir}-solaris-i586"/>
         <delete dir="${dist.dir}-windows-i586"/>
+        <delete dir="${dist.dir}-windows-amd64"/>
     </target>
 
     <target name="-jogl-template-test-jnlp-enabled">
