@@ -46,13 +46,14 @@
         </copy >
     </target>
 
-    <target name="-jogl-template-jnlp" depends="-jogl-template-test-jnlp-enabled" if="is.jnlp.enabled">
-        <antcall target="jnlp-impl.jnlp" inheritall="true"/>
+    <target name="-jogl-template-jnlp" depends="-jogl-template-test-jnlp-enabled,-jogl-template-patch-master-jnlp" if="is.jnlp.enabled">
+
         <delete file="${dist.dir}/lib/jogl.jar"/>
         <delete file="${dist.dir}/lib/gluegen-rt.jar"/>
+        <antcall target="jnlp-impl.jnlp" inheritall="true"/>
         <replace file="${dist.dir}/launch.jnlp">
             <replacetoken><![CDATA[<jar href="lib/jogl.jar" download="eager"/>]]></replacetoken>
-            <replacevalue><![CDATA[<extension name="jogl" href="http://download.java.net/media/jogl/builds/archive/jsr-231-webstart-current/jogl.jnlp" />]]></replacevalue>
+            <replacevalue></replacevalue>
         </replace>
         <replace file="${dist.dir}/launch.jnlp">
             <replacetoken><![CDATA[<jar href="lib/gluegen-rt.jar" download="eager"/>]]></replacetoken>
@@ -60,6 +61,25 @@
         </replace>
     </target>
     
+    <target name="-jogl-template-patch-master-jnlp" depends="-jogl-template-check-master-jnlp" if="is.jnlp.unpatched">
+        <replace file="${master.jnlp.file}">
+            <replacetoken><![CDATA[</resources>]]></replacetoken>
+            <replacevalue><![CDATA[    <extension name="jogl" href="http://download.java.net/media/jogl/builds/archive/jsr-231-webstart-current/jogl.jnlp" />
+    </resources>]]></replacevalue>
+        </replace>
+    </target>
+
+    <target name="-jogl-template-check-master-jnlp" if="is.jnlp.enabled">
+        <!-- create it, in case it does not exist yet -->
+        <antcall target="jnlp-init-generate-master" inheritall="true"/>
+        <loadfile property="master.jnlp.content" srcfile="${master.jnlp.file}"/>
+        <condition property="is.jnlp.unpatched">
+            <not>
+                <contains string="${master.jnlp.content}" substring='extension name="jogl"'/>
+            </not>
+        </condition>        
+    </target>
+
     <target name="-create-native-distribution">
         <mkdir dir="${dist.dir}-${platform.name}"/>
         <!-- This is a bit of a hack to simulate string replacements with ant :/ -->
