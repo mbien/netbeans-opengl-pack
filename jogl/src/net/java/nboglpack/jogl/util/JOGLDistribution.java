@@ -7,7 +7,7 @@ package net.java.nboglpack.jogl.util;
  * Enum for all JOGL distributions.
  * @author Michael Bien
  */
-public enum JOGLDistribution {
+public enum JOGLDistribution implements Distribution {
     
     WINDOWS_AMD64("windows", "amd64"),
     WINDOWS_I586("windows", "i586"),
@@ -108,6 +108,15 @@ public enum JOGLDistribution {
             return null;
         }
     }
+
+    public String getArch() {
+        return arch;
+    }
+
+    public String getOs() {
+        return os;
+    }
+ 
 
     private final static boolean isAMD64bit(String arch) {
         return arch.contains("amd64") || arch.endsWith("_64");
