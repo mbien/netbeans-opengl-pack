@@ -1,3 +1,7 @@
+/*
+ * Created on 26. August 2006, 15:26
+ */
+
 package com.mbien.engine.glsl;
 
 import com.mbien.engine.util.GLRunnable;
@@ -13,7 +17,6 @@ import javax.media.opengl.GL;
 import javax.media.opengl.GLContext;
 
 /**
- * Created on 26. August 2006, 15:26
  * @author Michael Bien<br><br>
  */
 public class GLSLShader {
@@ -34,7 +37,7 @@ public class GLSLShader {
     }
     
     public GLSLShader(File... files) {
-        this.type = TYPE.parse(files[0].getName());;
+        this.type = TYPE.parse(files[0].getName());
         if(type==null) throw new IllegalArgumentException("Wrong file ending; only .[gl(sl)]frag, .[gl(sl)]vert and .[gl(sl)]geom endings are allowed");
         shaderNames = new String[files.length];
         source = readSourceFile(files);
@@ -64,8 +67,7 @@ public class GLSLShader {
         source = sb.toString();
     }
     
-    private static File[] toFiles(String... names)
-    {
+    private static File[] toFiles(String... names)  {
         File[] files = new File[names.length];
         
         for(int i = 0; i < files.length; i++) 
