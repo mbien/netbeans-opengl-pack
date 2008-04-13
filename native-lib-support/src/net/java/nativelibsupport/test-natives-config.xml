@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : natives-config.xml
+    Created on : April 10, 2008, 6:36 PM
+    Author     : mbien
+    Description:
+        Purpose of the document follows.
+-->
+<ns0:library 
+   xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+   xmlns:ns0='http://xml.netbeans.org/schema/natives-config'
+   xsi:schemaLocation='http://xml.netbeans.org/schema/natives-config natives-config.xsd'>
+    <ns0:name>JOGL</ns0:name>
+    <ns0:folder>jogl-runtime</ns0:folder>
+    <ns0:distribution>
+        <ns0:os>
+            <ns0:folder>linux</ns0:folder>
+            <ns0:regexp>asdf</ns0:regexp>
+        </ns0:os>
+        <ns0:cpu>
+            <ns0:folder>amd64</ns0:folder>
+            <ns0:regexp>asdf</ns0:regexp>
+        </ns0:cpu>
+    </ns0:distribution>
+</ns0:library>

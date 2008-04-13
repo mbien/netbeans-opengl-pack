@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://xml.netbeans.org/schema/DistributionConfig"
+            xmlns:tns="http://xml.netbeans.org/schema/DistributionConfig"
+            elementFormDefault="qualified">
+    <xsd:element name="library">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="name" type="xsd:string"/>
+                <xsd:element name="distributionFolder" type="xsd:string"/>
+                <xsd:element name="distribution" type="tns:distribution"></xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="distribution">
+        <xsd:sequence>
+            <xsd:element name="os">
+                <xsd:complexType>
+                    <xsd:choice>
+                        <xsd:element name="windows"/>
+                        <xsd:element name="linux"/>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="arch"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

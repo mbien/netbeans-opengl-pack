@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://xml.netbeans.org/schema/natives-config"
+            xmlns:tns="http://xml.netbeans.org/schema/natives-config"
+            elementFormDefault="qualified">
+    <xsd:element name="library">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="name" type="xsd:string"/>
+                <xsd:element name="folder" type="xsd:string"/>
+                <xsd:element name="distribution" maxOccurs="unbounded">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="os">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="folder" type="xsd:string"/>
+                                        <xsd:element name="regexp" type="xsd:string"/>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="cpu">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="folder" type="xsd:string"/>
+                                        <xsd:element name="regexp" type="xsd:string"/>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

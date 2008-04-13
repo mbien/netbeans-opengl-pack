@@ -3,6 +3,8 @@
  */
 package net.java.nboglpack.jogl.util;
 
+import net.java.nativelibsupport.Distribution;
+
 /**
  * Enum for all JOGL distributions.
  * @author Michael Bien
