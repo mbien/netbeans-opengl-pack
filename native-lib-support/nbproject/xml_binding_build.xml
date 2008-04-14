@@ -5,14 +5,20 @@
     generates java files from xml schema and compiles results into build folder.
 -->
 <project name="native-lib-support_jaxb" default="default" basedir="..">
+    
     <property file="nbproject/project.properties"/>
+    
     <target name="xjc-typedef-target">
         <typedef classname="com.sun.tools.xjc.XJCTask" name="xjc" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig">
             <classpath path="${jaxbwiz.xjcdef.classpath}"/>
         </typedef>
     </target>
+    
     <target name="jaxb-clean-code-generation" depends="jaxb-code-generation"/>
+    
     <target name="jaxb-code-generation" depends="xjc-typedef-target">
+        <delete dir="${build.generated.dir}"/>
+        
         <mkdir dir="${build.generated.dir}/addons/jaxb" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig"/>
         <mkdir dir="${build.generated.dir}/jaxbCache" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig"/>
         <mkdir dir="${build.classes.dir}" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig"/>
@@ -35,4 +41,5 @@
             <classpath path="${jaxbwiz.gensrc.classpath}"/>
         </javac-->
     </target>
+    
 </project>

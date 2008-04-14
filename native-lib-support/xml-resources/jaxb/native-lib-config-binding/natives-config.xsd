@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Created on : April 10, 2008, 6:36 PM
+    Author     : Michael Bien
+    Schema for native library deployment structure.
+-->
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            targetNamespace="http://xml.netbeans.org/schema/natives-config"
-            xmlns:tns="http://xml.netbeans.org/schema/natives-config"
+            targetNamespace="http://net/java/nativelibsupport/natives-config"
+            xmlns:tns="http://net/java/nativelibsupport/natives-config"
             elementFormDefault="qualified">
     <xsd:element name="library">
         <xsd:complexType>
