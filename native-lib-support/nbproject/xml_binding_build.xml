@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
+    Created on : April 10, 2008, 6:36 PM
+    Author     : Michael Bien
     generates java files from xml schema and compiles results into build folder.
 -->
 <project name="native-lib-support_jaxb" default="default" basedir="..">
@@ -11,11 +13,11 @@
     </target>
     <target name="jaxb-clean-code-generation" depends="jaxb-code-generation"/>
     <target name="jaxb-code-generation" depends="xjc-typedef-target">
-        <mkdir dir="generated/addons/jaxb" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig"/>
-        <mkdir dir="generated/jaxbCache" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig"/>
+        <mkdir dir="${build.generated.dir}/addons/jaxb" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig"/>
+        <mkdir dir="${build.generated.dir}/jaxbCache" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig"/>
         <mkdir dir="${build.classes.dir}" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig"/>
-        <mkdir dir="generated/jaxbCache/native-lib-config-binding"/>
-        <xjc destdir="generated/jaxbCache/native-lib-config-binding" catalog="catalog.xml">
+        <mkdir dir="${build.generated.dir}/jaxbCache/native-lib-config-binding"/>
+        <xjc destdir="${build.generated.dir}/jaxbCache/native-lib-config-binding" catalog="catalog.xml">
             <classpath>
                 <pathelement location="${src.dir}"/>
                 <pathelement path="${jaxbwiz.xjcrun.classpath}"/>
@@ -25,12 +27,12 @@
             <depends file="xml-resources/jaxb/native-lib-config-binding/natives-config.xsd"/>
             <produces dir="generated/jaxbCache/native-lib-config-binding"/>
         </xjc>
-        <copy todir="generated/addons/jaxb">
-            <fileset dir="generated/jaxbCache/native-lib-config-binding"/>
+        <copy todir="src">
+            <fileset dir="${build.generated.dir}/jaxbCache/native-lib-config-binding"/>
         </copy>
-        <javac destdir="${build.classes.dir}" srcdir="generated/addons/jaxb" source="${javac.source}" target="${javac.target}" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig">
+        <!--javac destdir="${build.classes.dir}" srcdir="${build.generated.dir}/addons/jaxb" source="${javac.source}" target="${javac.target}" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig">
             <sourcepath location="${src.dir}"/>
             <classpath path="${jaxbwiz.gensrc.classpath}"/>
-        </javac>
+        </javac-->
     </target>
 </project>

@@ -4,10 +4,11 @@
 <!-- If you delete this file and reopen the project it will be recreated. -->
 <project name="net.java.nativelibsupport" default="netbeans" basedir=".">
     <description>Builds, tests, and runs the project net.java.nativelibsupport.</description>
+
     <import file="nbproject/build-impl.xml"/>
-    
     <import file="nbproject/xml_binding_build.xml"/>
     
     <target name="compile" depends="jaxb-code-generation,projectized-common.compile"/>
+    <target name="clean" depends="jaxb-clean-code-generation,projectized-common.clean"/>
     
 </project>
