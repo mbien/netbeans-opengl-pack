@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/home/mbien/NetBeansProjects/netbeans-opengl-pack/native-lib-support/../native-lib-support/src/net/java/nativelibsupport/natives-config.xsd" uri="xml-resources/jaxb/native-lib-config-binding/natives-config.xsd"/>
+</catalog>

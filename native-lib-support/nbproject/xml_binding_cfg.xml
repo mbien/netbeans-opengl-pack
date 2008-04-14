@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<schemas xmlns='http://xml.netbeans.org/schema/JAXBWizConfig' destdir='build/generated/addons/jaxb' projectName='native-lib-support'>
+    <schema type='-xmlschema' package='' name='native-lib-config-binding'>
+        <xjc-options>
+        </xjc-options>
+        <schema-sources>
+            <schema-source location='xml-resources/jaxb/native-lib-config-binding/natives-config.xsd' origLocation='../native-lib-support/src/net/java/nativelibsupport/natives-config.xsd'/>
+        </schema-sources>
+        <bindings>
+        </bindings>
+        <catalog/>
+    </schema>
+</schemas>

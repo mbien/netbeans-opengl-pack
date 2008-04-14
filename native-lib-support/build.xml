@@ -5,4 +5,9 @@
 <project name="net.java.nativelibsupport" default="netbeans" basedir=".">
     <description>Builds, tests, and runs the project net.java.nativelibsupport.</description>
     <import file="nbproject/build-impl.xml"/>
+    
+    <import file="nbproject/xml_binding_build.xml"/>
+    
+    <target name="compile" depends="jaxb-code-generation,projectized-common.compile"/>
+    
 </project>
