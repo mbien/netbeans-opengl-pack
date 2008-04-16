@@ -3,13 +3,12 @@
  */
 package net.java.nboglpack.jogl.util;
 
-import net.java.nativelibsupport.Distribution;
 
 /**
  * Enum for all JOGL distributions.
  * @author Michael Bien
  */
-public enum JOGLDistribution implements Distribution {
+public enum JOGLDistribution {
     
     WINDOWS_AMD64("windows", "amd64"),
     WINDOWS_I586("windows", "i586"),
@@ -111,13 +110,6 @@ public enum JOGLDistribution implements Distribution {
         }
     }
 
-    public String getArch() {
-        return arch;
-    }
-
-    public String getOs() {
-        return os;
-    }
  
 
     private final static boolean isAMD64bit(String arch) {

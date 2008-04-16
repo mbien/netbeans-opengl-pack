@@ -29,8 +29,8 @@
                 <pathelement path="${jaxbwiz.xjcrun.classpath}"/>
             </classpath>
             <arg value="-xmlschema"/>
-            <schema file="xml-resources/jaxb/native-lib-config-binding/natives-config.xsd"/>
-            <depends file="xml-resources/jaxb/native-lib-config-binding/natives-config.xsd"/>
+            <schema file="${jaxb.schema}"/>
+            <depends file="${jaxb.schema}"/>
             <produces dir="generated/jaxbCache/native-lib-config-binding"/>
         </xjc>
         <copy todir="src">

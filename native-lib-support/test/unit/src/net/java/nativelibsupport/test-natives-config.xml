@@ -5,32 +5,28 @@
     Created on : April 10, 2008, 6:36 PM
     Author     : mbien
     Description:
-        Purpose of the document follows.
+        Nativle library deployment configuration file.
 -->
-<ns0:library 
-   xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
-   xmlns:ns0='http://net/java/nativelibsupport/natives-config'
-   xsi:schemaLocation='http://net/java/nativelibsupport/natives-config natives-config.xsd'>
-    <ns0:name>JOGL</ns0:name>
-    <ns0:folder>jogl-runtime</ns0:folder>
-    <ns0:distribution>
-        <ns0:os>
-            <ns0:folder>linux</ns0:folder>
-            <ns0:regexp>asdf</ns0:regexp>
-        </ns0:os>
-        <ns0:cpu>
-            <ns0:folder>amd64</ns0:folder>
-            <ns0:regexp>asdf</ns0:regexp>
-        </ns0:cpu>
-    </ns0:distribution>
-    <ns0:distribution>
-        <ns0:os>
-            <ns0:folder>linux</ns0:folder>
-            <ns0:regexp>asdf</ns0:regexp>
-        </ns0:os>
-        <ns0:cpu>
-            <ns0:folder>i586</ns0:folder>
-            <ns0:regexp>asdf</ns0:regexp>
-        </ns0:cpu>
-    </ns0:distribution>
+<ns0:library  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+   xmlns:ns0='http://net/java/nativelibsupport/natives_config'
+   xsi:schemaLocation='http://net/java/nativelibsupport/resource natives-config.xsd'
+   name='jogl.jar' folder='jogl-runtime' flat='true'>
+    <ns0:os folder='-natives-windows' regexp='^windows'>
+        <ns0:cpu folder='-amd64' regexp='^amd|x64|x86_64$'/>
+        <ns0:cpu folder='-i586' regexp='^i?+[3-9|x]86$'/>
+    </ns0:os>
+    <ns0:os folder='-natives-macosx' regexp='^mac'>
+        <ns0:cpu folder='-ppc' regexp='^ppc$'/>
+        <ns0:cpu folder='-universal' regexp='.'/>
+    </ns0:os>
+    <ns0:os folder='-natives-linux' regexp='^linux'>
+        <ns0:cpu folder='-amd64' regexp='^amd|x64|x86_64$'/>
+        <ns0:cpu folder='-i586' regexp='^i?+[3-9|x]86$'/>
+    </ns0:os>
+    <ns0:os folder='-natives-solaris' regexp='^(?i)solaris|sunos'>
+        <ns0:cpu folder='-amd64' regexp='^amd|x64|x86_64$'/>
+        <ns0:cpu folder='-sparc' regexp='^sparc$'/>
+        <ns0:cpu folder='-sparcv9' regexp='^sparcv9$'/>
+        <ns0:cpu folder='-i586' regexp='^i?+[3-9|x]86$'/>
+    </ns0:os>
 </ns0:library>

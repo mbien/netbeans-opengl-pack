@@ -4,9 +4,8 @@
 package net.java.nboglpack;
 
 import java.io.File;
-import net.java.nativelibsupport.Distribution;
+import java.io.InputStream;
 import net.java.nativelibsupport.NativeLibSupport;
-import net.java.nboglpack.jogl.util.JOGLDistribution;
 import org.openide.modules.InstalledFileLocator;
 import org.openide.modules.ModuleInstall;
 
@@ -22,10 +21,11 @@ public class Installer extends ModuleInstall {
         
         File joglDistFolder = InstalledFileLocator.getDefault().locate("jogl-runtime", "javax.media.opengl", false);
         
-        Distribution distribution = JOGLDistribution.getCompatible();
+        InputStream stream = this.getClass().getResourceAsStream("jogl/jogl-natives-config.xml");
+        NativeLibSupport.deploy("jogl", stream, joglDistFolder);
         
-        NativeLibSupport.deploy("jogl", distribution, joglDistFolder, "jogl.jar-natives-");
-        NativeLibSupport.deploy("gluegen-rt", distribution, joglDistFolder, "gluegen-rt.jar-natives-");
+        stream = this.getClass().getResourceAsStream("jogl/gluegen-natives-config.xml");
+        NativeLibSupport.deploy("gluegen-rt", stream, joglDistFolder);
         
     }
     

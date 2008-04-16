@@ -12,7 +12,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import net.java.nativelibsupport.natives_config.Library;
-import net.java.nativelibsupport.natives_config.Library.Distribution;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -49,15 +48,16 @@ public class NativeLibSupportTest {
                 System.out.println("lib name: "+lib.getName());
                 System.out.println("lib folder: "+lib.getFolder());
                 
-                List<Distribution> distris = lib.getDistribution();
-                for (Distribution distribution : distris) {
-                    System.out.println("--distribution--");
-                    Distribution.Os os = distribution.getOs();
-                    Distribution.Cpu cpu = distribution.getCpu();
-                    System.out.println("OS folder: "+os.getFolder());
-                    System.out.println("OS regexp: "+os.getRegexp());
-                    System.out.println("CPU folder: "+cpu.getFolder());
-                    System.out.println("CPU regexp: "+cpu.getRegexp());
+                List<Library.Os> oses = lib.getOs();
+                for (Library.Os os : oses) {
+                    System.out.println("-OS folder: "+os.getFolder());
+                    System.out.println("-OS regexp: "+os.getRegex());
+                    
+                    List<Library.Os.Cpu> cpus = os.getCpu();
+                    for (Library.Os.Cpu cpu : cpus) {
+                        System.out.println("--CPU folder: "+cpu.getFolder());
+                        System.out.println("--CPU regexp: "+cpu.getRegex());
+                    }
                 }
                 
             }else{

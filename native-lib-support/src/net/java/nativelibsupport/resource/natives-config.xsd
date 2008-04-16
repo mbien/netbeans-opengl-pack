@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Created on : April 10, 2008, 6:36 PM
+    Author     : Michael Bien
+    Schema for native library deployment structure.
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://net/java/nativelibsupport/natives_config"
+            xmlns:tns="http://net/java/nativelibsupport/natives_config"
+            elementFormDefault="qualified">
+    <xsd:element name="library">
+        <xsd:complexType>
+            <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                <xsd:element name="os">
+                    <xsd:complexType>
+                        <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                            <xsd:element name="cpu">
+                                <xsd:complexType>
+                                    <xsd:attribute name="folder" type="xsd:string" use="required"/>
+                                    <xsd:attribute name="regex" type="xsd:string" use="required"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="folder" type="xsd:string" use="required"/>
+                        <xsd:attribute name="regex" type="xsd:string" use="required"/>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+            <xsd:attribute name="name" type="xsd:string" use="required"/>
+            <xsd:attribute name="folder" type="xsd:string" use="required"/>
+            <xsd:attribute name="flat" type="xsd:boolean" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
