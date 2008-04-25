@@ -5,19 +5,19 @@
 <project name="netbeans-opengl-pack" basedir=".">
     <description>Builds the module suite netbeans-opengl-pack.</description>
     <import file="nbproject/build-impl.xml"/>
-		<!--
-		  You need to install the javanettasks (https://javanettasks.dev.java.net/nonav/maven/index.html)
-		  by copying the javaNetTasks.jar into the lib directory of your ant installation
-			(See Tools->Options->Miscellaneous to locate or configure the installation folder)
-			You may need to restart Netbeans to detect the changes.
-		-->
+    <!--
+      You need to install the javanettasks (https://javanettasks.dev.java.net/nonav/maven/index.html)
+      by copying the javaNetTasks.jar into the lib directory of your ant installation
+            (See Tools->Options->Miscellaneous to locate or configure the installation folder)
+            You may need to restart Netbeans to detect the changes.
+    -->
     <taskdef resource="org/kohsuke/javanettasks.properties" />
-		<!--
-		  You need to install the ant-contrib tasks (http://ant-contrib.sourceforge.net/)
-		  by copying the ant-contrib.jar into the lib directory of your ant installation
-			(See Tools->Options->Miscellaneous to locate or configure the installation folder)
-			You may need to restart Netbeans to detect the changes.
-	  -->
+    <!--
+      You need to install the ant-contrib tasks (http://ant-contrib.sourceforge.net/)
+      by copying the ant-contrib.jar into the lib directory of your ant installation
+            (See Tools->Options->Miscellaneous to locate or configure the installation folder)
+            You may need to restart Netbeans to detect the changes.
+    -->
     <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
     
     <property name="java.net.projectName" value="netbeans-opengl-pack"/>
@@ -77,9 +77,17 @@
         />
     </target>
     
-    <target name="buildrelease" depends="nbms">
+    <!-- bulds zip distribution ready for upload to plugin portal -->
+    <target name="build-release" depends="nbms">
         <copy todir="www/updatecenter/">
             <fileset dir="build/updates"/>
         </copy>
+        <mkdir dir="build/upload/"/>
+        <zip destfile="build/upload/${distribution.name}_${distribution.version}.zip">
+            <fileset dir="build/updates">
+                <include name="*.nbm"/>
+                <exclude name="net-java-nboglpack-updatecenter.nbm"/>
+            </fileset>
+        </zip>
     </target>
 </project>
