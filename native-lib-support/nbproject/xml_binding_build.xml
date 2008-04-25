@@ -8,6 +8,7 @@
     
     <property file="nbproject/project.properties"/>
     
+    <!-- requires JAXB libraries in ant classpath -->
     <target name="xjc-typedef-target">
         <typedef classname="com.sun.tools.xjc.XJCTask" name="xjc" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig">
             <classpath path="${jaxbwiz.xjcdef.classpath}"/>
