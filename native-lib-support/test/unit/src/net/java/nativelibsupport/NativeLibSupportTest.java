@@ -5,6 +5,8 @@
 
 package net.java.nativelibsupport;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +24,7 @@ import static org.junit.Assert.*;
  * @author Michael Bien
  */
 public class NativeLibSupportTest {
-
+    
     public NativeLibSupportTest() {
     }
 
@@ -37,54 +39,114 @@ public class NativeLibSupportTest {
     
     @Test
     public void readTest() {
+        
+        Library lib = loadLibConfigXML();
+        System.out.println("lib name: "+lib.getName());
+        System.out.println("lib folder: "+lib.getFolder());
+
+        List<Library.Os> oses = lib.getOs();
+        for (Library.Os os : oses) {
+            System.out.println("-OS folder: "+os.getFolder());
+            System.out.println("-OS regexp: "+os.getRegex());
+
+            List<Library.Os.Cpu> cpus = os.getCpu();
+            for (Library.Os.Cpu cpu : cpus) {
+                System.out.println("--CPU folder: "+cpu.getFolder());
+                System.out.println("--CPU regexp: "+cpu.getRegex());
+            }
+        }
+                
+    }
+    
+    @Test
+    public void testAssambleLibPath() {
+        
+        
+        String[] spec = {
+            "Windows 2000", "amd64",
+            "Windows Vista", "i586",
+            "Windows", "i386",
+            "Linux", "x86",
+            "Linux", "x86_64",
+            "Linux", "x64",
+            "Solaris", "sparc",
+            "MacOS X", "ppc",
+            "MacOS X", "something else",
+            System.getProperty("os.name"), System.getProperty("os.arch")
+        };
+        
+        Library lib = loadLibConfigXML();
+        
+        for (int i = 0; i < spec.length; i+=2) {
+            
+            StringBuilder path = new StringBuilder();
+            
+            System.out.println(spec[i]+" "+ spec[i+1]);
+            
+            invoke("assambleLibPath", null, NativeLibSupport.class, 
+                    lib, spec[i], spec[i+1], path);
+
+            assertTrue(path.toString().trim().length() != 0);
+
+            System.out.println("path: "+path.toString());
+        }
+        
+    }
+    
+    
+    private Library loadLibConfigXML() {
         try {
             JAXBContext jc = JAXBContext.newInstance("net.java.nativelibsupport.natives_config", this.getClass().getClassLoader());
 
             Unmarshaller unmarshaller = jc.createUnmarshaller();
             Object obj = unmarshaller.unmarshal(this.getClass().getResourceAsStream("test-natives-config.xml"));
-            
-            if(obj instanceof Library) {
-                Library lib = (Library)obj;
-                System.out.println("lib name: "+lib.getName());
-                System.out.println("lib folder: "+lib.getFolder());
-                
-                List<Library.Os> oses = lib.getOs();
-                for (Library.Os os : oses) {
-                    System.out.println("-OS folder: "+os.getFolder());
-                    System.out.println("-OS regexp: "+os.getRegex());
-                    
-                    List<Library.Os.Cpu> cpus = os.getCpu();
-                    for (Library.Os.Cpu cpu : cpus) {
-                        System.out.println("--CPU folder: "+cpu.getFolder());
-                        System.out.println("--CPU regexp: "+cpu.getRegex());
-                    }
-                }
-                
-            }else{
-                fail("wrong root type: "+obj);
+
+            if (obj instanceof Library) {
+                return (Library) obj;
+            } else {
+                fail("wrong root element");
             }
-            
         } catch (JAXBException ex) {
             Logger.getLogger(NativeLibSupportTest.class.getName()).log(Level.SEVERE, null, ex);
             fail();
         }
+        return null;
     }
-
+    
+    
     /**
-     * Test of deploy method, of class NativeLibSupport.
+     * Invokes a method.
+     * @param instance instance of class c (may be null for static methods)
+     * @param c class containing method to invoke (never null)
+     * @return Returns null for void else value of invoked method
      */
-    @Test
-    public void testDeploy() {
-//        System.out.println("deploy");
-//        String libraryJarName = "";
-//        Distribution distribution = null;
-//        File distFolder = null;
-//        String nativesFolderPrefix = "";
-//        NativeLibSupport.deploy(libraryJarName, distribution, distFolder, nativesFolderPrefix);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+    public Object invoke(String method, Object instance, Class c, Object... params) {
+        
+        assertNotNull(method);
+        assertNotNull(c);
+        
+        if(instance != null) {
+            assertTrue(c.isInstance(instance));
+        }
+        
+        try {
+            final Method[] methods = c.getDeclaredMethods();
+            for (int i = 0; i < methods.length; ++i) {
+                if (methods[i].getName().equals(method)) {
+                    methods[i].setAccessible(true);
+                    return methods[i].invoke(instance, params);
+                }
+            }
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(NativeLibSupportTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(NativeLibSupportTest.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InvocationTargetException ex) {
+            Logger.getLogger(NativeLibSupportTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        fail();
+        return null;
     }
-
 
 
 }

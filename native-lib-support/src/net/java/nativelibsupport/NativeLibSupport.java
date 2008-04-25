@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -33,7 +35,7 @@ import org.openide.filesystems.LocalFileSystem;
 public class NativeLibSupport {
     
     private static WeakReference<JAXBContext> reference;
-    
+
     private NativeLibSupport() {
     }
     
@@ -110,27 +112,7 @@ public class NativeLibSupport {
                 String osName = System.getProperty("os.name");
                 String cpuName = System.getProperty("os.arch");
                 
-                List<Os> oses = lib.getOs();
-                
-                for (Os os : oses) {
-                    
-                    if(osName.matches(os.getRegex())) {
-                        
-                        nativesFolderPath.append(os.getFolder());
-                        if(!lib.isFlat())
-                            nativesFolderPath.append(File.separatorChar);
-                        
-                        List<Cpu> cpus = os.getCpu();
-                        
-                        for (Cpu cpu : cpus) {
-                            if(cpuName.matches(cpu.getRegex())) {
-                                nativesFolderPath.append(cpu.getFolder());
-                                break;
-                            }
-                        }
-                        break;
-                    }
-                }
+                assambleLibPath(lib, osName, cpuName, nativesFolderPath);
                 
                 LocalFileSystem fileSystem = new LocalFileSystem();
                 fileSystem.setRootDirectory(new File(root));
@@ -189,6 +171,36 @@ public class NativeLibSupport {
             Logger.getLogger(NativeLibSupport.class.getName()).info(
                     "copy "+entry.getPath() +" to "+targetFolder.getPath() );
             FileUtil.copyFile(entry, targetFolder, entry.getName());
+        }
+    }
+    
+    private final static void assambleLibPath(Library lib, String osName, String cpuName, StringBuilder nativesFolderPath) {
+        
+        List<Os> oses = lib.getOs();
+
+        for (Os os : oses) {
+            
+            Matcher osMatcher = Pattern.compile(os.getRegex()).matcher(osName);
+            
+            if(osMatcher.find()) {
+
+                nativesFolderPath.append(os.getFolder());
+                if(!lib.isFlat())
+                    nativesFolderPath.append(File.separatorChar);
+
+                List<Cpu> cpus = os.getCpu();
+
+                for (Cpu cpu : cpus) {
+                    
+                    Matcher cpuMatcher = Pattern.compile(cpu.getRegex()).matcher(cpuName);
+                    
+                    if(cpuMatcher.find()) {
+                        nativesFolderPath.append(cpu.getFolder());
+                        break;
+                    }
+                }
+                break;
+            }
         }
     }
     
