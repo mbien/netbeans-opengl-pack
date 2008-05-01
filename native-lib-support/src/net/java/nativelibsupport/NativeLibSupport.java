@@ -44,9 +44,9 @@ public class NativeLibSupport {
      * @param libraryName the name of the library.jar (without the '.jar')
      * @param configFile InputStream which reads the xml config file
      * @param distFolder The distribution folder containing the library.jar and all native libraries in sub folders
+     * @throws DeploymentException Thrown when libraries were not successfully deployed.
      */
-    public static void deploy(String libraryName, InputStream configFile, File distributionFolder) {
-        
+    public static void deploy(String libraryName, InputStream configFile, File distributionFolder) throws LibDeploymentException {
         
         try{
             JarFileSystem jarSystem = new JarFileSystem();
@@ -56,9 +56,9 @@ public class NativeLibSupport {
             String jarVersion = jarSystem.getManifest().getMainAttributes().getValue("Implementation-Version");
             
             if(jarVersion == null)
-                throw new NullPointerException(jarSystem.getJarFile()+" has no version property in manifest file");
+                throw new NullPointerException(jarSystem.getJarFile()+" has no 'Implementation-Version' property in manifest file");
             
-            String root = distributionFolder.getAbsolutePath();
+            String root = distributionFolder.getCanonicalPath();
             root = root.substring(0, root.lastIndexOf(File.separator));
             
             String libFolderPath = root + File.separator + "modules" + File.separator + "lib";
@@ -83,7 +83,6 @@ public class NativeLibSupport {
                 // load native libraries configuration file
                 Object obj = null;
                 try {
-                    
                     // jaxb context loading is expensive load it only once
                     JAXBContext jc = getJAXBContext();
                     
@@ -104,7 +103,7 @@ public class NativeLibSupport {
                 // assamble path to platform dependent library folder
                 StringBuilder nativesFolderPath = new StringBuilder();
                 nativesFolderPath.append(distributionFolder.getName());
-                nativesFolderPath.append(File.separator);
+                nativesFolderPath.append(File.separatorChar);
                 nativesFolderPath.append(lib.getName());
                 if(!lib.isFlat())
                     nativesFolderPath.append(File.separatorChar);
@@ -114,10 +113,8 @@ public class NativeLibSupport {
                 
                 assambleLibPath(lib, osName, cpuName, nativesFolderPath);
                 
-                LocalFileSystem fileSystem = new LocalFileSystem();
-                fileSystem.setRootDirectory(new File(root));
-
-                FileObject libSourceFolder = fileSystem.findResource(nativesFolderPath.toString());
+                FileObject libSourceFolder = FileUtil.toFileObject(
+                        new File(root+File.separator+nativesFolderPath.toString()));
                 
                 if(libSourceFolder != null) {
                     
@@ -134,7 +131,7 @@ public class NativeLibSupport {
                 }else{
                     String os = System.getProperty("os.name");
                     String arch = System.getProperty("os.arch");
-                    throw new IOException(
+                    throw new LibDeploymentException(
                             String.format("The %1$s native libraries are either not available"+
                             " for this system (OS: %2$s CPU: %3$s) or an error accrued while deploying", lib.getName(), os, arch));
                 }
@@ -144,8 +141,7 @@ public class NativeLibSupport {
             }
             
         }catch(Exception ex) {
-            Logger.getLogger(NativeLibSupport.class.getName()).log(
-                    Level.SEVERE, "can not deploy "+ libraryName +" natives", ex);
+            throw new LibDeploymentException("can not deploy "+ libraryName +" natives", ex);
         }
         
     }
