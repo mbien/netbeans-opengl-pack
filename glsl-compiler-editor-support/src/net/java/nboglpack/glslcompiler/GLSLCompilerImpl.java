@@ -27,7 +27,6 @@ import org.openide.cookies.OpenCookie;
 import org.openide.loaders.DataObject;
 import org.openide.text.Line;
 import org.openide.util.Exceptions;
-import org.openide.filesystems.FileUtil;
 import org.openide.util.Lookup;
 import org.openide.util.NbPreferences;
 import org.openide.windows.IOProvider;
@@ -186,8 +185,9 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
                 Exceptions.printStackTrace(ex);
             }
         }else{
-            GLSLShader.TYPE shaderType = GLSLShader.TYPE.fromMime(dao.getPrimaryFile().getMIMEType());
-            shader = new GLSLShader(shaderType, FileUtil.toFile(dao.getPrimaryFile()));
+//            GLSLShader.TYPE shaderType = GLSLShader.TYPE.fromMime(dao.getPrimaryFile().getMIMEType());
+//            shader = new GLSLShader(shaderType, FileUtil.toFile(dao.getPrimaryFile()));
+            return null;
         }
         shader.setThrowExceptionOnCompilerWarning(true);
         
@@ -196,14 +196,17 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
     
     private GLSLShader compile(final DataObject dao, boolean printOut, final boolean deleteAfterCompilation) throws GLSLCompileException {
 
-        
         final GLSLShader shader = createShader(dao);
+        
+        if(shader == null)
+            return null;
+        
         if(printOut)
             io.getOut().println("compiling shader: "+shader.getName());
         
         CompilerAnnotations.removeAnnotations(dao);
         final GLSLCompileException[] exception = new GLSLCompileException[] {null};
-        
+
         if(!shader.type.isSupported())
             throw new GLSLCompileException(shader.getName(), shader.type.toString().toLowerCase()+" shaders not supported");
         
