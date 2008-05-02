@@ -27,6 +27,7 @@ public class GLSLShader {
  final String[] shaderNames;
  
  private int handle;
+ private String compilerMsg;
  
  private final static EnumMap<TYPE, Boolean> SUPPORTED_SHADER = new EnumMap<TYPE, Boolean>(TYPE.class);
  
@@ -37,25 +38,41 @@ public class GLSLShader {
     }
     
     public GLSLShader(File... files) {
+        
         this.type = TYPE.parse(files[0].getName());
-        if(type==null) throw new IllegalArgumentException("Wrong file ending; only .[gl(sl)]frag, .[gl(sl)]vert and .[gl(sl)]geom endings are allowed");
+        
+        if(type==null) 
+            throw new IllegalArgumentException("Wrong file ending; only .[gl(sl)]frag, .[gl(sl)]vert and .[gl(sl)]geom endings are allowed");
+        
         shaderNames = new String[files.length];
         source = readSourceFile(files);
     }
 
     public GLSLShader(TYPE type, File... files) {
+        
+        if(type == null)
+            throw new IllegalArgumentException("null as shader type not allowed");
+        
         this.type = type;
         shaderNames = new String[files.length];
         source = readSourceFile(files);
     }
 
     public GLSLShader(String source, String name, TYPE type) {
+        
+        if(type == null)
+            throw new IllegalArgumentException("null as shader type not allowed");
+        
         this.type = type;
         shaderNames = new String[]{ name };
         this.source = source;
     }
     
-    public GLSLShader(String[] sources, String[] names,  TYPE type) {
+    public GLSLShader(String[] sources, String[] names, TYPE type) {
+        
+        if(type == null)
+            throw new IllegalArgumentException("null as shader type not allowed");
+        
         this.type = type;
         
         StringBuilder sb = new StringBuilder();
@@ -138,17 +155,16 @@ public class GLSLShader {
         
         // log info log
         gl.glGetObjectParameterivARB(handle, GL.GL_OBJECT_INFO_LOG_LENGTH_ARB, buffer, 0);
+        
         if(buffer[0] > 0) {
             byte[] log = new byte[buffer[0]];
             gl.glGetInfoLogARB(handle, buffer[0], buffer, 0, log, 0);
-
-            if(log[0] != 0)  {// 0 if empty
-                error = throwExceptionOnCompilerWarning | error; // TODO setup exception level
-    //            getLog().warning("compiler info log:\n"+new String(log, 0, log.length-1));
+            
+            compilerMsg = new String(log, 0, log.length-1);
+            
+            if(error || throwExceptionOnCompilerWarning && compilerMsg.contains("WARNING")) {
+                throw new GLSLCompileException(shaderNames, compilerMsg.split("\n"));
             }
-
-            if(error)
-                throw new GLSLCompileException(shaderNames, new String(log, 0, log.length-1).split("\n"));
         }
     }
     
@@ -173,6 +189,10 @@ public class GLSLShader {
         }
         return sb.toString();
     }
+
+    public String getCompilerMsg() {
+        return compilerMsg;
+    }
     
     private static boolean isShaderSupported(TYPE type) {
         
@@ -195,7 +215,6 @@ public class GLSLShader {
     }
     
     public enum TYPE {
-        
         
         VERTEX(GL.GL_VERTEX_SHADER, "GL_ARB_vertex_shader"),
         FRAGMENT(GL.GL_FRAGMENT_SHADER, "GL_ARB_fragment_shader"),

@@ -24,6 +24,7 @@ import javax.swing.text.Document;
 import org.openide.cookies.EditorCookie;
 import org.openide.cookies.LineCookie;
 import org.openide.cookies.OpenCookie;
+import org.openide.filesystems.FileUtil;
 import org.openide.loaders.DataObject;
 import org.openide.text.Line;
 import org.openide.util.Exceptions;
@@ -185,9 +186,12 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
                 Exceptions.printStackTrace(ex);
             }
         }else{
-//            GLSLShader.TYPE shaderType = GLSLShader.TYPE.fromMime(dao.getPrimaryFile().getMIMEType());
-//            shader = new GLSLShader(shaderType, FileUtil.toFile(dao.getPrimaryFile()));
-            return null;
+            GLSLShader.TYPE shaderType = GLSLShader.TYPE.fromMime(dao.getPrimaryFile().getMIMEType());
+            
+            if(shaderType == null)
+                return null;
+            
+            shader = new GLSLShader(shaderType, FileUtil.toFile(dao.getPrimaryFile()));
         }
         shader.setThrowExceptionOnCompilerWarning(true);
         
@@ -228,6 +232,13 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
        
        if(exception[0] != null)
            throw exception[0];
+       
+       // print compiler msg if available
+       if(printOut) {
+           String msg = shader.getCompilerMsg();
+           if(msg != null && msg.length() != 0)
+               io.getOut().println("compiler msg:\n    " + msg);
+       }
        
        return shader;
     }
