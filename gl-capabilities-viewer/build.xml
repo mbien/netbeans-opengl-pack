@@ -4,5 +4,7 @@
 <!-- If you delete this file and reopen the project it will be recreated. -->
 <project name="net.java.nboglpack.glcapabilities" default="netbeans" basedir=".">
     <description>Builds, tests, and runs the project net.java.nboglpack.glcapabilities.</description>
+    <property file="./../nbproject/global.properties"/>
+    <property file="./../nbproject/private/global_private.properties"/>
     <import file="nbproject/build-impl.xml"/>
 </project>

@@ -4,5 +4,7 @@
 <!-- If you delete this file and reopen the project it will be recreated. -->
 <project name="net.java.nboglpack.jogl.apisupport" default="netbeans" basedir=".">
     <description>Builds, tests, and runs the project net.java.nboglpack.jogl.apisupport.</description>
+    <property file="./../nbproject/global.properties"/>
+    <property file="./../nbproject/private/global_private.properties"/>
     <import file="nbproject/build-impl.xml"/>
 </project>

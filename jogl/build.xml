@@ -4,6 +4,8 @@
 <!-- If you delete this file and reopen the project it will be recreated. -->
 <project name="javax.media.opengl" default="netbeans" basedir=".">
     <description>Builds, tests, and runs the project javax.media.opengl.</description>
+    <property file="./../nbproject/global.properties"/>
+    <property file="./../nbproject/private/global_private.properties"/>
     <import file="nbproject/build-impl.xml"/>
     
     <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>

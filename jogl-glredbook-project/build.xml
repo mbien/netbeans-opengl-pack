@@ -12,6 +12,8 @@
 <project name="glredbook" default="netbeans" basedir="." xmlns:vpp="antlib:foundrylogic.vpp">
     
     <description>Builds, tests, and runs the project net.java.nboglpack.joglglredbookproject.</description>
+    <property file="./../nbproject/global.properties"/>
+    <property file="./../nbproject/private/global_private.properties"/>
     <import file="nbproject/build-impl.xml"/>
     
     <vpp:config id="vpp0">
