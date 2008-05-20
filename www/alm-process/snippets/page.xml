@@ -16,7 +16,7 @@
             <filename>GetInvolvedSnippet.html</filename>
         </component>
         
-        <component visibility="1" type="Html" order="4">
+        <component visibility="0" type="Html" order="4">
             <title localize="false">Features in Work</title>
             <filename>FeaturesInWorkSnippet.html</filename>
         </component>
