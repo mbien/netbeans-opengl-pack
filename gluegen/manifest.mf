@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+AutoUpdate-Show-In-Client: true
+OpenIDE-Module: com.sun.gluegen
+OpenIDE-Module-Install: net/java/nboglpack/gluegen/Installer.class
+OpenIDE-Module-Localizing-Bundle: com/sun/gluegen/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0.6
+

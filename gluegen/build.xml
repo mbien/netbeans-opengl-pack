@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- You may freely edit this file. See harness/README in the NetBeans platform -->
+<!-- for some information on what you could do (e.g. targets to override). -->
+<!-- If you delete this file and reopen the project it will be recreated. -->
+<project name="com.sun.gluegen" default="netbeans" basedir=".">
+    <description>Builds, tests, and runs the project com.sun.gluegen.</description>
+    <property file="./../nbproject/global.properties"/>
+    <property file="./../nbproject/private/global_private.properties"/>
+    <import file="nbproject/build-impl.xml"/>
+    
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+    
+    <target name="-pre-compile">
+        
+        <!--unzip gluegen distribution-->
+        <unzip src="gluegen-dist/gluegen-rt-webstart.zip" dest="release/gluegen-runtime/"/>
+        
+        <!--unzip natives-->
+        <foreach param="filepath" target="unzip-natives" inheritall="true">
+            <fileset dir="release/gluegen-runtime" includes="gluegen-rt-natives-*.jar"/>
+        </foreach>
+        
+        <!--copy jars into lib wrapper module ext classpath-->
+        <copy todir="release/modules/ext/" overwrite="true">
+            <fileset file="release/gluegen-runtime/gluegen-rt.jar"/>
+        </copy>
+        
+    </target>
+
+    <target name="unzip-natives">
+        <basename property="filename" file="${filepath}" suffix=".jar"/>
+        <propertyregex property="libname" input="${filename}" regexp="(^.*)-natives-(.*)$" select="\1.jar"/>
+        <propertyregex property="platform" input="${filename}" regexp="^.*-natives-(.*)$" select="\1"/>
+        <unzip src="${filepath}" dest="release/gluegen-runtime/${libname}-natives-${platform}">
+            <patternset excludes="META-INF/*,META-INF"/>
+        </unzip>
+        <delete file="${filepath}"/>
+    </target>
+    
+    <target name="compile" depends="-pre-compile,projectized-common.compile"/>
+</project>
