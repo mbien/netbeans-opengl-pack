@@ -2,5 +2,5 @@ Manifest-Version: 1.0
 OpenIDE-Module: net.java.nboglpack.jogldemosproject
 OpenIDE-Module-Layer: net/java/nboglpack/jogldemosproject/layer.xml
 OpenIDE-Module-Localizing-Bundle: net/java/nboglpack/jogldemosproject/Bundle.properties
-OpenIDE-Module-Specification-Version: 1.5.3
+OpenIDE-Module-Specification-Version: 1.5.4
 
