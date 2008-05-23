@@ -26,6 +26,7 @@
                 <package>com.sun.activation.registries</package>
                 <package>com.sun.activation.viewers</package>
                 <package>com.sun.istack</package>
+                <package>com.sun.istack.localization</package>
                 <package>com.sun.xml.bind</package>
                 <package>com.sun.xml.bind.annotation</package>
                 <package>com.sun.xml.bind.api</package>
