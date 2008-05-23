@@ -1,7 +1,7 @@
 /*
  * Created on 17. March 2008, 21:26
  */
-package net.java.nboglpack;
+package net.java.nboglpack.jogl;
 
 import java.io.File;
 import java.io.InputStream;
@@ -24,10 +24,8 @@ public class Installer extends ModuleInstall {
         File joglDistFolder = InstalledFileLocator.getDefault().locate("jogl-runtime", "javax.media.opengl", false);
         
         try {
-            InputStream stream = this.getClass().getResourceAsStream("jogl/jogl-natives-config.xml");
+            InputStream stream = this.getClass().getResourceAsStream("jogl-natives-config.xml");
             NativeLibSupport.deploy("jogl", stream, joglDistFolder);
-            stream = this.getClass().getResourceAsStream("jogl/gluegen-natives-config.xml");
-            NativeLibSupport.deploy("gluegen-rt", stream, joglDistFolder);
         } catch (LibDeploymentException ex) {
             Exceptions.printStackTrace(ex);
         }

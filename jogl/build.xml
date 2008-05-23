@@ -14,17 +14,15 @@
         
         <!--unzip jogl distribution-->
         <unzip src="jogl-dist/jogl-webstart.zip" dest="release/jogl-runtime/"/>
-        <unzip src="jogl-dist/gluegen-rt-webstart.zip" dest="release/jogl-runtime/"/>
         
         <!--unzip natives-->
         <foreach param="filepath" target="unzip-natives" inheritall="true">
-            <fileset dir="release/jogl-runtime" includes="jogl-natives-*.jar,gluegen-rt-natives-*.jar"/>
+            <fileset dir="release/jogl-runtime" includes="jogl-natives-*.jar"/>
         </foreach>
         
         <!--copy jars into lib wrapper module ext classpath-->
         <copy todir="release/modules/ext/" overwrite="true">
             <fileset file="release/jogl-runtime/jogl.jar"/>
-            <fileset file="release/jogl-runtime/gluegen-rt.jar"/>
         </copy>
         
     </target>
