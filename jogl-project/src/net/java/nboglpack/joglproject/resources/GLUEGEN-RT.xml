@@ -6,7 +6,7 @@
     <localizing-bundle>net.java.nboglpack.joglproject.Bundle</localizing-bundle>
     <volume>
         <type>classpath</type>
-        <resource>jar:nbinst:///jogl-runtime/gluegen-rt.jar!/</resource>
+        <resource>jar:nbinst:///gluegen-runtime/gluegen-rt.jar!/</resource>
     </volume>
     <volume>
         <type>src</type>
