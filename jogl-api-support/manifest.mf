@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 OpenIDE-Module: net.java.nboglpack.jogl.apisupport
 OpenIDE-Module-Localizing-Bundle: net/java/nboglpack/jogl/apisupport/Bundle.properties
-OpenIDE-Module-Specification-Version: 1.0
+OpenIDE-Module-Specification-Version: 1.1.1
 
