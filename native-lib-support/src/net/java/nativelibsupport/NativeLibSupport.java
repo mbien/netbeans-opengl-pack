@@ -26,7 +26,6 @@ import net.java.nativelibsupport.natives_config.Library.Os.Cpu;
 import org.openide.filesystems.FileObject;
 import org.openide.filesystems.FileUtil;
 import org.openide.filesystems.JarFileSystem;
-import org.openide.filesystems.LocalFileSystem;
 
 /**
  * Utility class for native librarie deployment.
@@ -47,6 +46,10 @@ public class NativeLibSupport {
      * @throws DeploymentException Thrown when libraries were not successfully deployed.
      */
     public static void deploy(String libraryName, InputStream configFile, File distributionFolder) throws LibDeploymentException {
+        
+        assert libraryName!=null;
+        assert configFile!=null;
+        assert distributionFolder!=null;
         
         try{
             JarFileSystem jarSystem = new JarFileSystem();
