@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-AutoUpdate-Show-In-Client: true
+AutoUpdate-Show-In-Client: false
 OpenIDE-Module: javax.media.opengl
 OpenIDE-Module-Install: net/java/nboglpack/jogl/Installer.class
 OpenIDE-Module-Localizing-Bundle: javax/media/opengl/Bundle.properties
