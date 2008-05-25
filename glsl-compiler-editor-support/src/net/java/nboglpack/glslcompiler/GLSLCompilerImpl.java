@@ -103,12 +103,15 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
         
         for (DataObject dao : daos) {
             try{
-                compile(dao, printOut, true);
+                GLSLShader shader = compile(dao, printOut, true);
+                if(shader != null)
+                    processCompilerMsg(dao, shader, printOut);
             }catch(GLSLCompileException ex){
                 success = false;
                 annotateMessage(dao, compilerParser.parse(ex.getMessage()), printOut);
             }
         }
+        
         if(success && printOut)
             io.getOut().println("compilation successfull");
         
@@ -134,6 +137,8 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
             
             try{
                 shaders[i] = compile(daos[i], printOut, false);
+                if(shaders[i] != null)
+                    processCompilerMsg(daos[i], shaders[i], printOut);
             }catch(GLSLCompileException ex) {
                 success = false;
                 annotateMessage(daos[i], compilerParser.parse(ex.getMessage()), printOut);
@@ -193,7 +198,7 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
             
             shader = new GLSLShader(shaderType, FileUtil.toFile(dao.getPrimaryFile()));
         }
-        shader.setThrowExceptionOnCompilerWarning(true);
+//        shader.setThrowExceptionOnCompilerWarning(true);
         
         return shader;
     }
@@ -232,13 +237,6 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
        
        if(exception[0] != null)
            throw exception[0];
-       
-       // print compiler msg if available
-       if(printOut) {
-           String msg = shader.getCompilerMsg();
-           if(msg != null && msg.length() != 0)
-               io.getOut().println("compiler msg:\n    " + msg);
-       }
        
        return shader;
     }
@@ -296,6 +294,20 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
             }
         }
         
+    }
+
+    private final void processCompilerMsg(DataObject dao, GLSLShader shader, boolean printOut) {
+        
+        String msg = shader.getCompilerMsg();
+
+        if(msg.contains("WARNING")) {
+            annotateMessage(dao, compilerParser.parse(msg), printOut);
+        }
+
+        if(printOut) {
+           if(msg != null && msg.length() != 0)
+               io.getOut().println("compiler msg:\n    " + msg);
+        }
     }
     
 private class HyperlinkProvider implements OutputListener{
