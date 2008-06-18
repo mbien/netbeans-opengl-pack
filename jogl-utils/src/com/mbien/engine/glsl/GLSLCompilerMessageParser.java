@@ -38,12 +38,19 @@ public class GLSLCompilerMessageParser {
                     linenumber = Integer.parseInt(g1);
                     type = g2;
                 }catch(NumberFormatException ex) {
-                    linenumber = Integer.parseInt(g2);
-                    type = g1;
+                    try{
+                        linenumber = Integer.parseInt(g2);
+                        type = g1;
+                    }catch(NumberFormatException iex) {
+                        linenumber = 0;
+                        type = "internal";
+                    }
                 }
                                 
                 if(type.equalsIgnoreCase("error"))  {
                     messages[i] = new CompilerMessage(CompilerMessage.COMPILER_EVENT_TYPE.ERROR, line, linenumber);
+                }else if(type.equalsIgnoreCase("internal"))  {
+                    messages[i] = new CompilerMessage(CompilerMessage.COMPILER_EVENT_TYPE.ERROR, "Internal error in "+CompilerMessage.class.getName()+" while parsing this line: "+line, linenumber);
                 }else{
                     messages[i] = new CompilerMessage(CompilerMessage.COMPILER_EVENT_TYPE.WARNING, line, linenumber);
                 }
