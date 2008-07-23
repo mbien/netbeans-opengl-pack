@@ -6,22 +6,6 @@
             <code-name-base>javax.xml.bind</code-name-base>
             <suite-component/>
             <module-dependencies/>
-            <class-path-extension>
-                <runtime-relative-path>ext/jsr173_1.0_api.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/jsr173_1.0_api.jar</binary-origin>
-            </class-path-extension>
-            <class-path-extension>
-                <runtime-relative-path>ext/jaxb-impl.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/jaxb-impl.jar</binary-origin>
-            </class-path-extension>
-            <class-path-extension>
-                <runtime-relative-path>ext/jaxb-api.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/jaxb-api.jar</binary-origin>
-            </class-path-extension>
-            <class-path-extension>
-                <runtime-relative-path>ext/activation.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/activation.jar</binary-origin>
-            </class-path-extension>
             <public-packages>
                 <package>com.sun.activation.registries</package>
                 <package>com.sun.activation.viewers</package>
@@ -65,6 +49,22 @@
                 <package>javax.xml.stream.events</package>
                 <package>javax.xml.stream.util</package>
             </public-packages>
+            <class-path-extension>
+                <runtime-relative-path>ext/jsr173_1.0_api.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/jsr173_1.0_api.jar</binary-origin>
+            </class-path-extension>
+            <class-path-extension>
+                <runtime-relative-path>ext/jaxb-impl.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/jaxb-impl.jar</binary-origin>
+            </class-path-extension>
+            <class-path-extension>
+                <runtime-relative-path>ext/jaxb-api.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/jaxb-api.jar</binary-origin>
+            </class-path-extension>
+            <class-path-extension>
+                <runtime-relative-path>ext/activation.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/activation.jar</binary-origin>
+            </class-path-extension>
         </data>
     </configuration>
 </project>
