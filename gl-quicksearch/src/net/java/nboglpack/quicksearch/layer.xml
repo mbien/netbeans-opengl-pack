@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+    <folder name="QuickSearch">
+        <folder name="OpenGL">
+            <attr name="command" stringvalue="gl"/>
+            <attr name="position" intvalue="100"/>
+            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.quicksearch.Bundle"/>
+            <file name="net.java.nboglpack.quicksearch.GLQuickSearchProvider.instance"/>
+            <!--file name="org-netbeans-modules-quicksearch-web-WebQuickSearchProviderImpl.instance"/>
+            <file name="net-java-nboglpack-quicksearch-GLQuickSearchProvider.instance">
+                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.quicksearch.Bundle"/>
+            </file-->
+        </folder>
+    </folder>
+</filesystem>
