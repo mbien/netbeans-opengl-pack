@@ -1,13 +1,12 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Created on 5. August 2008, 01:14
  */
 
 package net.java.nboglpack.quicksearch;
 
 /**
- *
- * @author mbien
+ * OpenGL SDK specification quicksearch provider.
+ * @author Michael Bien
  */
 public class OpenGLQuickSearchProvider extends AbstractQuickSearchProvider {
     

@@ -9,7 +9,6 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -55,6 +54,7 @@ public abstract class AbstractQuickSearchProvider implements SearchProvider {
     private final void harvest(URL url, ArrayList<SearchItem> items) {
         
         try {
+            // download content
             BufferedReader content = new BufferedReader(new InputStreamReader(url.openStream()));
             char[] buffer = new char[512];
             StringBuilder sb = new StringBuilder();
@@ -62,14 +62,17 @@ public abstract class AbstractQuickSearchProvider implements SearchProvider {
                 sb.append(buffer);
             }
             
+            // harvest everything usefull
             Matcher linkMatcher = linkPattern.matcher(sb);
             
+            // find <a ></a>
             while(linkMatcher.find()) {
                 
                 String attributes = linkMatcher.group(1);
                 Matcher hrefMatcher = hrefPattern.matcher(attributes);
                 String name = linkMatcher.group(2);
                 
+                // find href and link name
                 if(hrefMatcher.find()) {
                     
                     String href = hrefMatcher.group(1);
@@ -113,7 +116,7 @@ public abstract class AbstractQuickSearchProvider implements SearchProvider {
      */
     public void evaluate(SearchRequest request, SearchResponse response) {
 
-        // handle multi token search properly
+        // handle multi token search properly (everything case insensitive)
         String[] token = request.getText().toLowerCase().split("\\s+");
         
         for (SearchItem searchItem : items) {
@@ -130,7 +133,7 @@ public abstract class AbstractQuickSearchProvider implements SearchProvider {
     }
     
     /**
-     * Item which may fit to the search string.
+     * Item which may fit to the search string. Openes URL in browser when selected.
      */
     private class SearchItem implements Runnable {
         

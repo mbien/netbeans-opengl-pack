@@ -10,6 +10,9 @@ package net.java.nboglpack.quicksearch;
  */
 public class ATIQuickSearchProvider extends AbstractQuickSearchProvider {
     
+    /**
+     * allow only links starting with those urls.
+     */
     private static final String[] urls = new String[] {
         "/developer/sdk/RadeonSDK/Html/Info/Extensions/",
         "http://oss.sgi.com/projects/ogl-sample/registry/ARB/"
@@ -21,14 +24,13 @@ public class ATIQuickSearchProvider extends AbstractQuickSearchProvider {
     }
 
     
-    
-    
     @Override
     String filter(String href, String name) {
         for (int i = 0; i < urls.length; i++) {
             String url = urls[i];
             if(href.startsWith(url)) {
-                if(href.charAt(0) == '/')
+                // check if we got a releative link
+                if(href.charAt(0) == '/') 
                     href = "http://ati.amd.com"+href;
                 return href;
             }
