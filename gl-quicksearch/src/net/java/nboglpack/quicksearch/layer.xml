@@ -4,13 +4,18 @@
     <folder name="QuickSearch">
         <folder name="OpenGL">
             <attr name="command" stringvalue="gl"/>
-            <attr name="position" intvalue="100"/>
-            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.quicksearch.Bundle"/>
-            <file name="net.java.nboglpack.quicksearch.GLQuickSearchProvider.instance"/>
-            <!--file name="org-netbeans-modules-quicksearch-web-WebQuickSearchProviderImpl.instance"/>
-            <file name="net-java-nboglpack-quicksearch-GLQuickSearchProvider.instance">
-                <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.quicksearch.Bundle"/>
-            </file-->
+            <attr name="position" intvalue="200"/>
+            <file name="net.java.nboglpack.quicksearch.OpenGLQuickSearchProvider.instance"/>
+        </folder>
+        <folder name="NVIDIA">
+            <attr name="command" stringvalue="nv"/>
+            <attr name="position" intvalue="210"/>
+            <file name="net.java.nboglpack.quicksearch.NVQuickSearchProvider.instance"/>
+        </folder>
+        <folder name="ATI">
+            <attr name="command" stringvalue="ati"/>
+            <attr name="position" intvalue="220"/>
+            <file name="net.java.nboglpack.quicksearch.ATIQuickSearchProvider.instance"/>
         </folder>
     </folder>
 </filesystem>

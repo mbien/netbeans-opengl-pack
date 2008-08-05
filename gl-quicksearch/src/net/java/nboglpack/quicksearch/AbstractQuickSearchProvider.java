@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -20,10 +21,10 @@ import org.openide.awt.HtmlBrowser.URLDisplayer;
 
 
 /**
- * OpenGL SDK Quicksearch provider.
+ * Abstract Quicksearch provider.
  * @author Michael Bien
  */
-public class GLQuickSearchProvider implements SearchProvider {
+public abstract class AbstractQuickSearchProvider implements SearchProvider {
     
     /**
      * Pattern to find hyperlinks and group them into attributes and name part.
@@ -35,29 +36,23 @@ public class GLQuickSearchProvider implements SearchProvider {
      */
     private final static Pattern hrefPattern = Pattern.compile("href\\s*=\\s*\"([^\"]+)\"", Pattern.CASE_INSENSITIVE);
 
-    private final ArrayList<SearchItem> openGLitems;
+    private final ArrayList<SearchItem> items;
     
     
-    public GLQuickSearchProvider() {
+    public AbstractQuickSearchProvider(String url) {
         
-        openGLitems = new ArrayList<SearchItem>(128);
+        items = new ArrayList<SearchItem>(128);
         
         try {
-            String base = "http://www.opengl.org/sdk/docs/man/xhtml/";
-            OpenGLSpecHarvester glHarvester = new OpenGLSpecHarvester(base);
-            
-            URL url = new URL(base+"index.html");
-            harvest(url, glHarvester, openGLitems);
+            harvest(new URL(url), items);
         } catch (MalformedURLException ex) {
-            Logger.getLogger(GLQuickSearchProvider.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AbstractQuickSearchProvider.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-//        String page = "http://developer.nvidia.com/object/nvidia_opengl_specs.html";
-        
+
     }
     
 
-    private final void harvest(URL url, LinkHarvester harvester, ArrayList<SearchItem> items) {
+    private final void harvest(URL url, ArrayList<SearchItem> items) {
         
         try {
             BufferedReader content = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -80,24 +75,30 @@ public class GLQuickSearchProvider implements SearchProvider {
                     String href = hrefMatcher.group(1);
                     
                     try{
-                        href = harvester.harvest(href, name);
+                        href = filter(href, name);
 //                        System.out.println(href);
                         if(href != null) {
                             items.add(new SearchItem(name, href));
                         }
                     }catch(MalformedURLException ex) {
-                        Logger.getLogger(GLQuickSearchProvider.class.getName()).log(Level.WARNING, "unable to assamble valid URL", ex);
+                        Logger.getLogger(AbstractQuickSearchProvider.class.getName()).log(Level.WARNING, "unable to assamble valid URL", ex);
                     }
                     
                 }else{
-                    Logger.getLogger(GLQuickSearchProvider.class.getName()).log(Level.WARNING, 
+                    Logger.getLogger(AbstractQuickSearchProvider.class.getName()).log(Level.WARNING, 
                             "no href found in attributes:\n"+attributes+"\nof hyplerlink: "+name);
                 }
             }
         } catch (IOException ex) {
-            Logger.getLogger(GLQuickSearchProvider.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AbstractQuickSearchProvider.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
+    
+    /**
+     * Returns a valid link or null computed from the href attribute and the link name.
+     */
+    abstract String filter(String href, String name);
     
     
     /**
@@ -106,27 +107,40 @@ public class GLQuickSearchProvider implements SearchProvider {
      * apropriate results
      *
      * @param request Search request object that contains information what to search for
-     * @param response Search response object that stores search results. Note that it's important to react to return value of SearchResponse.addResult(...) method and stop computation if false value is returned.
+     * @param response Search response object that stores search results. 
+     * Note that it's important to react to return value of SearchResponse.addResult(...) method
+     * and stop computation if false value is returned.
      */
     public void evaluate(SearchRequest request, SearchResponse response) {
+
+        // handle multi token search properly
+        String[] token = request.getText().toLowerCase().split("\\s+");
         
-        for (SearchItem searchItem : openGLitems) {
-            if(searchItem.name.toLowerCase().contains(request.getText().toLowerCase())) {
-                boolean doContinue = response.addResult(searchItem, searchItem.name + " [OpenGL.org]");
-                if(!doContinue)
-                    break;
+        for (SearchItem searchItem : items) {
+            
+            for (int i = 0; i < token.length; i++) {
+                if(searchItem.nameLC.contains(token[i])) {
+                    boolean doContinue = response.addResult(searchItem, searchItem.name);
+                    if(!doContinue)
+                        break;
+                }
             }
         }
         
     }
     
+    /**
+     * Item which may fit to the search string.
+     */
     private class SearchItem implements Runnable {
         
         private final URL url;
         private final String name;
+        private final String nameLC;
         
         public SearchItem(String name, String url) throws MalformedURLException {
             this.name = name;
+            this.nameLC = name.toLowerCase();
             this.url = new URL(url);
         }
 
