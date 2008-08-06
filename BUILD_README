@@ -1,0 +1,8 @@
+
+To build the OpenGL Pack put the following libraries into the ANT path:
+
+*ant-contrib tasks (http://ant-contrib.sourceforge.net/) ant-contrib.jar
+*vpp tasks (http://vpp.sourceforge.net/) foundrylogic-vpp.jar and velocity-dep.jar
+*JAXB 2.1.7 (https://jaxb.dev.java.net/) jaxb-xjc.jar
+
+the ANT path is configurable via Tools->Options->Miscellaneous->ANT and don't forget to restart NetBeans
