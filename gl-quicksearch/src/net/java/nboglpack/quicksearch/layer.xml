@@ -2,19 +2,19 @@
 <!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
 <filesystem>
     <folder name="QuickSearch">
-        <folder name="OpenGL">
+        <folder name="OpenGL SDK">
             <attr name="command" stringvalue="gl"/>
-            <attr name="position" intvalue="200"/>
+            <attr name="position" intvalue="600"/>
             <file name="net.java.nboglpack.quicksearch.OpenGLQuickSearchProvider.instance"/>
         </folder>
-        <folder name="NVIDIA">
+        <folder name="NVIDIA Extentions">
             <attr name="command" stringvalue="nv"/>
-            <attr name="position" intvalue="210"/>
+            <attr name="position" intvalue="610"/>
             <file name="net.java.nboglpack.quicksearch.NVQuickSearchProvider.instance"/>
         </folder>
-        <folder name="ATI">
+        <folder name="ATI Extentions">
             <attr name="command" stringvalue="ati"/>
-            <attr name="position" intvalue="220"/>
+            <attr name="position" intvalue="620"/>
             <file name="net.java.nboglpack.quicksearch.ATIQuickSearchProvider.instance"/>
         </folder>
     </folder>

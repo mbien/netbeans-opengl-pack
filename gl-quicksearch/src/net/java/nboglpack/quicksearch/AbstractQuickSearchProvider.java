@@ -43,7 +43,7 @@ public abstract class AbstractQuickSearchProvider implements SearchProvider {
         items = new ArrayList<SearchItem>(128);
         
         try {
-            harvest(new URL(url), items);
+            harvest(new URL(url));
         } catch (MalformedURLException ex) {
             Logger.getLogger(AbstractQuickSearchProvider.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -51,7 +51,7 @@ public abstract class AbstractQuickSearchProvider implements SearchProvider {
     }
     
 
-    private final void harvest(URL url, ArrayList<SearchItem> items) {
+    private final void harvest(URL url) {
         
         try {
             // download content
@@ -95,7 +95,8 @@ public abstract class AbstractQuickSearchProvider implements SearchProvider {
         } catch (IOException ex) {
             Logger.getLogger(AbstractQuickSearchProvider.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
+        items.trimToSize();
     }
     
     /**
