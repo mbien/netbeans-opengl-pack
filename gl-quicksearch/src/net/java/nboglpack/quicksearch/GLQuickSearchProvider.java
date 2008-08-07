@@ -8,11 +8,11 @@ package net.java.nboglpack.quicksearch;
  * OpenGL SDK specification quicksearch provider.
  * @author Michael Bien
  */
-public class OpenGLQuickSearchProvider extends AbstractQuickSearchProvider {
+public class GLQuickSearchProvider extends AbstractWebPageQuickSearchProvider {
     
     private final static String base = "http://www.opengl.org/sdk/docs/man/xhtml/";
 
-    public OpenGLQuickSearchProvider() {
+    public GLQuickSearchProvider() {
         super(base + "index.html");
     }
     

@@ -5,7 +5,7 @@
         <folder name="OpenGL SDK">
             <attr name="command" stringvalue="gl"/>
             <attr name="position" intvalue="600"/>
-            <file name="net.java.nboglpack.quicksearch.OpenGLQuickSearchProvider.instance"/>
+            <file name="net.java.nboglpack.quicksearch.GLQuickSearchProvider.instance"/>
         </folder>
         <folder name="NVIDIA Extentions">
             <attr name="command" stringvalue="nv"/>

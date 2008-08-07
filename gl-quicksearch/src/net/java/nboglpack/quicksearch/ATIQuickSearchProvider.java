@@ -8,7 +8,7 @@ package net.java.nboglpack.quicksearch;
  * ATI extentions quicksearch provider.
  * @author Michael Bien
  */
-public class ATIQuickSearchProvider extends AbstractQuickSearchProvider {
+public class ATIQuickSearchProvider extends AbstractWebPageQuickSearchProvider {
     
     /**
      * allow only links starting with those urls.

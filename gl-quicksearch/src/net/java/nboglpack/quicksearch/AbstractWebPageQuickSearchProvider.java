@@ -17,13 +17,15 @@ import org.netbeans.spi.quicksearch.SearchProvider;
 import org.netbeans.spi.quicksearch.SearchRequest;
 import org.netbeans.spi.quicksearch.SearchResponse;
 import org.openide.awt.HtmlBrowser.URLDisplayer;
+import org.openide.util.RequestProcessor;
 
 
 /**
- * Abstract Quicksearch provider.
+ * Abstract Quicksearch provider. Just implement the filter method and register
+ * in layer.xml and you are done.
  * @author Michael Bien
  */
-public abstract class AbstractQuickSearchProvider implements SearchProvider {
+public abstract class AbstractWebPageQuickSearchProvider implements SearchProvider {
     
     /**
      * Pattern to find hyperlinks and group them into attributes and name part.
@@ -37,17 +39,27 @@ public abstract class AbstractQuickSearchProvider implements SearchProvider {
 
     private final ArrayList<SearchItem> items;
     
+    private RequestProcessor.Task harvestTask;
     
-    public AbstractQuickSearchProvider(String url) {
+    
+    public AbstractWebPageQuickSearchProvider(final String url) {
         
         items = new ArrayList<SearchItem>(128);
         
-        try {
-            harvest(new URL(url));
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(AbstractQuickSearchProvider.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        // async harvest task
+        harvestTask = RequestProcessor.getDefault().create(new Runnable() {
 
+            public void run() {
+                try {
+                    harvest(new URL(url));
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(AbstractWebPageQuickSearchProvider.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+        });
+        
+        harvestTask.schedule(0);
     }
     
 
@@ -84,16 +96,21 @@ public abstract class AbstractQuickSearchProvider implements SearchProvider {
                             items.add(new SearchItem(name, href));
                         }
                     }catch(MalformedURLException ex) {
-                        Logger.getLogger(AbstractQuickSearchProvider.class.getName()).log(Level.WARNING, "unable to assamble valid URL", ex);
+                        Logger.getLogger(AbstractWebPageQuickSearchProvider.class.getName()).log(Level.WARNING, "unable to assamble valid URL", ex);
                     }
                     
                 }else{
-                    Logger.getLogger(AbstractQuickSearchProvider.class.getName()).log(Level.WARNING, 
+                    Logger.getLogger(AbstractWebPageQuickSearchProvider.class.getName()).log(Level.WARNING, 
                             "no href found in attributes:\n"+attributes+"\nof hyplerlink: "+name);
                 }
+               
+                // safepoint for beeing interrupted
+                if (Thread.interrupted()) 
+                    break;
+
             }
         } catch (IOException ex) {
-            Logger.getLogger(AbstractQuickSearchProvider.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AbstractWebPageQuickSearchProvider.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         items.trimToSize();
@@ -116,7 +133,13 @@ public abstract class AbstractQuickSearchProvider implements SearchProvider {
      * and stop computation if false value is returned.
      */
     public void evaluate(SearchRequest request, SearchResponse response) {
-
+        
+        // make sure harvester is done
+        if(harvestTask != null) {
+            harvestTask.waitFinished();
+            harvestTask = null;
+        }
+        
         // handle multi token search properly (everything case insensitive)
         String[] token = request.getText().toLowerCase().split("\\s+");
         

@@ -8,7 +8,7 @@ package net.java.nboglpack.quicksearch;
  * NVIDIA extentions quicksearch provider.
  * @author Michael Bien
  */
-public class NVQuickSearchProvider extends AbstractQuickSearchProvider {
+public class NVQuickSearchProvider extends AbstractWebPageQuickSearchProvider {
     
     /**
      * allow only links starting with those urls.
