@@ -25,7 +25,7 @@ import org.openide.util.RequestProcessor;
  * in layer.xml and you are done.
  * @author Michael Bien
  */
-public abstract class AbstractWebPageQuickSearchProvider implements SearchProvider {
+public abstract class WebPageQuickSearchProvider implements SearchProvider {
     
     /**
      * Pattern to find hyperlinks and group them into attributes and name part.
@@ -42,7 +42,7 @@ public abstract class AbstractWebPageQuickSearchProvider implements SearchProvid
     private RequestProcessor.Task harvestTask;
     
     
-    public AbstractWebPageQuickSearchProvider(final String url) {
+    public WebPageQuickSearchProvider(final String url) {
         
         items = new ArrayList<SearchItem>(128);
         
@@ -53,7 +53,7 @@ public abstract class AbstractWebPageQuickSearchProvider implements SearchProvid
                 try {
                     harvest(new URL(url));
                 } catch (MalformedURLException ex) {
-                    Logger.getLogger(AbstractWebPageQuickSearchProvider.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(WebPageQuickSearchProvider.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             
@@ -96,11 +96,11 @@ public abstract class AbstractWebPageQuickSearchProvider implements SearchProvid
                             items.add(new SearchItem(name, href));
                         }
                     }catch(MalformedURLException ex) {
-                        Logger.getLogger(AbstractWebPageQuickSearchProvider.class.getName()).log(Level.WARNING, "unable to assamble valid URL", ex);
+                        Logger.getLogger(WebPageQuickSearchProvider.class.getName()).log(Level.WARNING, "unable to assamble valid URL", ex);
                     }
                     
                 }else{
-                    Logger.getLogger(AbstractWebPageQuickSearchProvider.class.getName()).log(Level.WARNING, 
+                    Logger.getLogger(WebPageQuickSearchProvider.class.getName()).log(Level.WARNING, 
                             "no href found in attributes:\n"+attributes+"\nof hyplerlink: "+name);
                 }
                
@@ -110,7 +110,7 @@ public abstract class AbstractWebPageQuickSearchProvider implements SearchProvid
 
             }
         } catch (IOException ex) {
-            Logger.getLogger(AbstractWebPageQuickSearchProvider.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(WebPageQuickSearchProvider.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         items.trimToSize();
@@ -145,12 +145,18 @@ public abstract class AbstractWebPageQuickSearchProvider implements SearchProvid
         
         for (SearchItem searchItem : items) {
             
+            boolean matches = true;
             for (int i = 0; i < token.length; i++) {
-                if(searchItem.nameLC.contains(token[i])) {
-                    boolean doContinue = response.addResult(searchItem, searchItem.name);
-                    if(!doContinue)
-                        break;
+                if(!searchItem.nameLC.contains(token[i])) {
+                    matches = false;
+                    break;
                 }
+            }
+            
+            if(matches) {
+                boolean doContinue = response.addResult(searchItem, searchItem.name);
+                if(!doContinue)
+                    break;
             }
         }
         

@@ -5,10 +5,10 @@
 package net.java.nboglpack.quicksearch;
 
 /**
- * NVIDIA extentions quicksearch provider.
+ * NVIDIA extentions quicksearch provider for http://developer.nvidia.com/object/nvidia_opengl_specs.html.
  * @author Michael Bien
  */
-public class NVQuickSearchProvider extends AbstractWebPageQuickSearchProvider {
+public class NVEXTQuickSearchProvider extends WebPageQuickSearchProvider {
     
     /**
      * allow only links starting with those urls.
@@ -18,11 +18,9 @@ public class NVQuickSearchProvider extends AbstractWebPageQuickSearchProvider {
         "http://developer.download.nvidia.com/opengl/specs/"
     };
 
-    public NVQuickSearchProvider() {
+    public NVEXTQuickSearchProvider() {
         super("http://developer.nvidia.com/object/nvidia_opengl_specs.html");
     }
-    
-    
     
     @Override
     String filter(String href, String name) {

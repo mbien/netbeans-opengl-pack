@@ -5,10 +5,10 @@
 package net.java.nboglpack.quicksearch;
 
 /**
- * ATI extentions quicksearch provider.
+ * ATI extentions quicksearch provider for http://ati.amd.com/developer/sdk/radeonSDK/html/info/Prog3D.html.
  * @author Michael Bien
  */
-public class ATIQuickSearchProvider extends AbstractWebPageQuickSearchProvider {
+public class ATIEXTQuickSearchProvider extends WebPageQuickSearchProvider {
     
     /**
      * allow only links starting with those urls.
@@ -18,7 +18,7 @@ public class ATIQuickSearchProvider extends AbstractWebPageQuickSearchProvider {
         "http://oss.sgi.com/projects/ogl-sample/registry/ARB/"
     };
 
-    public ATIQuickSearchProvider() {
+    public ATIEXTQuickSearchProvider() {
         super("http://ati.amd.com/developer/sdk/radeonSDK/html/info/Prog3D.html");
         
     }
