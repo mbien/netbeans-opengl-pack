@@ -18,7 +18,6 @@ public class GLEXTQuickSearchProvider extends WebPageQuickSearchProvider {
     
     @Override
     String filter(String href, String name) {
-        System.out.println(href);
         if(href.startsWith("specs/"))
             return base+href;
         else

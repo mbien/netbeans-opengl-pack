@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -37,14 +38,12 @@ public abstract class WebPageQuickSearchProvider implements SearchProvider {
      */
     private final static Pattern hrefPattern = Pattern.compile("href\\s*=\\s*\"([^\"]+)\"", Pattern.CASE_INSENSITIVE);
 
-    private final ArrayList<SearchItem> items;
+    private SearchItem[] items;
     
     private RequestProcessor.Task harvestTask;
-    
+
     
     public WebPageQuickSearchProvider(final String url) {
-        
-        items = new ArrayList<SearchItem>(128);
         
         // async harvest task
         harvestTask = RequestProcessor.getDefault().create(new Runnable() {
@@ -54,6 +53,9 @@ public abstract class WebPageQuickSearchProvider implements SearchProvider {
                     harvest(new URL(url));
                 } catch (MalformedURLException ex) {
                     Logger.getLogger(WebPageQuickSearchProvider.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(WebPageQuickSearchProvider.class.getName()).log(Level.INFO, "unable to index page, retry after 5 minutes timeout", ex);
+                    harvestTask.schedule((int)TimeUnit.MINUTES.toMillis(5));
                 }
             }
             
@@ -63,14 +65,17 @@ public abstract class WebPageQuickSearchProvider implements SearchProvider {
     }
     
 
-    private final void harvest(URL url) {
+    private final void harvest(URL url) throws IOException {
+        
+        BufferedReader reader = null;
+        ArrayList<SearchItem> itemList = new ArrayList<SearchItem>(128);
         
         try {
             // download content
-            BufferedReader content = new BufferedReader(new InputStreamReader(url.openStream()));
+            reader = new BufferedReader(new InputStreamReader(url.openStream()));
             char[] buffer = new char[512];
             StringBuilder sb = new StringBuilder();
-            while(content.read(buffer) != -1){
+            while(reader.read(buffer) != -1){
                 sb.append(buffer);
             }
             
@@ -89,14 +94,9 @@ public abstract class WebPageQuickSearchProvider implements SearchProvider {
                     
                     String href = hrefMatcher.group(1);
                     
-                    try{
-                        href = filter(href, name);
-//                        System.out.println(href);
-                        if(href != null) {
-                            items.add(new SearchItem(name, href));
-                        }
-                    }catch(MalformedURLException ex) {
-                        Logger.getLogger(WebPageQuickSearchProvider.class.getName()).log(Level.WARNING, "unable to assamble valid URL", ex);
+                    href = filter(href, name);
+                    if(href != null) {
+                        itemList.add(new SearchItem(name, href));
                     }
                     
                 }else{
@@ -109,11 +109,12 @@ public abstract class WebPageQuickSearchProvider implements SearchProvider {
                     break;
 
             }
-        } catch (IOException ex) {
-            Logger.getLogger(WebPageQuickSearchProvider.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            if(reader != null)
+                reader.close();
         }
 
-        items.trimToSize();
+        items = itemList.toArray(new SearchItem[itemList.size()]);
     }
     
     /**
@@ -137,24 +138,28 @@ public abstract class WebPageQuickSearchProvider implements SearchProvider {
         // make sure harvester is done
         if(harvestTask != null) {
             harvestTask.waitFinished();
-            harvestTask = null;
+            if(items != null)
+                harvestTask = null;
         }
+        
+        if(items == null)
+            return;
         
         // handle multi token search properly (everything case insensitive)
         String[] token = request.getText().toLowerCase().split("\\s+");
         
-        for (SearchItem searchItem : items) {
+        for (SearchItem item : items) {
             
             boolean matches = true;
             for (int i = 0; i < token.length; i++) {
-                if(!searchItem.nameLC.contains(token[i])) {
+                if(!item.nameLC.contains(token[i])) {
                     matches = false;
                     break;
                 }
             }
             
             if(matches) {
-                boolean doContinue = response.addResult(searchItem, searchItem.name);
+                boolean doContinue = response.addResult(item, item.name);
                 if(!doContinue)
                     break;
             }
@@ -165,7 +170,7 @@ public abstract class WebPageQuickSearchProvider implements SearchProvider {
     /**
      * Item which may fit to the search string. Openes URL in browser when selected.
      */
-    private class SearchItem implements Runnable {
+    private static class SearchItem implements Runnable {
         
         private final URL url;
         private final String name;
