@@ -6,22 +6,31 @@
 
 package net.java.nboglpack.glcapabilities;
 
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.RowFilter;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import org.openide.util.Exceptions;
+import org.openide.util.NbBundle;
 
 /**
  * Sorted JTable with filter capability.
  * @author Michael Bien
  */
-public class FilteredTable extends javax.swing.JPanel {
+public class FilteredTable extends JPanel {
     
     /** Creates new form FilteredJTable */
     public FilteredTable() {
@@ -98,58 +107,60 @@ public class FilteredTable extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        filterField = new javax.swing.JTextField();
-        javax.swing.JLabel filterLabel = new javax.swing.JLabel();
-        javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
+        filterField = new JTextField();
+        JLabel filterLabel = new JLabel();
+        JScrollPane scrollPane = new JScrollPane();
+        table = new JTable();
 
-        filterLabel.setText(org.openide.util.NbBundle.getMessage(FilteredTable.class, "FilteredTable.filterLabel.text")); // NOI18N
+        filterLabel.setText(NbBundle.getMessage(FilteredTable.class, "FilteredTable.filterLabel.text")); // NOI18N
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        scrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-        table.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
 
             }
+
         ));
         table.setFillsViewportHeight(true);
         table.getTableHeader().setReorderingAllowed(false);
         scrollPane.setViewportView(table);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(Alignment.LEADING)
+                    .addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(filterLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(filterField, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)))
+                        .addPreferredGap(ComponentPlacement.RELATED)
+                        .addComponent(filterField, GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)))
                 .addContainerGap())
+
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(Alignment.BASELINE)
                     .addComponent(filterLabel)
-                    .addComponent(filterField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
+                    .addComponent(filterField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(ComponentPlacement.RELATED)
+                .addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
                 .addContainerGap())
+
         );
     }// </editor-fold>//GEN-END:initComponents
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField filterField;
-    private javax.swing.JTable table;
+    private JTextField filterField;
+    private JTable table;
     // End of variables declaration//GEN-END:variables
     
 }
