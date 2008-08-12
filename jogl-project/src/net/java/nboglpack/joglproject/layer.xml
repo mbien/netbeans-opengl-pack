@@ -15,6 +15,35 @@
                     <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
                     <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/SimpleJOGLDescription.html"/>
                     <attr name="template" boolvalue="true"/>
+                    <attr name="position" intvalue="10"/>
+                </file>
+                <file name="SimpleGLJPanel.zip" url="resources/jogl-project.zip">
+                    <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
+                    <attr name="demo" stringvalue="org.yourorghere.SimpleGLJPanel"/>
+                    <attr name="projectPackage" stringvalue="org.yourorghere"/>
+                    <attr name="projectName" stringvalue="SimpleGLJPanel"/>
+                    <attr name="archive" stringvalue="jogl-templates.zip"/>
+                    <attr name="srcPath" stringvalue="SimpleGLJPanel/src"/>
+                    <attr name="includes" stringvalue="org/yourorghere/*"/>
+                    <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglproject.Bundle"/>
+                    <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
+                    <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/SimpleGLJPanelDescription.html"/>
+                    <attr name="template" boolvalue="true"/>
+                    <attr name="position" intvalue="20"/>
+                </file>
+                <file name="SimpleGLCanvas.zip" url="resources/jogl-project.zip">
+                    <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
+                    <attr name="demo" stringvalue="org.yourorghere.SimpleGLCanvas"/>
+                    <attr name="projectPackage" stringvalue="org.yourorghere"/>
+                    <attr name="projectName" stringvalue="SimpleGLCanvas"/>
+                    <attr name="archive" stringvalue="jogl-templates.zip"/>
+                    <attr name="srcPath" stringvalue="SimpleGLCanvas/src"/>
+                    <attr name="includes" stringvalue="org/yourorghere/*"/>
+                    <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglproject.Bundle"/>
+                    <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
+                    <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/SimpleGLCanvasDescription.html"/>
+                    <attr name="template" boolvalue="true"/>
+                    <attr name="position" intvalue="30"/>
                 </file>
             </folder>
         </folder>

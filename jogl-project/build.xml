@@ -9,7 +9,8 @@
     <import file="nbproject/build-impl.xml"/>
     
     <target name="-pre-compile">
-        <zip basedir="jogl-project" destfile="src/net/java/nboglpack/joglproject/resources/jogl-project.zip" update="false"/>
+        <zip basedir="jogl-project" destfile="src/net/java/nboglpack/joglproject/resources/jogl-project.zip" update="false" defaultexcludes="yes"/>
+        <zip basedir="jogl-templates" destfile="release/jogl-project/jogl-templates.zip" update="false" defaultexcludes="yes"/>
     </target>
     
     <target name="compile" depends="-pre-compile,projectized-common.compile"/>
