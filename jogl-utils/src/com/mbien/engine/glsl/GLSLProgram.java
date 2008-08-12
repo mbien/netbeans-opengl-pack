@@ -98,7 +98,7 @@ public class GLSLProgram {
     }
     
         
-    private void checkProgram(GL gl) throws GLSLLinkException {
+    public void checkProgram(GL gl) throws GLSLLinkException {
         
         boolean error = false;
         
