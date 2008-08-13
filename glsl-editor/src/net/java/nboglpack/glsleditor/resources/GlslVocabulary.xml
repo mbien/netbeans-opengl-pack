@@ -2,23 +2,6 @@
 <glslVocabulary>
     <mainVocabulary>
         <entry>
-            <key>samplerCube</key>
-            <value>
-                <item>
-                    <category>TYPE</category>
-                    <tooltip>handle for accessing a cube mapped texture</tooltip>
-                    <doc>&lt;html&gt;&#xD;
-                        &lt;head&gt;&#xD;
-                        &#xD;
-                        &lt;/head&gt;&#xD;
-                        &lt;body&gt;&#xD;
-                        &lt;/body&gt;&#xD;
-                        &lt;/html&gt;&#xD;
-                    </doc>
-                </item>
-            </value>
-        </entry>
-        <entry>
             <key>pow</key>
             <value>
                 <item>
@@ -40,40 +23,6 @@
                     <category>BUILD_IN_FUNC</category>
                     <arguments>(vec4, vec4)</arguments>
                     <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>for</key>
-            <value>
-                <item>
-                    <category>ITERATION</category>
-                    <doc>&lt;html&gt;&#xD;
-  &lt;head&gt;&#xD;
-    &#xD;
-  &lt;/head&gt;&#xD;
-  &lt;body&gt;&#xD;
-
-  &lt;/body&gt;&#xD;
-&lt;/html&gt;&#xD;
-</doc>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>sampler2DShadow</key>
-            <value>
-                <item>
-                    <category>TYPE</category>
-                    <tooltip>handle for accessing a 2D depth texture with comparison</tooltip>
-                    <doc>&lt;html&gt;
-                        &lt;head&gt;
-                        
-                        &lt;/head&gt;
-                        &lt;body&gt;
-                        &lt;/body&gt;
-                        &lt;/html&gt;
-                    </doc>
                 </item>
             </value>
         </entry>
@@ -112,14 +61,6 @@
             </value>
         </entry>
         <entry>
-            <key>break</key>
-            <value>
-                <item>
-                    <category>JUMP</category>
-                </item>
-            </value>
-        </entry>
-        <entry>
             <key>gl_MaxFragmentUniformComponents</key>
             <value>
                 <item>
@@ -140,6 +81,1825 @@
 &lt;/html&gt;
 </doc>
                     <type>const int</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>else</key>
+            <value>
+                <item>
+                    <category>SELECTION</category>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>gl_BackLightProduct</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_VAR</category>
+                    <tooltip>INDEX &lt; gl_MaxLights</tooltip>
+                    <arguments>[]</arguments>
+                    <type>uniform gl_LightProducts</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>mod</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float, float)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec2, float)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec3, float)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec4, float)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>gl_MaxVertexAttribs</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_VAR</category>
+                    <tooltip>value &gt;= 16 ARB_vertex_shader required</tooltip>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    Implementation dependent constant for the maximum useable vertex attributes 
+    in a vertex shader.&lt;br&gt; This limit consists of the standard (build-in) attributes (these are color, secondary color, normal, vertex position, texture coordinates, and fog coordinates) and the generic attributes left for custom purposes. This constant can be also queried by calling &lt;b&gt;glGetIntegerv&lt;/b&gt; 
+    with the symbolic constant &lt;i&gt;GL_MAX_VERTEX_ATTRIBS_ARB&lt;/i&gt;. Every OpenGL 
+    implementation is required to support at least 16 vertex attributes in a 
+    vertex shader.
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
+                    <type>const int</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>log</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec2)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec3)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec4)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>texture2DLod</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(sampler2D, vec2, float lod)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>uvec2</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>a two-component unsigned integer vector</tooltip>
+                    <doc>&lt;html&gt;&#xD;
+  &lt;head&gt;&#xD;
+    &#xD;
+  &lt;/head&gt;&#xD;
+  &lt;body&gt;&#xD;
+    a two-component unsigned integer vector&#xD;
+  &lt;/body&gt;&#xD;
+&lt;/html&gt;&#xD;
+</doc>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>floor</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec2)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec3)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec4)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>uvec3</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>a three-component unsigned integer vector</tooltip>
+                    <doc>&lt;html&gt;&#xD;
+  &lt;head&gt;&#xD;
+    &#xD;
+  &lt;/head&gt;&#xD;
+  &lt;body&gt;&#xD;
+    a three-component unsigned integer vector&#xD;
+  &lt;/body&gt;&#xD;
+&lt;/html&gt;&#xD;
+</doc>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>uvec4</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>a four-component unsigned integer vector</tooltip>
+                    <doc>&lt;html&gt;&#xD;
+  &lt;head&gt;&#xD;
+    &#xD;
+  &lt;/head&gt;&#xD;
+  &lt;body&gt;&#xD;
+    a four-component unsigned integer vector&#xD;
+  &lt;/body&gt;&#xD;
+&lt;/html&gt;&#xD;
+</doc>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>faceforward</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float, float, float)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec2, vec2, vec2)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec3, vec3, vec3)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec4 V, vec4 I, vec4 N)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>gl_TextureMatrixTranspose</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_VAR</category>
+                    <tooltip>INDEX &lt; gl_MaxTextureCoords</tooltip>
+                    <arguments>[]</arguments>
+                    <type>uniform mat4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>smooth</key>
+            <value>
+                <item>
+                    <category>QUALIFIER</category>
+                    <tooltip>perspective correct interpolation</tooltip>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;
+      perspective correct interpolation
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>usampler2DArray</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip> a handle for accessing an unsigned integer 2D array texture</tooltip>
+                    <doc>&lt;html&gt;&#xD;
+  &lt;head&gt;&#xD;
+    &#xD;
+  &lt;/head&gt;&#xD;
+  &lt;body&gt;&#xD;
+    a handle for accessing an unsigned integer 2D array texture&#xD;
+  &lt;/body&gt;&#xD;
+&lt;/html&gt;&#xD;
+</doc>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>ceil</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec2)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec3)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec4)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>smoothstep</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float, float, float)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float, float, vec2)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float, float, vec3)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float, float, vec4)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>texture2DProjLod</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(sampler2D, vec3, float lod)</arguments>
+                    <type>vec4</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(sampler2D, vec4, float lod)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>isampler1D</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>a handle for accessing an integer 1D texture</tooltip>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    a handle for accessing an integer 1D texture
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>do</key>
+            <value>
+                <item>
+                    <category>ITERATION</category>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>texture1DProjLod</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(sampler1D, vec2, float lod)</arguments>
+                    <type>vec4</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(sampler1D, vec4, float lod)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>max</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float, float)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec2, float)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec3, float)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec4, float)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>sqrt</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec2)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec3)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec4)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>shadow1DProjLod</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(sampler1DShadow, vec4, float lod)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>highp</key>
+            <value>
+                <item>
+                    <category>QUALIFIER</category>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    qualifier for high precision
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>gl_MaxVertexUniformComponents</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_VAR</category>
+                    <tooltip>value &gt;= 512 ARB_vertex_shader required</tooltip>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    Implementation dependent constant for the maximum allowed uniform 
+    components inside the vertex shader.&lt;br&gt; This limit refers to the storage for 
+    the combination of build-in uniform variables and user-defined uniform 
+    variables that are actually used in a vertex shader. This constant can be 
+    also queried by calling &lt;b&gt;glGetIntegerv&lt;/b&gt; with the symbolic constant &lt;i&gt;GL_MAX_VERTEX_UNIFORM_COMPONENTS_ARB&lt;/i&gt;. 
+    The minimum value is 512 if &lt;i&gt;ARB_vertex_shader&lt;/i&gt; is supported.
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
+                    <type>const int</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>noise4</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float)</arguments>
+                    <type>vec4</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec2)</arguments>
+                    <type>vec4</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec3)</arguments>
+                    <type>vec4</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec4)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>clamp</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float, float, float)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec2, float, float)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec3, float, float)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec4, float, float)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>sin</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <doc>&lt;html&gt;
+                        &lt;head&gt;
+                        
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                        The standard trigonometric sine function. Angle in radians.
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </doc>
+                    <arguments>(float)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <doc>&lt;html&gt;
+                        &lt;head&gt;
+                        
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                        The standard trigonometric sine function. Angle in radians.
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </doc>
+                    <arguments>(vec2)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <doc>&lt;html&gt;
+                        &lt;head&gt;
+                        
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                        The standard trigonometric sine function. Angle in radians.
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </doc>
+                    <arguments>(vec3)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <doc>&lt;html&gt;
+                        &lt;head&gt;
+                        
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                        The standard trigonometric sine function. Angle in radians.
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </doc>
+                    <arguments>(vec4)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>noise2</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec2)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec3)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec4)</arguments>
+                    <type>vec2</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>noise3</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec2)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec3)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec4)</arguments>
+                    <type>vec3</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>noise1</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec2)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec3)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec4)</arguments>
+                    <type>float</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>gl_ProjectionMatrixInverseTranspose</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_VAR</category>
+                    <type>uniform mat4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>reflect</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float, float)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec2, vec2)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec3, vec3)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec4 I, vec4 N)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>vec4</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>four component floating-point vector</tooltip>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>cos</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <doc>&lt;html&gt;
+                        &lt;head&gt;
+                        
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                        The standard trigonometric cosine function. Angle in radians.
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </doc>
+                    <arguments>(float)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <doc>&lt;html&gt;
+                        &lt;head&gt;
+                        
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                        The standard trigonometric cosine function. Angle in radians.
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </doc>
+                    <arguments>(vec2)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <doc>&lt;html&gt;
+                        &lt;head&gt;
+                        
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                        The standard trigonometric cosine function. Angle in radians.
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </doc>
+                    <arguments>(vec3)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <doc>&lt;html&gt;
+                        &lt;head&gt;
+                        
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                        The standard trigonometric cosine function. Angle in radians.
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </doc>
+                    <arguments>(vec4)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>centroid</key>
+            <value>
+                <item>
+                    <category>QUALIFIER</category>
+                    <tooltip>centroid interpolation on multi-sample varyings</tooltip>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    Examples:
+
+    &lt;blockquote&gt;
+      &lt;code&gt;&lt;nobr&gt;centroid varying vec4 color;&lt;/nobr&gt;&lt;br&gt;&lt;nobr&gt;centroid varying float value;&lt;/nobr&gt;&lt;/code&gt;
+    &lt;/blockquote&gt;
+    By definition, varying variables are set per vertex and are interpolated 
+    in a perspective-correct manner over the primitive being rendered.
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        If single-sampling, the value is interpolated to the pixel's center, 
+        and the &lt;b&gt;centroid &lt;/b&gt;qualifier, if present, is ignored.
+      &lt;/li&gt;
+      &lt;li&gt;
+        If multi-sampling, and &lt;b&gt;varying&lt;/b&gt; is not qualified with &lt;b&gt;centroid&lt;/b&gt;, 
+        then the value must be interpolated to the pixel's center, or anywhere 
+        within the pixel, or to one of the pixel's samples.
+      &lt;/li&gt;
+      &lt;li&gt;
+        If multi-sampling and &lt;b&gt;varying &lt;/b&gt;is qualified with &lt;b&gt;centroid&lt;/b&gt;, 
+        then the value must be interpolated to a point that lies in both the 
+        pixel and in the primitive being rendered, or to one of the pixel's 
+        samples that falls within the primitive. Due to the less regular 
+        location of centroids, their derivatives may be less accurate than 
+        non-centroid varying variables.
+      &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;
+      When using the &lt;b&gt;centroid &lt;/b&gt;keyword, it must immediately precede the &lt;b&gt;varying 
+      &lt;/b&gt;keyword. A fragment shader may read from varying variables and the 
+      value read will be the interpolated value, as a function of the 
+      fragment's position within the primitive. A fragment shader can not 
+      write to a varying variable.
+    &lt;/p&gt;
+    &lt;p&gt;
+      The type and presence of the &lt;b&gt;centroid &lt;/b&gt;and &lt;b&gt;invariant &lt;/b&gt;qualifiers 
+      of varying variables with the same name declared in linked vertex and 
+      fragments shaders must match, otherwise the link command will fail. Only 
+      those varying variables used (i.e. read) in the fragment shader 
+      executable must be written to by the vertex shader executable; declaring 
+      superfluous varying variables in a vertex shader is permissible.
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>texture1D</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(sampler1D, float, float bias)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>ivec4</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>four component integer vector</tooltip>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>ivec3</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>three component integer vector</tooltip>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>shadow2D</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(sampler2DShadow, vec3, float bias)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>varying</key>
+            <value>
+                <item>
+                    <category>QUALIFIER</category>
+                    <tooltip>output from Vertex shader (READ/WRITE), interpolated, then input to Fragment shader (READ-ONLY)</tooltip>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;
+       &lt;b&gt;Deprecated since 1.3, use &lt;i&gt;smooth&lt;/i&gt; instead&lt;/b&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+    &lt;/p&gt;
+    Varying variables provide the interface between the vertex shader and 
+    geometry shader and also between the geometry shader and fragment shader 
+    and the fixed functionality between them. If no geometry shader is 
+    present, &lt;b&gt;varying&lt;/b&gt; variables also provide the interface between the 
+    vertex shader and fragment shader.
+
+    &lt;p&gt;
+      The vertex, or geometry shader will compute values per vertex (such as 
+      color, texture coordinates, etc) and write them to output variables 
+      declared with the &amp;quot;varying&amp;quot; qualifier (vertex) or &amp;quot;varying out&amp;quot; 
+      qualifiers (geometry). A vertex or geometry shader may also read these 
+      output varying variables, getting back the same values it has written. 
+      Reading an output varying variable in a vertex or geometry shader 
+      returns undefined results if it is read before being written.
+    &lt;/p&gt;
+    &lt;p&gt;
+      A geometry shader may also read from an input &lt;b&gt;varying&lt;/b&gt; variable 
+      declared with the &amp;quot;varying in&amp;quot; qualifiers. The value read will be the 
+      same value as written by the vertex shader for that &lt;b&gt;varying&lt;/b&gt; 
+      variable. Since a geometry shader operates on primitives, each input 
+      varying variable needs to be declared as an array. Each element of such 
+      an array corresponds to a vertex of the primitive being processed. If 
+      the varying variable is declared as a scalar or matrix in the vertex 
+      shader, it will be a one-dimensional array in the geometry shader. Each 
+      array can optionally have a size declared. If a size is not specified, 
+      it inferred by the linker and depends on the value of the input 
+      primitive type. See table 4.3.xxx (GLSL specification) to determine the 
+      exact size. The read-only built-in constant &lt;b&gt;gl_VerticesIn&lt;/b&gt; will be 
+      set to this value by the linker. If a size is specified, it has to be 
+      the size as given by table 4.3.xxx, otherwise a link error will occur. 
+      The built-in constant &lt;b&gt;gl_VerticesIn&lt;/b&gt;, if so desired, can be used 
+      to size the array correctly for each input primitive type. Varying 
+      variables can also be declared as arrays in the vertex shader. This 
+      means that those, on input to the geometry shader, must be declared as 
+      two- dimensional arrays. The first index to the two-dimensional array 
+      holds the vertex number. Declaring a size for the first range of the 
+      array is optional, just as it is for one-dimensional arrays. The second 
+      index holds the per-vertex array data. Declaring a size for the second 
+      range of the array is not optional, and has to match the declaration in 
+      the vertex shader.
+    &lt;/p&gt;
+    &lt;p&gt;
+      By definition, varying variables are set per vertex and are interpolated 
+      in a perspective-correct manner over the primitive being rendered. If 
+      single-sampling, the value is interpolated to the pixel's center, and 
+      the &lt;b&gt;centroid &lt;/b&gt;qualifier, if present, is ignored. If 
+      multi-sampling, and &lt;b&gt;varying&lt;/b&gt; is not qualified with &lt;b&gt;centroid&lt;/b&gt;, 
+      then the value must be interpolated to the pixel's center, or anywhere 
+      within the pixel, or to one of the pixel's samples. If multi-sampling 
+      and &lt;b&gt;varying &lt;/b&gt;is qualified with &lt;b&gt;centroid&lt;/b&gt;, then the value 
+      must be interpolated to a point that lies in both the pixel and in the 
+      primitive being rendered, or to one of the pixel's samples that falls 
+      within the primitive. Due to the less regular location of centroids, 
+      their derivatives may be less accurate than non-centroid varying 
+      variables.
+    &lt;/p&gt;
+    &lt;p&gt;
+      When using the &lt;b&gt;centroid &lt;/b&gt;keyword, it must immediately precede the &lt;b&gt;varying 
+      &lt;/b&gt;keyword. A fragment shader may read from varying variables and the 
+      value read will be the interpolated value, as a function of the 
+      fragment's position within the primitive. A fragment shader can not 
+      write to a varying variable.
+    &lt;/p&gt;
+    &lt;p&gt;
+      The type and presence of the &lt;b&gt;centroid &lt;/b&gt;and &lt;b&gt;invariant &lt;/b&gt;qualifiers 
+      of varying variables with the same name declared in linked vertex and 
+      fragments shaders must match, otherwise the link command will fail. Only 
+      those varying variables used (i.e. read) in the fragment shader 
+      executable must be written to by the vertex shader executable; declaring 
+      superfluous varying variables in a vertex shader is permissible.
+    &lt;/p&gt;
+    &lt;p&gt;
+      Varying variables are declared as in the following examples:
+    &lt;/p&gt;
+    &lt;blockquote&gt;
+      &lt;nobr&gt;&lt;code&gt;varying vec3 normal;&lt;/code&gt;&lt;/nobr&gt;&lt;code&gt;&lt;br&gt;&lt;nobr&gt;centroid 
+      varying vec2 TexCoord;&lt;/nobr&gt;&lt;br&gt;&lt;nobr&gt;invariant centroid varying vec4 
+      Color;&lt;/nobr&gt;&lt;br&gt;&lt;/code&gt;
+    &lt;/blockquote&gt;
+    &lt;p&gt;
+      The &lt;b&gt;varying &lt;/b&gt;qualifier can be used only with &lt;b&gt;float&lt;/b&gt;, 
+      floating-point vectors, matrices, or arrays of these. Structures cannot 
+      be &lt;b&gt;varying&lt;/b&gt;. If no vertex shader executable is active, the fixed 
+      functionality pipeline of OpenGL will compute values for the built-in 
+      varying variables that will be consumed by the fragment shader 
+      executable. Similarly, if no fragment shader executable is active, the 
+      vertex shader executable is responsible for computing and writing to the 
+      varying variables that are needed for OpenGL's fixed functionality 
+      fragment pipeline. Varying variables are required to have global scope, 
+      and must be declared outside of function bodies, before their first use.
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>any</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(bvec2)</arguments>
+                    <type>bool</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(bvec3)</arguments>
+                    <type>bool</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(bvec4)</arguments>
+                    <type>bool</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>notEqual</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(bvec2, bvec2)</arguments>
+                    <type>bvec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(bvec3, bvec3)</arguments>
+                    <type>bvec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(bvec4, bvec4)</arguments>
+                    <type>bvec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>ivec2</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>two component integer vector</tooltip>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>sampler1DArray</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>a handle for accessing a 1D array texture</tooltip>
+                    <doc>&lt;html&gt;&#xD;
+  &lt;head&gt;&#xD;
+    &#xD;
+  &lt;/head&gt;&#xD;
+  &lt;body&gt;&#xD;
+    a handle for accessing a 1D array texture&#xD;
+  &lt;/body&gt;&#xD;
+&lt;/html&gt;&#xD;
+</doc>
+                    <type></type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>sampler2DArrayShadow</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    a handle for accessing a 2D array depth texture with comparison
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
+                    <type></type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>radians</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <doc>&lt;html&gt;
+                        &lt;head&gt;
+                        
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                        Converts degrees to radians, i.e. pi / 180 * degrees
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </doc>
+                    <arguments>(float)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <doc>&lt;html&gt;
+                        &lt;head&gt;
+                        
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                        Converts degrees to radians, i.e. pi / 180 * degrees
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </doc>
+                    <arguments>(vec2)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <doc>&lt;html&gt;
+                        &lt;head&gt;
+                        
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                        Converts degrees to radians, i.e. pi / 180 * degrees
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </doc>
+                    <arguments>(vec3)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <doc>&lt;html&gt;
+                        &lt;head&gt;
+                        
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                        Converts degrees to radians, i.e. pi / 180 * degrees
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </doc>
+                    <arguments>(vec4)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>usamplerCube</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>a handle for accessing an unsigned integer cube mapped texture</tooltip>
+                    <doc>&lt;html&gt;&#xD;
+  &lt;head&gt;&#xD;
+    &#xD;
+  &lt;/head&gt;&#xD;
+  &lt;body&gt;&#xD;
+    a handle for accessing an unsigned integer cube mapped texture&#xD;
+  &lt;/body&gt;&#xD;
+&lt;/html&gt;&#xD;
+</doc>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>gl_TextureMatrixInverse</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_VAR</category>
+                    <tooltip>INDEX &lt; gl_MaxTextureCoords</tooltip>
+                    <arguments>[]</arguments>
+                    <type>uniform mat4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>texture2D</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(sampler2D, vec2, float bias)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>sampler1DArrayShadow</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>a handle for accessing a 1D array depth texture with comparison</tooltip>
+                    <doc>&lt;html&gt;&#xD;
+  &lt;head&gt;&#xD;
+    &#xD;
+  &lt;/head&gt;&#xD;
+  &lt;body&gt;&#xD;
+    a handle for accessing a 1D array depth texture with comparison&#xD;
+  &lt;/body&gt;&#xD;
+&lt;/html&gt;&#xD;
+</doc>
+                    <type></type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>sign</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec2)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec3)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec4)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>texture2DProj</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(sampler2D, vec3, float bias)</arguments>
+                    <type>vec4</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(sampler2D, vec4, float bias)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>shadow1D</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(sampler1DShadow, vec3, float bias)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>gl_MaxTextureCoords</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_VAR</category>
+                    <tooltip>value &gt;= 2 ARB_fragment_program required</tooltip>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    Implementation dependent constant for the maximum allowed number of 
+    texture coordinate sets.&lt;br&gt;The number of texture coordinate sets defines 
+    the maximum number of texture coordinates that can be attached to a 
+    vertex. A texture coordinate set encompasses vertex texture coordinate attributes, as well as the texture matrix stack and texture generation state. This limit applies regardless of using a vertex shader or 
+    fixed-function pipeline to perform vertex processing. This constant can be 
+    also queried by calling &lt;b&gt;glGetIntegerv&lt;/b&gt; with the symbolic constant &lt;i&gt;GL_MAX_TEXTURE_COORDS_ARB&lt;/i&gt;. 
+    Minimum value is 2.
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
+                    <type>const int</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>gl_MaxVertexTextureImageUnits</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_VAR</category>
+                    <tooltip>value &gt;= 0 ARB_vertex_shader required</tooltip>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    Implementation dependent constant for the maximum available texture image 
+    units in a vertex shader.&lt;br&gt; The texture image unit constant specifyes the 
+    number of hardware units that can be used simultaneously for accessing 
+    texture maps. This constant can be also queried by calling &lt;b&gt;glGetIntegerv&lt;/b&gt; 
+    with the symbolic constant &lt;i&gt;GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS_ARB&lt;/i&gt;. 
+    The minimum value is 0.
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
+                    <type>const int</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>vec3</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>three component floating-point vector</tooltip>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>vec2</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>two component floating-point vector</tooltip>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>case</key>
+            <value>
+                <item>
+                    <category>KEYWORD</category>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>texture1DLod</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(sampler1D, float, float lod)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>asin</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <doc>&lt;html&gt;
+                        &lt;head&gt;
+                        
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                        Arc sine. Returns an angle whose sine is x. The range of values returned 
+                        by this function is [- Pi / 2 , Pi / 2 ] Results are undefined if |x| &amp;gt; 1.
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </doc>
+                    <arguments>(float)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <doc>&lt;html&gt;
+                        &lt;head&gt;
+                        
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                        Arc sine. Returns an angle whose sine is x. The range of values returned 
+                        by this function is [- Pi / 2 , Pi / 2 ] Results are undefined if |x| &amp;gt; 1.
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </doc>
+                    <arguments>(vec2)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <doc>&lt;html&gt;
+                        &lt;head&gt;
+                        
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                        Arc sine. Returns an angle whose sine is x. The range of values returned 
+                        by this function is [- Pi / 2 , Pi / 2 ] Results are undefined if |x| &amp;gt; 1.
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </doc>
+                    <arguments>(vec3)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <doc>&lt;html&gt;
+                        &lt;head&gt;
+                        
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                        Arc sine. Returns an angle whose sine is x. The range of values returned 
+                        by this function is [- Pi / 2 , Pi / 2 ] Results are undefined if |x| &amp;gt; 1.
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </doc>
+                    <arguments>(vec4)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>texture3D</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(sampler3D, vec3, float bias)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>gl_LightModel</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_VAR</category>
+                    <type>uniform gl_LightModelParameters</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>bvec2</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>two component boolean vector</tooltip>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>bvec3</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>three component boolean vector</tooltip>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>bvec4</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>four component boolean vector</tooltip>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>normalize</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec2)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec3)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec4)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>gl_MaxCombinedTextureImageUnits</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_VAR</category>
+                    <tooltip>value &gt;= 2</tooltip>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    Implementation dependent constant for the maximum available combined 
+    texture image units in all shader processing parts of OpenGL.&lt;br&gt;The 
+    texture image unit constant specifys the number of hardware units that can 
+    be used simultaneously for accessing texture maps. This constant can be 
+    also queried by calling &lt;b&gt;glGetIntegerv&lt;/b&gt; with the symbolic constant &lt;i&gt;GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS_ARB&lt;/i&gt;. 
+    The minimum value is 2.
+
+    &lt;p&gt;
+      &lt;b&gt;Note:&lt;/b&gt; If a vertex shader and a fragment shader both use the same 
+      texture image unit, that counts as two units against this limit.
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
+                    <type>const int</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>struct</key>
+            <value>
+                <item>
+                    <category>KEYWORD</category>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    Once a structure is defined, and its type is given a name, a constructor 
+    is available with the same name to construct instances of that structure. 
+    For example:
+
+    &lt;pre&gt;&lt;code&gt;struct light {
+    float intensity;
+    vec3 position;
+};
+&lt;nobr&gt;light lightVar = light(3.0, vec3(1.0, 2.0, 3.0));&lt;/nobr&gt;&lt;/code&gt;
+    &lt;/pre&gt;
+    &lt;p&gt;
+      The arguments to the constructor will be used to set the structure's 
+      fields, in order, using one argument per field. Each argument must be 
+      the same type as the field it sets.
+    &lt;/p&gt;
+    &lt;p&gt;
+      Structure constructors can be used as initializers or in expressions.
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>all</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(bvec2)</arguments>
+                    <type>bool</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(bvec3)</arguments>
+                    <type>bool</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(bvec4)</arguments>
+                    <type>bool</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>shadow2DLod</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(sampler2DShadow, vec3, float lod)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>precision</key>
+            <value>
+                <item>
+                    <category>KEYWORD</category>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    The precision statement
+&lt;pre&gt;
+precision precision-qualifier type; 
+&lt;/pre&gt;
+can be used to establish a default precision qualifier. The type field can be either int or &lt;b&gt;float&lt;/b&gt;, and the
+precision-qualifier can be &lt;b&gt;lowp, mediump, or highp&lt;/b&gt;. Any other types or qualifiers will result in an error.
+If type is float, the directive applies to non-precision-qualified floating point type (scalar, vector, and
+matrix) declarations. If type is &lt;b&gt;int&lt;/b&gt;, the directive applies to all non-precision-qualified integer type (scalar,
+vector, signed, and unsigned) declarations. This includes global variable declarations, function return declarations,
+function parameter declarations, and local variable declarations. Non-precision qualified declarations will use the precision qualifier
+specified in the most recent precision statement that is still in scope. The &lt;b&gt;precision&lt;/b&gt; statement has the same scoping rules as variable
+declarations. If it is declared inside a compound statement, its effect stops at the end of the innermost
+statement it was declared in. Precision statements in nested scopes override &lt;b&gt;precision&lt;/b&gt; statements in outer
+scopes. Multiple precision statements for the same basic type can appear inside the same scope, with later
+statements overriding earlier statements within that scope.
+&lt;p&gt;
+The vertex language has the following predeclared globally scoped default 
+    precision statements:
+&lt;pre&gt;
+precision highp float;
+precision highp int;
+&lt;/pre&gt;
+&lt;/p&gt;
+&lt;p&gt;
+The fragment language has the following predeclared globally scoped default 
+    precision statement:
+&lt;pre&gt;
+precision mediump int;
+&lt;/pre&gt;
+&lt;/p&gt;
+The fragment language has no default precision qualifier for floating point types. Hence for float, floating
+point vector and matrix variable declarations, either the declaration must include a precision qualifier or
+the default float precision must have been previously declared.
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>gl_BackMaterial</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_VAR</category>
+                    <type>uniform gl_MaterialParameters</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>uniform</key>
+            <value>
+                <item>
+                    <category>QUALIFIER</category>
+                    <tooltip>input to Vertex and Fragment shader from OpenGL or application (READ-ONLY)</tooltip>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;nobr&gt;The &lt;b&gt;uniform &lt;/b&gt;qualifier is used to declare global variables 
+    whose values are the same across the entire&lt;/nobr&gt; &lt;nobr&gt;primitive being 
+    processed. All &lt;b&gt;uniform &lt;/b&gt;variables are read-only and are initialized 
+    externally either at link&lt;/nobr&gt; &lt;nobr&gt;time or through the API. The link 
+    time initial value is either the value of the variable's initializer, if&lt;/nobr&gt; 
+    &lt;nobr&gt;present, or 0 if no initializer is present. Sampler types cannot 
+    have initializers.&lt;/nobr&gt;&lt;br&gt;Example declarations are:
+
+    &lt;pre&gt;      &lt;nobr&gt;uniform vec4 lightPosition;&lt;/nobr&gt;
+      &lt;nobr&gt;uniform vec3 color = vec3(0.7, 0.7, 0.2); // value assigned at link time &lt;/nobr&gt;&lt;/pre&gt;
+&lt;p&gt;
+    &lt;nobr&gt;The &lt;b&gt;uniform &lt;/b&gt;qualifier can be used with any of the basic data 
+    types, or when declaring a variable whose&lt;/nobr&gt; &lt;nobr&gt;type is a 
+    structure, or an array of any of these.&lt;/nobr&gt; &lt;nobr&gt;There is an 
+    implementation dependent limit on the amount of storage for uniforms that 
+    can be used for&lt;/nobr&gt; &lt;nobr&gt;each type of shader and if this is exceeded 
+    it will cause a compile-time or link-time error. Uniform&lt;/nobr&gt; &lt;nobr&gt;variables 
+    that are declared but not used do not count against this limit. The number 
+    of user-defined&lt;/nobr&gt; &lt;nobr&gt;uniform variables and the number of built-in 
+    uniform variables that are used within a shader are added&lt;/nobr&gt; &lt;nobr&gt;together 
+    to determine whether available uniform storage has been exceeded.&lt;/nobr&gt;
+
+    &lt;p&gt;
+      &lt;nobr&gt;If multiple shaders are linked together, then they will share a 
+      single global uniform name space. Hence,&lt;/nobr&gt; &lt;nobr&gt;the types and 
+      initializers of uniform variables with the same name must match across 
+      all shaders that are&lt;/nobr&gt; &lt;nobr&gt;linked into a single executable. It is 
+      legal for some shaders to provide an initializer for a particular&lt;/nobr&gt; &lt;nobr&gt;uniform 
+      variable, while another shader does not, but all provided initializers 
+      must be equal.&lt;/nobr&gt;
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>matrixCompMult</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(mat2, mat2)</arguments>
+                    <type>mat2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(mat3, mat3)</arguments>
+                    <type>mat3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(mat4, mat4)</arguments>
+                    <type>mat4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>gl_BackLightModelProduct</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_VAR</category>
+                    <type>uniform gl_LightModelProducts</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>equal</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(bvec2, bvec2)</arguments>
+                    <type>bvec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(bvec3, bvec3)</arguments>
+                    <type>bvec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(bvec4, bvec4)</arguments>
+                    <type>bvec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>gl_NormalScale</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_VAR</category>
+                    <type>uniform float</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>gl_ModelViewProjectionMatrixInverse</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_VAR</category>
+                    <type>uniform mat4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>gl_DepthRange</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_VAR</category>
+                    <type>uniform gl_DepthRangeParameters</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>isampler2DArray</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>a handle for accessing an integer 2D array texture</tooltip>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    a handle for accessing an integer 2D array texture
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>out</key>
+            <value>
+                <item>
+                    <category>QUALIFIER</category>
+                    <tooltip>copied out on return, but not initialized</tooltip>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>noperspective</key>
+            <value>
+                <item>
+                    <category>QUALIFIER</category>
+                    <tooltip>linear interpolation</tooltip>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;
+      linear interpolation
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>samplerCube</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>handle for accessing a cube mapped texture</tooltip>
+                    <doc>&lt;html&gt;&#xD;
+                        &lt;head&gt;&#xD;
+                        &#xD;
+                        &lt;/head&gt;&#xD;
+                        &lt;body&gt;&#xD;
+                        &lt;/body&gt;&#xD;
+                        &lt;/html&gt;&#xD;
+                    </doc>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>sampler2DShadow</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>handle for accessing a 2D depth texture with comparison</tooltip>
+                    <doc>&lt;html&gt;
+                        &lt;head&gt;
+                        
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </doc>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>for</key>
+            <value>
+                <item>
+                    <category>ITERATION</category>
+                    <doc>&lt;html&gt;&#xD;
+  &lt;head&gt;&#xD;
+    &#xD;
+  &lt;/head&gt;&#xD;
+  &lt;body&gt;&#xD;
+
+  &lt;/body&gt;&#xD;
+&lt;/html&gt;&#xD;
+</doc>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>break</key>
+            <value>
+                <item>
+                    <category>JUMP</category>
                 </item>
             </value>
         </entry>
@@ -323,15 +2083,6 @@
             </value>
         </entry>
         <entry>
-            <key>false</key>
-            <value>
-                <item>
-                    <category>KEYWORD</category>
-                    <tooltip>boolean value</tooltip>
-                </item>
-            </value>
-        </entry>
-        <entry>
             <key>gl_NormalMatrix</key>
             <value>
                 <item>
@@ -341,11 +2092,11 @@
             </value>
         </entry>
         <entry>
-            <key>gl_ModelViewProjectionMatrix</key>
+            <key>false</key>
             <value>
                 <item>
-                    <category>BUILD_IN_VAR</category>
-                    <type>uniform mat4</type>
+                    <category>KEYWORD</category>
+                    <tooltip>boolean value</tooltip>
                 </item>
             </value>
         </entry>
@@ -359,35 +2110,11 @@
             </value>
         </entry>
         <entry>
-            <key>else</key>
+            <key>gl_ModelViewProjectionMatrix</key>
             <value>
                 <item>
-                    <category>SELECTION</category>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>dFdx</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec2)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec3)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec4)</arguments>
-                    <type>vec4</type>
+                    <category>BUILD_IN_VAR</category>
+                    <type>uniform mat4</type>
                 </item>
             </value>
         </entry>
@@ -412,6 +2139,31 @@
                 <item>
                     <category>BUILD_IN_FUNC</category>
                     <arguments>(vec4 I, vec4 M, float eta)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>dFdx</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(float)</arguments>
+                    <type>float</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec2)</arguments>
+                    <type>vec2</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec3)</arguments>
+                    <type>vec3</type>
+                </item>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(vec4)</arguments>
                     <type>vec4</type>
                 </item>
             </value>
@@ -442,47 +2194,11 @@
             </value>
         </entry>
         <entry>
-            <key>gl_BackLightProduct</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_VAR</category>
-                    <tooltip>INDEX &lt; gl_MaxLights</tooltip>
-                    <arguments>[]</arguments>
-                    <type>uniform gl_LightProducts</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
             <key>gl_ModelViewProjectionMatrixInverseTranspose</key>
             <value>
                 <item>
                     <category>BUILD_IN_VAR</category>
                     <type>uniform mat4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>mod</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float, float)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec2, float)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec3, float)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec4, float)</arguments>
-                    <type>vec4</type>
                 </item>
             </value>
         </entry>
@@ -507,50 +2223,20 @@
             </value>
         </entry>
         <entry>
-            <key>gl_MaxVertexAttribs</key>
+            <key>usampler1D</key>
             <value>
                 <item>
-                    <category>BUILD_IN_VAR</category>
-                    <tooltip>value &gt;= 16 ARB_vertex_shader required</tooltip>
-                    <doc>&lt;html&gt;
-  &lt;head&gt;
-    
-  &lt;/head&gt;
-  &lt;body&gt;
-    Implementation dependent constant for the maximum useable vertex attributes 
-    in a vertex shader.&lt;br&gt; This limit consists of the standard (build-in) attributes (these are color, secondary color, normal, vertex position, texture coordinates, and fog coordinates) and the generic attributes left for custom purposes. This constant can be also queried by calling &lt;b&gt;glGetIntegerv&lt;/b&gt; 
-    with the symbolic constant &lt;i&gt;GL_MAX_VERTEX_ATTRIBS_ARB&lt;/i&gt;. Every OpenGL 
-    implementation is required to support at least 16 vertex attributes in a 
-    vertex shader.
-  &lt;/body&gt;
-&lt;/html&gt;
+                    <category>TYPE</category>
+                    <tooltip>a handle for accessing an unsigned integer 1D texture</tooltip>
+                    <doc>&lt;html&gt;&#xD;
+  &lt;head&gt;&#xD;
+    &#xD;
+  &lt;/head&gt;&#xD;
+  &lt;body&gt;&#xD;
+    a handle for accessing an unsigned integer 1D texture&#xD;
+  &lt;/body&gt;&#xD;
+&lt;/html&gt;&#xD;
 </doc>
-                    <type>const int</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>log</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec2)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec3)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec4)</arguments>
-                    <type>vec4</type>
                 </item>
             </value>
         </entry>
@@ -575,46 +2261,11 @@
             </value>
         </entry>
         <entry>
-            <key>texture2DLod</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(sampler2D, vec2, float lod)</arguments>
-                    <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
             <key>gl_ModelViewMatrixInverseTranspose</key>
             <value>
                 <item>
                     <category>BUILD_IN_VAR</category>
                     <type>uniform mat4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>floor</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec2)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec3)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec4)</arguments>
-                    <type>vec4</type>
                 </item>
             </value>
         </entry>
@@ -635,31 +2286,6 @@
                     <category>BUILD_IN_FUNC</category>
                     <arguments>(ivec4, ivec4)</arguments>
                     <type>bvec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>faceforward</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float, float, float)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec2, vec2, vec2)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec3, vec3, vec3)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec4 V, vec4 I, vec4 N)</arguments>
-                    <type>vec4</type>
                 </item>
             </value>
         </entry>
@@ -744,13 +2370,13 @@
             </value>
         </entry>
         <entry>
-            <key>gl_TextureMatrixTranspose</key>
+            <key>gl_ClipPlane</key>
             <value>
                 <item>
                     <category>BUILD_IN_VAR</category>
-                    <tooltip>INDEX &lt; gl_MaxTextureCoords</tooltip>
+                    <tooltip>INDEX &lt; gl_MaxClipPlanes</tooltip>
                     <arguments>[]</arguments>
-                    <type>uniform mat4</type>
+                    <type>uniform vec4</type>
                 </item>
             </value>
         </entry>
@@ -761,17 +2387,6 @@
                     <category>BUILD_IN_FUNC</category>
                     <arguments>(samplerCube, vec3, float bias)</arguments>
                     <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>gl_ClipPlane</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_VAR</category>
-                    <tooltip>INDEX &lt; gl_MaxClipPlanes</tooltip>
-                    <arguments>[]</arguments>
-                    <type>uniform vec4</type>
                 </item>
             </value>
         </entry>
@@ -807,52 +2422,19 @@
             </value>
         </entry>
         <entry>
-            <key>ceil</key>
+            <key>mediump</key>
             <value>
                 <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec2)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec3)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec4)</arguments>
-                    <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>smoothstep</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float, float, float)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float, float, vec2)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float, float, vec3)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float, float, vec4)</arguments>
-                    <type>vec4</type>
+                    <category>QUALIFIER</category>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    qualifier for medium precision
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
                 </item>
             </value>
         </entry>
@@ -862,6 +2444,14 @@
                 <item>
                     <category>QUALIFIER</category>
                     <tooltip>value initialized on entry, and copied out on return</tooltip>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>switch</key>
+            <value>
+                <item>
+                    <category>KEYWORD</category>
                 </item>
             </value>
         </entry>
@@ -885,6 +2475,24 @@
             </value>
         </entry>
         <entry>
+            <key>usampler1DArray</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>a handle for accessing an unsigned integer 1D array texture</tooltip>
+                    <doc>&lt;html&gt;&#xD;
+  &lt;head&gt;&#xD;
+    &#xD;
+  &lt;/head&gt;&#xD;
+  &lt;body&gt;&#xD;
+    a handle for accessing an unsigned integer 1D array texture&#xD;
+  &lt;/body&gt;&#xD;
+&lt;/html&gt;&#xD;
+</doc>
+                </item>
+            </value>
+        </entry>
+        <entry>
             <key>gl_EyePlaneT</key>
             <value>
                 <item>
@@ -897,6 +2505,17 @@
         </entry>
         <entry>
             <key>gl_EyePlaneS</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_VAR</category>
+                    <tooltip>INDEX &lt; gl_MaxTextureCoords</tooltip>
+                    <arguments>[]</arguments>
+                    <type>uniform vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>gl_EyePlaneR</key>
             <value>
                 <item>
                     <category>BUILD_IN_VAR</category>
@@ -932,17 +2551,6 @@
             </value>
         </entry>
         <entry>
-            <key>gl_EyePlaneR</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_VAR</category>
-                    <tooltip>INDEX &lt; gl_MaxTextureCoords</tooltip>
-                    <arguments>[]</arguments>
-                    <type>uniform vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
             <key>gl_EyePlaneQ</key>
             <value>
                 <item>
@@ -954,17 +2562,20 @@
             </value>
         </entry>
         <entry>
-            <key>texture2DProjLod</key>
+            <key>sampler1DShadow</key>
             <value>
                 <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(sampler2D, vec3, float lod)</arguments>
-                    <type>vec4</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(sampler2D, vec4, float lod)</arguments>
-                    <type>vec4</type>
+                    <category>TYPE</category>
+                    <tooltip>handle for accessing a 1D depth texture with comparison</tooltip>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    a handle for accessing a 1D depth texture with comparison
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
                 </item>
             </value>
         </entry>
@@ -974,15 +2585,6 @@
                 <item>
                     <category>BUILD_IN_VAR</category>
                     <type>uniform mat4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>sampler1DShadow</key>
-            <value>
-                <item>
-                    <category>TYPE</category>
-                    <tooltip>handle for accessing a 1D depth texture with comparison</tooltip>
                 </item>
             </value>
         </entry>
@@ -1023,10 +2625,11 @@
             </value>
         </entry>
         <entry>
-            <key>do</key>
+            <key>gl_ModelViewMatrixTranspose</key>
             <value>
                 <item>
-                    <category>ITERATION</category>
+                    <category>BUILD_IN_VAR</category>
+                    <type>uniform mat4</type>
                 </item>
             </value>
         </entry>
@@ -1040,11 +2643,21 @@
             </value>
         </entry>
         <entry>
-            <key>gl_ModelViewMatrixTranspose</key>
+            <key>sampler2DArray</key>
             <value>
                 <item>
-                    <category>BUILD_IN_VAR</category>
-                    <type>uniform mat4</type>
+                    <category>TYPE</category>
+                    <tooltip>a handle for accessing a 2D array texture</tooltip>
+                    <doc>&lt;html&gt;&#xD;
+  &lt;head&gt;&#xD;
+    &#xD;
+  &lt;/head&gt;&#xD;
+  &lt;body&gt;&#xD;
+    a handle for accessing a 2D array texture&#xD;
+  &lt;/body&gt;&#xD;
+&lt;/html&gt;&#xD;
+</doc>
+                    <type></type>
                 </item>
             </value>
         </entry>
@@ -1074,71 +2687,6 @@
             </value>
         </entry>
         <entry>
-            <key>texture1DProjLod</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(sampler1D, vec2, float lod)</arguments>
-                    <type>vec4</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(sampler1D, vec4, float lod)</arguments>
-                    <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>max</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float, float)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec2, float)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec3, float)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec4, float)</arguments>
-                    <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>sqrt</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec2)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec3)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec4)</arguments>
-                    <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
             <key>gl_LightSource</key>
             <value>
                 <item>
@@ -1158,25 +2706,6 @@
             </value>
         </entry>
         <entry>
-            <key>true</key>
-            <value>
-                <item>
-                    <category>KEYWORD</category>
-                    <tooltip>boolean value</tooltip>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>shadow1DProjLod</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(sampler1DShadow, vec4, float lod)</arguments>
-                    <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
             <key>void</key>
             <value>
                 <item>
@@ -1186,12 +2715,11 @@
             </value>
         </entry>
         <entry>
-            <key>texture3DProj</key>
+            <key>true</key>
             <value>
                 <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(sampler3D, vec4, float bias)</arguments>
-                    <type>vec4</type>
+                    <category>KEYWORD</category>
+                    <tooltip>boolean value</tooltip>
                 </item>
             </value>
         </entry>
@@ -1221,6 +2749,16 @@
             </value>
         </entry>
         <entry>
+            <key>texture3DProj</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_FUNC</category>
+                    <arguments>(sampler3D, vec4, float bias)</arguments>
+                    <type>vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
             <key>gl_MaxDrawBuffers</key>
             <value>
                 <item>
@@ -1241,26 +2779,37 @@
             </value>
         </entry>
         <entry>
-            <key>gl_MaxVertexUniformComponents</key>
+            <key>lowp</key>
             <value>
                 <item>
-                    <category>BUILD_IN_VAR</category>
-                    <tooltip>value &gt;= 512 ARB_vertex_shader required</tooltip>
+                    <category>QUALIFIER</category>
                     <doc>&lt;html&gt;
   &lt;head&gt;
     
   &lt;/head&gt;
   &lt;body&gt;
-    Implementation dependent constant for the maximum allowed uniform 
-    components inside the vertex shader.&lt;br&gt; This limit refers to the storage for 
-    the combination of build-in uniform variables and user-defined uniform 
-    variables that are actually used in a vertex shader. This constant can be 
-    also queried by calling &lt;b&gt;glGetIntegerv&lt;/b&gt; with the symbolic constant &lt;i&gt;GL_MAX_VERTEX_UNIFORM_COMPONENTS_ARB&lt;/i&gt;. 
-    The minimum value is 512 if &lt;i&gt;ARB_vertex_shader&lt;/i&gt; is supported.
+    qualifier for low precision
   &lt;/body&gt;
 &lt;/html&gt;
 </doc>
-                    <type>const int</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>isamplerCube</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>a handle for accessing an integer cube mapped texture</tooltip>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    a handle for accessing an integer cube mapped texture
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
                 </item>
             </value>
         </entry>
@@ -1270,31 +2819,6 @@
                 <item>
                     <category>BUILD_IN_VAR</category>
                     <type>uniform mat4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>noise4</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float)</arguments>
-                    <type>vec4</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec2)</arguments>
-                    <type>vec4</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec3)</arguments>
-                    <type>vec4</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec4)</arguments>
-                    <type>vec4</type>
                 </item>
             </value>
         </entry>
@@ -1319,201 +2843,6 @@
                 <item>
                     <category>BUILD_IN_FUNC</category>
                     <arguments>(vec4)</arguments>
-                    <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>clamp</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float, float, float)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec2, float, float)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec3, float, float)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec4, float, float)</arguments>
-                    <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>noise2</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec2)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec3)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec4)</arguments>
-                    <type>vec2</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>sin</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <doc>&lt;html&gt;
-                        &lt;head&gt;
-                        
-                        &lt;/head&gt;
-                        &lt;body&gt;
-                        The standard trigonometric sine function. Angle in radians.
-                        &lt;/body&gt;
-                        &lt;/html&gt;
-                    </doc>
-                    <arguments>(float)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <doc>&lt;html&gt;
-                        &lt;head&gt;
-                        
-                        &lt;/head&gt;
-                        &lt;body&gt;
-                        The standard trigonometric sine function. Angle in radians.
-                        &lt;/body&gt;
-                        &lt;/html&gt;
-                    </doc>
-                    <arguments>(vec2)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <doc>&lt;html&gt;
-                        &lt;head&gt;
-                        
-                        &lt;/head&gt;
-                        &lt;body&gt;
-                        The standard trigonometric sine function. Angle in radians.
-                        &lt;/body&gt;
-                        &lt;/html&gt;
-                    </doc>
-                    <arguments>(vec3)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <doc>&lt;html&gt;
-                        &lt;head&gt;
-                        
-                        &lt;/head&gt;
-                        &lt;body&gt;
-                        The standard trigonometric sine function. Angle in radians.
-                        &lt;/body&gt;
-                        &lt;/html&gt;
-                    </doc>
-                    <arguments>(vec4)</arguments>
-                    <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>noise3</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec2)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec3)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec4)</arguments>
-                    <type>vec3</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>noise1</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec2)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec3)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec4)</arguments>
-                    <type>float</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>gl_ProjectionMatrixInverseTranspose</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_VAR</category>
-                    <type>uniform mat4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>reflect</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float, float)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec2, vec2)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec3, vec3)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec4 I, vec4 N)</arguments>
                     <type>vec4</type>
                 </item>
             </value>
@@ -1603,76 +2932,6 @@
             </value>
         </entry>
         <entry>
-            <key>vec4</key>
-            <value>
-                <item>
-                    <category>TYPE</category>
-                    <tooltip>four component floating-point vector</tooltip>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>cos</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <doc>&lt;html&gt;
-                        &lt;head&gt;
-                        
-                        &lt;/head&gt;
-                        &lt;body&gt;
-                        The standard trigonometric cosine function. Angle in radians.
-                        &lt;/body&gt;
-                        &lt;/html&gt;
-                    </doc>
-                    <arguments>(float)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <doc>&lt;html&gt;
-                        &lt;head&gt;
-                        
-                        &lt;/head&gt;
-                        &lt;body&gt;
-                        The standard trigonometric cosine function. Angle in radians.
-                        &lt;/body&gt;
-                        &lt;/html&gt;
-                    </doc>
-                    <arguments>(vec2)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <doc>&lt;html&gt;
-                        &lt;head&gt;
-                        
-                        &lt;/head&gt;
-                        &lt;body&gt;
-                        The standard trigonometric cosine function. Angle in radians.
-                        &lt;/body&gt;
-                        &lt;/html&gt;
-                    </doc>
-                    <arguments>(vec3)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <doc>&lt;html&gt;
-                        &lt;head&gt;
-                        
-                        &lt;/head&gt;
-                        &lt;body&gt;
-                        The standard trigonometric cosine function. Angle in radians.
-                        &lt;/body&gt;
-                        &lt;/html&gt;
-                    </doc>
-                    <arguments>(vec4)</arguments>
-                    <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
             <key>fract</key>
             <value>
                 <item>
@@ -1698,21 +2957,21 @@
             </value>
         </entry>
         <entry>
+            <key>gl_Point</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_VAR</category>
+                    <type>uniform gl_PointParameters</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
             <key>texture3DProjLod</key>
             <value>
                 <item>
                     <category>BUILD_IN_FUNC</category>
                     <arguments>(sampler3D, vec4, float lod)</arguments>
                     <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>gl_Point</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_VAR</category>
-                    <type>uniform gl_PointParameters</type>
                 </item>
             </value>
         </entry>
@@ -1735,6 +2994,24 @@
                     <tooltip>INDEX &lt; gl_MaxTextureCoords</tooltip>
                     <arguments>[]</arguments>
                     <type>uniform vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>isampler2D</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>a handle for accessing an integer 2D texture</tooltip>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    a handle for accessing an integer 2D texture
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
                 </item>
             </value>
         </entry>
@@ -1764,104 +3041,18 @@
             </value>
         </entry>
         <entry>
-            <key>texture1D</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(sampler1D, float, float bias)</arguments>
-                    <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>centroid</key>
-            <value>
-                <item>
-                    <category>QUALIFIER</category>
-                    <tooltip>centroid interpolation on multi-sample varyings</tooltip>
-                    <doc>&lt;html&gt;
-  &lt;head&gt;
-    
-  &lt;/head&gt;
-  &lt;body&gt;
-    Examples:
-
-    &lt;blockquote&gt;
-      &lt;code&gt;&lt;nobr&gt;centroid varying vec4 color;&lt;/nobr&gt;&lt;br&gt;&lt;nobr&gt;centroid varying float value;&lt;/nobr&gt;&lt;/code&gt;
-    &lt;/blockquote&gt;
-    By definition, varying variables are set per vertex and are interpolated 
-    in a perspective-correct manner over the primitive being rendered.
-
-    &lt;ul&gt;
-      &lt;li&gt;
-        If single-sampling, the value is interpolated to the pixel's center, 
-        and the &lt;b&gt;centroid &lt;/b&gt;qualifier, if present, is ignored.
-      &lt;/li&gt;
-      &lt;li&gt;
-        If multi-sampling, and &lt;b&gt;varying&lt;/b&gt; is not qualified with &lt;b&gt;centroid&lt;/b&gt;, 
-        then the value must be interpolated to the pixel's center, or anywhere 
-        within the pixel, or to one of the pixel's samples.
-      &lt;/li&gt;
-      &lt;li&gt;
-        If multi-sampling and &lt;b&gt;varying &lt;/b&gt;is qualified with &lt;b&gt;centroid&lt;/b&gt;, 
-        then the value must be interpolated to a point that lies in both the 
-        pixel and in the primitive being rendered, or to one of the pixel's 
-        samples that falls within the primitive. Due to the less regular 
-        location of centroids, their derivatives may be less accurate than 
-        non-centroid varying variables.
-      &lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;p&gt;
-      When using the &lt;b&gt;centroid &lt;/b&gt;keyword, it must immediately precede the &lt;b&gt;varying 
-      &lt;/b&gt;keyword. A fragment shader may read from varying variables and the 
-      value read will be the interpolated value, as a function of the 
-      fragment's position within the primitive. A fragment shader can not 
-      write to a varying variable.
-    &lt;/p&gt;
-    &lt;p&gt;
-      The type and presence of the &lt;b&gt;centroid &lt;/b&gt;and &lt;b&gt;invariant &lt;/b&gt;qualifiers 
-      of varying variables with the same name declared in linked vertex and 
-      fragments shaders must match, otherwise the link command will fail. Only 
-      those varying variables used (i.e. read) in the fragment shader 
-      executable must be written to by the vertex shader executable; declaring 
-      superfluous varying variables in a vertex shader is permissible.
-    &lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</doc>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>ivec4</key>
-            <value>
-                <item>
-                    <category>TYPE</category>
-                    <tooltip>four component integer vector</tooltip>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>shadow2D</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(sampler2DShadow, vec3, float bias)</arguments>
-                    <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>ivec3</key>
-            <value>
-                <item>
-                    <category>TYPE</category>
-                    <tooltip>three component integer vector</tooltip>
-                </item>
-            </value>
-        </entry>
-        <entry>
             <key>gl_ObjectPlaneR</key>
+            <value>
+                <item>
+                    <category>BUILD_IN_VAR</category>
+                    <tooltip>INDEX &lt; gl_MaxTextureCoords</tooltip>
+                    <arguments>[]</arguments>
+                    <type>uniform vec4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>gl_ObjectPlaneQ</key>
             <value>
                 <item>
                     <category>BUILD_IN_VAR</category>
@@ -1892,150 +3083,12 @@
             </value>
         </entry>
         <entry>
-            <key>gl_ObjectPlaneQ</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_VAR</category>
-                    <tooltip>INDEX &lt; gl_MaxTextureCoords</tooltip>
-                    <arguments>[]</arguments>
-                    <type>uniform vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>varying</key>
-            <value>
-                <item>
-                    <category>QUALIFIER</category>
-                    <tooltip>output from Vertex shader (READ/WRITE), interpolated, then input to Fragment shader (READ-ONLY)</tooltip>
-                    <doc>&lt;html&gt;
-  &lt;head&gt;
-    
-  &lt;/head&gt;
-  &lt;body&gt;
-    Varying variables provide the interface between the vertex shader and 
-    geometry shader and also between the geometry shader and fragment shader 
-    and the fixed functionality between them. If no geometry shader is 
-    present, &lt;b&gt;varying&lt;/b&gt; variables also provide the interface between the 
-    vertex shader and fragment shader.
-
-    &lt;p&gt;
-      The vertex, or geometry shader will compute values per vertex (such as 
-      color, texture coordinates, etc) and write them to output variables 
-      declared with the &amp;quot;varying&amp;quot; qualifier (vertex) or &amp;quot;varying out&amp;quot; 
-      qualifiers (geometry). A vertex or geometry shader may also read these 
-      output varying variables, getting back the same values it has written. 
-      Reading an output varying variable in a vertex or geometry shader 
-      returns undefined results if it is read before being written.
-    &lt;/p&gt;
-    &lt;p&gt;
-      A geometry shader may also read from an input &lt;b&gt;varying&lt;/b&gt; variable 
-      declared with the &amp;quot;varying in&amp;quot; qualifiers. The value read will be the 
-      same value as written by the vertex shader for that &lt;b&gt;varying&lt;/b&gt; 
-      variable. Since a geometry shader operates on primitives, each input 
-      varying variable needs to be declared as an array. Each element of such 
-      an array corresponds to a vertex of the primitive being processed. If 
-      the varying variable is declared as a scalar or matrix in the vertex 
-      shader, it will be a one-dimensional array in the geometry shader. Each 
-      array can optionally have a size declared. If a size is not specified, 
-      it inferred by the linker and depends on the value of the input 
-      primitive type. See table 4.3.xxx (GLSL specification) to determine the 
-      exact size. The read-only built-in constant &lt;b&gt;gl_VerticesIn&lt;/b&gt; will be 
-      set to this value by the linker. If a size is specified, it has to be 
-      the size as given by table 4.3.xxx, otherwise a link error will occur. 
-      The built-in constant &lt;b&gt;gl_VerticesIn&lt;/b&gt;, if so desired, can be used 
-      to size the array correctly for each input primitive type. Varying 
-      variables can also be declared as arrays in the vertex shader. This 
-      means that those, on input to the geometry shader, must be declared as 
-      two- dimensional arrays. The first index to the two-dimensional array 
-      holds the vertex number. Declaring a size for the first range of the 
-      array is optional, just as it is for one-dimensional arrays. The second 
-      index holds the per-vertex array data. Declaring a size for the second 
-      range of the array is not optional, and has to match the declaration in 
-      the vertex shader.
-    &lt;/p&gt;
-    &lt;p&gt;
-      By definition, varying variables are set per vertex and are interpolated 
-      in a perspective-correct manner over the primitive being rendered. If 
-      single-sampling, the value is interpolated to the pixel's center, and 
-      the &lt;b&gt;centroid &lt;/b&gt;qualifier, if present, is ignored. If 
-      multi-sampling, and &lt;b&gt;varying&lt;/b&gt; is not qualified with &lt;b&gt;centroid&lt;/b&gt;, 
-      then the value must be interpolated to the pixel's center, or anywhere 
-      within the pixel, or to one of the pixel's samples. If multi-sampling 
-      and &lt;b&gt;varying &lt;/b&gt;is qualified with &lt;b&gt;centroid&lt;/b&gt;, then the value 
-      must be interpolated to a point that lies in both the pixel and in the 
-      primitive being rendered, or to one of the pixel's samples that falls 
-      within the primitive. Due to the less regular location of centroids, 
-      their derivatives may be less accurate than non-centroid varying 
-      variables.
-    &lt;/p&gt;
-    &lt;p&gt;
-      When using the &lt;b&gt;centroid &lt;/b&gt;keyword, it must immediately precede the &lt;b&gt;varying 
-      &lt;/b&gt;keyword. A fragment shader may read from varying variables and the 
-      value read will be the interpolated value, as a function of the 
-      fragment's position within the primitive. A fragment shader can not 
-      write to a varying variable.
-    &lt;/p&gt;
-    &lt;p&gt;
-      The type and presence of the &lt;b&gt;centroid &lt;/b&gt;and &lt;b&gt;invariant &lt;/b&gt;qualifiers 
-      of varying variables with the same name declared in linked vertex and 
-      fragments shaders must match, otherwise the link command will fail. Only 
-      those varying variables used (i.e. read) in the fragment shader 
-      executable must be written to by the vertex shader executable; declaring 
-      superfluous varying variables in a vertex shader is permissible.
-    &lt;/p&gt;
-    &lt;p&gt;
-      Varying variables are declared as in the following examples:
-    &lt;/p&gt;
-    &lt;blockquote&gt;
-      &lt;code&gt;&lt;nobr&gt;varying vec3 normal;&lt;/nobr&gt;&lt;br&gt;&lt;nobr&gt;centroid varying vec2 TexCoord;&lt;/nobr&gt;&lt;br&gt;&lt;nobr&gt;invariant 
-      centroid varying vec4 Color;&lt;/nobr&gt;&lt;br&gt;&lt;/code&gt;
-    &lt;/blockquote&gt;
-    &lt;p&gt;
-      The &lt;b&gt;varying &lt;/b&gt;qualifier can be used only with &lt;b&gt;float&lt;/b&gt;, 
-      floating-point vectors, matrices, or arrays of these. Structures cannot 
-      be &lt;b&gt;varying&lt;/b&gt;. If no vertex shader executable is active, the fixed 
-      functionality pipeline of OpenGL will compute values for the built-in 
-      varying variables that will be consumed by the fragment shader 
-      executable. Similarly, if no fragment shader executable is active, the 
-      vertex shader executable is responsible for computing and writing to the 
-      varying variables that are needed for OpenGL's fixed functionality 
-      fragment pipeline. Varying variables are required to have global scope, 
-      and must be declared outside of function bodies, before their first use.
-    &lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</doc>
-                </item>
-            </value>
-        </entry>
-        <entry>
             <key>shadow2DProjLod</key>
             <value>
                 <item>
                     <category>BUILD_IN_FUNC</category>
                     <arguments>(sampler2DShadow, vec4, float lod)</arguments>
                     <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>any</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(bvec2)</arguments>
-                    <type>bool</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(bvec3)</arguments>
-                    <type>bool</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(bvec4)</arguments>
-                    <type>bool</type>
                 </item>
             </value>
         </entry>
@@ -2064,26 +3117,6 @@
             </value>
         </entry>
         <entry>
-            <key>notEqual</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(bvec2, bvec2)</arguments>
-                    <type>bvec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(bvec3, bvec3)</arguments>
-                    <type>bvec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(bvec4, bvec4)</arguments>
-                    <type>bvec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
             <key>gl_FrontLightProduct</key>
             <value>
                 <item>
@@ -2091,40 +3124,6 @@
                     <tooltip>INDEX &lt; gl_MaxLights</tooltip>
                     <arguments>[]</arguments>
                     <type>uniform gl_LightProducts</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>ivec2</key>
-            <value>
-                <item>
-                    <category>TYPE</category>
-                    <tooltip>two component integer vector</tooltip>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>inversesqrt</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec2)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec3)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec4)</arguments>
-                    <type>vec4</type>
                 </item>
             </value>
         </entry>
@@ -2154,61 +3153,25 @@
             </value>
         </entry>
         <entry>
-            <key>radians</key>
+            <key>inversesqrt</key>
             <value>
                 <item>
                     <category>BUILD_IN_FUNC</category>
-                    <doc>&lt;html&gt;
-                        &lt;head&gt;
-                        
-                        &lt;/head&gt;
-                        &lt;body&gt;
-                        Converts degrees to radians, i.e. pi / 180 * degrees
-                        &lt;/body&gt;
-                        &lt;/html&gt;
-                    </doc>
                     <arguments>(float)</arguments>
                     <type>float</type>
                 </item>
                 <item>
                     <category>BUILD_IN_FUNC</category>
-                    <doc>&lt;html&gt;
-                        &lt;head&gt;
-                        
-                        &lt;/head&gt;
-                        &lt;body&gt;
-                        Converts degrees to radians, i.e. pi / 180 * degrees
-                        &lt;/body&gt;
-                        &lt;/html&gt;
-                    </doc>
                     <arguments>(vec2)</arguments>
                     <type>vec2</type>
                 </item>
                 <item>
                     <category>BUILD_IN_FUNC</category>
-                    <doc>&lt;html&gt;
-                        &lt;head&gt;
-                        
-                        &lt;/head&gt;
-                        &lt;body&gt;
-                        Converts degrees to radians, i.e. pi / 180 * degrees
-                        &lt;/body&gt;
-                        &lt;/html&gt;
-                    </doc>
                     <arguments>(vec3)</arguments>
                     <type>vec3</type>
                 </item>
                 <item>
                     <category>BUILD_IN_FUNC</category>
-                    <doc>&lt;html&gt;
-                        &lt;head&gt;
-                        
-                        &lt;/head&gt;
-                        &lt;body&gt;
-                        Converts degrees to radians, i.e. pi / 180 * degrees
-                        &lt;/body&gt;
-                        &lt;/html&gt;
-                    </doc>
                     <arguments>(vec4)</arguments>
                     <type>vec4</type>
                 </item>
@@ -2222,6 +3185,15 @@
                     <tooltip>INDEX &lt; gl_MaxTextureCoords</tooltip>
                     <arguments>[]</arguments>
                     <type>uniform mat4</type>
+                </item>
+            </value>
+        </entry>
+        <entry>
+            <key>int</key>
+            <value>
+                <item>
+                    <category>TYPE</category>
+                    <tooltip>signed integer</tooltip>
                 </item>
             </value>
         </entry>
@@ -2246,22 +3218,22 @@
             </value>
         </entry>
         <entry>
-            <key>gl_TextureMatrixInverse</key>
+            <key>flat</key>
             <value>
                 <item>
-                    <category>BUILD_IN_VAR</category>
-                    <tooltip>INDEX &lt; gl_MaxTextureCoords</tooltip>
-                    <arguments>[]</arguments>
-                    <type>uniform mat4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>int</key>
-            <value>
-                <item>
-                    <category>TYPE</category>
-                    <tooltip>signed integer</tooltip>
+                    <category>QUALIFIER</category>
+                    <tooltip>no interpolation</tooltip>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;
+      no interpolation.
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
                 </item>
             </value>
         </entry>
@@ -2291,62 +3263,20 @@
             </value>
         </entry>
         <entry>
-            <key>texture2D</key>
+            <key>isampler3D</key>
             <value>
                 <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(sampler2D, vec2, float bias)</arguments>
-                    <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>sign</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec2)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec3)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec4)</arguments>
-                    <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>texture2DProj</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(sampler2D, vec3, float bias)</arguments>
-                    <type>vec4</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(sampler2D, vec4, float bias)</arguments>
-                    <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>ftransform</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>()</arguments>
-                    <type>vec4</type>
+                    <category>TYPE</category>
+                    <tooltip>a handle for accessing an integer 3D texture </tooltip>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    a handle for accessing an integer 3D texture
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
                 </item>
             </value>
         </entry>
@@ -2376,11 +3306,11 @@
             </value>
         </entry>
         <entry>
-            <key>shadow1D</key>
+            <key>ftransform</key>
             <value>
                 <item>
                     <category>BUILD_IN_FUNC</category>
-                    <arguments>(sampler1DShadow, vec3, float bias)</arguments>
+                    <arguments>()</arguments>
                     <type>vec4</type>
                 </item>
             </value>
@@ -2395,11 +3325,10 @@
             </value>
         </entry>
         <entry>
-            <key>mat2</key>
+            <key>default</key>
             <value>
                 <item>
-                    <category>TYPE</category>
-                    <tooltip>2×2 floating-point matrix</tooltip>
+                    <category>KEYWORD</category>
                 </item>
             </value>
         </entry>
@@ -2413,27 +3342,11 @@
             </value>
         </entry>
         <entry>
-            <key>gl_MaxTextureCoords</key>
+            <key>mat2</key>
             <value>
                 <item>
-                    <category>BUILD_IN_VAR</category>
-                    <tooltip>value &gt;= 2 ARB_fragment_program required</tooltip>
-                    <doc>&lt;html&gt;
-  &lt;head&gt;
-    
-  &lt;/head&gt;
-  &lt;body&gt;
-    Implementation dependent constant for the maximum allowed number of 
-    texture coordinate sets.&lt;br&gt;The number of texture coordinate sets defines 
-    the maximum number of texture coordinates that can be attached to a 
-    vertex. A texture coordinate set encompasses vertex texture coordinate attributes, as well as the texture matrix stack and texture generation state. This limit applies regardless of using a vertex shader or 
-    fixed-function pipeline to perform vertex processing. This constant can be 
-    also queried by calling &lt;b&gt;glGetIntegerv&lt;/b&gt; with the symbolic constant &lt;i&gt;GL_MAX_TEXTURE_COORDS_ARB&lt;/i&gt;. 
-    Minimum value is 2.
-  &lt;/body&gt;
-&lt;/html&gt;
-</doc>
-                    <type>const int</type>
+                    <category>TYPE</category>
+                    <tooltip>2×2 floating-point matrix</tooltip>
                 </item>
             </value>
         </entry>
@@ -2443,58 +3356,6 @@
                 <item>
                     <category>TYPE</category>
                     <tooltip>3×3 floating-point matrix</tooltip>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>gl_MaxVertexTextureImageUnits</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_VAR</category>
-                    <tooltip>value &gt;= 0 ARB_vertex_shader required</tooltip>
-                    <doc>&lt;html&gt;
-  &lt;head&gt;
-    
-  &lt;/head&gt;
-  &lt;body&gt;
-    Implementation dependent constant for the maximum available texture image 
-    units in a vertex shader.&lt;br&gt; The texture image unit constant specifyes the 
-    number of hardware units that can be used simultaneously for accessing 
-    texture maps. This constant can be also queried by calling &lt;b&gt;glGetIntegerv&lt;/b&gt; 
-    with the symbolic constant &lt;i&gt;GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS_ARB&lt;/i&gt;. 
-    The minimum value is 0.
-  &lt;/body&gt;
-&lt;/html&gt;
-</doc>
-                    <type>const int</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>vec3</key>
-            <value>
-                <item>
-                    <category>TYPE</category>
-                    <tooltip>three component floating-point vector</tooltip>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>vec2</key>
-            <value>
-                <item>
-                    <category>TYPE</category>
-                    <tooltip>two component floating-point vector</tooltip>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>texture1DLod</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(sampler1D, float, float lod)</arguments>
-                    <type>vec4</type>
                 </item>
             </value>
         </entry>
@@ -2518,67 +3379,20 @@
             </value>
         </entry>
         <entry>
-            <key>asin</key>
+            <key>usampler2D</key>
             <value>
                 <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <doc>&lt;html&gt;
-                        &lt;head&gt;
-                        
-                        &lt;/head&gt;
-                        &lt;body&gt;
-                        Arc sine. Returns an angle whose sine is x. The range of values returned 
-                        by this function is [- Pi / 2 , Pi / 2 ] Results are undefined if |x| &amp;gt; 1.
-                        &lt;/body&gt;
-                        &lt;/html&gt;
-                    </doc>
-                    <arguments>(float)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <doc>&lt;html&gt;
-                        &lt;head&gt;
-                        
-                        &lt;/head&gt;
-                        &lt;body&gt;
-                        Arc sine. Returns an angle whose sine is x. The range of values returned 
-                        by this function is [- Pi / 2 , Pi / 2 ] Results are undefined if |x| &amp;gt; 1.
-                        &lt;/body&gt;
-                        &lt;/html&gt;
-                    </doc>
-                    <arguments>(vec2)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <doc>&lt;html&gt;
-                        &lt;head&gt;
-                        
-                        &lt;/head&gt;
-                        &lt;body&gt;
-                        Arc sine. Returns an angle whose sine is x. The range of values returned 
-                        by this function is [- Pi / 2 , Pi / 2 ] Results are undefined if |x| &amp;gt; 1.
-                        &lt;/body&gt;
-                        &lt;/html&gt;
-                    </doc>
-                    <arguments>(vec3)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <doc>&lt;html&gt;
-                        &lt;head&gt;
-                        
-                        &lt;/head&gt;
-                        &lt;body&gt;
-                        Arc sine. Returns an angle whose sine is x. The range of values returned 
-                        by this function is [- Pi / 2 , Pi / 2 ] Results are undefined if |x| &amp;gt; 1.
-                        &lt;/body&gt;
-                        &lt;/html&gt;
-                    </doc>
-                    <arguments>(vec4)</arguments>
-                    <type>vec4</type>
+                    <category>TYPE</category>
+                    <tooltip>a handle for accessing an unsigned integer 2D texture</tooltip>
+                    <doc>&lt;html&gt;&#xD;
+  &lt;head&gt;&#xD;
+    &#xD;
+  &lt;/head&gt;&#xD;
+  &lt;body&gt;&#xD;
+    a handle for accessing an unsigned integer 2D texture&#xD;
+  &lt;/body&gt;&#xD;
+&lt;/html&gt;&#xD;
+</doc>
                 </item>
             </value>
         </entry>
@@ -2594,48 +3408,11 @@
             </value>
         </entry>
         <entry>
-            <key>texture3D</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(sampler3D, vec3, float bias)</arguments>
-                    <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>gl_LightModel</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_VAR</category>
-                    <type>uniform gl_LightModelParameters</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
             <key>gl_ProjectionMatrixInverse</key>
             <value>
                 <item>
                     <category>BUILD_IN_VAR</category>
                     <type>uniform mat4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>bvec2</key>
-            <value>
-                <item>
-                    <category>TYPE</category>
-                    <tooltip>two component boolean vector</tooltip>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>bvec3</key>
-            <value>
-                <item>
-                    <category>TYPE</category>
-                    <tooltip>three component boolean vector</tooltip>
                 </item>
             </value>
         </entry>
@@ -2650,44 +3427,10 @@
             </value>
         </entry>
         <entry>
-            <key>bvec4</key>
-            <value>
-                <item>
-                    <category>TYPE</category>
-                    <tooltip>four component boolean vector</tooltip>
-                </item>
-            </value>
-        </entry>
-        <entry>
             <key>while</key>
             <value>
                 <item>
                     <category>ITERATION</category>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>normalize</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(float)</arguments>
-                    <type>float</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec2)</arguments>
-                    <type>vec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec3)</arguments>
-                    <type>vec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(vec4)</arguments>
-                    <type>vec4</type>
                 </item>
             </value>
         </entry>
@@ -2697,77 +3440,6 @@
                 <item>
                     <category>TYPE</category>
                     <tooltip>handle for accessing a 2D texture</tooltip>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>gl_MaxCombinedTextureImageUnits</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_VAR</category>
-                    <tooltip>value &gt;= 2</tooltip>
-                    <doc>&lt;html&gt;
-  &lt;head&gt;
-    
-  &lt;/head&gt;
-  &lt;body&gt;
-    Implementation dependent constant for the maximum available combined 
-    texture image units in all shader processing parts of OpenGL.&lt;br&gt;The 
-    texture image unit constant specifys the number of hardware units that can 
-    be used simultaneously for accessing texture maps. This constant can be 
-    also queried by calling &lt;b&gt;glGetIntegerv&lt;/b&gt; with the symbolic constant &lt;i&gt;GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS_ARB&lt;/i&gt;. 
-    The minimum value is 2.
-
-    &lt;p&gt;
-      &lt;b&gt;Note:&lt;/b&gt; If a vertex shader and a fragment shader both use the same 
-      texture image unit, that counts as two units against this limit.
-    &lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</doc>
-                    <type>const int</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>struct</key>
-            <value>
-                <item>
-                    <category>KEYWORD</category>
-                    <doc>&lt;html&gt;
-  &lt;head&gt;
-    
-  &lt;/head&gt;
-  &lt;body&gt;
-    Once a structure is defined, and its type is given a name, a constructor 
-    is available with the same name to construct instances of that structure. 
-    For example:
-
-    &lt;pre&gt;&lt;code&gt;struct light {
-    float intensity;
-    vec3 position;
-};
-&lt;nobr&gt;light lightVar = light(3.0, vec3(1.0, 2.0, 3.0));&lt;/nobr&gt;&lt;/code&gt;
-    &lt;/pre&gt;
-    &lt;p&gt;
-      The arguments to the constructor will be used to set the structure's 
-      fields, in order, using one argument per field. Each argument must be 
-      the same type as the field it sets.
-    &lt;/p&gt;
-    &lt;p&gt;
-      Structure constructors can be used as initializers or in expressions.
-    &lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</doc>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>if</key>
-            <value>
-                <item>
-                    <category>SELECTION</category>
                 </item>
             </value>
         </entry>
@@ -2787,6 +3459,14 @@
             </value>
         </entry>
         <entry>
+            <key>if</key>
+            <value>
+                <item>
+                    <category>SELECTION</category>
+                </item>
+            </value>
+        </entry>
+        <entry>
             <key>shadow2DProj</key>
             <value>
                 <item>
@@ -2797,22 +3477,20 @@
             </value>
         </entry>
         <entry>
-            <key>all</key>
+            <key>isampler1DArray</key>
             <value>
                 <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(bvec2)</arguments>
-                    <type>bool</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(bvec3)</arguments>
-                    <type>bool</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(bvec4)</arguments>
-                    <type>bool</type>
+                    <category>TYPE</category>
+                    <tooltip>a handle for accessing an integer 1D array texture</tooltip>
+                    <doc>&lt;html&gt;
+  &lt;head&gt;
+    
+  &lt;/head&gt;
+  &lt;body&gt;
+    a handle for accessing an integer 1D array texture
+  &lt;/body&gt;
+&lt;/html&gt;
+</doc>
                 </item>
             </value>
         </entry>
@@ -2882,127 +3560,20 @@
             </value>
         </entry>
         <entry>
-            <key>shadow2DLod</key>
+            <key>usampler3D</key>
             <value>
                 <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(sampler2DShadow, vec3, float lod)</arguments>
-                    <type>vec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>gl_BackMaterial</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_VAR</category>
-                    <type>uniform gl_MaterialParameters</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>uniform</key>
-            <value>
-                <item>
-                    <category>QUALIFIER</category>
-                    <tooltip>input to Vertex and Fragment shader from OpenGL or application (READ-ONLY)</tooltip>
-                    <doc>&lt;html&gt;
-  &lt;head&gt;
-    
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;nobr&gt;The &lt;b&gt;uniform &lt;/b&gt;qualifier is used to declare global variables 
-    whose values are the same across the entire&lt;/nobr&gt; &lt;nobr&gt;primitive being 
-    processed. All &lt;b&gt;uniform &lt;/b&gt;variables are read-only and are initialized 
-    externally either at link&lt;/nobr&gt; &lt;nobr&gt;time or through the API. The link 
-    time initial value is either the value of the variable's initializer, if&lt;/nobr&gt; 
-    &lt;nobr&gt;present, or 0 if no initializer is present. Sampler types cannot 
-    have initializers.&lt;/nobr&gt;&lt;br&gt;Example declarations are:
-
-    &lt;pre&gt;      &lt;nobr&gt;uniform vec4 lightPosition;&lt;/nobr&gt;
-      &lt;nobr&gt;uniform vec3 color = vec3(0.7, 0.7, 0.2); // value assigned at link time &lt;/nobr&gt;&lt;/pre&gt;
-&lt;p&gt;
-    &lt;nobr&gt;The &lt;b&gt;uniform &lt;/b&gt;qualifier can be used with any of the basic data 
-    types, or when declaring a variable whose&lt;/nobr&gt; &lt;nobr&gt;type is a 
-    structure, or an array of any of these.&lt;/nobr&gt; &lt;nobr&gt;There is an 
-    implementation dependent limit on the amount of storage for uniforms that 
-    can be used for&lt;/nobr&gt; &lt;nobr&gt;each type of shader and if this is exceeded 
-    it will cause a compile-time or link-time error. Uniform&lt;/nobr&gt; &lt;nobr&gt;variables 
-    that are declared but not used do not count against this limit. The number 
-    of user-defined&lt;/nobr&gt; &lt;nobr&gt;uniform variables and the number of built-in 
-    uniform variables that are used within a shader are added&lt;/nobr&gt; &lt;nobr&gt;together 
-    to determine whether available uniform storage has been exceeded.&lt;/nobr&gt;
-
-    &lt;p&gt;
-      &lt;nobr&gt;If multiple shaders are linked together, then they will share a 
-      single global uniform name space. Hence,&lt;/nobr&gt; &lt;nobr&gt;the types and 
-      initializers of uniform variables with the same name must match across 
-      all shaders that are&lt;/nobr&gt; &lt;nobr&gt;linked into a single executable. It is 
-      legal for some shaders to provide an initializer for a particular&lt;/nobr&gt; &lt;nobr&gt;uniform 
-      variable, while another shader does not, but all provided initializers 
-      must be equal.&lt;/nobr&gt;
-    &lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+                    <category>TYPE</category>
+                    <tooltip>a handle for accessing an unsigned integer 3D texture</tooltip>
+                    <doc>&lt;html&gt;&#xD;
+  &lt;head&gt;&#xD;
+    &#xD;
+  &lt;/head&gt;&#xD;
+  &lt;body&gt;&#xD;
+    a handle for accessing an unsigned integer 3D texture&#xD;
+  &lt;/body&gt;&#xD;
+&lt;/html&gt;&#xD;
 </doc>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>matrixCompMult</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(mat2, mat2)</arguments>
-                    <type>mat2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(mat3, mat3)</arguments>
-                    <type>mat3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(mat4, mat4)</arguments>
-                    <type>mat4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>gl_BackLightModelProduct</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_VAR</category>
-                    <type>uniform gl_LightModelProducts</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>equal</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(bvec2, bvec2)</arguments>
-                    <type>bvec2</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(bvec3, bvec3)</arguments>
-                    <type>bvec3</type>
-                </item>
-                <item>
-                    <category>BUILD_IN_FUNC</category>
-                    <arguments>(bvec4, bvec4)</arguments>
-                    <type>bvec4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>gl_NormalScale</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_VAR</category>
-                    <type>uniform float</type>
                 </item>
             </value>
         </entry>
@@ -3077,29 +3648,11 @@
             </value>
         </entry>
         <entry>
-            <key>gl_ModelViewProjectionMatrixInverse</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_VAR</category>
-                    <type>uniform mat4</type>
-                </item>
-            </value>
-        </entry>
-        <entry>
             <key>sampler3D</key>
             <value>
                 <item>
                     <category>TYPE</category>
                     <tooltip>handle for accessing a 3D texture</tooltip>
-                </item>
-            </value>
-        </entry>
-        <entry>
-            <key>gl_DepthRange</key>
-            <value>
-                <item>
-                    <category>BUILD_IN_VAR</category>
-                    <type>uniform gl_DepthRangeParameters</type>
                 </item>
             </value>
         </entry>
@@ -3146,11 +3699,20 @@
             </value>
         </entry>
         <entry>
-            <key>out</key>
+            <key>uint</key>
             <value>
                 <item>
-                    <category>QUALIFIER</category>
-                    <tooltip>copied out on return, but not initialized</tooltip>
+                    <category>TYPE</category>
+                    <tooltip>an unsigned integer</tooltip>
+                    <doc>&lt;html&gt;&#xD;
+  &lt;head&gt;&#xD;
+    &#xD;
+  &lt;/head&gt;&#xD;
+  &lt;body&gt;&#xD;
+    an unsigned integer&#xD;
+  &lt;/body&gt;&#xD;
+&lt;/html&gt;&#xD;
+</doc>
                 </item>
             </value>
         </entry>

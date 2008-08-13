@@ -265,8 +265,11 @@ public class GlslLexer implements Lexer<GlslTokenId> {
             return factory.createToken(GlslTokenId.FLOAT_LITERAL);
             
         }else{
+
+            if(character != 'u' && character != 'U')
+                input.backup(1);
             
-            input.backup(1);
+//            input.backup(1);
             return factory.createToken(GlslTokenId.INTEGER_LITERAL);
             
         }
