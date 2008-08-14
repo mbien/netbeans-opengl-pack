@@ -1,5 +1,5 @@
 /*
- * MainFrame.java
+ * SimpleGLJPanel.java
  *
  * Created on 30. Juli 2008, 16:18
  */
@@ -7,14 +7,27 @@
 package org.yourorghere;
 
 import com.sun.opengl.util.Animator;
+import java.awt.EventQueue;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.media.opengl.GLCapabilities;
+import javax.media.opengl.GLJPanel;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.UIManager;
+import javax.swing.WindowConstants;
 
 /**
  *
- * @author  cylab
+ * @author cylab
+ * @author mbien
  */
-public class SimpleGLJPanel extends javax.swing.JFrame {
+public class SimpleGLJPanel extends JFrame {
 
     private Animator animator;
 
@@ -61,56 +74,85 @@ public class SimpleGLJPanel extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        JLabel label = new JLabel();
+        panel = new GLJPanel(createGLCapabilites());
 
-        label = new javax.swing.JLabel();
-        panel = new javax.media.opengl.GLJPanel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         label.setText("Below you see a GLJPanel");
 
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
+        GroupLayout panelLayout = new GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            panelLayout.createParallelGroup(Alignment.LEADING)
             .addGap(0, 380, Short.MAX_VALUE)
+        
         );
         panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            panelLayout.createParallelGroup(Alignment.LEADING)
             .addGap(0, 258, Short.MAX_VALUE)
+        
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(Alignment.LEADING)
+                    .addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(label))
                 .addContainerGap())
+        
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(label)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(ComponentPlacement.RELATED)
+                .addComponent(panel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+        
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     /**
+     * Called from within initComponents().
+     * hint: to customize the generated code choose 'Customize Code' in the contextmenu
+     * of the selected UI Component you wish to cutomize in design mode.
+     * @return Returns customized GLCapabilities.
+     */
+    private GLCapabilities createGLCapabilites() {
+        
+        GLCapabilities capabilities = new GLCapabilities();
+        capabilities.setHardwareAccelerated(true);
+
+        // try to enable 2x anti aliasing - should be supported on most hardware
+        capabilities.setNumSamples(2);
+        capabilities.setSampleBuffers(true);
+        
+        return capabilities;
+    }
+    
+    /**
     * @param args the command line arguments
     */
     public static void main(String args[]) {
-        // Run this in the AWT event thread to make sure
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        // Run this in the AWT event thread to prevent deadlocks and race conditions
+        EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
+                // switch to system l&f for native font rendering etc.
+                try{
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                }catch(Exception ex) {
+                    Logger.getLogger(getClass().getName()).log(Level.INFO, "can not enable system look and feel", ex);
+                }
+                
                 SimpleGLJPanel frame = new SimpleGLJPanel();
                 frame.setVisible(true);
             }
@@ -118,8 +160,7 @@ public class SimpleGLJPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel label;
-    private javax.media.opengl.GLJPanel panel;
+    private GLJPanel panel;
     // End of variables declaration//GEN-END:variables
 
 }
