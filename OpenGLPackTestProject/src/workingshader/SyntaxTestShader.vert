@@ -11,7 +11,8 @@ const int numLights = 2;
 
 float lights[numLights], lights2[numLights];
 
-uniform struct gl_MaterialParameters {
+
+uniform struct glMaterialParameters {
         vec4 emission;
         vec4 ambient;
         vec4 diffuse;
@@ -19,10 +20,21 @@ uniform struct gl_MaterialParameters {
         float shininess;
 } material1, material2;
 	
-uniform gl_MaterialParameters material3;
+uniform glMaterialParameters material3;
 
-/* Prototype from Open GL Programming Guide, Fith Edition, pg 652 */
+/* Prototype from OpenGL Programming Guide, Fith Edition, pg 652 */
 float HornerEvalPolynomial(float coeff[10], float x);
+
+/*function declaration test*/
+float fade(in float t);
+
+/*GLSL 1.3*/
+in vec3 norm;
+centroid in vec2 TexCoord;
+flat in vec3 myColor;
+noperspective out float temperature;
+invariant centroid in vec4 Color;
+centroid noperspective in vec2 myTexCoord;
 
 /*
 * grammar test.
@@ -37,8 +49,8 @@ void main() {
     float x = 10.0*10.0*y;
     float z = (x*y++);
     z++;
-    float external = 0.0;
-    z = -z;
+    float ext = 0.0;
+    z = -((z));
     z = - --z;
     #define F2 0.366025403784
     vec2 v = vec2(0);
@@ -54,12 +66,17 @@ void main() {
     
     // ternary opp
     int t = 5 > 4 ? 25 : 62;
-    t = (5) > 4 ? fade(1) : 62;
+    float t2 = (5+1) > 4 ? fade(1.0) : 62.0;
+    t2 = fade(fade(1.0)) > fade(1.0) ? fade(1.0) : fade(1.0);
     t = (5 > 4) ? 25 : 62;
     
     vec3 test = vec3(1.0, 1.0, 1.0);
     test.xyz;
     test.x = 0.0;
+
+    // TODO casts
+    int integer = 0;
+//    integer = (int)0.0;
     
     // increment/decrement
     gl_Position.x = test.y++;
@@ -85,25 +102,25 @@ void main() {
     
     do{
         if(false) {
-            while(1) {
+            while(true) {
             }
         }
     }while(true);
-    
+    /*
     for(int i = 0; i < 5; ++i) {
         gl_FrontColor = gl_FrontColorIn[i]; 
         gl_Position = gl_PositionIn[i]; 
         break; 
     }
-    
+    */
     // arrays
     float a[5] = float[5](3.4, 4.2, 5.0, 5.2, 1.1);
     float b[5] = float[](3.4, 4.2, 5.0, 5.2, 1.1); // same thing
     float c[5];
     c[0] = -1;
 
-    float[5] d;
-    float[] e = float[](3.4, 4.2, 5.0, 5.2, 1.1);
+    //float[5] d;
+    //float[] e = float[](3.4, 4.2, 5.0, 5.2, 1.1);
     
     mat3 m, n, r;
     
