@@ -270,10 +270,10 @@ reserved = "asm"
 
 
 ## declarations ################################################################
-declaration = type_specifier_or_identifier [array_index] (function | (global_identifier_list <SEMICOLON>));
+declaration = type_specifier_or_identifier [array_index] (function | (global_identifier_list [assignment2] <SEMICOLON>));
 declaration = "void" function;
 declaration = global_type_qualifier struct_declaration <SEMICOLON>;
-declaration = global_type_qualifier global_type_declaration <SEMICOLON>;
+declaration = global_type_qualifier global_type_declaration [assignment2] <SEMICOLON>;
 declaration = struct_declaration <SEMICOLON>;
 declaration = global_preprocessor;
 
@@ -304,6 +304,7 @@ statement = "break" <SEMICOLON>;   # break just in loops allowed
 statement = "continue" <SEMICOLON>;# continue just in loops allowed
 statement = "discard" <SEMICOLON>; # Fragment shader only.
 
+code_block = "{" code_block* "}";
 code_block = "{" statement* "}";
 
 ## expresstions and operations #################################################
@@ -340,6 +341,7 @@ expression1_hack = (increment_or_decrement_operator (<IDENTIFIER> | <BUILD_IN_VA
 
 
 assignment = assignment_operator expression;
+assignment2 = <EQ> expression;
 operation_or_comparison = (comperator | operator) expression;
 
 field_access = array_index;
