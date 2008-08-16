@@ -52,12 +52,15 @@ INDENT "\\s*(((if|while)\\s*\\(|else\\s*|else\\s+if\\s*\\(|for\\s*\\(.*\\))[^{;]
 
 SELECTION ( ["a"-"z" "A"-"Z" "0"-"9" "_"] )
 
+AST {
+    process: net.java.nboglpack.glsleditor.glsl.Glsl.process;
+}
 NAVIGATOR:global_preprocessor: {
     display_name: net.java.nboglpack.glsleditor.glsl.Glsl.createPreprocessorString;
     icon: "net/java/nboglpack/glsleditor/resources/preprocessor.png";
     isLeaf: "true";
 }
-NAVIGATOR:global_declared_identifier, struct_declarator: {
+NAVIGATOR:global_declared_identifier: {
     display_name: net.java.nboglpack.glsleditor.glsl.Glsl.createFieldDeclarationString;
     icon: "net/java/nboglpack/glsleditor/resources/field.gif";
     isLeaf: "true";
@@ -67,9 +70,6 @@ NAVIGATOR:function: {
     icon: "net/java/nboglpack/glsleditor/resources/function.gif";
     isLeaf: "true";
 }
-#AST {
-#    process: net.java.nboglpack.glsleditor.glsl.Glsl.process;
-#}
 #PROPERTIES {
 #    traceSteps:"true";
 #    printRules:"true";
@@ -275,15 +275,17 @@ reserved = "asm"
 ## declarations ################################################################
 declaration = [precision_qualifier] type_specifier_or_identifier [array_index] (function | (global_identifier_list [assignment2] <SEMICOLON>));
 declaration = "void" function;
-declaration = global_type_qualifier struct_declaration <SEMICOLON>;
-declaration = global_type_qualifier global_type_declaration [assignment2] <SEMICOLON>;
+declaration = field_declaration <SEMICOLON>;
 declaration = struct_declaration <SEMICOLON>;
-declaration = global_preprocessor;
 declaration = precision_declaration <SEMICOLON>;
+declaration = global_preprocessor;
 
 global_identifier_list = global_declared_identifier [array_index] (<COMMA> global_declared_identifier [array_index])*;
 global_declared_identifier = <IDENTIFIER>;
 global_preprocessor = <PREPROCESSOR>;
+
+field_declaration = global_type_qualifier struct_declaration;
+field_declaration = global_type_qualifier global_type_declaration [assignment2];
 
 struct_declaration = "struct" <IDENTIFIER> struct_body [global_identifier_list];
 struct_body = "{" (local_type_declaration <SEMICOLON>)+ "}";

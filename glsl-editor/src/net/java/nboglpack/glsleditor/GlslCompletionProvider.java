@@ -1,5 +1,7 @@
 package net.java.nboglpack.glsleditor;
 
+import java.util.Map.Entry;
+import java.util.Set;
 import org.netbeans.api.editor.completion.Completion;
 import org.openide.ErrorManager;
 import org.netbeans.editor.BaseDocument;
@@ -21,9 +23,11 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.util.Iterator;
+import java.util.Map;
 import net.java.nboglpack.glsleditor.dataobject.GlslFragmentShaderDataLoader;
 import net.java.nboglpack.glsleditor.dataobject.GlslGeometryShaderDataLoader;
 import net.java.nboglpack.glsleditor.dataobject.GlslVertexShaderDataLoader;
+import net.java.nboglpack.glsleditor.glsl.Glsl;
 import net.java.nboglpack.glsleditor.vocabulary.GLSLElementDescriptor;
 import org.netbeans.spi.editor.completion.support.CompletionUtilities;
 
@@ -94,6 +98,23 @@ public class GlslCompletionProvider implements CompletionProvider {
                 prefix = "";
             }
 
+            // add user declared functions first
+            synchronized(Glsl.declaredFunctions) {
+                Set<Entry<String, GLSLElementDescriptor>> entrySet = Glsl.declaredFunctions.entrySet();
+
+                for (Entry<String, GLSLElementDescriptor> entry : entrySet) {
+
+                    String name = entry.getKey();
+                    GLSLElementDescriptor desc = entry.getValue();
+                    
+                    if (name.regionMatches(true, 0, prefix, 0, prefix.length())) {
+                        completionResultSet.addItem(new GlslCompletionItem(name.substring(0, name.indexOf('(')), desc, prefix, pos));
+                    }
+                }
+            }
+
+
+            // add core GLSL completion items
             Iterator it = vocabulary.getKeys().iterator();
             
             while (it.hasNext()) {

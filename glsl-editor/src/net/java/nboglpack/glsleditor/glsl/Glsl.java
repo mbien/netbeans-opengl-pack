@@ -7,9 +7,12 @@
 
 package net.java.nboglpack.glsleditor.glsl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.swing.text.AbstractDocument;
 import net.java.nboglpack.glsleditor.lexer.GlslTokenId;
+import net.java.nboglpack.glsleditor.vocabulary.GLSLElementDescriptor;
 import org.netbeans.api.languages.ASTItem;
 import org.netbeans.api.languages.ASTNode;
 import org.netbeans.api.languages.ASTToken;
@@ -20,12 +23,14 @@ import org.netbeans.api.lexer.TokenSequence;
 import org.netbeans.api.lexer.TokenUtilities;
 
 /**
- * Utilitie methods called from GLSL.nbs.
+ * Utility methods called from GLSL.nbs.
  * @author Michael Bien
  */
 public final class Glsl {
     
  private final static String KEYWORD_FONT_COLOR = "<font color=808080>";
+ 
+ public final static Map<String, GLSLElementDescriptor> declaredFunctions = new HashMap<String, GLSLElementDescriptor>();
     
  private Glsl() {}
     
@@ -36,11 +41,12 @@ public final class Glsl {
     public static final String createFunctionDeclarationString(SyntaxContext context) {
         
         AbstractDocument document = (AbstractDocument)context.getDocument();
-        document.readLock();
         
         StringBuilder sb = new StringBuilder();
         
         try {
+
+            document.readLock();
             
             TokenSequence sequence = TokenHierarchy.get(context.getDocument()).tokenSequence();
             sequence.move(context.getOffset());
@@ -125,11 +131,13 @@ public final class Glsl {
     public static final String createFieldDeclarationString(SyntaxContext context) {
         
         AbstractDocument document = (AbstractDocument)context.getDocument();
-        document.readLock();
         
         StringBuilder sb = new StringBuilder();
         
         try {
+
+            document.readLock();
+            
             TokenSequence sequence = TokenHierarchy.get(context.getDocument()).tokenSequence();
             sequence.move(context.getOffset());
             sequence.moveNext();
@@ -234,8 +242,88 @@ public final class Glsl {
         return str;
     }
     
+    /**
+     * called from withen GLSL_*.nbs each time the document has been modified.
+     */
     public static void process(SyntaxContext context) {
-        System.out.println(context.getASTPath().getLeaf());
+        
+        AbstractDocument document = (AbstractDocument)context.getDocument();
+        try{
+            document.readLock();
+            
+            // remember all declared funktions for auto completion
+            synchronized(declaredFunctions) {
+                declaredFunctions.clear();
+            }
+
+            List<ASTItem> declarations = context.getASTPath().getLeaf().getChildren();
+
+            for (ASTItem declaration : declarations) {
+
+                for (ASTItem declarationItem : declaration.getChildren()) {
+
+                    if(isNode(declarationItem, "function")) {
+                        
+                        
+                        List<ASTItem> functionItems = declarationItem.getChildren();
+                        
+                        if(functionItems.size() < 3)
+                            break;
+                        
+                        ASTItem nameToken = functionItems.get(0);
+
+                        if(isTokenType(nameToken, GlslTokenId.FUNCTION.name())) {
+                            
+                            // determine return type
+                            StringBuilder returnType = new StringBuilder();
+                            for (ASTItem typeItem : declaration.getChildren()) {
+
+                                if(isNode(typeItem, "function"))
+                                    break;
+
+                                if(typeItem instanceof ASTNode) {
+                                    returnType.append(((ASTNode)typeItem).getAsText().trim());
+                                }else if(typeItem instanceof ASTToken) {
+                                    final ASTToken t = (ASTToken) typeItem;
+                                    returnType.append(t.getIdentifier().trim());
+                                }
+
+                            }
+                            
+                            // determine name and parameter list
+                            StringBuilder name = new StringBuilder();
+                            
+                            name.append("(");
+                            ASTItem parameterList = functionItems.get(2);
+                            if(isNode(parameterList, "parameter_declaration_list"))
+                                name.append(((ASTNode)parameterList).getAsText());
+                            name.append(")");
+
+                            GLSLElementDescriptor elementDesc = new GLSLElementDescriptor(
+                                    GLSLElementDescriptor.Category.USER_FUNC,
+                                    "",
+                                    "",
+                                    name.toString(),
+                                    returnType.toString());
+
+                            name.insert(0, ((ASTToken) nameToken).getIdentifier());
+                            
+                            synchronized(declaredFunctions) {
+                                declaredFunctions.put(name.toString(), elementDesc);
+                            }
+                            
+//                            System.out.println("|"+returnType.toString()+"|"+name.toString()+"|");
+                        }
+                        
+                        break;
+                    }
+                }
+            }
+        }finally{
+            document.readUnlock();
+        }
+
+
     }
     
     private static final void movePreviousUntil(TokenSequence sequence, GlslTokenId id, String countToken, String stopToken) {
@@ -257,8 +345,8 @@ public final class Glsl {
                 || token.id() == GlslTokenId.PREPROCESSOR;
     }
     
-    private static final boolean isNode(ASTItem item, String nt) {
-        return item != null && item instanceof ASTNode && ((ASTNode)item).getNT().equals(nt);
+    private static final boolean isNode(ASTItem item, String nodeToken) {
+        return item != null && item instanceof ASTNode && ((ASTNode)item).getNT().equals(nodeToken);
     }
 
     private static final boolean isToken(ASTItem item, String id) {
