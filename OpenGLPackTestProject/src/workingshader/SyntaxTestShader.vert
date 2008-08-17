@@ -1,5 +1,10 @@
 #version 120
 
+// GLSL1.3 precission qualifier
+precision highp float;
+precision mediump int;
+
+
 varying vec4 vertex[], normal[], texcoords[];
 varying vec4 vertex1, normal1, texcoords1;
 uniform vec4 lightPosition[];
@@ -32,9 +37,12 @@ float fade(in float t);
 in vec3 norm;
 centroid in vec2 TexCoord;
 flat in vec3 myColor;
-noperspective out float temperature;
+//noperspective out float temperature;
 invariant centroid in vec4 Color;
-centroid noperspective in vec2 myTexCoord;
+//centroid noperspective in vec2 myTexCoord;
+
+// precision
+//out mediump vec2 P;
 
 /*
 * grammar test.
@@ -106,13 +114,27 @@ void main() {
             }
         }
     }while(true);
-    /*
+
+/*
+    switch(t) {
+        case 1:
+            t = 2;
+            t = 2;
+            break;
+        case 2:
+        case 3:
+            t = 4;
+        default:
+            t = 0;
+    }
+*/
+    
     for(int i = 0; i < 5; ++i) {
         gl_FrontColor = gl_FrontColorIn[i]; 
         gl_Position = gl_PositionIn[i]; 
         break; 
     }
-    */
+    
     // arrays
     float a[5] = float[5](3.4, 4.2, 5.0, 5.2, 1.1);
     float b[5] = float[](3.4, 4.2, 5.0, 5.2, 1.1); // same thing
