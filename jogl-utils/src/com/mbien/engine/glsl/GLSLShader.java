@@ -11,15 +11,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.EnumMap;
 import java.util.logging.Logger;
 import javax.media.opengl.GL;
 import javax.media.opengl.GLContext;
 
 /**
- * @author Michael Bien<br><br>
+ * @author Michael Bien
  */
 public class GLSLShader {
     
@@ -32,7 +30,7 @@ public class GLSLShader {
  private String compilerMsg;
  
  private final static EnumMap<TYPE, Boolean> SUPPORTED_SHADER = new EnumMap<TYPE, Boolean>(TYPE.class);
- 
+
  private boolean throwExceptionOnCompilerWarning = false;
  
     public GLSLShader(String... fileLocation) {
@@ -64,7 +62,7 @@ public class GLSLShader {
         
         if(type == null)
             throw new IllegalArgumentException("null as shader type not allowed");
-        
+
         this.type = type;
         shaderNames = new String[]{ name };
         this.source = source;

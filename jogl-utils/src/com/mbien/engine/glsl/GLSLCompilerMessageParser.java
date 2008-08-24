@@ -1,3 +1,7 @@
+/*
+ * Created on 29. March 2007, 17:07
+ */
+
 package com.mbien.engine.glsl;
 
 import java.util.StringTokenizer;
@@ -5,18 +9,20 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created on 29. March 2007, 17:07
+ * Parser for GLSL compiler messages. The main purose of this class is to find
+ * warnings or erros in the compiler log.
  * @autor Michael Bien
  */
 public class GLSLCompilerMessageParser {
-    
+
+  // may be null
   private Pattern pattern;
     
     /** Creates a new instance of CompilerOutputHandler */
     public GLSLCompilerMessageParser(Pattern pattern) {
         this.pattern = pattern;
     }
-    
+
     public CompilerMessage[] parse(String str) {
         
         StringTokenizer tokenizer = new StringTokenizer(str, "\n");
@@ -26,8 +32,11 @@ public class GLSLCompilerMessageParser {
             
             String line = tokenizer.nextToken();
             
-            Matcher m = pattern.matcher(line);
-            if(m.find()) {
+            Matcher m = null;
+            if(pattern != null)
+                m = pattern.matcher(line);
+
+            if(m != null && m.find()) {
                 
                 String g1 = m.group(1);
                 String g2 = m.group(2);
@@ -50,7 +59,8 @@ public class GLSLCompilerMessageParser {
                 if(type.equalsIgnoreCase("error"))  {
                     messages[i] = new CompilerMessage(CompilerMessage.COMPILER_EVENT_TYPE.ERROR, line, linenumber);
                 }else if(type.equalsIgnoreCase("internal"))  {
-                    messages[i] = new CompilerMessage(CompilerMessage.COMPILER_EVENT_TYPE.ERROR, "Internal error in "+CompilerMessage.class.getName()+" while parsing this line: "+line, linenumber);
+                    messages[i] = new CompilerMessage(CompilerMessage.COMPILER_EVENT_TYPE.ERROR,
+                            "Internal error in "+CompilerMessage.class.getName()+" while parsing this line: "+line, linenumber);
                 }else{
                     messages[i] = new CompilerMessage(CompilerMessage.COMPILER_EVENT_TYPE.WARNING, line, linenumber);
                 }

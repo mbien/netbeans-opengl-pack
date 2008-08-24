@@ -17,6 +17,7 @@ import net.java.nboglpack.glslcompiler.annotation.CompilerAnnotation;
 import java.io.IOException;
 import java.util.prefs.Preferences;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 import javax.media.opengl.GL;
 import javax.media.opengl.GLContext;
 import javax.swing.text.BadLocationException;
@@ -36,6 +37,7 @@ import org.openide.windows.OutputEvent;
 import org.openide.windows.OutputListener;
 
 /**
+ * Implementation for the GLSL compiler service.
  * @author Michael Bien
  */
 public class GLSLCompilerImpl implements GLSLCompilerService {
@@ -46,7 +48,6 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
  private final InputOutput io;
  
  
-    /** Creates a new instance of GLSLCompiler */
     public GLSLCompilerImpl() {
         
         glWorker = Lookup.getDefault().lookup(GLWorker.class);
@@ -54,7 +55,7 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
         Preferences pref = NbPreferences.forModule(GLSLCompilerService.class);
         String patternString = pref.get("GlslCompilerLogPattern", null);
         
-        if(patternString == null || patternString.equals("")) {
+        if(patternString == null || patternString.trim().isEmpty()) {
             
             final String[] buffer = new String[1];
             glWorker.addWork(new GLRunnable() {
@@ -74,14 +75,21 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
             }else if(buffer[0].contains("ATI") || buffer[0].contains("AMD") ) {
                 patternString = "(\\w+):\\s*\\d+:(\\d+):";
             }else{
-                patternString = "()()";
+                patternString = null;
             }
             
             pref.put("GlslCompilerLogPattern", patternString);
         }
         
-        Pattern pattern = Pattern.compile(patternString);
-        
+        Pattern pattern = null;
+
+        if(patternString != null) {
+            try{
+                pattern = Pattern.compile(patternString);
+            }catch(PatternSyntaxException ex) {
+                Exceptions.printStackTrace(ex);
+            }
+        }
         
         compilerParser = new GLSLCompilerMessageParser(pattern);
         io = IOProvider.getDefault().getIO("GLSL Compiler Output", false);
@@ -183,6 +191,7 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
         if(doc != null) {
             try{
                 String shaderSource = doc.getText(0, doc.getLength());
+
                 String shaderName = dao.getPrimaryFile().getNameExt();
                 GLSLShader.TYPE shaderType = GLSLShader.TYPE.fromMime(dao.getPrimaryFile().getMIMEType());
                 shader = new GLSLShader(shaderSource, shaderName, shaderType);

@@ -1,3 +1,7 @@
+/*
+ * Created on 6. March 2007, 15:48
+ */
+
 package net.java.nboglpack.glslcompiler.actions;
 
 import net.java.nboglpack.glslcompiler.GLSLCompilerService;
@@ -10,7 +14,7 @@ import org.openide.util.NbBundle;
 import org.openide.util.actions.NodeAction;
 
 /**
- * Created on 6. March 2007, 15:48
+ * Action triggering shader compilation.
  * @author Michael Bien
  */
 public final class CompileShaderAction extends NodeAction {

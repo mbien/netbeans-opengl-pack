@@ -3,5 +3,5 @@ AutoUpdate-Show-In-Client: false
 OpenIDE-Module: net.java.nboglpack.joglutils
 OpenIDE-Module-Install: net/java/nboglpack/joglutils/Installer.class
 OpenIDE-Module-Localizing-Bundle: net/java/nboglpack/joglutils/Bundle.properties
-OpenIDE-Module-Specification-Version: 1.3.2
+OpenIDE-Module-Specification-Version: 1.3.3
 
