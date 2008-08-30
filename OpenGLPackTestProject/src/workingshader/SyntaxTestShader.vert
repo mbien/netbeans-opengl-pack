@@ -49,7 +49,7 @@ invariant centroid in vec4 Color;
 * this shader does nothing usefull, it is just for grammar tests.
 */
 void main() {
-    
+   
     // comment
     gl_Position = ftransform();
     
