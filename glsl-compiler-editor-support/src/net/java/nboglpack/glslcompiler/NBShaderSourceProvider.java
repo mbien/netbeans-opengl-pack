@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import org.openide.cookies.EditorCookie;
@@ -13,7 +15,6 @@ import org.openide.filesystems.FileObject;
 import org.openide.filesystems.FileUtil;
 import org.openide.loaders.DataObject;
 import org.openide.loaders.DataObjectNotFoundException;
-import org.openide.util.Exceptions;
 
 final class NBShaderSourceProvider implements ShaderSourceProvider {
 
@@ -39,14 +40,12 @@ final class NBShaderSourceProvider implements ShaderSourceProvider {
                     String source = readSource(dao, sourceFile);
                     daoList.add(dao);
                     return source;
-                }else{
-                    System.out.println("null dao");
                 }
             }
         } catch (BadLocationException ex) {
-            Exceptions.printStackTrace(ex);
+            log().log(Level.INFO, "can't read shader source", ex);
         } catch (DataObjectNotFoundException ex) {
-            Exceptions.printStackTrace(ex);
+            log().log(Level.INFO, "can't read shader source", ex);
         }
         return null;
     }
@@ -69,12 +68,12 @@ final class NBShaderSourceProvider implements ShaderSourceProvider {
             
             if(sourceFile == null) {
                 try{
-                    FileObject fo = dao.getFolder().getPrimaryFile();
+                    FileObject fo = dao.getPrimaryFile();
                     if(fo != null) {
                         sourceFile = FileUtil.toFile(fo);
                     }
                 }catch(Exception ex) {
-                    ex.printStackTrace();
+                    log().log(Level.INFO, null, ex);
                 }
             }
 
@@ -86,15 +85,15 @@ final class NBShaderSourceProvider implements ShaderSourceProvider {
                 reader = new FileReader(sourceFile);
                 reader.read(buffer);
             } catch (FileNotFoundException ex) {
-                ex.printStackTrace();
+                log().log(Level.INFO, null, ex);
             } catch (IOException ex) {
-                ex.printStackTrace();
+                log().log(Level.INFO, null, ex);
             } finally {
                 if (reader != null) {
                     try {
                         reader.close();
                     } catch (IOException ex) {
-                        ex.printStackTrace();
+                        log().log(Level.INFO, null, ex);
                     }
                 }
             }
@@ -105,6 +104,11 @@ final class NBShaderSourceProvider implements ShaderSourceProvider {
 
     DataObject[] getDependencies() {
         return daoList.toArray(new DataObject[daoList.size()]);
+    }
+
+
+    private static Logger log() {
+        return Logger.getLogger(NBShaderSourceProvider.class.getName());
     }
 
 }

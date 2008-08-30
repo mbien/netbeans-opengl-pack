@@ -23,7 +23,6 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import javax.media.opengl.GL;
 import javax.media.opengl.GLContext;
-import javax.swing.text.BadLocationException;
 import org.openide.cookies.LineCookie;
 import org.openide.cookies.OpenCookie;
 import org.openide.filesystems.FileUtil;
@@ -122,7 +121,7 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
         }
         
         if(success && printOut)
-            io.getOut().println("compilation successfull");
+            io.getOut().println("compilation successful");
         
         return success;
     }
@@ -158,14 +157,14 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
         // success == true if all shaders compiled without errors
         if(success) {
             if(printOut){
-                io.getOut().println("compilation successfull");
+                io.getOut().println("compilation successful");
                 io.getOut().println("linking shaders");
             }
             try{
                 link(shaders);
                 
                 if(printOut)
-                    io.getOut().println("link successfull");
+                    io.getOut().println("link successful");
             }catch(GLSLLinkException ex) {
                 success = false;
                 if(printOut){
@@ -204,7 +203,7 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
             shader = new GLSLShader(shaderSource, shaderName, shaderType);
             nbs = new NBShader(shader, provider.getDependencies());
             
-        } catch (BadLocationException ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
         
@@ -217,10 +216,10 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
 
         NBShader nbs = createShader(dao);
         
-        final GLSLShader shader = nbs.shader;
-        
-        if(shader == null)
+        if(nbs == null)
             return null;
+        
+        final GLSLShader shader = nbs.shader;
         
         if(printOut) {
             io.getOut().println("compiling shader: "+shader.getName());
@@ -356,7 +355,7 @@ private static class HyperlinkProvider implements OutputListener{
 /**
  * Wrapps netbeans specific dependencies of the given shader.
  */
-private static class NBShader {
+private final static class NBShader {
 
     private final GLSLShader shader;
     private final DataObject[] dependencies;
