@@ -111,7 +111,7 @@ public class GLSLShader {
             } catch (FileNotFoundException ex) {
                 getLog().severe("shader source not found\n"+ex.getMessage());
             } catch (IOException ex) {
-                getLog().severe("exception until shader source read\n"+ex.getMessage());
+                getLog().severe("exception while reading shader source\n"+ex.getMessage());
             }finally {
                 if(reader != null) {
                     try{
@@ -213,7 +213,7 @@ public class GLSLShader {
         
         return SUPPORTED_SHADER.get(type);
     }
-    
+
     public enum TYPE {
         
         VERTEX(GL.GL_VERTEX_SHADER, "GL_ARB_vertex_shader"),

@@ -42,7 +42,7 @@ public class GLSLCompilerMessageParser {
                 String g2 = m.group(2);
                 
                 int linenumber;
-                String type;
+                String type = null;
                 try{
                     linenumber = Integer.parseInt(g1);
                     type = g2;
@@ -50,17 +50,17 @@ public class GLSLCompilerMessageParser {
                     try{
                         linenumber = Integer.parseInt(g2);
                         type = g1;
-                    }catch(NumberFormatException iex) {
+                    }catch(NumberFormatException ex2) {
                         linenumber = 0;
-                        type = "internal";
+                        type = null;
                     }
                 }
                                 
-                if(type.equalsIgnoreCase("error"))  {
+                if(type == null)  {
+                    messages[i] = new CompilerMessage(CompilerMessage.COMPILER_EVENT_TYPE.MSG,
+                            "Internal error in "+GLSLCompilerMessageParser.class.getName()+" while parsing this line:\n    "+line, linenumber);
+                }else if(type.equalsIgnoreCase("error"))  {
                     messages[i] = new CompilerMessage(CompilerMessage.COMPILER_EVENT_TYPE.ERROR, line, linenumber);
-                }else if(type.equalsIgnoreCase("internal"))  {
-                    messages[i] = new CompilerMessage(CompilerMessage.COMPILER_EVENT_TYPE.ERROR,
-                            "Internal error in "+CompilerMessage.class.getName()+" while parsing this line: "+line, linenumber);
                 }else{
                     messages[i] = new CompilerMessage(CompilerMessage.COMPILER_EVENT_TYPE.WARNING, line, linenumber);
                 }

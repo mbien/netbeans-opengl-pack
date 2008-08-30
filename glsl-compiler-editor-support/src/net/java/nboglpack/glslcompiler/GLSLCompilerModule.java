@@ -12,6 +12,7 @@ public class GLSLCompilerModule extends ModuleInstall {
     
 
     @Override
+    @SuppressWarnings("deprecation")
     public void uninstalled() {
         CompilerAnnotations.clearAll();
         super.uninstalled();

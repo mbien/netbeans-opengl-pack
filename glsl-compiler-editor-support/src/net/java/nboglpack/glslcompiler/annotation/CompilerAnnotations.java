@@ -19,6 +19,8 @@ public class CompilerAnnotations {
                 = new HashMap<DataObject, ArrayList<CompilerAnnotation>>();
  
 
+    private CompilerAnnotations() {
+    }
     
     public static void addAnnotation(DataObject dao, CompilerAnnotation.AnnotationType type, String msg, int lineNumber) {
         
@@ -77,6 +79,7 @@ public class CompilerAnnotations {
         if(annotations != null)
             for (CompilerAnnotation compilerAnnotation : annotations)
                 compilerAnnotation.detach();
-    }        
+    }
+
 
 }

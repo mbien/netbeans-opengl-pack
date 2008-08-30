@@ -100,23 +100,24 @@ public class GLSLProgram {
         
     public void checkProgram(GL gl) throws GLSLLinkException {
         
-        boolean error = false;
+        boolean linked = true;
+        boolean valid = true;
         
         int[] buffer = new int[1];
                
         // check link status
         gl.glGetObjectParameterivARB(handle, GL.GL_OBJECT_LINK_STATUS_ARB, buffer, 0);
-        if(buffer[0] == GL.GL_FALSE) // 1 or 0
-            error = true;
+        if(buffer[0] == GL.GL_FALSE) {// 1 or 0
+            linked = false;
 //            getLog().warning("error linking program");
-        
+        }
         // validate program
         gl.glValidateProgramARB(handle);
         gl.glGetObjectParameterivARB(handle, GL.GL_OBJECT_VALIDATE_STATUS_ARB, buffer, 0);
-        if(buffer[0] == GL.GL_FALSE)
-            error = true;
+        if(buffer[0] == GL.GL_FALSE) {
+            valid = false;
 //            getLog().warning("program validation reports error");
-        
+        }
         // dump log
         gl.glGetObjectParameterivARB(handle, GL.GL_OBJECT_INFO_LOG_LENGTH_ARB, buffer, 0);
         byte[] log = new byte[buffer[0]];
@@ -126,7 +127,7 @@ public class GLSLProgram {
 //            getLog().warning("linker info log:\n"+new String(log));
         
         
-        if(error) {
+        if(!linked || !valid) {
             
             ArrayList<String> allNames = new ArrayList<String>();
             for(int i = 0; i < shaders.size(); i++) {
