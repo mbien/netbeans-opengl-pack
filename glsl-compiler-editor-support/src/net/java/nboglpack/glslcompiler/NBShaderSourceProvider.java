@@ -77,7 +77,7 @@ final class NBShaderSourceProvider implements ShaderSourceProvider {
                 }
             }
 
-            if(sourceFile == null)
+            if(sourceFile == null || !sourceFile.exists())
                 return null;
             
             char[] buffer = new char[(int)sourceFile.length()];

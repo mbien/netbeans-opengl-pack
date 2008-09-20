@@ -15,9 +15,12 @@ import com.mbien.engine.glsl.GLSLProgram;
 import com.mbien.engine.glsl.GLSLShader;
 import com.mbien.engine.util.GLWorker;
 import java.io.File;
+import javax.swing.text.BadLocationException;
 import net.java.nboglpack.glslcompiler.annotation.CompilerAnnotations;
 import net.java.nboglpack.glslcompiler.annotation.CompilerAnnotation;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -25,6 +28,7 @@ import javax.media.opengl.GL;
 import javax.media.opengl.GLContext;
 import org.openide.cookies.LineCookie;
 import org.openide.cookies.OpenCookie;
+import org.openide.filesystems.FileObject;
 import org.openide.filesystems.FileUtil;
 import org.openide.loaders.DataObject;
 import org.openide.text.Line;
@@ -193,18 +197,24 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
         
         try {
             shaderSource = provider.readSourceFromDao(dao);
-            
-            File file = FileUtil.toFile(dao.getFolder().getPrimaryFile());
-            shaderSource = GLSLIncludeUtil.includeAllDependencies(shaderSource, file.getAbsolutePath(), provider);
 
-            String shaderName = dao.getPrimaryFile().getNameExt();
-            GLSLShader.TYPE shaderType = GLSLShader.TYPE.fromMime(dao.getPrimaryFile().getMIMEType());
+            if(shaderSource != null) {
+
+                FileObject primaryFile = dao.getFolder().getPrimaryFile();
+
+                File folder = FileUtil.toFile(primaryFile);
+                shaderSource = GLSLIncludeUtil.includeAllDependencies(shaderSource, folder.getAbsolutePath(), provider);
+
+                String shaderName = dao.getPrimaryFile().getNameExt();
+                GLSLShader.TYPE shaderType = GLSLShader.TYPE.fromMime(dao.getPrimaryFile().getMIMEType());
+
+                shader = new GLSLShader(shaderSource, shaderName, shaderType);
+                nbs = new NBShader(shader, provider.getDependencies());
+            }
             
-            shader = new GLSLShader(shaderSource, shaderName, shaderType);
-            nbs = new NBShader(shader, provider.getDependencies());
-            
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (BadLocationException ex) {
+            //this can happen in theory, we don't lock any files on read.
+            Logger.getLogger(GLSLCompilerImpl.class.getName()).log(Level.INFO, "can't create shader", ex);
         }
         
 //        shader.setThrowExceptionOnCompilerWarning(true);
