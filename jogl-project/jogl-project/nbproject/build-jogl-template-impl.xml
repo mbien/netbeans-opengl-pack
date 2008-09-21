@@ -4,7 +4,7 @@
 ***             EDIT ../build.xml INSTEAD              ***
 -->
 <project name="jogl-template-impl" default="default" basedir=".." >
-    <description>Builds the SimpleJOGL2.</description>
+    <description>Ant targets for JOGL projects.</description>
 
     <target name="-jogl-template-post-jar">
         <echo message="Creating native distibutions"/>
@@ -46,11 +46,20 @@
         </copy >
     </target>
 
-    <target name="-jogl-template-jnlp" depends="-jogl-template-test-jnlp-enabled,-jogl-template-patch-master-jnlp" if="is.jnlp.enabled">
-
+    <target name="-jogl-template-jnlp" depends="-jogl-template-test-jnlp-enabled,-jogl-template-patch-master-jnlp,jnlp-impl.jnlp" if="is.jnlp.enabled">
+        <!--remove jogl from dist/lib folder-->
         <delete file="${dist.dir}/lib/jogl.jar"/>
         <delete file="${dist.dir}/lib/gluegen-rt.jar"/>
-        <antcall target="jnlp-impl.jnlp" inheritall="true"/>
+
+        <!--remove jogl dependency from jnlp to add it later as jnlp extention-->
+        <replace file="${dist.dir}/launch.jnlp">
+            <replacetoken><![CDATA[<jar href="lib/jogl.jar"/>]]></replacetoken>
+            <replacevalue></replacevalue>
+        </replace>
+        <replace file="${dist.dir}/launch.jnlp">
+            <replacetoken><![CDATA[<jar href="lib/gluegen-rt.jar"/>]]></replacetoken>
+            <replacevalue></replacevalue>
+        </replace>
         <replace file="${dist.dir}/launch.jnlp">
             <replacetoken><![CDATA[<jar href="lib/jogl.jar" download="eager"/>]]></replacetoken>
             <replacevalue></replacevalue>
@@ -60,9 +69,13 @@
             <replacevalue></replacevalue>
         </replace>
     </target>
-    
+
+    <!--noop in case jnlp-impl.xml is not available-->
+    <target name="jnlp-impl.jnlp" ></target>
+
+
     <target name="-jogl-template-patch-master-jnlp" depends="-jogl-template-check-master-jnlp" if="is.jnlp.unpatched">
-        <replace file="${master.jnlp.file}">
+        <replace file="master-${jnlp.descriptor}.jnlp">
             <replacetoken><![CDATA[</resources>]]></replacetoken>
             <replacevalue><![CDATA[    <extension name="jogl" href="http://download.java.net/media/jogl/builds/archive/jsr-231-webstart-current/jogl.jnlp" />
     </resources>]]></replacevalue>
@@ -70,14 +83,12 @@
     </target>
 
     <target name="-jogl-template-check-master-jnlp" if="is.jnlp.enabled">
-        <!-- create it, in case it does not exist yet -->
-        <antcall target="jnlp-init-generate-master" inheritall="true"/>
-        <loadfile property="master.jnlp.content" srcfile="${master.jnlp.file}"/>
+        <loadfile property="master.jnlp.content" srcfile="master-${jnlp.descriptor}.jnlp"/>
         <condition property="is.jnlp.unpatched">
             <not>
                 <contains string="${master.jnlp.content}" substring='extension name="jogl"'/>
             </not>
-        </condition>        
+        </condition>
     </target>
 
     <target name="-create-native-distribution">
@@ -102,7 +113,7 @@
             <fileset dir="${libs.GLUEGEN-RT.classpath}-natives-${platform.name}"/>
         </copy >
     </target>
-    
+
     <target name="-jogl-template-post-clean">
         <echo message="Removing native distibutions"/>
         <delete dir="${dist.dir}-linux-i586"/>
