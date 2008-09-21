@@ -198,7 +198,7 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
         try {
             shaderSource = provider.readSourceFromDao(dao);
 
-            if(shaderSource != null) {
+            if(shaderSource != null && dao.isValid()) {
 
                 FileObject primaryFile = dao.getFolder().getPrimaryFile();
 
