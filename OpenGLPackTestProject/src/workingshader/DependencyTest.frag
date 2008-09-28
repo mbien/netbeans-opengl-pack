@@ -1,4 +1,5 @@
 //concat Dependency.frag
+//concat Dependency2.frag
 /**
  * Created on 31. Dez 2006, 22:35
  *
@@ -14,13 +15,13 @@ varying vec4 color;
 
 void main( void ) {
 
-  float k = inversesqrt(    texCoord3D.x*texCoord3D.x
-                          + texCoord3D.y*texCoord3D.y
-                          + texCoord3D.z*texCoord3D.z   ) * radius;
+  float k = dep2(     texCoord3D.x*texCoord3D.x
+                  +   texCoord3D.y*texCoord3D.y
+                  +   texCoord3D.z*texCoord3D.z   ) * radius;
 
   float n = 0;
 
-  float amplitude = 1500.0; 
+  float amplitude = 1500.0;
   float frequency = 0.00008;
 
   for(int i = 0; i < 7; i++) {
