@@ -2,8 +2,6 @@ package net.java.nboglpack.glslcompiler;
 
 import com.mbien.engine.util.ShaderSourceProvider;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -16,6 +14,10 @@ import org.openide.filesystems.FileUtil;
 import org.openide.loaders.DataObject;
 import org.openide.loaders.DataObjectNotFoundException;
 
+/**
+ * NetBeans specific shader source provider.
+ * @author Michael Bien
+ */
 final class NBShaderSourceProvider implements ShaderSourceProvider {
 
     private final ArrayList<DataObject> daoList;
@@ -25,8 +27,8 @@ final class NBShaderSourceProvider implements ShaderSourceProvider {
         this.daoList = new ArrayList<DataObject>();
     }
 
-    public String provideShaderSource(String path) {
-        File file = new File(path);
+    public String provideShaderSource(String filePath) {
+        File file = new File(filePath);
         return readSourceFile(file);
     }
 
@@ -37,7 +39,7 @@ final class NBShaderSourceProvider implements ShaderSourceProvider {
             if (fo != null) {
                 DataObject dao = DataObject.find(fo);
                 if (dao != null) {
-                    String source = readSource(dao, sourceFile);
+                    String source = readSource(dao);
                     daoList.add(dao);
                     return source;
                 }
@@ -51,53 +53,23 @@ final class NBShaderSourceProvider implements ShaderSourceProvider {
     }
     
     public final String readSourceFromDao(DataObject dao) throws BadLocationException {
-        return readSource(dao, null);
+        return readSource(dao);
     }
 
     /**
      * tries first to read from DataObject and than from File.
      */
-    private final String readSource(DataObject dao, File sourceFile) throws BadLocationException {
+    private final String readSource(DataObject dao) throws BadLocationException {
 
-        Document doc = dao.getCookie(EditorCookie.class).getDocument();
+        EditorCookie cookie = dao.getCookie(EditorCookie.class);
 
-        if (doc != null) {
+        Document doc;
+        try {
+            doc = cookie.openDocument();
             return doc.getText(0, doc.getLength());
-        } else {
-            FileReader reader = null;
-            
-            if(sourceFile == null) {
-                try{
-                    FileObject fo = dao.getPrimaryFile();
-                    if(fo != null) {
-                        sourceFile = FileUtil.toFile(fo);
-                    }
-                }catch(Exception ex) {
-                    log().log(Level.INFO, null, ex);
-                }
-            }
-
-            if(sourceFile == null || !sourceFile.exists())
-                return null;
-            
-            char[] buffer = new char[(int)sourceFile.length()];
-            try {
-                reader = new FileReader(sourceFile);
-                reader.read(buffer);
-            } catch (FileNotFoundException ex) {
-                log().log(Level.INFO, null, ex);
-            } catch (IOException ex) {
-                log().log(Level.INFO, null, ex);
-            } finally {
-                if (reader != null) {
-                    try {
-                        reader.close();
-                    } catch (IOException ex) {
-                        log().log(Level.INFO, null, ex);
-                    }
-                }
-            }
-            return new String(buffer);
+        } catch (IOException ex) {
+            log().log(Level.INFO, "unable to read shader source from document", ex);
+            return null;
         }
         
     }

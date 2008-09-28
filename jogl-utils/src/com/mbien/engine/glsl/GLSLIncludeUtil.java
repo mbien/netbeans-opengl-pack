@@ -29,12 +29,13 @@ public class GLSLIncludeUtil {
     /**
      * concatenates shaders recursively - deepest first.
      */
-    private final static void includeAllDependencies(String source, String path, ShaderSourceProvider provider, StringBuilder sb) {
+    private final static void includeAllDependencies(String source, String sourcePackage, ShaderSourceProvider provider, StringBuilder sb) {
 
         Matcher matcher = includePattern.matcher(source);
         while (matcher.find()) {
 
             String include = matcher.group(1);
+            String path = sourcePackage;
 
             while(include.startsWith("../")) {
                 
@@ -56,6 +57,7 @@ public class GLSLIncludeUtil {
 
         }
         sb.append(source);
+        sb.append("\n");
 
     }
 

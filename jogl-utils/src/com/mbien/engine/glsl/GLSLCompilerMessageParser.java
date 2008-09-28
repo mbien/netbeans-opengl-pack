@@ -23,7 +23,7 @@ public class GLSLCompilerMessageParser {
         this.pattern = pattern;
     }
 
-    public CompilerMessage[] parse(String str) {
+    public CompilerMessage[] parse(String str, int[] lines) {
         
         StringTokenizer tokenizer = new StringTokenizer(str, "\n");
         CompilerMessage[] messages = new CompilerMessage[tokenizer.countTokens()];
@@ -55,14 +55,26 @@ public class GLSLCompilerMessageParser {
                         type = null;
                     }
                 }
+                // find the fragment and compute correct relative line number
+                int n = 0;
+                int fragment = 0;
+                for (int j = 0; j < lines.length; j++) {
+                    n += lines[j];
+                    if(linenumber <= n) {
+                        fragment = j;
+                        linenumber -= n-lines[j];
+                        break;
+                    }
+                }
+//                System.out.println("fragment: "+fragment+" line: "+linenumber);
                                 
                 if(type == null)  {
                     messages[i] = new CompilerMessage(CompilerMessage.COMPILER_EVENT_TYPE.MSG,
-                            "Internal error in "+GLSLCompilerMessageParser.class.getName()+" while parsing this line:\n    "+line, linenumber);
+                            "Internal error in "+GLSLCompilerMessageParser.class.getName()+" while parsing this line:\n    "+line);
                 }else if(type.equalsIgnoreCase("error"))  {
-                    messages[i] = new CompilerMessage(CompilerMessage.COMPILER_EVENT_TYPE.ERROR, line, linenumber);
+                    messages[i] = new CompilerMessage(CompilerMessage.COMPILER_EVENT_TYPE.ERROR, line, linenumber, fragment);
                 }else{
-                    messages[i] = new CompilerMessage(CompilerMessage.COMPILER_EVENT_TYPE.WARNING, line, linenumber);
+                    messages[i] = new CompilerMessage(CompilerMessage.COMPILER_EVENT_TYPE.WARNING, line, linenumber, fragment);
                 }
                 
             }else{

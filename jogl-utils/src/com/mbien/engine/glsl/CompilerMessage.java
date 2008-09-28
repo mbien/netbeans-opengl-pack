@@ -12,19 +12,29 @@ public class CompilerMessage {
     
  public final COMPILER_EVENT_TYPE type;
  public final String msg;
+
+ /**
+  * Line of the annotation relative to the fragment.
+  */
  public final int line;
+
+ /**
+  * Shader fragment index.
+  */
+ public final int fragment;
  
  
    /** Creates a new instance of CompilerEvent */
     public CompilerMessage(COMPILER_EVENT_TYPE type, String msg) {
-        this(type, msg, -1);
+        this(type, msg, -1, -1);
     }
     
     /** Creates a new instance of CompilerEvent */
-    public CompilerMessage(COMPILER_EVENT_TYPE type, String msg, int line) {
+    public CompilerMessage(COMPILER_EVENT_TYPE type, String msg, int line, int fragment) {
         this.type = type;
         this.msg = msg;
         this.line = line;
+        this.fragment = fragment;
     }
 
     
