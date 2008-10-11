@@ -7,17 +7,17 @@
             <attr name="position" intvalue="600"/>
             <file name="net.java.nboglpack.quicksearch.GLSDKQuickSearchProvider.instance"/>
         </folder>
-        <folder name="OpenGL Extentions">
+        <folder name="OpenGL Extensions">
             <attr name="command" stringvalue="ext"/>
             <attr name="position" intvalue="610"/>
             <file name="net.java.nboglpack.quicksearch.GLEXTQuickSearchProvider.instance"/>
         </folder>
-        <folder name="NVIDIA Extentions">
+        <folder name="NVIDIA Extensions">
             <attr name="command" stringvalue="nv"/>
             <attr name="position" intvalue="620"/>
             <file name="net.java.nboglpack.quicksearch.NVEXTQuickSearchProvider.instance"/>
         </folder>
-        <folder name="ATI Extentions">
+        <folder name="ATI Extensions">
             <attr name="command" stringvalue="ati"/>
             <attr name="position" intvalue="630"/>
             <file name="net.java.nboglpack.quicksearch.ATIEXTQuickSearchProvider.instance"/>

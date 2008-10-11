@@ -35,7 +35,7 @@ public final class Glsl {
  private Glsl() {}
     
      /**
-     * Assambles a human readable String containing the declaraton of a function.
+     * Assembles a human readable String containing the declaraton of a function.
      * Asumes that the current token of the SyntaxContext represents the function name.
      */
     public static final String createFunctionDeclarationString(SyntaxContext context) {

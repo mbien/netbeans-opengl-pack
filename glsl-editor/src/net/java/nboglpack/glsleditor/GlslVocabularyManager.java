@@ -15,6 +15,9 @@ import java.util.Map;
 import java.util.Set;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
+import net.java.nboglpack.glsleditor.dataobject.GlslFragmentShaderDataLoader;
+import net.java.nboglpack.glsleditor.dataobject.GlslGeometryShaderDataLoader;
+import net.java.nboglpack.glsleditor.dataobject.GlslVertexShaderDataLoader;
 import net.java.nboglpack.glsleditor.vocabulary.GLSLElementDescriptor;
 import net.java.nboglpack.glsleditor.vocabulary.GLSLVocabulary;
 import org.openide.ErrorManager;
@@ -39,9 +42,9 @@ public class GlslVocabularyManager {
     /** Creates a new instance of GlslVocabularyManager */
     private GlslVocabularyManager(String mimetype) {
         
-        if(    !mimetype.equals("text/x-glsl-fragment-shader")
-            && !mimetype.equals("text/x-glsl-vertex-shader")
-            && !mimetype.equals("text/x-glsl-geometry-shader")) {
+        if(    !mimetype.equals(GlslFragmentShaderDataLoader.REQUIRED_MIME)
+            && !mimetype.equals(GlslVertexShaderDataLoader.REQUIRED_MIME)
+            && !mimetype.equals(GlslGeometryShaderDataLoader.REQUIRED_MIME)) {
             throw new IllegalArgumentException(mimetype+" is no GLSL mime type");
         }
         
@@ -51,9 +54,9 @@ public class GlslVocabularyManager {
         if(vocabulary == null)
             loadVocabulary();
         
-        if(mimetype.equals("text/x-glsl-fragment-shader")) {
+        if(mimetype.equals(GlslFragmentShaderDataLoader.REQUIRED_MIME)) {
             vocabularyExtention = vocabulary.fragmentShaderVocabulary;
-        }else if(mimetype.equals("text/x-glsl-vertex-shader")) {
+        }else if(mimetype.equals(GlslVertexShaderDataLoader.REQUIRED_MIME)) {
             vocabularyExtention = vocabulary.vertexShaderVocabulary;
         }else {
             vocabularyExtention = vocabulary.geometryShaderVocabulary;
