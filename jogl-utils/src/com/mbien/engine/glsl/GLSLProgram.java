@@ -16,7 +16,7 @@ public class GLSLProgram {
     
     /** Creates a new instance of GLSLProgram */
     public GLSLProgram() {
-        shaders = new ArrayList<GLSLShader>(6);
+        shaders = new ArrayList<GLSLShader>();
     }
     
     public void createProgram(GL gl) {
@@ -47,9 +47,10 @@ public class GLSLProgram {
     public void deinitProgram(GL gl, boolean deleteShaders) {
         gl.glDeleteProgram(handle);
         
-        if(deleteShaders)
-            for(int i = 0; i < shaders.size(); i++)
-                shaders.get(i).deleteShader(gl);
+        if(deleteShaders) {
+            while(!shaders.isEmpty())
+                shaders.remove(0).deleteShader(gl);
+        }
         
         handle = -1;
     }
@@ -65,7 +66,7 @@ public class GLSLProgram {
     
     public void detachShader(GL gl, GLSLShader shader) {
         gl.glDetachObjectARB(handle, shader.getID());
-        shaders.add(shader);
+        shaders.remove(shader);
     }
     
     public void linkProgram(GL gl) {
@@ -136,15 +137,18 @@ public class GLSLProgram {
                     allNames.add(shader.shaderNames[n]);
             }
             
-            throw new GLSLLinkException(    allNames.toArray(new String[allNames.size()]), 
-                                            new String(log, 0, log.length-1).split("\n"));
+            throw new GLSLLinkException(this, new String(log, 0, log.length-1).split("\n"));
             
         }
         
     }
     
-    private Logger getLog() {
+    private final Logger getLog() {
         return Logger.getLogger(this.getClass().getPackage().getName());
+    }
+
+    public GLSLShader[] getShaders() {
+        return shaders.toArray(new GLSLShader[shaders.size()]);
     }
     
     

@@ -7,13 +7,12 @@ package com.mbien.engine.glsl;
 public class GLSLCompileException extends GLSLException {
     
     /** Creates a new instance of GLSLLinkException */
-    public GLSLCompileException(String shaderName, String massage) {
-        this(new String[]{shaderName}, new String[]{massage});
+    public GLSLCompileException(GLSLShader shader, String massage) {
+        super(shader, "Error compiling shader: "+format(shader, new String[] {massage}));
     }
-    
-    /** Creates a new instance of GLSLCompileException */
-    public GLSLCompileException(String shaderNames[], String massages[]) {
-        super("Error compiling shader: "+format(shaderNames, massages));
+
+    public GLSLCompileException(GLSLShader shader, String[] massages) {
+        super(shader, "Error compiling shader: "+format(shader, massages));
     }
 
 }

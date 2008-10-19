@@ -10,18 +10,15 @@ import com.mbien.engine.glsl.CompilerMessage;
 import com.mbien.engine.util.GLRunnable;
 import com.mbien.engine.glsl.GLSLCompilerMessageParser;
 import com.mbien.engine.glsl.GLSLException;
-import com.mbien.engine.glsl.GLSLIncludeUtil;
+import com.mbien.engine.glsl.GLSLFragment;
 import com.mbien.engine.glsl.GLSLLinkException;
 import com.mbien.engine.glsl.GLSLProgram;
 import com.mbien.engine.glsl.GLSLShader;
 import com.mbien.engine.util.GLWorker;
 import java.io.File;
-import javax.swing.text.BadLocationException;
 import net.java.nboglpack.glslcompiler.annotation.CompilerAnnotations;
 import net.java.nboglpack.glslcompiler.annotation.CompilerAnnotation;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -117,15 +114,19 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
         
         for (DataObject dao : daos) {
             try{
-                NBShader shader = compile(dao, printOut, true);
+                GLSLShader shader = compile(dao, printOut, true);
                 if(shader != null)
                     annotateMessage(dao, shader, printOut);
-            }catch(NBGLSLException ex){
+            }catch(GLSLCompileException ex){
                 success = false;
-                if(ex.nbs.getCompilerMsg() != null)
-                    annotateMessage(dao, ex.nbs, printOut);
-                else if(printOut)
+                GLSLShader source = (GLSLShader) ex.source;
+                if(source.getCompilerMsg() != null) {
+                    if(printOut)
+                        io.getErr().println("error compiling shader");
+                    annotateMessage(dao, source, printOut);
+                }else if(printOut){
                     io.getErr().println(ex.getMessage());
+                }
             }
         }
         
@@ -153,16 +154,20 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
         for (int i = 0; i < shaders.length; i++) {
             
             try{
-                NBShader shader = compile(daos[i], printOut, false);
+                GLSLShader shader = compile(daos[i], printOut, false);
                 shaders[i] = shader;
                 if(shaders[i] != null)
                     annotateMessage(daos[i], shader, printOut);
-            }catch(NBGLSLException ex) {
+            }catch(GLSLCompileException ex) {
                 success = false;
-                if(ex.nbs.getCompilerMsg() != null)
-                    annotateMessage(daos[i], ex.nbs, printOut);
-                else if(printOut)
+                GLSLShader source = (GLSLShader) ex.source;
+                if(source.getCompilerMsg() != null) {
+                    if(printOut)
+                        io.getErr().println("error compiling shader");
+                    annotateMessage(daos[i], source, printOut);
+                }else if(printOut){
                     io.getErr().println(ex.getMessage());
+                }
             }
             
         }
@@ -196,56 +201,44 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
      * 
      * @param dao - the DataObject of the shader source
      */
-    private NBShader createShader(DataObject dao) {
+    private GLSLShader createShader(DataObject dao) {
         
-        NBShader nbs = null;
+        GLSLShader shader = null;
         NBShaderSourceProvider provider = new NBShaderSourceProvider();
-        String shaderSource;
+        GLSLFragment main;
         
-        try {
-            shaderSource = provider.readSourceFromDao(dao);
+        main = provider.loadShaderSource(dao);
 
-            if(shaderSource != null && dao.isValid()) {
+        if(main != null && dao.isValid()) {
 
-                FileObject primaryFile = dao.getFolder().getPrimaryFile();
+            FileObject foFolder = dao.getFolder().getPrimaryFile();
+            File folder = FileUtil.toFile(foFolder);
 
-                File folder = FileUtil.toFile(primaryFile);
-                shaderSource = GLSLIncludeUtil.includeAllDependencies(shaderSource, folder.getAbsolutePath(), provider);
+            GLSLShader.TYPE shaderType = GLSLShader.TYPE.fromMime(dao.getPrimaryFile().getMIMEType());
 
-                String shaderName = dao.getPrimaryFile().getNameExt();
-                GLSLShader.TYPE shaderType = GLSLShader.TYPE.fromMime(dao.getPrimaryFile().getMIMEType());
-
-                nbs = new NBShader(shaderSource, shaderName, provider.getDependencies(), shaderType);
-//                System.out.println(" - - - - - - - - - - - -");
-//                System.out.println(shaderSource);
-//                System.out.println(" - - - - - - - - - - - -");
-            }
-            
-        } catch (BadLocationException ex) {
-            //this can happen in theory, we don't lock any files on read.
-            Logger.getLogger(GLSLCompilerImpl.class.getName()).log(Level.INFO, "can't create shader", ex);
+            shader = new GLSLShader(shaderType, main, folder.getAbsolutePath(), provider);
         }
-        
+            
 //        shader.setThrowExceptionOnCompilerWarning(true);
 
-        return nbs;
+        return shader;
     }
     
-    private NBShader compile(final DataObject dao, boolean printOut, final boolean deleteAfterCompilation) throws NBGLSLException {
+    private GLSLShader compile(final DataObject dao, boolean printOut, final boolean deleteAfterCompilation) throws GLSLCompileException {
 
-        NBShader nbs = createShader(dao);
+        final GLSLShader shader = createShader(dao);
         
-        if(nbs == null)
+        if(shader == null)
             return null;
         
-        final GLSLShader shader = nbs;
-        
         if(printOut) {
-            io.getOut().println("compiling shader: "+shader.getName());
-            if(nbs.dependencies != null && nbs.dependencies.length > 0) {
-                for (DataObject dataObject : nbs.dependencies) {
-                    io.getOut().println(" - including "+dataObject.getPrimaryFile().getNameExt());
+            io.getOut().println("compiling shader:");
+            if(shader.fragments != null && shader.fragments.length > 0) {
+                for (GLSLFragment fragment : shader.fragments) {
+                    io.getOut().println(" - including "+fragment.name);
                 }
+            }else{
+                io.getOut().println(shader.getName());
             }
         }
         
@@ -253,7 +246,7 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
         final GLSLCompileException[] exception = new GLSLCompileException[] {null};
 
         if(!shader.type.isSupported())
-            throw new NBGLSLException(new GLSLCompileException(shader.getName(), shader.type.toString().toLowerCase()+" shaders not supported"), nbs);
+            throw new GLSLCompileException(shader, shader.type.toString().toLowerCase()+" shaders not supported");
         
         GLRunnable compilerTask = new GLRunnable(){
             public void run(GLContext context) {
@@ -272,10 +265,10 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
        glWorker.work(compilerTask);
        
        if(exception[0] != null) {
-           throw new NBGLSLException(exception[0], nbs);
+           throw exception[0];
        }
        
-       return nbs;
+       return shader;
     }
     
     private void link(final GLSLShader[] shaders) throws GLSLLinkException {
@@ -303,13 +296,13 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
             throw exception[0];
     }
     
-    private final CompilerMessage[] parseMessage(DataObject dao, NBShader shader) {
+    private final CompilerMessage[] parseMessage(DataObject dao, GLSLShader shader) {
         int[] lines = countLines(dao, shader);
         String msg = shader.getCompilerMsg();
         return compilerMSGParser.parse(msg, lines);
     }
     
-    private void annotateMessage(DataObject dao, NBShader shader, boolean printOut) {
+    private void annotateMessage(DataObject dao, GLSLShader shader, boolean printOut) {
 
         CompilerMessage[] msgs = parseMessage(dao, shader);
 
@@ -323,8 +316,8 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
 //                System.out.println(" - frag: "+msg.fragment);
                 // the dao which caused the message (can be a dependency or the root dao)
                 DataObject dao2annotate;
-                if(msg.fragment < shader.dependencies.length && msg.fragment >= 0)
-                   dao2annotate = shader.dependencies[msg.fragment];
+                if(msg.fragment < shader.fragments.length && msg.fragment >= 0)
+                   dao2annotate = (DataObject) shader.fragments[msg.fragment].sourceObj;
                 else
                    dao2annotate = dao;
 
@@ -334,11 +327,14 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
                 else
                     type = CompilerAnnotation.AnnotationType.WARNING;
 
+                // add editor annotation to dao
                 CompilerAnnotations.addAnnotation(dao2annotate, type, msg.msg, msg.line);
 
+                // add hyperlink in output window if print out enabled
                 if(printOut){
                     try  {
-                        io.getErr().println(msg.msg, new HyperlinkProvider(dao2annotate, msg));
+                        String txt = dao2annotate.getName() + " (line "+msg.line+"): "+msg.msg;
+                        io.getErr().println(txt, new HyperlinkProvider(dao2annotate, msg.line));
                     } catch (IOException ex) {
                         Exceptions.printStackTrace(ex);
                     }
@@ -349,13 +345,13 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
     }
 
 
-    private final int[] countLines(DataObject dao, NBShader nbs) {
-        int[] lines = new int[nbs.dependencies.length+1];
+    private final int[] countLines(DataObject dao, GLSLShader nbs) {
+        int[] lines = new int[nbs.fragments.length+1];
 
         EditorCookie cookie;
-        for (int i = 0; i < nbs.dependencies.length; i++) {
-            DataObject d = nbs.dependencies[i];
-            cookie = d.getCookie(EditorCookie.class);
+        for (int i = 0; i < nbs.fragments.length; i++) {
+            GLSLFragment<DataObject> d = nbs.fragments[i];
+            cookie = d.sourceObj.getCookie(EditorCookie.class);
             lines[i] = cookie.getLineSet().getLines().size();
         }
 
@@ -368,11 +364,11 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
     
 private static class HyperlinkProvider implements OutputListener{
     
- private CompilerMessage msg;
- private DataObject dao;
+    private final int line;
+    private final DataObject dao;
         
-    private HyperlinkProvider(DataObject dao, CompilerMessage msg) {
-        this.msg = msg;
+    private HyperlinkProvider(DataObject dao, int lineNumber) {
+        this.line = lineNumber;
         this.dao = dao;
     }
     
@@ -383,8 +379,10 @@ private static class HyperlinkProvider implements OutputListener{
         
         LineCookie lineCookie = dao.getCookie(LineCookie.class);
         
-        if(msg.line > 0 && msg.line < lineCookie.getLineSet().getLines().size())
-            lineCookie.getLineSet().getCurrent(msg.line-1).show(Line.SHOW_SHOW, 0);
+        if(line > 0 && line < lineCookie.getLineSet().getLines().size()) {
+            Line current = lineCookie.getLineSet().getCurrent(line - 1);
+            current.show(Line.ShowOpenType.OPEN, Line.ShowVisibilityType.FRONT);
+        }
         
     }
 
@@ -400,10 +398,10 @@ private final static class NBShader extends GLSLShader {
 
     private final DataObject[] dependencies;
 
-        public NBShader(String source, String name, DataObject[] dependencies, GLSLShader.TYPE type) {
-            super(source, name, type);
-            this.dependencies = dependencies;
-        }
+    public NBShader(GLSLShader.TYPE type, String source, String name, DataObject[] dependencies) {
+        super(type, source, name);
+        this.dependencies = dependencies;
+    }
 
 }
 

@@ -7,6 +7,7 @@ package com.mbien.engine.glsl;
 import com.mbien.engine.util.GLRunnable;
 import com.mbien.engine.util.GLWorker;
 import com.mbien.engine.util.GLWorkerImpl;
+import com.mbien.engine.util.ShaderSourceLoader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -32,9 +33,11 @@ public class GLSLShader {
  private final static EnumMap<TYPE, Boolean> SUPPORTED_SHADER = new EnumMap<TYPE, Boolean>(TYPE.class);
 
  private boolean throwExceptionOnCompilerWarning = false;
+
+ public GLSLFragment[] fragments;
  
-    public GLSLShader(String... fileLocation) {
-        this(toFiles(fileLocation));
+    public GLSLShader(String... filePath) {
+        this(toFiles(filePath));
     }
     
     public GLSLShader(File... files) {
@@ -58,7 +61,7 @@ public class GLSLShader {
         source = readSourceFile(files);
     }
 
-    public GLSLShader(String source, String name, TYPE type) {
+    public GLSLShader(TYPE type, String source, String name) {
         
         if(type == null)
             throw new IllegalArgumentException("null as shader type not allowed");
@@ -66,9 +69,10 @@ public class GLSLShader {
         this.type = type;
         shaderNames = new String[]{ name };
         this.source = source;
+
     }
     
-    public GLSLShader(String[] sources, String[] names, TYPE type) {
+    public GLSLShader(TYPE type, String[] sources, String[] names) {
         
         if(type == null)
             throw new IllegalArgumentException("null as shader type not allowed");
@@ -83,6 +87,54 @@ public class GLSLShader {
         shaderNames = names;
         source = sb.toString();
     }
+
+    public GLSLShader(TYPE type, String filepath, ShaderSourceLoader provider) {
+
+        if(type == null)
+            throw new IllegalArgumentException("null as shader type not allowed");
+
+        fragments = provider.loadWithDependencies(filepath);
+
+        this.type = type;
+        this.shaderNames = new String[fragments.length];
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < fragments.length; i++) {
+            shaderNames[i] = fragments[i].name;
+            sb.append(fragments[i].source).append("\n");
+        }
+
+        this.source = sb.toString();
+    }
+
+    public GLSLShader(TYPE type, GLSLFragment mainFragment, String path, ShaderSourceLoader provider) {
+
+        if(type == null)
+            throw new IllegalArgumentException("null as shader type not allowed");
+
+        fragments = provider.loadWithDependencies(mainFragment, path);
+
+        this.type = type;
+        this.shaderNames = new String[fragments.length];
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < fragments.length; i++) {
+            shaderNames[i] = fragments[i].name;
+            sb.append(fragments[i].source).append("\n");
+        }
+
+        this.source = sb.toString();
+    }
+
+//    public GLSLShader(File file, boolean importDependencies) {
+//
+//        if(type == null)
+//            throw new IllegalArgumentException("null as shader type not allowed");
+//
+//        this.type = type;
+//        shaderNames = new String[]{ name };
+//        this.source = source;
+//    }
     
     private static File[] toFiles(String... names)  {
         File[] files = new File[names.length];
@@ -163,7 +215,7 @@ public class GLSLShader {
             compilerMsg = new String(log, 0, log.length-1);
             
             if(error || throwExceptionOnCompilerWarning && compilerMsg.contains("WARNING")) {
-                throw new GLSLCompileException(shaderNames, compilerMsg.split("\n"));
+                throw new GLSLCompileException(this, compilerMsg.split("\n"));
             }
         }
     }
@@ -185,7 +237,7 @@ public class GLSLShader {
         for(int i = 0; i < shaderNames.length; i++) {
             sb.append(shaderNames[i]);
             if(i+1 < shaderNames.length)
-                sb.append("\n");
+                sb.append(", ");
         }
         return sb.toString();
     }
