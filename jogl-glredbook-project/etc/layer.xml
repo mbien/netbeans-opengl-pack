@@ -7,27 +7,27 @@
 
 #set( $examples= $list.split("[ ,]+"))
 <filesystem>
-	<folder name="Templates">
-		<folder name="Project">
-			<folder name="OpenGL">
-				<folder name="Redbook Demos">
+    <folder name="Templates">
+        <folder name="Project">
+            <folder name="OpenGL">
+                <folder name="Redbook Demos">
 #foreach( $example in $examples )
-					<file name="${example}.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
-						<attr name="demo" stringvalue='$infos.get("$example:class")'/>
-						<attr name="projectPackage" stringvalue='$infos.get("$example:package")'/>
-						<attr name="projectName" stringvalue="$example"/>
-						<attr name="archive" stringvalue="glredbook-src.zip"/>
-						<attr name="srcPath" stringvalue="src"/>
+                    <file name="${example}.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                        <attr name="demo" stringvalue='$infos.get("$example:class")'/>
+                        <attr name="projectPackage" stringvalue='$infos.get("$example:package")'/>
+                        <attr name="projectName" stringvalue="$example"/>
+                        <attr name="archive" stringvalue="glredbook-src.zip"/>
+                        <attr name="srcPath" stringvalue="src"/>
                         <attr name="includes" stringvalue='net/letskit/redbook/*.java,net/letskit/redbook/data/*'/>
-						<attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
-						<attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-						<attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/${example}.html"/>
-						<attr name="template" boolvalue="true"/>
-					</file>
+                        <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+                        <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
+                        <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/${example}.html"/>
+                        <attr name="template" boolvalue="true"/>
+                    </file>
 #end
-				</folder>
-			</folder>
-		</folder>
-	</folder>
+                </folder>
+            </folder>
+        </folder>
+    </folder>
 </filesystem>
 
