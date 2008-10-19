@@ -25,7 +25,7 @@
     <property name="java.net.fileSection" value="dev"/>
     <property name="java.net.fileStatus" value="Draft"/>
     
-    <target name="javanet" depends="nbms">
+    <target name="javanet-autoupload" depends="nbms">
         <foreach target="-upload-nbm-to-javanet" param="upload.fromFile" inheritall="true">
             <fileset dir="${build.updates.dir}" includes="*.nbm"/>
         </foreach>

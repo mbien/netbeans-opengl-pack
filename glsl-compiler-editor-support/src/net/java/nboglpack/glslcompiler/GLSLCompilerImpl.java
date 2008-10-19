@@ -9,7 +9,6 @@ import com.mbien.engine.glsl.GLSLCompileException;
 import com.mbien.engine.glsl.CompilerMessage;
 import com.mbien.engine.util.GLRunnable;
 import com.mbien.engine.glsl.GLSLCompilerMessageParser;
-import com.mbien.engine.glsl.GLSLException;
 import com.mbien.engine.glsl.GLSLFragment;
 import com.mbien.engine.glsl.GLSLLinkException;
 import com.mbien.engine.glsl.GLSLProgram;
@@ -390,35 +389,5 @@ private static class HyperlinkProvider implements OutputListener{
     public void outputLineSelected(OutputEvent arg0) {}
     
 }
-
-/**
- * Wrapps netbeans specific dependencies into a shader.
- */
-private final static class NBShader extends GLSLShader {
-
-    private final DataObject[] dependencies;
-
-    public NBShader(GLSLShader.TYPE type, String source, String name, DataObject[] dependencies) {
-        super(type, source, name);
-        this.dependencies = dependencies;
-    }
-
-}
-
-private final static class NBGLSLException extends Exception {
-
-    private final NBShader nbs;
-
-    public NBGLSLException(GLSLException ex, NBShader nbs) {
-        super(ex);
-        this.nbs = nbs;
-    }
-
-    GLSLException getGLSLException() {
-        return (GLSLException) getCause();
-    }
-
-}
-
 
 }
