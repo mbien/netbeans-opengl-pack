@@ -5,7 +5,6 @@
 package com.mbien.engine.glsl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,9 +35,13 @@ public abstract class ShaderSourceLoader<T> {
 
         includeAllDependencies(main, path, fragments);
 
-        Collections.reverse(fragments);
+        // copy to array in reverse order
+        CodeFragment[] fragmentArray = new CodeFragment[fragments.size()];
+        for(int i = 0; i < fragmentArray.length; i++) {
+            fragmentArray[i] = fragments.get(fragmentArray.length-i-1);
+        }
 
-        return fragments.toArray(new CodeFragment[fragments.size()]);
+        return fragmentArray;
     }
 
 
