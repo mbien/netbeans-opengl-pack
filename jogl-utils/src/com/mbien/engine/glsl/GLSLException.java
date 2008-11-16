@@ -20,10 +20,11 @@ public class GLSLException extends Exception {
         
         StringBuilder sb = new StringBuilder();
         sb.append(shader.getName());
-        if(shader.fragments != null) {
-            for (int i = 0; i < shader.fragments.length; i++) {
-                sb.append(shader.fragments[i].name);
-                if(i < shader.fragments.length-1)
+        if(shader.getFragments() != null) {
+            CodeFragment[] fragments = shader.getFragments();
+            for (int i = 0; i < fragments.length; i++) {
+                sb.append(fragments[i].name);
+                if(i < fragments.length-1)
                     sb.append(", ");
             }
         }

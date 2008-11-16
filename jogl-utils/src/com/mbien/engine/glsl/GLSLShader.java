@@ -7,7 +7,6 @@ package com.mbien.engine.glsl;
 import com.mbien.engine.util.GLRunnable;
 import com.mbien.engine.util.GLWorker;
 import com.mbien.engine.util.GLWorkerImpl;
-import com.mbien.engine.util.ShaderSourceLoader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -34,7 +33,7 @@ public class GLSLShader {
 
  private boolean throwExceptionOnCompilerWarning = false;
 
- public GLSLFragment[] fragments;
+ private CodeFragment[] fragments;
  
     public GLSLShader(String... filePath) {
         this(toFiles(filePath));
@@ -107,7 +106,7 @@ public class GLSLShader {
         this.source = sb.toString();
     }
 
-    public GLSLShader(TYPE type, GLSLFragment mainFragment, String path, ShaderSourceLoader provider) {
+    public GLSLShader(TYPE type, CodeFragment mainFragment, String path, ShaderSourceLoader provider) {
 
         if(type == null)
             throw new IllegalArgumentException("null as shader type not allowed");
@@ -245,7 +244,11 @@ public class GLSLShader {
     public String getCompilerMsg() {
         return compilerMsg;
     }
-    
+
+    public CodeFragment[] getFragments() {
+        return fragments;
+    }
+
     private static boolean isShaderSupported(TYPE type) {
         
         if(SUPPORTED_SHADER.get(type) == null) {

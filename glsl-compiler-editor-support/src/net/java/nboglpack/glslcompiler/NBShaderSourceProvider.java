@@ -1,7 +1,7 @@
 package net.java.nboglpack.glslcompiler;
 
-import com.mbien.engine.glsl.GLSLFragment;
-import com.mbien.engine.util.ShaderSourceLoader;
+import com.mbien.engine.glsl.CodeFragment;
+import com.mbien.engine.glsl.ShaderSourceLoader;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -27,7 +27,8 @@ final class NBShaderSourceProvider extends ShaderSourceLoader<DataObject> {
     /**
      * Loades a shader from file.
      */
-    public GLSLFragment<DataObject> loadShaderSource(String filePath) {
+    @Override
+    public CodeFragment<DataObject> loadShaderSource(String filePath) {
 
         File file = new File(filePath);
         FileObject fo = FileUtil.toFileObject(file);
@@ -49,13 +50,14 @@ final class NBShaderSourceProvider extends ShaderSourceLoader<DataObject> {
     /**
      * Loades a shader from DataObject.
      */
-    public final GLSLFragment<DataObject> loadShaderSource(DataObject dao) {
+    @Override
+    public final CodeFragment<DataObject> loadShaderSource(DataObject dao) {
         EditorCookie cookie = dao.getCookie(EditorCookie.class);
 
         Document doc;
         try {
             doc = cookie.openDocument();
-            return new GLSLFragment<DataObject>(dao.getName(), doc.getText(0, doc.getLength()), dao);
+            return new CodeFragment<DataObject>(dao.getName(), doc.getText(0, doc.getLength()), dao);
         }catch (BadLocationException ex) {
             log().log(Level.INFO, "unable to read shader source from document", ex);
             return null;
@@ -64,6 +66,21 @@ final class NBShaderSourceProvider extends ShaderSourceLoader<DataObject> {
             return null;
         }
     }
+
+    @Override
+    public boolean sameSource(DataObject t, String path) {
+        String filePath = t.getPrimaryFile().getPath();
+
+        if(filePath.charAt(0) == '/')
+            filePath = filePath.substring(1);
+
+        if(path.charAt(0) == '/')
+            path = path.substring(1);
+
+        return filePath.equals(path);
+    }
+
+
 
     private static Logger log() {
         return Logger.getLogger(NBShaderSourceProvider.class.getName());

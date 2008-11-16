@@ -9,7 +9,7 @@ import com.mbien.engine.glsl.GLSLCompileException;
 import com.mbien.engine.glsl.CompilerMessage;
 import com.mbien.engine.util.GLRunnable;
 import com.mbien.engine.glsl.GLSLCompilerMessageParser;
-import com.mbien.engine.glsl.GLSLFragment;
+import com.mbien.engine.glsl.CodeFragment;
 import com.mbien.engine.glsl.GLSLLinkException;
 import com.mbien.engine.glsl.GLSLProgram;
 import com.mbien.engine.glsl.GLSLShader;
@@ -204,7 +204,7 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
         
         GLSLShader shader = null;
         NBShaderSourceProvider provider = new NBShaderSourceProvider();
-        GLSLFragment main;
+        CodeFragment<DataObject> main;
         
         main = provider.loadShaderSource(dao);
 
@@ -232,8 +232,8 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
         
         if(printOut) {
             io.getOut().println("compiling shader:");
-            if(shader.fragments != null && shader.fragments.length > 0) {
-                for (GLSLFragment fragment : shader.fragments) {
+            if(shader.getFragments() != null && shader.getFragments().length > 0) {
+                for (CodeFragment fragment : shader.getFragments()) {
                     io.getOut().println(" - including "+fragment.name);
                 }
             }else{
@@ -315,8 +315,8 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
 //                System.out.println(" - frag: "+msg.fragment);
                 // the dao which caused the message (can be a dependency or the root dao)
                 DataObject dao2annotate;
-                if(msg.fragment < shader.fragments.length && msg.fragment >= 0)
-                   dao2annotate = (DataObject) shader.fragments[msg.fragment].sourceObj;
+                if(msg.fragment < shader.getFragments().length && msg.fragment >= 0)
+                   dao2annotate = (DataObject) shader.getFragments()[msg.fragment].sourceObj;
                 else
                    dao2annotate = dao;
 
@@ -344,12 +344,12 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
     }
 
 
-    private final int[] countLines(DataObject dao, GLSLShader nbs) {
-        int[] lines = new int[nbs.fragments.length+1];
+    private final int[] countLines(DataObject dao, GLSLShader shader) {
+        int[] lines = new int[shader.getFragments().length+1];
 
         EditorCookie cookie;
-        for (int i = 0; i < nbs.fragments.length; i++) {
-            GLSLFragment<DataObject> d = nbs.fragments[i];
+        for (int i = 0; i < shader.getFragments().length; i++) {
+            CodeFragment<DataObject> d = shader.getFragments()[i];
             cookie = d.sourceObj.getCookie(EditorCookie.class);
             lines[i] = cookie.getLineSet().getLines().size();
         }
