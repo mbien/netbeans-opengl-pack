@@ -9,7 +9,17 @@
     <import file="nbproject/build-impl.xml"/>
     
     <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
-    
+
+    <target name="clean">
+
+        <delete includeemptydirs="true">
+            <fileset dir="release/gluegen-runtime" includes="**/*"/>
+            <fileset dir="release/modules/ext" includes="**/*"/>
+        </delete>
+        
+    </target>
+
+
     <target name="-pre-compile">
         
         <!--unzip gluegen distribution-->

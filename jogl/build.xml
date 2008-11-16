@@ -9,17 +9,27 @@
     <import file="nbproject/build-impl.xml"/>
     
     <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
-    
+
+    <target name="clean">
+
+        <delete includeemptydirs="true">
+            <fileset dir="release/jogl-runtime" includes="**/*"/>
+            <fileset dir="release/modules/ext" includes="**/*"/>
+        </delete>
+
+    </target>
+
+
     <target name="-pre-compile">
-        
+
         <!--unzip jogl distribution-->
         <unzip src="jogl-dist/jogl-webstart.zip" dest="release/jogl-runtime/"/>
-        
+
         <!--unzip natives-->
         <foreach param="filepath" target="unzip-natives" inheritall="true">
             <fileset dir="release/jogl-runtime" includes="jogl-natives-*.jar"/>
         </foreach>
-        
+
         <!--copy jars into lib wrapper module ext classpath-->
         <copy todir="release/modules/ext/" overwrite="true">
             <fileset file="release/jogl-runtime/jogl.jar"/>
