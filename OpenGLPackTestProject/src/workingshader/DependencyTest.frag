@@ -1,5 +1,5 @@
-//concat Dependency.frag
-//concat Dependency2.frag
+//import Dependency.frag
+//import Dependency2.frag
 /**
  * Created on 31. Dez 2006, 22:35
  *
