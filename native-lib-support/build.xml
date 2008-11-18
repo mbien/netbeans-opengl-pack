@@ -10,7 +10,16 @@
     <import file="nbproject/build-impl.xml"/>
     <import file="nbproject/xml_binding_build.xml"/>
     
+    
+    <target name="-pre-compile" depends="jaxb-code-generation"/>
+
+    <target name="clean" depends="jaxb-clean-code-generation"/>
+
+    <!--
     <target name="compile" depends="jaxb-code-generation,projectized-common.compile"/>
+    -->
+    <!--
     <target name="clean" depends="jaxb-clean-code-generation,projectized-common.clean"/>
+    -->
     
 </project>
