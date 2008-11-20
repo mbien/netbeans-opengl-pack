@@ -52,6 +52,10 @@ final class NBShaderSourceProvider extends ShaderSourceLoader<DataObject> {
      */
     @Override
     public final CodeFragment<DataObject> loadShaderSource(DataObject dao) {
+        
+        if(!dao.isValid())
+            return null;
+
         EditorCookie cookie = dao.getCookie(EditorCookie.class);
 
         Document doc;
