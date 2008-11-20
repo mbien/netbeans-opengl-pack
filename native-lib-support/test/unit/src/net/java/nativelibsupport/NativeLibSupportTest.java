@@ -38,8 +38,8 @@ public class NativeLibSupportTest {
     }
     
     @Test
-    public void readTest() {
-        
+    public void readXMLConfigTest() {
+        System.out.println("* * * read xml configuration test * * *");
         Library lib = loadLibConfigXML();
         System.out.println("lib name: "+lib.getName());
         System.out.println("lib folder: "+lib.getFolder());
@@ -61,6 +61,7 @@ public class NativeLibSupportTest {
     @Test
     public void testAssambleLibPath() {
         
+        System.out.println("* * * path assamble test * * *");
         
         String[] spec = {
             "Windows 2000", "amd64",
@@ -97,7 +98,9 @@ public class NativeLibSupportTest {
     private Library loadLibConfigXML() {
         try {
             JAXBContext jc = JAXBContext.newInstance("net.java.nativelibsupport.natives_config", this.getClass().getClassLoader());
-
+            
+            System.out.println("JAXB context is:\n"+jc);
+            
             Unmarshaller unmarshaller = jc.createUnmarshaller();
             Object obj = unmarshaller.unmarshal(this.getClass().getResourceAsStream("test-natives-config.xml"));
 

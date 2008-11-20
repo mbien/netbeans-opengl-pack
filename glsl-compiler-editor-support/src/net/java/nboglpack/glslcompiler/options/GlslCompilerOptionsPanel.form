@@ -3,6 +3,7 @@
 <Form version="1.3" maxVersion="1.3" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="true"/>
     <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
@@ -44,7 +45,7 @@
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="compiler error log parser configuration">
+            <TitledBorder title="compiler log parser configuration">
               <ResourceString PropertyName="titleX" bundle="net/java/nboglpack/glslcompiler/options/Bundle.properties" key="GlslCompilerPanel_OptionsPanelTitle" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
             </TitledBorder>
           </Border>
@@ -128,9 +129,9 @@
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="joglVersionLabel" alignment="0" max="32767" attributes="0"/>
-                      <Component id="vendorLabel" alignment="0" max="32767" attributes="0"/>
-                      <Component id="glVersionLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="joglVersionLabel" alignment="0" pref="58" max="32767" attributes="0"/>
+                      <Component id="vendorLabel" alignment="0" pref="58" max="32767" attributes="0"/>
+                      <Component id="glVersionLabel" alignment="0" pref="58" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -140,9 +141,9 @@
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="vertexShaderSupport" alignment="0" max="32767" attributes="0"/>
-                      <Component id="fragmentShaderSupport" alignment="0" max="32767" attributes="0"/>
-                      <Component id="geometryShaderSupport" alignment="0" max="32767" attributes="0"/>
+                      <Component id="vertexShaderSupport" alignment="0" pref="58" max="32767" attributes="0"/>
+                      <Component id="fragmentShaderSupport" alignment="0" pref="58" max="32767" attributes="0"/>
+                      <Component id="geometryShaderSupport" alignment="0" pref="58" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>

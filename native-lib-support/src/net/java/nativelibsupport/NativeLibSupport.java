@@ -13,7 +13,6 @@ import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.Properties;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -88,13 +87,13 @@ public class NativeLibSupport {
                 try {
                     // jaxb context loading is expensive load it only once
                     JAXBContext jc = getJAXBContext();
-                    
+
                     Unmarshaller unmarshaller = jc.createUnmarshaller();
                     obj = unmarshaller.unmarshal(configFile);
                     
                 } catch (JAXBException ex) {
-                    Logger.getLogger(NativeLibSupport.class.getName()).log(Level.SEVERE, null, ex);
-                    throw new RuntimeException();
+//                    Logger.getLogger(NativeLibSupport.class.getName()).log(Level.SEVERE, null, ex);
+                    throw new RuntimeException("error reading deployment file", ex);
                 }
 
                 if(obj instanceof Library == false) {
@@ -217,7 +216,7 @@ public class NativeLibSupport {
                 reference = new WeakReference<JAXBContext>(jc);
             }
         }
-        
+        System.out.println(jc);
         return jc;
     }
     

@@ -1,3 +1,6 @@
+/*
+ * Created on 15. March 2007, 16:10
+ */
 package net.java.nboglpack.glslcompiler.options;
 
 import com.mbien.engine.glsl.GLSLShader.TYPE;
@@ -7,28 +10,37 @@ import java.util.prefs.Preferences;
 import java.util.regex.Pattern;
 import javax.media.opengl.GL;
 import javax.media.opengl.GLContext;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import org.jdesktop.layout.GroupLayout;
+import org.jdesktop.layout.LayoutStyle;
 import org.openide.util.Lookup;
+import org.openide.util.NbBundle;
 import org.openide.util.NbPreferences;
 
 /**
  * Created on 15. March 2007, 16:10
+ * GLSL compiler IDE options.
  * @author Michael Bien
  */
-final class GlslCompilerOptionsPanel extends javax.swing.JPanel {
-    
+final class GlslCompilerOptionsPanel extends JPanel {
+
     private final GlslCompilerOptionsPanelController controller;
-    
+
     GlslCompilerOptionsPanel(GlslCompilerOptionsPanelController controller) {
         this.controller = controller;
         initComponents();
     }
-    
-    
+
     void load() {
-        
+
         final String[] buffer = new String[2];
         GLWorker worker = Lookup.getDefault().lookup(GLWorker.class);
         worker.addWork(new GLRunnable() {
+
             public void run(GLContext context) {
                 GL gl = context.getGL();
                 buffer[0] = gl.glGetString(GL.GL_VERSION);
@@ -36,43 +48,45 @@ final class GlslCompilerOptionsPanel extends javax.swing.JPanel {
             }
         });
         worker.work();
-        
+
         glVersionLabel.setText(buffer[0]);
         vendorLabel.setText(buffer[1]);
-        
+
         Preferences preferences = NbPreferences.forModule(GlslCompilerOptionsPanel.class);
-        patternTextField.setText(preferences.get("GlslCompilerLogPattern", "<null>"));
+        patternTextField.setText(preferences.get("GlslCompilerLogPattern", ""));
         joglVersionLabel.setText(Package.getPackage("javax.media.opengl").getImplementationVersion());
-        
+
         vertexShaderSupport.setText(getShaderSupportedString(TYPE.VERTEX));
         fragmentShaderSupport.setText(getShaderSupportedString(TYPE.FRAGMENT));
         geometryShaderSupport.setText(getShaderSupportedString(TYPE.GEOMETRY));
     }
-    
+
     void store() {
-        if(valid())
+        if (valid()) {
             NbPreferences.forModule(GlslCompilerOptionsPanel.class).put("GlslCompilerLogPattern", patternTextField.getText());
+        }
     }
-    
+
     boolean valid() {
-        
+
         String pattern = patternTextField.getText();
-        if(pattern == null || pattern.trim().equals(""))
+        if (pattern == null || pattern.trim().isEmpty()) {
             return false;
-        
-        try{
+        }
+
+        try {
             Pattern.compile(pattern);
             return true;
-        }catch(Exception ex){
-            return false; 
+        } catch (Exception ex) {
+            return false;
         }
-        
+
     }
-    
+
     private String getShaderSupportedString(TYPE shaderType) {
         return shaderType.isSupported() ? "supported" : "<html><font color=#FF0000>not supported</font>";
     }
-    
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -80,171 +94,161 @@ final class GlslCompilerOptionsPanel extends javax.swing.JPanel {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        javax.swing.JPanel optionsPanel = new javax.swing.JPanel();
-        javax.swing.JLabel patternLabel = new javax.swing.JLabel();
-        patternTextField = new javax.swing.JTextField();
-        javax.swing.JPanel runtimePanel = new javax.swing.JPanel();
-        javax.swing.JLabel glVersion = new javax.swing.JLabel();
-        glVersionLabel = new javax.swing.JLabel();
-        javax.swing.JLabel gpuVendor = new javax.swing.JLabel();
-        vendorLabel = new javax.swing.JLabel();
-        javax.swing.JLabel joglVersion = new javax.swing.JLabel();
-        joglVersionLabel = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
-        vertexShaderSupport = new javax.swing.JLabel();
-        fragmentShaderSupport = new javax.swing.JLabel();
-        geometryShaderSupport = new javax.swing.JLabel();
-        logoLabel = new javax.swing.JLabel();
+        JPanel optionsPanel = new JPanel();
+        JLabel patternLabel = new JLabel();
+        patternTextField = new JTextField();
+        JPanel runtimePanel = new JPanel();
+        JLabel glVersion = new JLabel();
+        glVersionLabel = new JLabel();
+        JLabel gpuVendor = new JLabel();
+        vendorLabel = new JLabel();
+        JLabel joglVersion = new JLabel();
+        joglVersionLabel = new JLabel();
+        JLabel jLabel1 = new JLabel();
+        JLabel jLabel2 = new JLabel();
+        JLabel jLabel3 = new JLabel();
+        vertexShaderSupport = new JLabel();
+        fragmentShaderSupport = new JLabel();
+        geometryShaderSupport = new JLabel();
+        logoLabel = new JLabel();
 
         optionsPanel.setBackground(getBackground());
-        optionsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(org.openide.util.NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_OptionsPanelTitle"))); // NOI18N
 
-        patternLabel.setText(org.openide.util.NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_ErrorParserPatternLabel")); // NOI18N
-
-        org.jdesktop.layout.GroupLayout optionsPanelLayout = new org.jdesktop.layout.GroupLayout(optionsPanel);
+        optionsPanel.setBorder(BorderFactory.createTitledBorder(NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_OptionsPanelTitle"))); // NOI18N
+        patternLabel.setText(NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_ErrorParserPatternLabel")); // NOI18N
+        GroupLayout optionsPanelLayout = new GroupLayout(optionsPanel);
         optionsPanel.setLayout(optionsPanelLayout);
         optionsPanelLayout.setHorizontalGroup(
-            optionsPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            optionsPanelLayout.createParallelGroup(GroupLayout.LEADING)
             .add(optionsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(patternLabel)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(patternTextField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                .addPreferredGap(LayoutStyle.RELATED)
+                .add(patternTextField, GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
                 .addContainerGap())
+
         );
         optionsPanelLayout.setVerticalGroup(
-            optionsPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            optionsPanelLayout.createParallelGroup(GroupLayout.LEADING)
             .add(optionsPanelLayout.createSequentialGroup()
-                .add(optionsPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(optionsPanelLayout.createParallelGroup(GroupLayout.BASELINE)
                     .add(patternLabel)
-                    .add(patternTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(patternTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+
         );
 
         runtimePanel.setBackground(getBackground());
-        runtimePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(org.openide.util.NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_RuntimePanelTitle"))); // NOI18N
-
-        glVersion.setText(org.openide.util.NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_OpenGLVersionLabel")); // NOI18N
-
+        runtimePanel.setBorder(BorderFactory.createTitledBorder(NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_RuntimePanelTitle"))); // NOI18N
+        glVersion.setText(NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_OpenGLVersionLabel")); // NOI18N
         glVersionLabel.setText("jLabel2");
-
-        gpuVendor.setText(org.openide.util.NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_GPU_VendorLabel")); // NOI18N
-
+        gpuVendor.setText(NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_GPU_VendorLabel")); // NOI18N
         vendorLabel.setText("jLabel4");
-
-        joglVersion.setText(org.openide.util.NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_JOGL_VersionLabel")); // NOI18N
-
+        joglVersion.setText(NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_JOGL_VersionLabel")); // NOI18N
         joglVersionLabel.setText("jLabel6");
-
-        jLabel1.setText(org.openide.util.NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_VertexShaderLabel")); // NOI18N
-
-        jLabel2.setText(org.openide.util.NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_FragmentShaderLabel")); // NOI18N
-
-        jLabel3.setText(org.openide.util.NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_GeometryShaderLabel")); // NOI18N
-
+        jLabel1.setText(NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_VertexShaderLabel")); // NOI18N
+        jLabel2.setText(NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_FragmentShaderLabel")); // NOI18N
+        jLabel3.setText(NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_GeometryShaderLabel")); // NOI18N
         vertexShaderSupport.setText("jLabel4");
-
         fragmentShaderSupport.setText("jLabel5");
-
         geometryShaderSupport.setText("jLabel6");
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/net/java/nboglpack/glslcompiler/options/NetBeansOpenGLPack.png"))); // NOI18N
-
-        org.jdesktop.layout.GroupLayout runtimePanelLayout = new org.jdesktop.layout.GroupLayout(runtimePanel);
+        logoLabel.setIcon(new ImageIcon(getClass().getResource("/net/java/nboglpack/glslcompiler/options/NetBeansOpenGLPack.png"))); // NOI18N
+        
+        GroupLayout runtimePanelLayout = new GroupLayout(runtimePanel);
         runtimePanel.setLayout(runtimePanelLayout);
         runtimePanelLayout.setHorizontalGroup(
-            runtimePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            runtimePanelLayout.createParallelGroup(GroupLayout.LEADING)
             .add(runtimePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(logoLabel)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(runtimePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .addPreferredGap(LayoutStyle.UNRELATED)
+                .add(runtimePanelLayout.createParallelGroup(GroupLayout.LEADING)
                     .add(glVersion)
                     .add(gpuVendor)
                     .add(joglVersion))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(runtimePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(joglVersionLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(vendorLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(glVersionLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(runtimePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .addPreferredGap(LayoutStyle.RELATED)
+                .add(runtimePanelLayout.createParallelGroup(GroupLayout.LEADING)
+                    .add(joglVersionLabel, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                    .add(vendorLabel, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                    .add(glVersionLabel, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
+                .addPreferredGap(LayoutStyle.RELATED)
+                .add(runtimePanelLayout.createParallelGroup(GroupLayout.LEADING)
                     .add(jLabel1)
                     .add(jLabel2)
                     .add(jLabel3))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(runtimePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(vertexShaderSupport, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(fragmentShaderSupport, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(geometryShaderSupport, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(LayoutStyle.RELATED)
+                .add(runtimePanelLayout.createParallelGroup(GroupLayout.LEADING)
+                    .add(vertexShaderSupport, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                    .add(fragmentShaderSupport, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                    .add(geometryShaderSupport, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
                 .addContainerGap())
+
         );
         runtimePanelLayout.setVerticalGroup(
-            runtimePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            runtimePanelLayout.createParallelGroup(GroupLayout.LEADING)
             .add(runtimePanelLayout.createSequentialGroup()
-                .add(runtimePanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
+                .add(runtimePanelLayout.createParallelGroup(GroupLayout.CENTER)
                     .add(runtimePanelLayout.createSequentialGroup()
                         .add(glVersion)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .addPreferredGap(LayoutStyle.UNRELATED)
                         .add(gpuVendor)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .addPreferredGap(LayoutStyle.UNRELATED)
                         .add(joglVersion))
                     .add(runtimePanelLayout.createSequentialGroup()
                         .add(glVersionLabel)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .addPreferredGap(LayoutStyle.UNRELATED)
                         .add(vendorLabel)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .addPreferredGap(LayoutStyle.UNRELATED)
                         .add(joglVersionLabel))
                     .add(runtimePanelLayout.createSequentialGroup()
                         .add(jLabel1)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .addPreferredGap(LayoutStyle.UNRELATED)
                         .add(jLabel2)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .addPreferredGap(LayoutStyle.UNRELATED)
                         .add(jLabel3))
                     .add(runtimePanelLayout.createSequentialGroup()
                         .add(vertexShaderSupport)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .addPreferredGap(LayoutStyle.UNRELATED)
                         .add(fragmentShaderSupport)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .addPreferredGap(LayoutStyle.UNRELATED)
                         .add(geometryShaderSupport))
                     .add(logoLabel))
                 .addContainerGap(12, Short.MAX_VALUE))
+
         );
 
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
+        GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+            layout.createParallelGroup(GroupLayout.LEADING)
+            .add(GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, optionsPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, runtimePanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(layout.createParallelGroup(GroupLayout.TRAILING)
+                    .add(GroupLayout.LEADING, optionsPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(GroupLayout.LEADING, runtimePanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            layout.createParallelGroup(GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(runtimePanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(optionsPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(runtimePanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.RELATED)
+                .add(optionsPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+
         );
     }// </editor-fold>//GEN-END:initComponents
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel fragmentShaderSupport;
-    private javax.swing.JLabel geometryShaderSupport;
-    private javax.swing.JLabel glVersionLabel;
-    private javax.swing.JLabel joglVersionLabel;
-    private javax.swing.JLabel logoLabel;
-    private javax.swing.JTextField patternTextField;
-    private javax.swing.JLabel vendorLabel;
-    private javax.swing.JLabel vertexShaderSupport;
+    private JLabel fragmentShaderSupport;
+    private JLabel geometryShaderSupport;
+    private JLabel glVersionLabel;
+    private JLabel joglVersionLabel;
+    private JLabel logoLabel;
+    private JTextField patternTextField;
+    private JLabel vendorLabel;
+    private JLabel vertexShaderSupport;
     // End of variables declaration//GEN-END:variables
-    
 }
