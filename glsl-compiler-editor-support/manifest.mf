@@ -4,4 +4,4 @@ OpenIDE-Module: net.java.nboglpack.glslcompiler
 OpenIDE-Module-Install: net/java/nboglpack/glslcompiler/GLSLCompilerModule.class
 OpenIDE-Module-Layer: net/java/nboglpack/glslcompiler/layer.xml
 OpenIDE-Module-Localizing-Bundle: net/java/nboglpack/glslcompiler/Bundle.properties
-OpenIDE-Module-Specification-Version: 1.1.3
+OpenIDE-Module-Specification-Version: 1.1.4

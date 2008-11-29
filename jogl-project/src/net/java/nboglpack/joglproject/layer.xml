@@ -3,7 +3,7 @@
 <filesystem>
     <folder name="Templates">
         <folder name="Project">
-            <folder name="OpenGL">
+            <folder name="Standard">
                 <file name="SimpleDemo.zip" url="resources/jogl-project.zip">
                     <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                     <attr name="demo" stringvalue="net.highteq.gamedev.SimpleJOGL"/>

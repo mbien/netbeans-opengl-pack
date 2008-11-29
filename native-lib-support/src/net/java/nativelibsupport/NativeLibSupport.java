@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package net.java.nativelibsupport;
 
 import java.io.File;
@@ -27,7 +22,7 @@ import org.openide.filesystems.FileUtil;
 import org.openide.filesystems.JarFileSystem;
 
 /**
- * Utility class for native librarie deployment.
+ * Utility class for native library deployment.
  * @author Michael Bien
  */
 public class NativeLibSupport {
