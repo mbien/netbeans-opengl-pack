@@ -16,7 +16,7 @@
     if (jreVersions.length==0) {
         pageTracker._setVar("Java: none");
     }else{
-        Array.sort(jreVersions);
+        jreVersions.sort();
         if(jreVersions.length > 1 && jreVersions[jreVersions.length-1] == "1.8.0")
             pageTracker._setVar("Java: " + jreVersions[jreVersions.length-2]);
         else
