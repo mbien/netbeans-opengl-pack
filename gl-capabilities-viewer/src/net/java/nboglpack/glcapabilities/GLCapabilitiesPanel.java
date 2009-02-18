@@ -63,7 +63,7 @@ public class GLCapabilitiesPanel extends JPanel {
         
         
         // bind extensions table to model
-        tableBinding = SwingBindings.createJTableBinding(UpdateStrategy.READ, capabilitiesModel.getExtensions(), extentionsJPanel.getTable());
+        tableBinding = SwingBindings.createJTableBinding(UpdateStrategy.READ, capabilitiesModel.getExtensions(), extensionsJPanel.getTable());
         tableBinding.setEditable(false);
         tableBinding.addColumnBinding(ObjectProperty.create()).setColumnName(bundle.getString("GLCapabilitiesPanel.tablecolumn.Name"));
         
@@ -116,8 +116,8 @@ public class GLCapabilitiesPanel extends JPanel {
         bindingGroup.unbind();
         bindingGroup.bind();
         
-        TableRowSorter<TableModel> sorter = (TableRowSorter<TableModel>)extentionsJPanel.getTable().getRowSorter();
-        sorter.setModel(extentionsJPanel.getTable().getModel());
+        TableRowSorter<TableModel> sorter = (TableRowSorter<TableModel>)extensionsJPanel.getTable().getRowSorter();
+        sorter.setModel(extensionsJPanel.getTable().getModel());
         
         sorter = (TableRowSorter)displayModesJPanel.getTable().getRowSorter();
         sorter.setModel(displayModesJPanel.getTable().getModel());
@@ -239,7 +239,7 @@ public class GLCapabilitiesPanel extends JPanel {
         JLabel textureUnitsGSLabel = new JLabel();
         JLabel renderBuffersLabel = new JLabel();
         capabilitiesJPanel = new FilteredTable();
-        extentionsJPanel = new FilteredTable();
+        extensionsJPanel = new FilteredTable();
         displayModesJPanel = new DisplayModesPanel();
 
         basicCapsPanel.setBorder(BorderFactory.createTitledBorder(NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.basicCapsPanel.border.title"))); // NOI18N
@@ -283,12 +283,10 @@ public class GLCapabilitiesPanel extends JPanel {
         wrapperPanelLayout.setHorizontalGroup(
             wrapperPanelLayout.createParallelGroup(Alignment.LEADING)
             .addComponent(gLCanvas, GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-
         );
         wrapperPanelLayout.setVerticalGroup(
             wrapperPanelLayout.createParallelGroup(Alignment.LEADING)
-            .addComponent(gLCanvas, GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-
+            .addComponent(gLCanvas, GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
         );
 
         GroupLayout basicCapsPanelLayout = new GroupLayout(basicCapsPanel);
@@ -307,18 +305,17 @@ public class GLCapabilitiesPanel extends JPanel {
                         .addGroup(basicCapsPanelLayout.createParallelGroup(Alignment.LEADING)
                             .addGroup(basicCapsPanelLayout.createSequentialGroup()
                                 .addGroup(basicCapsPanelLayout.createParallelGroup(Alignment.LEADING)
-                                    .addComponent(glslField, GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                                    .addComponent(joglField, GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                                    .addComponent(glField, GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
+                                    .addComponent(glslField, GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                    .addComponent(joglField, GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                    .addComponent(glField, GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE))
                                 .addPreferredGap(ComponentPlacement.UNRELATED)
                                 .addComponent(wrapperPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                            .addComponent(vendorField, GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
-                            .addComponent(rendererField, GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)))
+                            .addComponent(vendorField, GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                            .addComponent(rendererField, GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)))
                     .addComponent(jogl)
                     .addComponent(glsl)
                     .addComponent(gl))
                 .addContainerGap())
-
         );
         basicCapsPanelLayout.setVerticalGroup(
             basicCapsPanelLayout.createParallelGroup(Alignment.LEADING)
@@ -347,7 +344,6 @@ public class GLCapabilitiesPanel extends JPanel {
                     .addComponent(vendor)
                     .addComponent(vendorField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
-
         );
 
         overviewCapsPanel.setBorder(BorderFactory.createTitledBorder(NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.overviewCapsPanel.border.title"))); // NOI18N
@@ -465,7 +461,6 @@ public class GLCapabilitiesPanel extends JPanel {
                     .addComponent(textureUnitsGSField, GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
                     .addComponent(renderBuffersField, GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE))
                 .addContainerGap())
-
         );
         overviewCapsPanelLayout.setVerticalGroup(
             overviewCapsPanelLayout.createParallelGroup(Alignment.LEADING)
@@ -503,7 +498,6 @@ public class GLCapabilitiesPanel extends JPanel {
                     .addComponent(lightsField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addComponent(renderBuffersLabel))
                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-
         );
 
         GroupLayout overviewPanelLayout = new GroupLayout(overviewPanel);
@@ -517,7 +511,6 @@ public class GLCapabilitiesPanel extends JPanel {
                     .addComponent(overviewCapsPanel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(basicCapsPanel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-
         );
         overviewPanelLayout.setVerticalGroup(
             overviewPanelLayout.createParallelGroup(Alignment.LEADING)
@@ -527,24 +520,21 @@ public class GLCapabilitiesPanel extends JPanel {
                 .addPreferredGap(ComponentPlacement.RELATED)
                 .addComponent(overviewCapsPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-
         );
 
         tabbedPane.addTab(NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.overviewPanel.TabConstraints.tabTitle"), overviewPanel); // NOI18N
         tabbedPane.addTab(NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.capabilitiesJPanel.TabConstraints.tabTitle"), capabilitiesJPanel); // NOI18N
-        tabbedPane.addTab(NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.extentionsJPanel.TabConstraints.tabTitle"), extentionsJPanel); // NOI18N
+        tabbedPane.addTab(NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.extensionsJPanel.TabConstraints.tabTitle"), extensionsJPanel); // NOI18N
         tabbedPane.addTab(NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.displayModesJPanel.TabConstraints.tabTitle"), displayModesJPanel); // NOI18N
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(Alignment.LEADING)
             .addComponent(tabbedPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
-
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(Alignment.LEADING)
             .addComponent(tabbedPane, GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
-
         );
 
         bindingGroup.bind();
@@ -556,7 +546,7 @@ public class GLCapabilitiesPanel extends JPanel {
     private FilteredTable capabilitiesJPanel;
     private GLCapabilitiesModel capabilitiesModel;
     private DisplayModesPanel displayModesJPanel;
-    private FilteredTable extentionsJPanel;
+    private FilteredTable extensionsJPanel;
     private JTextField fsaaField;
     private GLCanvas gLCanvas;
     private JTextField glField;
