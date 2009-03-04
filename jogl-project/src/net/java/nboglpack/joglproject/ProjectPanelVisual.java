@@ -1,17 +1,27 @@
 package net.java.nboglpack.joglproject;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.Document;
 import net.java.nboglpack.jogl.util.JOGLDistribution;
+import org.jdesktop.layout.GroupLayout;
+import org.jdesktop.layout.LayoutStyle;
 import org.netbeans.spi.project.ui.support.ProjectChooser;
 import org.openide.WizardDescriptor;
 import org.openide.WizardValidationException;
+import org.openide.awt.Mnemonics;
 import org.openide.filesystems.FileUtil;
 
 /**
@@ -51,48 +61,47 @@ public class ProjectPanelVisual extends JPanel implements DocumentListener
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        javax.swing.JLabel projectNameLabel = new javax.swing.JLabel();
-        javax.swing.JLabel projectLocationLabel = new javax.swing.JLabel();
-        javax.swing.JLabel createdFolderLabel = new javax.swing.JLabel();
-        javax.swing.JLabel projectPackageLabel = new javax.swing.JLabel();
-        javax.swing.JLabel createdMainClassLabel = new javax.swing.JLabel();
-        javax.swing.JLabel createdMainClassLabel1 = new javax.swing.JLabel();
-        projectNameTextField = new javax.swing.JTextField();
-        projectLocationTextField = new javax.swing.JTextField();
-        createdFolderTextField = new javax.swing.JTextField();
-        projectPackageTextField = new javax.swing.JTextField();
-        createdMainClassTextField = new javax.swing.JTextField();
-        javax.swing.JButton browseButton = new javax.swing.JButton();
-        platformDropDown = new javax.swing.JComboBox();
-        javax.swing.JTextArea platformHint = new javax.swing.JTextArea();
+        JLabel projectNameLabel = new JLabel();
+        JLabel projectLocationLabel = new JLabel();
+        JLabel createdFolderLabel = new JLabel();
+        JLabel projectPackageLabel = new JLabel();
+        JLabel createdMainClassLabel = new JLabel();
+        JLabel createdMainClassLabel1 = new JLabel();
+        projectNameTextField = new JTextField();
+        projectLocationTextField = new JTextField();
+        createdFolderTextField = new JTextField();
+        projectPackageTextField = new JTextField();
+        createdMainClassTextField = new JTextField();
+        JButton browseButton = new JButton();
+        platformDropDown = new JComboBox();
+        JTextArea platformHint = new JTextArea();
 
         projectNameLabel.setLabelFor(projectNameTextField);
-        org.openide.awt.Mnemonics.setLocalizedText(projectNameLabel, "Project &Name:");
+        Mnemonics.setLocalizedText(projectNameLabel, "Project &Name:");
 
         projectLocationLabel.setLabelFor(projectLocationTextField);
-        org.openide.awt.Mnemonics.setLocalizedText(projectLocationLabel, "Project &Location:");
+        Mnemonics.setLocalizedText(projectLocationLabel, "Project &Location:");
 
         createdFolderLabel.setLabelFor(createdFolderTextField);
-        org.openide.awt.Mnemonics.setLocalizedText(createdFolderLabel, "Project &Folder:");
+        Mnemonics.setLocalizedText(createdFolderLabel, "Project &Folder:");
 
         projectPackageLabel.setLabelFor(projectNameTextField);
-        org.openide.awt.Mnemonics.setLocalizedText(projectPackageLabel, "Project Package:");
+        Mnemonics.setLocalizedText(projectPackageLabel, "Project Package:");
 
         createdMainClassLabel.setLabelFor(createdFolderTextField);
-        org.openide.awt.Mnemonics.setLocalizedText(createdMainClassLabel, "Main Class:");
+        Mnemonics.setLocalizedText(createdMainClassLabel, "Main Class:");
 
         createdMainClassLabel1.setLabelFor(createdFolderTextField);
-        org.openide.awt.Mnemonics.setLocalizedText(createdMainClassLabel1, "Platform:");
+        Mnemonics.setLocalizedText(createdMainClassLabel1, "Platform:");
 
         createdFolderTextField.setEditable(false);
 
         createdMainClassTextField.setEditable(false);
 
-        org.openide.awt.Mnemonics.setLocalizedText(browseButton, "Br&owse...");
+        Mnemonics.setLocalizedText(browseButton, "Br&owse...");
         browseButton.setActionCommand("BROWSE");
-        browseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        browseButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 browseButtonActionPerformed(evt);
             }
         });
@@ -107,63 +116,63 @@ public class ProjectPanelVisual extends JPanel implements DocumentListener
         platformHint.setWrapStyleWord(true);
         platformHint.setOpaque(false);
 
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
+        GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            layout.createParallelGroup(GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(layout.createParallelGroup(GroupLayout.LEADING)
                     .add(projectNameLabel)
                     .add(projectLocationLabel)
                     .add(createdFolderLabel)
                     .add(projectPackageLabel)
                     .add(createdMainClassLabel)
                     .add(createdMainClassLabel1))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .addPreferredGap(LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(GroupLayout.LEADING)
                     .add(platformDropDown, 0, 357, Short.MAX_VALUE)
-                    .add(createdMainClassTextField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-                    .add(projectPackageTextField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, projectNameTextField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, projectLocationTextField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, createdFolderTextField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-                    .add(platformHint, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 357, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                    .add(createdMainClassTextField, GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                    .add(projectPackageTextField, GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                    .add(GroupLayout.TRAILING, projectNameTextField, GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                    .add(GroupLayout.TRAILING, projectLocationTextField, GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                    .add(GroupLayout.TRAILING, createdFolderTextField, GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                    .add(platformHint, GroupLayout.PREFERRED_SIZE, 357, GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(LayoutStyle.RELATED)
                 .add(browseButton)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            layout.createParallelGroup(GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(layout.createParallelGroup(GroupLayout.BASELINE)
                     .add(projectNameLabel)
-                    .add(projectNameTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(projectNameTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(GroupLayout.BASELINE)
                     .add(projectLocationLabel)
-                    .add(projectLocationTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(projectLocationTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .add(browseButton))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .addPreferredGap(LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(GroupLayout.BASELINE)
                     .add(createdFolderLabel)
-                    .add(createdFolderTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(createdFolderTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(GroupLayout.BASELINE)
                     .add(projectPackageLabel)
-                    .add(projectPackageTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(projectPackageTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(GroupLayout.BASELINE)
                     .add(createdMainClassLabel)
-                    .add(createdMainClassTextField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(platformDropDown, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(createdMainClassTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(GroupLayout.BASELINE)
+                    .add(platformDropDown, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .add(createdMainClassLabel1))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(platformHint, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 41, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(LayoutStyle.RELATED)
+                .add(platformHint, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 	
@@ -196,12 +205,12 @@ public class ProjectPanelVisual extends JPanel implements DocumentListener
 		
 		
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField createdFolderTextField;
-    private javax.swing.JTextField createdMainClassTextField;
-    private javax.swing.JComboBox platformDropDown;
-    private javax.swing.JTextField projectLocationTextField;
-    private javax.swing.JTextField projectNameTextField;
-    private javax.swing.JTextField projectPackageTextField;
+    private JTextField createdFolderTextField;
+    private JTextField createdMainClassTextField;
+    private JComboBox platformDropDown;
+    private JTextField projectLocationTextField;
+    private JTextField projectNameTextField;
+    private JTextField projectPackageTextField;
     // End of variables declaration//GEN-END:variables
     
     private ComboBoxModel createPlatformComboBoxModel() {
@@ -358,7 +367,7 @@ public class ProjectPanelVisual extends JPanel implements DocumentListener
         }
     }
 
-    public void insertUpdate(DocumentEvent e)
+    public synchronized  void insertUpdate(DocumentEvent e)
     {
         updateTexts(e);
         if (this.projectNameTextField.getDocument() == e.getDocument())

@@ -22,7 +22,7 @@ import net.java.nboglpack.glsleditor.vocabulary.GLSLElementDescriptor;
 import net.java.nboglpack.glsleditor.vocabulary.GLSLVocabulary;
 import org.openide.ErrorManager;
 import org.openide.filesystems.FileObject;
-import org.openide.filesystems.Repository;
+import org.openide.filesystems.FileUtil;
 
 /**
  *
@@ -114,8 +114,8 @@ public class GlslVocabularyManager {
     }
     
     private void loadVocabulary() {
-        
-        FileObject vocabularyfile = Repository.getDefault().getDefaultFileSystem().findResource("Editors/"+mimetype+"/vocabulary.xml");
+        //        FileObject vocabularyfile = FileUtil.getConfigFile("Editors/"+mimetype+"/vocabulary.xml");
+        FileObject vocabularyfile = org.openide.filesystems.Repository.getDefault().getDefaultFileSystem().findResource("Editors/"+mimetype+"/vocabulary.xml");
         
         if (vocabularyfile != null) {
             
