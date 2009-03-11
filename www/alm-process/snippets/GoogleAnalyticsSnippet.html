@@ -10,16 +10,7 @@
 </script>
 
 <!-- java version tracker, tracks latest version only -->
-<script src='http://java.com/js/deployJava.js' type='text/javascript'></script>
+<script src="http://dl.javafx.com/dtfx.js"></script>
 <script type='text/javascript'>
-    var jreVersions = deployJava.getJREs();
-    if (jreVersions.length==0) {
-        pageTracker._setVar("Java: none");
-    }else{
-        jreVersions.sort();
-        if(jreVersions.length > 1 && jreVersions[jreVersions.length-1] == "1.8.0")
-            pageTracker._setVar("Java: " + jreVersions[jreVersions.length-2]);
-        else
-            pageTracker._setVar("Java: " + jreVersions[jreVersions.length-1]);
-    }
+    pageTracker._setVar("Java: " + getJavaVersion());
 </script>
