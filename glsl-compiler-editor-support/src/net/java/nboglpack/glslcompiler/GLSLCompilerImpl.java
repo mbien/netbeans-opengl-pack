@@ -309,7 +309,7 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
             
             if(msg.type == CompilerMessage.COMPILER_EVENT_TYPE.MSG) {
                 if(printOut)
-                   io.getOut().println("compiler msg: " + msg);
+                   io.getOut().println("compiler msg: " + msg.msg);
             }else{
 //                System.out.println(shader.getName() +" dep: "+shader.dependencies.length);
 //                System.out.println(" - frag: "+msg.fragment);
