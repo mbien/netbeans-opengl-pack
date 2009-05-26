@@ -14,13 +14,14 @@ import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.beans.Beans;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.media.opengl.DefaultGLCapabilitiesChooser;
 import javax.media.opengl.GLCanvas;
 import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.GLCapabilitiesChooser;
 import javax.media.opengl.GLDrawableFactory;
 import javax.media.opengl.GLException;
-import org.openide.util.Exceptions;
 
 /**
  * GLWorker implementation with fallback mode.
@@ -36,7 +37,8 @@ public class NBGLWorkerImpl implements GLWorker {
             try {
                 glworker = new GLWorkerImpl();
             } catch (GLException ex) {
-                Exceptions.printStackTrace(ex);
+                Logger.getLogger(NBGLWorkerImpl.class.getName()).log(
+                        Level.INFO, "unable to create GLWorkerImpl, switching to fallback mode", ex);
                 glworker = createFallbackWorkerImpl();
             }
         } else {
@@ -46,7 +48,8 @@ public class NBGLWorkerImpl implements GLWorker {
     }
 
     private final GLWorkerImpl createFallbackWorkerImpl() {
-        System.out.println("fallback mode");
+        
+        Logger.getLogger(NBGLWorkerImpl.class.getName()).log(Level.INFO, "using GLWorker fallback mode");
         
         // fallback mode
         // use a heavy weight drawable if pixel buffers are not supported

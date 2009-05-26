@@ -20,6 +20,8 @@ import java.awt.event.HierarchyEvent;
 import java.awt.event.HierarchyListener;
 import java.util.Comparator;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.media.opengl.DefaultGLCapabilitiesChooser;
 import javax.media.opengl.GLCanvas;
 import javax.media.opengl.GLCapabilities;
@@ -45,7 +47,6 @@ import org.openide.util.NbBundle;
 public class GLCapabilitiesPanel extends JPanel {
 
 
-    /** Creates new form GLCapabilityPanel */
     @SuppressWarnings("unchecked")
     public GLCapabilitiesPanel() {
         
@@ -153,16 +154,13 @@ public class GLCapabilitiesPanel extends JPanel {
 
     
     private GLCanvas createGLDemoCanvas() {
-        
-        GLCapabilities caps = new GLCapabilities();
-        caps.setNumSamples(4);
-        caps.setSampleBuffers(true);
-        
+
         GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         GLCapabilitiesChooser chooser = new DefaultGLCapabilitiesChooser(){
 
             @Override
             public int chooseCapabilities(GLCapabilities desired, GLCapabilities[] available, int arg2) {
+
                 int max = 0;
                 for (GLCapabilities elem : available) {
                     if(elem == null)
@@ -177,9 +175,19 @@ public class GLCapabilitiesPanel extends JPanel {
                 return super.chooseCapabilities(desired, available, arg2);
             }
         };
+
+        try{
+            GLCapabilities caps = new GLCapabilities();
+            caps.setNumSamples(2);
+            caps.setSampleBuffers(true);
+            return new GLCanvas(caps, chooser, null, device);
+        }catch(RuntimeException ex) {
+            Logger.getLogger(getClass().getName()).log(
+                    Level.INFO, "unable to create GLContext with multisample support -> retry without multisamples", ex);
+            GLCapabilities caps = new GLCapabilities();
+            return new GLCanvas(caps, chooser, null, device);
+        }
         
-        
-        return new GLCanvas(caps, chooser, null, device);
     }
     
     

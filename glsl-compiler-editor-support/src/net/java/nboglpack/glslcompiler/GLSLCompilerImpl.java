@@ -77,7 +77,7 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
             }else if(buffer[0].contains("ATI") || buffer[0].contains("AMD") ) {
                 patternString = "(\\w+):\\s*\\d+:(\\d+):";
             }else{
-                patternString = null;
+                patternString = "";
             }
             
             pref.put("GlslCompilerLogPattern", patternString);
