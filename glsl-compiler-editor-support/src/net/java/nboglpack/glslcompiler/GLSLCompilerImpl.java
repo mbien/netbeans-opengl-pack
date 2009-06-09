@@ -14,6 +14,7 @@ import com.mbien.engine.glsl.GLSLLinkException;
 import com.mbien.engine.glsl.GLSLProgram;
 import com.mbien.engine.glsl.GLSLShader;
 import com.mbien.engine.util.GLWorker;
+import java.awt.Color;
 import java.io.File;
 import net.java.nboglpack.glslcompiler.annotation.CompilerAnnotations;
 import net.java.nboglpack.glslcompiler.annotation.CompilerAnnotation;
@@ -33,6 +34,7 @@ import org.openide.text.Line;
 import org.openide.util.Exceptions;
 import org.openide.util.Lookup;
 import org.openide.util.NbPreferences;
+import org.openide.windows.IOColorLines;
 import org.openide.windows.IOProvider;
 import org.openide.windows.InputOutput;
 import org.openide.windows.OutputEvent;
@@ -48,6 +50,8 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
  private final GLSLCompilerMessageParser compilerMSGParser;
  private final GLWorker glWorker;
  private final InputOutput io;
+
+ private final Color DARK_GREEN = new Color(0, 153, 0);
  
  
     public GLSLCompilerImpl() {
@@ -130,7 +134,7 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
         }
         
         if(success && printOut)
-            io.getOut().println("compilation successful");
+            println("compilation successful", DARK_GREEN);
         
         return success;
     }
@@ -174,14 +178,14 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
         // success == true if all shaders compiled without errors
         if(success) {
             if(printOut){
-                io.getOut().println("compilation successful");
-                io.getOut().println("linking shaders");
+                println("compilation successful", DARK_GREEN);
+                println("linking shaders", Color.GRAY);
             }
             try{
                 link(shaders);
                 
                 if(printOut)
-                    io.getOut().println("link successful");
+                    println("link successful", DARK_GREEN);
             }catch(GLSLLinkException ex) {
                 success = false;
                 if(printOut){
@@ -231,13 +235,13 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
             return null;
         
         if(printOut) {
-            io.getOut().println("compiling shader:");
+            println("compiling shader:", Color.GRAY);
             if(shader.getFragments() != null && shader.getFragments().length > 0) {
                 for (CodeFragment fragment : shader.getFragments()) {
-                    io.getOut().println(" - including "+fragment.name);
+                    println(" - including "+fragment.name, Color.GRAY);
                 }
             }else{
-                io.getOut().println(shader.getName());
+                println(shader.getName(), Color.GRAY);
             }
         }
         
@@ -309,7 +313,7 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
             
             if(msg.type == CompilerMessage.COMPILER_EVENT_TYPE.MSG) {
                 if(printOut)
-                   io.getOut().println("compiler msg: " + msg.msg);
+                   println("compiler msg: " + msg.msg, Color.ORANGE);
             }else{
 //                System.out.println(shader.getName() +" dep: "+shader.dependencies.length);
 //                System.out.println(" - frag: "+msg.fragment);
@@ -356,8 +360,16 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
 
         cookie = dao.getCookie(EditorCookie.class);
         lines[lines.length-1] = cookie.getLineSet().getLines().size();
-        
+
         return lines;
+    }
+
+    private final void println(String line, Color color) {
+        try {
+            IOColorLines.println(io, line, color);
+        } catch (IOException ex) {
+            io.getOut().print(line);
+        }
     }
 
     

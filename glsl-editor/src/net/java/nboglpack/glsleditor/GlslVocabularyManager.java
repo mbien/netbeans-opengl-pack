@@ -114,8 +114,8 @@ public class GlslVocabularyManager {
     }
     
     private void loadVocabulary() {
-        //        FileObject vocabularyfile = FileUtil.getConfigFile("Editors/"+mimetype+"/vocabulary.xml");
-        FileObject vocabularyfile = org.openide.filesystems.Repository.getDefault().getDefaultFileSystem().findResource("Editors/"+mimetype+"/vocabulary.xml");
+        
+        FileObject vocabularyfile = FileUtil.getConfigFile("Editors/"+mimetype+"/vocabulary.xml");
         
         if (vocabularyfile != null) {
             

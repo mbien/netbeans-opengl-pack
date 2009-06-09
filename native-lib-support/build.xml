@@ -9,12 +9,7 @@
     
     <import file="nbproject/build-impl.xml"/>
     <import file="nbproject/xml_binding_build.xml"/>
-    
-    
-    <target name="netbeans-extra" depends="jaxb-code-generation"/>
-
-    <!-- something strange happens here, if this is commented in package-info.java will be excluded on build?!
-    <target name="clean" depends="jaxb-clean-code-generation,projectized-common.clean"/>
+    <!--
+    <target name="compile" depends="jaxb-code-generation, projectized-common.compile"/>
     -->
-    
 </project>

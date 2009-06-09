@@ -15,28 +15,16 @@
         </typedef>
     </target>
     
-    <target name="jaxb-clean-code-generation" depends="jaxb-code-generation"/>
-    
     <target name="jaxb-code-generation" depends="xjc-typedef-target">
-        <delete dir="${build.generated.dir}"/>
-        
-        <mkdir dir="${build.generated.dir}/addons/jaxb" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig"/>
-        <mkdir dir="${build.generated.dir}/jaxbCache" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig"/>
-        <mkdir dir="${build.classes.dir}" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig"/>
-        <mkdir dir="${build.generated.dir}/jaxbCache/native-lib-config-binding"/>
-        <xjc destdir="${build.generated.dir}/jaxbCache/native-lib-config-binding" catalog="catalog.xml">
+        <xjc destdir="src" catalog="catalog.xml">
             <classpath>
-                <pathelement location="${src.dir}"/>
-                <pathelement path="${jaxbwiz.xjcrun.classpath}"/>
+                <pathelement location="src"/>
             </classpath>
             <arg value="-xmlschema"/>
             <schema file="${jaxb.schema}"/>
             <depends file="${jaxb.schema}"/>
-            <produces dir="generated/jaxbCache/native-lib-config-binding"/>
+            <produces dir="src"/>
         </xjc>
-        <copy todir="src">
-            <fileset dir="${build.generated.dir}/jaxbCache/native-lib-config-binding"/>
-        </copy>
         <!--javac destdir="${build.classes.dir}" srcdir="${build.generated.dir}/addons/jaxb" source="${javac.source}" target="${javac.target}" xmlns:s="http://xml.netbeans.org/schema/JAXBWizConfig">
             <sourcepath location="${src.dir}"/>
             <classpath path="${jaxbwiz.gensrc.classpath}"/>
