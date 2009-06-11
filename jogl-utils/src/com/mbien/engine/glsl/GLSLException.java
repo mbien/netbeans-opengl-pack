@@ -19,7 +19,7 @@ public class GLSLException extends Exception {
     protected static String format(GLSLShader shader, String massages[]) {
         
         StringBuilder sb = new StringBuilder();
-        sb.append(shader.getName());
+//        sb.append(shader.getName());
         if(shader.getFragments() != null) {
             CodeFragment[] fragments = shader.getFragments();
             for (int i = 0; i < fragments.length; i++) {
