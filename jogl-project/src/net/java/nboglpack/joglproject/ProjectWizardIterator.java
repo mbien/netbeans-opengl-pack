@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import javax.swing.JComponent;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeListener;
 import org.apache.tools.ant.module.api.support.ActionUtils;
 import org.netbeans.api.project.ProjectManager;
@@ -31,6 +32,7 @@ import org.openide.filesystems.FileUtil;
 import org.openide.loaders.DataObject;
 import org.openide.modules.InstalledFileLocator;
 import org.openide.util.NbBundle;
+import org.openide.util.RequestProcessor;
 
 /**
  * Iterates through the new-JOGL-project wizzard.
@@ -312,30 +314,55 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
             props.setProperty("template.excludes",mergedExcludes);
         }
 
-        try
-        {
+        try  {
+
             File scriptFile=InstalledFileLocator.getDefault().locate("jogl-project/initJoglProject.xml",null,false);
             FileObject script= FileUtil.toFileObject(scriptFile);
             ExecutorTask task= ActionUtils.runTarget(script,new String[]{"initProject"},props);
             task.waitFinished();
             
-//            Thread.sleep(1000);
-            
             // open main file in editor
-            File mainFile = new File(   dir.getAbsolutePath()+File.separator
-                                       +"src"+File.separator
-                                       +packageName.replace('.',File.separatorChar)+File.separator
-                                       +mainClass+".java"   );
-            try{
-                DataObject mainDAO = DataObject.find(FileUtil.toFileObject(mainFile));
-                mainDAO.getLookup().lookup(OpenCookie.class).open();
-            }catch(Exception ex) {
-                Logger.getLogger(this.getClass().getName()).log(
-                    Level.WARNING, "could not open main file in editor", ex);
-            }
-        }
-        catch (Exception ex)
-        {
+            final File mainFile = new File( dir.getAbsolutePath()+File.separator
+                                           +"src"+File.separator
+                                           +packageName.replace('.',File.separatorChar)+File.separator
+                                           +mainClass+".java"   );
+
+            // a race condition causes to fail opening JOGL matisse gui components -> add a delay
+            // however reopening works always
+
+            Runnable opener = new Runnable() {
+
+                @Override
+                public void run() {
+
+                    try{
+                        final DataObject mainDAO = DataObject.find(FileUtil.toFileObject(mainFile));
+
+                        // and back to the EDT
+                        SwingUtilities.invokeLater(new Runnable() {
+
+                            public void run() {
+                                try{
+                                    mainDAO.getLookup().lookup(OpenCookie.class).open();
+                                }catch(Exception ex) {
+                                    Logger.getLogger(this.getClass().getName()).log(
+                                        Level.INFO, "could not open main file in editor", ex);
+                                }
+                            }
+
+                        });
+                    }catch(Exception ex) {
+                        Logger.getLogger(this.getClass().getName()).log(
+                            Level.INFO, "could not find/open main file in editor", ex);
+                    }
+
+                }
+            };
+
+            RequestProcessor rp = RequestProcessor.getDefault();
+            rp.post(opener, 3000);
+
+        } catch (Exception ex) {
             Logger.getLogger(this.getClass().getName()).log(
                     Level.SEVERE, "error while deploying project", ex);
         }
