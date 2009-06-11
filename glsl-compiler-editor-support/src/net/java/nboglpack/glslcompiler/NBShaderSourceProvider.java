@@ -61,7 +61,7 @@ final class NBShaderSourceProvider extends ShaderSourceLoader<DataObject> {
         Document doc;
         try {
             doc = cookie.openDocument();
-            return new CodeFragment<DataObject>(dao.getName(), doc.getText(0, doc.getLength()), dao);
+            return new CodeFragment<DataObject>(dao.getPrimaryFile().getNameExt(), doc.getText(0, doc.getLength()), dao);
         }catch (BadLocationException ex) {
             log().log(Level.INFO, "unable to read shader source from document", ex);
             return null;
