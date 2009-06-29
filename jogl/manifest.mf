@@ -3,5 +3,5 @@ AutoUpdate-Show-In-Client: false
 OpenIDE-Module: javax.media.opengl
 OpenIDE-Module-Install: net/java/nboglpack/jogl/Installer.class
 OpenIDE-Module-Localizing-Bundle: javax/media/opengl/Bundle.properties
-OpenIDE-Module-Specification-Version: 1.1.1.4
+OpenIDE-Module-Specification-Version: 1.1.1.5
 

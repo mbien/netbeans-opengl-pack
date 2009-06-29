@@ -77,7 +77,7 @@
     <target name="-jogl-template-patch-master-jnlp" depends="-jogl-template-check-master-jnlp" if="is.jnlp.unpatched">
         <replace file="master-${jnlp.descriptor}.jnlp">
             <replacetoken><![CDATA[</resources>]]></replacetoken>
-            <replacevalue><![CDATA[    <extension name="jogl" href="http://download.java.net/media/jogl/builds/archive/jsr-231-webstart-current/jogl.jnlp" />
+            <replacevalue><![CDATA[    <extension name="jogl" href="http://download.java.net/media/jogl/builds/archive/jsr-231-1.x-webstart-current/jogl.jnlp" />
     </resources>]]></replacevalue>
         </replace>
     </target>
