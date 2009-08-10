@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: net.java.nboglpack.joglproject.jogl1
+OpenIDE-Module-Layer: net/java/nboglpack/joglproject/jogl1/layer.xml
+OpenIDE-Module-Localizing-Bundle: net/java/nboglpack/joglproject/jogl1/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

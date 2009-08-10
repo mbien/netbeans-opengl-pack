@@ -44,12 +44,14 @@ public class NativeLibSupport {
         assert libraryName!=null;
         assert configFile!=null;
         assert distributionFolder!=null;
-        
+
+        libraryName+=".jar";
+
         try{
             JarFileSystem jarSystem = new JarFileSystem();
             
             // read jogl version from manifest and compare with deployed version
-            jarSystem.setJarFile(new File(distributionFolder+File.separator+libraryName+".jar"));
+            jarSystem.setJarFile(new File(distributionFolder+File.separator+libraryName));
             String jarVersion = jarSystem.getManifest().getMainAttributes().getValue("Implementation-Version");
             
             if(jarVersion == null)
@@ -71,7 +73,7 @@ public class NativeLibSupport {
                 propertyFile.createNewFile();
             }
             
-            String deployedLibVersion = properties.getProperty(libraryName+".jar", null);
+            String deployedLibVersion = properties.getProperty(libraryName, null);
             
             
             //  check if we've already deployed
@@ -120,11 +122,11 @@ public class NativeLibSupport {
                     copyFolderEntries(libSourceFolder, libTargetFolder);
                     
                     // update deployed version property
-                    properties.put(lib.getName(), jarVersion);
+                    properties.put(libraryName, jarVersion);
                     properties.store(new FileOutputStream(propertyFile), "deployed native libraries (remove entry and restart to force re-deployment)");
                     
                     Logger.getLogger(NativeLibSupport.class.getName()).info(
-                        "deployed "+lib.getName()+" version: "+jarVersion );
+                        "deployed "+libraryName+" version: "+jarVersion );
                 }else{
                     String os = System.getProperty("os.name");
                     String arch = System.getProperty("os.arch");

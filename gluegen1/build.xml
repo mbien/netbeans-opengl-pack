@@ -30,11 +30,6 @@
             <fileset dir="release/gluegen-runtime" includes="gluegen-rt-natives-*.jar"/>
         </foreach>
 
-        <!--copy jars into lib wrapper module ext classpath-->
-        <copy todir="release/modules/ext/" overwrite="true">
-            <fileset file="release/gluegen-runtime/gluegen-rt.jar"/>
-        </copy>
-
     </target>
 
     <target name="unzip-natives">
