@@ -33,6 +33,7 @@
             </module-dependencies>
             <public-packages>
                 <package>com.sun.gluegen.runtime</package>
+                <package>com.sun.gluegen.runtime.opengl</package>
             </public-packages>
             <class-path-extension>
                 <runtime-relative-path>ext/gluegen-rt.jar</runtime-relative-path>

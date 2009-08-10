@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module: javax.media.opengl.jogl1
+OpenIDE-Module-Localizing-Bundle: javax/media/opengl/jogl1/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.1.1
+

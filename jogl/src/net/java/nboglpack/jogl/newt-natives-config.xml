@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : natives-config.xml
+    Created on : April 10, 2008, 6:36 PM
+    Author     : mbien
+    Description:
+        Nativle library deployment configuration file.
+-->
+<ns0:library  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+   xmlns:ns0='http://net/java/nativelibsupport/natives_config'
+   xsi:schemaLocation='http://net/java/nativelibsupport/resource natives-config.xsd'
+   name='newt.jar' folder='jogl-runtime' flat='true'>
+    <ns0:os folder='-natives-windows' regex='^(?i)windows'>
+        <ns0:cpu folder='-amd64' regex='^(?i)amd|x64|x86_64$'/>
+        <ns0:cpu folder='-i586' regex='^(?i)i?+[3-9|x]86$'/>
+    </ns0:os>
+    <ns0:os folder='-natives-macosx' regex='^(?i)mac'>
+        <ns0:cpu folder='-ppc' regex='^(?i)ppc$'/>
+        <ns0:cpu folder='-universal' regex='.'/>
+    </ns0:os>
+    <ns0:os folder='-natives-linux' regex='^(?i)linux'>
+        <ns0:cpu folder='-amd64' regex='^(?i)amd|x64|x86_64$'/>
+        <ns0:cpu folder='-i586' regex='^(?i)i?+[3-9|x]86$'/>
+    </ns0:os>
+    <ns0:os folder='-natives-solaris' regex='^(?i)solaris|sunos'>
+        <ns0:cpu folder='-amd64' regex='^(?i)amd|x64|x86_64$'/>
+        <ns0:cpu folder='-sparc' regex='^(?i)sparc$'/>
+        <ns0:cpu folder='-sparcv9' regex='^(?i)sparcv9$'/>
+        <ns0:cpu folder='-i586' regex='^(?i)i?+[3-9|x]86$'/>
+    </ns0:os>
+</ns0:library>

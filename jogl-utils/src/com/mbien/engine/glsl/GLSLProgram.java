@@ -2,11 +2,11 @@ package com.mbien.engine.glsl;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;
-import javax.media.opengl.GL;
+import javax.media.opengl.GL2;
 
 /**
  * Created on 27. August 2006, 13:40
- * @author Michael Bien<br><br>
+ * @author Michael Bien
  */
 public class GLSLProgram {
     
@@ -19,14 +19,14 @@ public class GLSLProgram {
         shaders = new ArrayList<GLSLShader>();
     }
     
-    public void createProgram(GL gl) {
+    public void createProgram(GL2 gl) {
         handle = gl.glCreateProgramObjectARB();
     }
     
     /**
      * creates a program, attaches all shaders to it and finally links the shaders
      */
-    public void initProgram(GL gl, GLSLShader... shaders) throws GLSLLinkException {
+    public void initProgram(GL2 gl, GLSLShader... shaders) throws GLSLLinkException {
         
         this.shaders.clear();
                 
@@ -44,7 +44,7 @@ public class GLSLProgram {
      * deletes the program
      * @param deleteShaders - if true all previously attached shaders will be deleted too
      */
-    public void deinitProgram(GL gl, boolean deleteShaders) {
+    public void deinitProgram(GL2 gl, boolean deleteShaders) {
         gl.glDeleteProgram(handle);
         
         if(deleteShaders) {
@@ -55,7 +55,7 @@ public class GLSLProgram {
         handle = -1;
     }
     
-    public void attachShader(GL gl, GLSLShader shader) {
+    public void attachShader(GL2 gl, GLSLShader shader) {
         
         gl.glAttachObjectARB(handle, shader.getID());
         // mark shader to delete; this will be done if the program will be deleted by the application
@@ -64,16 +64,16 @@ public class GLSLProgram {
         shaders.add(shader);
     }
     
-    public void detachShader(GL gl, GLSLShader shader) {
+    public void detachShader(GL2 gl, GLSLShader shader) {
         gl.glDetachObjectARB(handle, shader.getID());
         shaders.remove(shader);
     }
     
-    public void linkProgram(GL gl) {
+    public void linkProgram(GL2 gl) {
         gl.glLinkProgramARB(handle);
     }
     
-    public int allocateUniform(GL gl, String name) {
+    public int allocateUniform(GL2 gl, String name) {
         int uniform = gl.glGetUniformLocation(handle, name);
 
         if(uniform == -1){
@@ -87,19 +87,19 @@ public class GLSLProgram {
     /**
      * enables this shader program
      */
-    public void enable(GL gl) {
+    public void enable(GL2 gl) {
         gl.glUseProgramObjectARB(handle);
     }
     
     /**
-     * returns to GL fixed function pipeline (shader is disabled)
+     * returns to GL2 fixed function pipeline (shader is disabled)
      */
-    public void disable(GL gl) {
+    public void disable(GL2 gl) {
         gl.glUseProgramObjectARB(0);
     }
     
         
-    public void checkProgram(GL gl) throws GLSLLinkException {
+    public void checkProgram(GL2 gl) throws GLSLLinkException {
         
         boolean linked = true;
         boolean valid = true;
@@ -107,26 +107,25 @@ public class GLSLProgram {
         int[] buffer = new int[1];
                
         // check link status
-        gl.glGetObjectParameterivARB(handle, GL.GL_OBJECT_LINK_STATUS_ARB, buffer, 0);
-        if(buffer[0] == GL.GL_FALSE) {// 1 or 0
+        gl.glGetObjectParameterivARB(handle, GL2.GL_OBJECT_LINK_STATUS_ARB, buffer, 0);
+        if(buffer[0] == GL2.GL_FALSE) {// 1 or 0
             linked = false;
 //            getLog().warning("error linking program");
         }
         // validate program
         gl.glValidateProgramARB(handle);
-        gl.glGetObjectParameterivARB(handle, GL.GL_OBJECT_VALIDATE_STATUS_ARB, buffer, 0);
-        if(buffer[0] == GL.GL_FALSE) {
+        gl.glGetObjectParameterivARB(handle, GL2.GL_OBJECT_VALIDATE_STATUS_ARB, buffer, 0);
+        if(buffer[0] == GL2.GL_FALSE) {
             valid = false;
 //            getLog().warning("program validation reports error");
         }
         // dump log
-        gl.glGetObjectParameterivARB(handle, GL.GL_OBJECT_INFO_LOG_LENGTH_ARB, buffer, 0);
+        gl.glGetObjectParameterivARB(handle, GL2.GL_OBJECT_INFO_LOG_LENGTH_ARB, buffer, 0);
         byte[] log = new byte[buffer[0]];
         gl.glGetInfoLogARB(handle, buffer[0], buffer, 0, log, 0);
         
 //        if(log[0] != 0) // 0 if empty
 //            getLog().warning("linker info log:\n"+new String(log));
-        
         
         if(!linked || !valid) {
             

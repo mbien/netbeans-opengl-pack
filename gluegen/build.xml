@@ -13,7 +13,7 @@
     <target name="clean">
 
         <delete includeemptydirs="true">
-            <fileset dir="release/gluegen-runtime" includes="**/*"/>
+            <fileset dir="release/gluegen-runtime2" includes="**/*"/>
             <fileset dir="release/modules/ext" includes="**/*"/>
         </delete>
         
@@ -23,16 +23,16 @@
     <target name="-pre-compile">
         
         <!--unzip gluegen distribution-->
-        <unzip src="gluegen-dist/gluegen-rt-webstart.zip" dest="release/gluegen-runtime/"/>
+        <unzip src="gluegen-dist/gluegen-rt-2.0-webstart.zip" dest="release/gluegen-runtime2/"/>
         
         <!--unzip natives-->
         <foreach param="filepath" target="unzip-natives" inheritall="true">
-            <fileset dir="release/gluegen-runtime" includes="gluegen-rt-natives-*.jar"/>
+            <fileset dir="release/gluegen-runtime2" includes="gluegen-rt-natives-*.jar"/>
         </foreach>
         
         <!--copy jars into lib wrapper module ext classpath-->
         <copy todir="release/modules/ext/" overwrite="true">
-            <fileset file="release/gluegen-runtime/gluegen-rt.jar"/>
+            <fileset file="release/gluegen-runtime2/gluegen-rt.jar"/>
         </copy>
         
     </target>
@@ -41,7 +41,7 @@
         <basename property="filename" file="${filepath}" suffix=".jar"/>
         <propertyregex property="libname" input="${filename}" regexp="(^.*)-natives-(.*)$" select="\1.jar"/>
         <propertyregex property="platform" input="${filename}" regexp="^.*-natives-(.*)$" select="\1"/>
-        <unzip src="${filepath}" dest="release/gluegen-runtime/${libname}-natives-${platform}">
+        <unzip src="${filepath}" dest="release/gluegen-runtime2/${libname}-natives-${platform}">
             <patternset excludes="META-INF/*,META-INF"/>
         </unzip>
         <delete file="${filepath}"/>

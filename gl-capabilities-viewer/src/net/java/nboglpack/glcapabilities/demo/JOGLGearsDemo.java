@@ -2,9 +2,10 @@ package net.java.nboglpack.glcapabilities.demo;
 
 import com.sun.opengl.util.Animator;
 import javax.media.opengl.GL;
+import javax.media.opengl.GL2;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;
-import javax.media.opengl.GLJPanel;
+import javax.media.opengl.awt.GLJPanel;
 
 
 /**
@@ -37,7 +38,7 @@ public class JOGLGearsDemo implements GLEventListener {
         // Use debug pipeline
         // drawable.setGL(new DebugGL(drawable.getGL()));
 
-        GL gl = drawable.getGL();
+        GL2 gl = (GL2) drawable.getGL();
 
         //System.err.println("INIT GL IS: " + gl.getClass().getName());
 
@@ -50,47 +51,47 @@ public class JOGLGearsDemo implements GLEventListener {
         float[] green = {0.0f, 0.8f, 0.2f, 1.0f};
         float[] blue = {0.2f, 0.2f, 1.0f, 1.0f};
 
-        gl.glLightfv(GL.GL_LIGHT0, GL.GL_POSITION, pos, 0);
-        gl.glEnable(GL.GL_CULL_FACE);
-        gl.glEnable(GL.GL_LIGHTING);
-        gl.glEnable(GL.GL_LIGHT0);
-        gl.glEnable(GL.GL_DEPTH_TEST);
+        gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_POSITION, pos, 0);
+        gl.glEnable(GL2.GL_CULL_FACE);
+        gl.glEnable(GL2.GL_LIGHTING);
+        gl.glEnable(GL2.GL_LIGHT0);
+        gl.glEnable(GL2.GL_DEPTH_TEST);
 
         /* make the gears */
         gear1 = gl.glGenLists(1);
-        gl.glNewList(gear1, GL.GL_COMPILE);
-        gl.glMaterialfv(GL.GL_FRONT, GL.GL_AMBIENT_AND_DIFFUSE, red, 0);
+        gl.glNewList(gear1, GL2.GL_COMPILE);
+        gl.glMaterialfv(GL2.GL_FRONT, GL2.GL_AMBIENT_AND_DIFFUSE, red, 0);
         gear(gl, 1.0f, 4.0f, 1.0f, 20, 0.7f);
         gl.glEndList();
 
         gear2 = gl.glGenLists(1);
-        gl.glNewList(gear2, GL.GL_COMPILE);
-        gl.glMaterialfv(GL.GL_FRONT, GL.GL_AMBIENT_AND_DIFFUSE, green, 0);
+        gl.glNewList(gear2, GL2.GL_COMPILE);
+        gl.glMaterialfv(GL2.GL_FRONT, GL2.GL_AMBIENT_AND_DIFFUSE, green, 0);
         gear(gl, 0.5f, 2.0f, 2.0f, 10, 0.7f);
         gl.glEndList();
 
         gear3 = gl.glGenLists(1);
-        gl.glNewList(gear3, GL.GL_COMPILE);
-        gl.glMaterialfv(GL.GL_FRONT, GL.GL_AMBIENT_AND_DIFFUSE, blue, 0);
+        gl.glNewList(gear3, GL2.GL_COMPILE);
+        gl.glMaterialfv(GL2.GL_FRONT, GL2.GL_AMBIENT_AND_DIFFUSE, blue, 0);
         gear(gl, 1.3f, 2.0f, 0.5f, 10, 0.7f);
         gl.glEndList();
 
-        gl.glEnable(GL.GL_NORMALIZE);
+        gl.glEnable(GL2.GL_NORMALIZE);
     }
 
     public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
-        GL gl = drawable.getGL();
+        GL2 gl = (GL2) drawable.getGL();
 
         float h = (float) height / (float) width;
 
-        gl.glMatrixMode(GL.GL_PROJECTION);
+        gl.glMatrixMode(GL2.GL_PROJECTION);
 
-        //System.err.println("GL_VENDOR: " + gl.glGetString(GL.GL_VENDOR));
-        //System.err.println("GL_RENDERER: " + gl.glGetString(GL.GL_RENDERER));
-        //System.err.println("GL_VERSION: " + gl.glGetString(GL.GL_VERSION));
+        //System.err.println("GL_VENDOR: " + gl.glGetString(GL2.GL_VENDOR));
+        //System.err.println("GL_RENDERER: " + gl.glGetString(GL2.GL_RENDERER));
+        //System.err.println("GL_VERSION: " + gl.glGetString(GL2.GL_VERSION));
         gl.glLoadIdentity();
         gl.glFrustum(-1.0f, 1.0f, -h, h, 5.0f, 60.0f);
-        gl.glMatrixMode(GL.GL_MODELVIEW);
+        gl.glMatrixMode(GL2.GL_MODELVIEW);
         gl.glLoadIdentity();
         gl.glTranslatef(0.0f, 0.0f, -40.0f);
     }
@@ -99,11 +100,11 @@ public class JOGLGearsDemo implements GLEventListener {
         
         angle += 0.5f;
 
-        GL gl = drawable.getGL();
+        GL2 gl = (GL2) drawable.getGL();
         if ((drawable instanceof GLJPanel) && !((GLJPanel) drawable).isOpaque() && ((GLJPanel) drawable).shouldPreserveColorBufferIfTranslucent()) {
-            gl.glClear(GL.GL_DEPTH_BUFFER_BIT);
+            gl.glClear(GL2.GL_DEPTH_BUFFER_BIT);
         } else {
-            gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
+            gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
         }
 
         gl.glPushMatrix();
@@ -133,10 +134,10 @@ public class JOGLGearsDemo implements GLEventListener {
         gl.glPopMatrix();
     }
 
-    public void displayChanged(GLAutoDrawable drawable, boolean modeChanged, boolean deviceChanged) {
+    public void dispose(GLAutoDrawable arg0) {
     }
 
-    public static void gear(GL gl, float inner_radius, float outer_radius, float width, int teeth, float tooth_depth) {
+    public static void gear(GL2 gl, float inner_radius, float outer_radius, float width, int teeth, float tooth_depth) {
         int i;
         float r0;
         float r1;
@@ -153,12 +154,12 @@ public class JOGLGearsDemo implements GLEventListener {
 
         da = 2.0f * (float) Math.PI / teeth / 4.0f;
 
-        gl.glShadeModel(GL.GL_FLAT);
+        gl.glShadeModel(GL2.GL_FLAT);
 
         gl.glNormal3f(0.0f, 0.0f, 1.0f);
 
         /* draw front face */
-        gl.glBegin(GL.GL_QUAD_STRIP);
+        gl.glBegin(GL2.GL_QUAD_STRIP);
         for (i = 0; i <= teeth; i++) {
             angle = i * 2.0f * (float) Math.PI / teeth;
             gl.glVertex3f(r0 * (float) Math.cos(angle), r0 * (float) Math.sin(angle), width * 0.5f);
@@ -171,7 +172,7 @@ public class JOGLGearsDemo implements GLEventListener {
         gl.glEnd();
 
         /* draw front sides of teeth */
-        gl.glBegin(GL.GL_QUADS);
+        gl.glBegin(GL2.GL_QUADS);
         for (i = 0; i < teeth; i++) {
             angle = i * 2.0f * (float) Math.PI / teeth;
             gl.glVertex3f(r1 * (float) Math.cos(angle), r1 * (float) Math.sin(angle), width * 0.5f);
@@ -182,7 +183,7 @@ public class JOGLGearsDemo implements GLEventListener {
         gl.glEnd();
 
         /* draw back face */
-        gl.glBegin(GL.GL_QUAD_STRIP);
+        gl.glBegin(GL2.GL_QUAD_STRIP);
         for (i = 0; i <= teeth; i++) {
             angle = i * 2.0f * (float) Math.PI / teeth;
             gl.glVertex3f(r1 * (float) Math.cos(angle), r1 * (float) Math.sin(angle), -width * 0.5f);
@@ -193,7 +194,7 @@ public class JOGLGearsDemo implements GLEventListener {
         gl.glEnd();
 
         /* draw back sides of teeth */
-        gl.glBegin(GL.GL_QUADS);
+        gl.glBegin(GL2.GL_QUADS);
         for (i = 0; i < teeth; i++) {
             angle = i * 2.0f * (float) Math.PI / teeth;
             gl.glVertex3f(r1 * (float) Math.cos(angle + 3 * da), r1 * (float) Math.sin(angle + 3 * da), -width * 0.5f);
@@ -204,7 +205,7 @@ public class JOGLGearsDemo implements GLEventListener {
         gl.glEnd();
 
         /* draw outward faces of teeth */
-        gl.glBegin(GL.GL_QUAD_STRIP);
+        gl.glBegin(GL2.GL_QUAD_STRIP);
         for (i = 0; i < teeth; i++) {
             angle = i * 2.0f * (float) Math.PI / teeth;
             gl.glVertex3f(r1 * (float) Math.cos(angle), r1 * (float) Math.sin(angle), width * 0.5f);
@@ -231,10 +232,10 @@ public class JOGLGearsDemo implements GLEventListener {
         gl.glVertex3f(r1 * (float) Math.cos(0), r1 * (float) Math.sin(0), -width * 0.5f);
         gl.glEnd();
 
-        gl.glShadeModel(GL.GL_SMOOTH);
+        gl.glShadeModel(GL2.GL_SMOOTH);
 
         /* draw inside radius cylinder */
-        gl.glBegin(GL.GL_QUAD_STRIP);
+        gl.glBegin(GL2.GL_QUAD_STRIP);
         for (i = 0; i <= teeth; i++) {
             angle = i * 2.0f * (float) Math.PI / teeth;
             gl.glNormal3f(-(float) Math.cos(angle), -(float) Math.sin(angle), 0.0f);
@@ -255,4 +256,5 @@ public class JOGLGearsDemo implements GLEventListener {
     public boolean isRunning() {
         return animator.isAnimating();
     }
+
 }

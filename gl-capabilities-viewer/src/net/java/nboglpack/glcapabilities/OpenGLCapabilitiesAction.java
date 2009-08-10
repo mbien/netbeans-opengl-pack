@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 import javax.media.opengl.GL;
+import javax.media.opengl.GL2;
 import javax.media.opengl.GLContext;
 import javax.media.opengl.GLException;
 import javax.swing.JDialog;
@@ -73,60 +74,60 @@ public final class OpenGLCapabilitiesAction extends CallableSystemAction {
                 GLCapabilitiesModel model = capsPanel.getModel();
                 
                 // overview
-                model.setGLVersion(gl.glGetString(GL.GL_VERSION));
-                model.setGLVendor(gl.glGetString(GL.GL_VENDOR));
-                model.setRenderer(gl.glGetString(GL.GL_RENDERER));
-                model.setGLSLVersion(gl.glGetString(GL.GL_SHADING_LANGUAGE_VERSION));
+                model.setGLVersion(gl.glGetString(GL2.GL_VERSION));
+                model.setGLVendor(gl.glGetString(GL2.GL_VENDOR));
+                model.setRenderer(gl.glGetString(GL2.GL_RENDERER));
+                model.setGLSLVersion(gl.glGetString(GL2.GL_SHADING_LANGUAGE_VERSION));
                 model.setGLImplVersion(Package.getPackage("javax.media.opengl").getImplementationVersion());// NOI18N
                 
                 // TODO we need a better way to get good buffer size
                 int[] buffer = new int[2];
-                gl.glGetIntegerv(GL.GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, buffer, 0);
+                gl.glGetIntegerv(GL2.GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, buffer, 0);
                 model.setMaxAnisotropy(buffer[0]+"x");
                 
                 buffer[0] = 0; buffer[1] = 0;
-                gl.glGetIntegerv(GL.GL_MAX_VIEWPORT_DIMS, buffer, 0);
+                gl.glGetIntegerv(GL2.GL_MAX_VIEWPORT_DIMS, buffer, 0);
                 model.setMaxViewportSize(buffer[0]+"x"+buffer[1]);
                 
                 buffer[0] = 0; buffer[1] = 0;
-                gl.glGetIntegerv(GL.GL_MAX_TEXTURE_UNITS, buffer, 0);
+                gl.glGetIntegerv(GL2.GL_MAX_TEXTURE_UNITS, buffer, 0);
                 model.setMaxTextureUnits(""+buffer[0]);
                 
                 buffer[0] = 0; buffer[1] = 0;
-                gl.glGetIntegerv(GL.GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS, buffer, 0);
+                gl.glGetIntegerv(GL2.GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS, buffer, 0);
                 model.setMaxVertexTextureImageUnits(""+buffer[0]);
                 
                 buffer[0] = 0; buffer[1] = 0;
-                gl.glGetIntegerv(GL.GL_MAX_TEXTURE_IMAGE_UNITS, buffer, 0);
+                gl.glGetIntegerv(GL2.GL_MAX_TEXTURE_IMAGE_UNITS, buffer, 0);
                 model.setMaxTextureImageUnits(""+buffer[0]);
                 
                 buffer[0] = 0; buffer[1] = 0;
-                gl.glGetIntegerv(GL.GL_MAX_GEOMETRY_TEXTURE_IMAGE_UNITS_EXT, buffer, 0);
+                gl.glGetIntegerv(GL2.GL_MAX_GEOMETRY_TEXTURE_IMAGE_UNITS, buffer, 0);
                 model.setMaxGeometryTextureImageUnits(""+buffer[0]);
                 
                 buffer[0] = 0; buffer[1] = 0;
-                gl.glGetIntegerv(GL.GL_MAX_TEXTURE_SIZE, buffer, 0);
+                gl.glGetIntegerv(GL2.GL_MAX_TEXTURE_SIZE, buffer, 0);
                 model.setMaxTextureSize(""+buffer[0]);
                 
                 buffer[0] = 0; buffer[1] = 0;
-                gl.glGetIntegerv(GL.GL_MAX_LIGHTS, buffer, 0);
+                gl.glGetIntegerv(GL2.GL_MAX_LIGHTS, buffer, 0);
                 model.setMaxLights(""+buffer[0]);
                 
                 buffer[0] = 0; buffer[1] = 0;
-                gl.glGetIntegerv(GL.GL_MAX_DRAW_BUFFERS, buffer, 0);
+                gl.glGetIntegerv(GL2.GL_MAX_DRAW_BUFFERS, buffer, 0);
                 model.setMaxDrawBuffers(""+buffer[0]);
                 
                 
                 // extentions
                 ArrayList<String> extentions = model.getExtensions();
                 extentions.clear();
-                StringTokenizer tokenizer = new StringTokenizer(gl.glGetString(GL.GL_EXTENSIONS));
+                StringTokenizer tokenizer = new StringTokenizer(gl.glGetString(GL2.GL_EXTENSIONS));
                 while(tokenizer.hasMoreTokens())
                     extentions.add(tokenizer.nextToken());
                 
                                 
                 // capabilities
-                Field[] fields = GL.class.getDeclaredFields();
+                Field[] fields = GL2.class.getDeclaredFields();
                 List<GLCapabilitiesModel.Capability> capabilities = model.getCapabilities();
                 capabilities.clear();
                 

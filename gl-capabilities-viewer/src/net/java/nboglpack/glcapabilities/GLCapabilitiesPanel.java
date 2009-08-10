@@ -6,6 +6,7 @@
 package net.java.nboglpack.glcapabilities;
 
 import java.awt.Dimension;
+import javax.media.nativewindow.Capabilities;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -23,9 +24,10 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.media.opengl.DefaultGLCapabilitiesChooser;
-import javax.media.opengl.GLCanvas;
 import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.GLCapabilitiesChooser;
+import javax.media.opengl.GLProfile;
+import javax.media.opengl.awt.GLCanvas;
 import javax.swing.JPanel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -46,6 +48,8 @@ import org.openide.util.NbBundle;
  */
 public class GLCapabilitiesPanel extends JPanel {
 
+
+    private static final GLProfile profile = GLProfile.get(GLProfile.GL2);
 
     @SuppressWarnings("unchecked")
     public GLCapabilitiesPanel() {
@@ -159,10 +163,13 @@ public class GLCapabilitiesPanel extends JPanel {
         GLCapabilitiesChooser chooser = new DefaultGLCapabilitiesChooser(){
 
             @Override
-            public int chooseCapabilities(GLCapabilities desired, GLCapabilities[] available, int arg2) {
+            public int chooseCapabilities(Capabilities desired, Capabilities[] available, int arg2) {
 
                 int max = 0;
-                for (GLCapabilities elem : available) {
+                for (Capabilities c : available) {
+
+                    GLCapabilities elem = (GLCapabilities)c;
+
                     if(elem == null)
                         continue;
                     capabilitiesModel.getDisplayModes().add(elem);
@@ -177,14 +184,14 @@ public class GLCapabilitiesPanel extends JPanel {
         };
 
         try{
-            GLCapabilities caps = new GLCapabilities();
+            GLCapabilities caps = new GLCapabilities(profile);
             caps.setNumSamples(2);
             caps.setSampleBuffers(true);
             return new GLCanvas(caps, chooser, null, device);
         }catch(RuntimeException ex) {
             Logger.getLogger(getClass().getName()).log(
                     Level.INFO, "unable to create GLContext with multisample support -> retry without multisamples", ex);
-            GLCapabilities caps = new GLCapabilities();
+            GLCapabilities caps = new GLCapabilities(profile);
             return new GLCanvas(caps, chooser, null, device);
         }
         

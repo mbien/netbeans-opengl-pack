@@ -8,8 +8,10 @@
             <module-dependencies>
                 <dependency>
                     <code-name-base>com.sun.gluegen</code-name-base>
+                    <build-prerequisite/>
+                    <compile-dependency/>
                     <run-dependency>
-                        <specification-version>1.0.6</specification-version>
+                        <specification-version>2.0.5</specification-version>
                     </run-dependency>
                 </dependency>
                 <dependency>
@@ -46,18 +48,86 @@
                 </dependency>
             </module-dependencies>
             <public-packages>
+                <package>com.sun.javafx.audio.windows.waveout</package>
+                <package>com.sun.javafx.newt</package>
+                <package>com.sun.javafx.newt.awt</package>
+                <package>com.sun.javafx.newt.impl</package>
+                <package>com.sun.javafx.newt.macosx</package>
+                <package>com.sun.javafx.newt.opengl</package>
+                <package>com.sun.javafx.newt.opengl.broadcom</package>
+                <package>com.sun.javafx.newt.opengl.kd</package>
+                <package>com.sun.javafx.newt.util</package>
+                <package>com.sun.javafx.newt.windows</package>
+                <package>com.sun.javafx.newt.x11</package>
+                <package>com.sun.nativewindow.impl</package>
+                <package>com.sun.nativewindow.impl.jawt</package>
+                <package>com.sun.nativewindow.impl.jawt.macosx</package>
+                <package>com.sun.nativewindow.impl.jawt.windows</package>
+                <package>com.sun.nativewindow.impl.jawt.x11</package>
+                <package>com.sun.nativewindow.impl.jvm</package>
+                <package>com.sun.nativewindow.impl.x11</package>
+                <package>com.sun.nativewindow.impl.x11.awt</package>
                 <package>com.sun.opengl.cg</package>
+                <package>com.sun.opengl.impl</package>
+                <package>com.sun.opengl.impl.awt</package>
+                <package>com.sun.opengl.impl.egl</package>
+                <package>com.sun.opengl.impl.es1</package>
+                <package>com.sun.opengl.impl.es2</package>
+                <package>com.sun.opengl.impl.gl2</package>
+                <package>com.sun.opengl.impl.gl2es12</package>
+                <package>com.sun.opengl.impl.gl3</package>
+                <package>com.sun.opengl.impl.glu</package>
+                <package>com.sun.opengl.impl.glu.error</package>
+                <package>com.sun.opengl.impl.glu.gl2</package>
+                <package>com.sun.opengl.impl.glu.gl2.nurbs</package>
+                <package>com.sun.opengl.impl.glu.mipmap</package>
+                <package>com.sun.opengl.impl.glu.nurbs</package>
+                <package>com.sun.opengl.impl.glu.registry</package>
+                <package>com.sun.opengl.impl.glu.tessellator</package>
+                <package>com.sun.opengl.impl.macosx.cgl</package>
+                <package>com.sun.opengl.impl.macosx.cgl.awt</package>
+                <package>com.sun.opengl.impl.windows.wgl</package>
+                <package>com.sun.opengl.impl.windows.wgl.awt</package>
+                <package>com.sun.opengl.impl.x11.glx</package>
+                <package>com.sun.opengl.impl.x11.glx.awt</package>
                 <package>com.sun.opengl.util</package>
-                <package>com.sun.opengl.util.j2d</package>
+                <package>com.sun.opengl.util.awt</package>
+                <package>com.sun.opengl.util.gl2</package>
+                <package>com.sun.opengl.util.glsl</package>
+                <package>com.sun.opengl.util.glsl.fixedfunc</package>
+                <package>com.sun.opengl.util.glsl.fixedfunc.impl</package>
+                <package>com.sun.opengl.util.glsl.sdk</package>
+                <package>com.sun.opengl.util.packrect</package>
                 <package>com.sun.opengl.util.texture</package>
+                <package>com.sun.opengl.util.texture.awt</package>
                 <package>com.sun.opengl.util.texture.spi</package>
+                <package>com.sun.opengl.util.texture.spi.awt</package>
+                <package>com.sun.openmax</package>
+                <package>javax.media.nativewindow</package>
+                <package>javax.media.nativewindow.awt</package>
+                <package>javax.media.nativewindow.egl</package>
+                <package>javax.media.nativewindow.macosx</package>
+                <package>javax.media.nativewindow.windows</package>
+                <package>javax.media.nativewindow.x11</package>
                 <package>javax.media.opengl</package>
+                <package>javax.media.opengl.awt</package>
+                <package>javax.media.opengl.fixedfunc</package>
                 <package>javax.media.opengl.glu</package>
+                <package>javax.media.opengl.glu.gl2</package>
+                <package>javax.media.opengl.glu.gl2es1</package>
                 <package>net.java.nboglpack.jogl.util</package>
             </public-packages>
             <class-path-extension>
-                <runtime-relative-path>ext/jogl.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/jogl.jar</binary-origin>
+                <runtime-relative-path>ext/jogl.all.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/jogl.all.jar</binary-origin>
+            </class-path-extension>
+            <class-path-extension>
+                <runtime-relative-path>ext/nativewindow.all.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/nativewindow.all.jar</binary-origin>
+            </class-path-extension>
+            <class-path-extension>
+                <runtime-relative-path>ext/newt.all.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/newt.all.jar</binary-origin>
             </class-path-extension>
         </data>
     </configuration>

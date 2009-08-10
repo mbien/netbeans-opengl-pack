@@ -13,7 +13,7 @@
     <target name="clean">
 
         <delete includeemptydirs="true">
-            <fileset dir="release/jogl-runtime" includes="**/*"/>
+            <fileset dir="release/jogl-runtime2" includes="**/*"/>
             <fileset dir="release/modules/ext" includes="**/*"/>
         </delete>
 
@@ -23,16 +23,22 @@
     <target name="-pre-compile">
 
         <!--unzip jogl distribution-->
-        <unzip src="jogl-dist/jogl-webstart.zip" dest="release/jogl-runtime/"/>
+        <unzip src="jogl-dist/jogl-2.0-webstart.zip" dest="release/jogl-runtime2/"/>
+        <unzip src="jogl-dist/nativewindow-2.0-webstart.zip" dest="release/jogl-runtime2/"/>
+        <unzip src="jogl-dist/newt-2.0-webstart.zip" dest="release/jogl-runtime2/"/>
 
         <!--unzip natives-->
         <foreach param="filepath" target="unzip-natives" inheritall="true">
-            <fileset dir="release/jogl-runtime" includes="jogl-natives-*.jar"/>
+            <fileset dir="release/jogl-runtime2" includes="jogl-natives-*.jar"/>
+            <fileset dir="release/jogl-runtime2" includes="nativewindow-natives-*.jar"/>
+            <fileset dir="release/jogl-runtime2" includes="newt-natives-*.jar"/>
         </foreach>
 
         <!--copy jars into lib wrapper module ext classpath-->
         <copy todir="release/modules/ext/" overwrite="true">
-            <fileset file="release/jogl-runtime/jogl.jar"/>
+            <fileset file="release/jogl-runtime2/jogl.all.jar"/>
+            <fileset file="release/jogl-runtime2/nativewindow.all.jar"/>
+            <fileset file="release/jogl-runtime2/newt.all.jar"/>
         </copy>
         
     </target>
@@ -41,7 +47,7 @@
         <basename property="filename" file="${filepath}" suffix=".jar"/>
         <propertyregex property="libname" input="${filename}" regexp="(^.*)-natives-(.*)$" select="\1.jar"/>
         <propertyregex property="platform" input="${filename}" regexp="^.*-natives-(.*)$" select="\1"/>
-        <unzip src="${filepath}" dest="release/jogl-runtime/${libname}-natives-${platform}">
+        <unzip src="${filepath}" dest="release/jogl-runtime2/${libname}-natives-${platform}">
             <patternset excludes="META-INF/*,META-INF"/>
         </unzip>
         <delete file="${filepath}"/>

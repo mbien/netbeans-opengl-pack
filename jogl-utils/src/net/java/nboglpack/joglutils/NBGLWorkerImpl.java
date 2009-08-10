@@ -17,11 +17,12 @@ import java.beans.Beans;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.media.opengl.DefaultGLCapabilitiesChooser;
-import javax.media.opengl.GLCanvas;
 import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.GLCapabilitiesChooser;
 import javax.media.opengl.GLDrawableFactory;
 import javax.media.opengl.GLException;
+import javax.media.opengl.GLProfile;
+import javax.media.opengl.awt.GLCanvas;
 
 /**
  * GLWorker implementation with fallback mode.
@@ -33,7 +34,7 @@ public class NBGLWorkerImpl implements GLWorker {
 
     public NBGLWorkerImpl() {
 
-        if (GLDrawableFactory.getFactory().canCreateGLPbuffer()) {
+        if (GLDrawableFactory.getFactory(GLProfile.getDefault()).canCreateGLPbuffer()) {
             try {
                 glworker = new GLWorkerImpl();
             } catch (GLException ex) {
@@ -54,7 +55,7 @@ public class NBGLWorkerImpl implements GLWorker {
         // fallback mode
         // use a heavy weight drawable if pixel buffers are not supported
         Beans.setDesignTime(false); // TODO designtime = false workaround
-        GLCapabilities caps = new GLCapabilities();
+        GLCapabilities caps = new GLCapabilities(GLProfile.getDefault());
         GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         GLCapabilitiesChooser chooser = new DefaultGLCapabilitiesChooser();
 

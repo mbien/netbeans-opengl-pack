@@ -15,6 +15,7 @@ import javax.media.opengl.GLContext;
 import javax.media.opengl.GLDrawableFactory;
 import javax.media.opengl.GLEventListener;
 import javax.media.opengl.GLPbuffer;
+import javax.media.opengl.GLProfile;
 
 /**
  * Implementation of an OpenGL worker.
@@ -35,8 +36,8 @@ public class GLWorkerImpl implements GLWorker {
     public GLWorkerImpl(GLAutoDrawable autoDrawable) {
         
         if(autoDrawable == null) {
-            GLDrawableFactory factory = GLDrawableFactory.getFactory();
-            GLCapabilities c = new GLCapabilities();
+            GLDrawableFactory factory = GLDrawableFactory.getFactory(GLProfile.getDefault());
+            GLCapabilities c = new GLCapabilities(GLProfile.getDefault());
             GLCapabilitiesChooser chooser = new DefaultGLCapabilitiesChooser();
 
             drawable = factory.createGLPbuffer(c, chooser, 1, 1, null);
@@ -100,6 +101,9 @@ public class GLWorkerImpl implements GLWorker {
     }
 
     public void displayChanged(GLAutoDrawable arg0, boolean arg1, boolean arg2) {
+    }
+
+    public void dispose(GLAutoDrawable arg0) {
     }
   }
 

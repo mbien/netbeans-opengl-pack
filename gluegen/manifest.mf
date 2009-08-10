@@ -3,5 +3,5 @@ AutoUpdate-Show-In-Client: false
 OpenIDE-Module: com.sun.gluegen
 OpenIDE-Module-Install: net/java/nboglpack/gluegen/Installer.class
 OpenIDE-Module-Localizing-Bundle: com/sun/gluegen/Bundle.properties
-OpenIDE-Module-Specification-Version: 1.0.6
+OpenIDE-Module-Specification-Version: 2.0.5
 
