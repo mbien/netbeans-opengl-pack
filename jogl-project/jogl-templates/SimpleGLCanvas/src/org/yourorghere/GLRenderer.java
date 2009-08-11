@@ -1,6 +1,6 @@
 package org.yourorghere;
 
-import javax.media.opengl.GL;
+import javax.media.opengl.GL2;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;
 import javax.media.opengl.glu.GLU;
@@ -18,7 +18,7 @@ public class GLRenderer implements GLEventListener {
         // Use debug pipeline
         // drawable.setGL(new DebugGL(drawable.getGL()));
 
-        GL gl = drawable.getGL();
+        GL2 gl = (GL2) drawable.getGL();
         System.err.println("INIT GL IS: " + gl.getClass().getName());
 
         // Enable VSync
@@ -26,31 +26,31 @@ public class GLRenderer implements GLEventListener {
 
         // Setup the drawing area and shading mode
         gl.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-        gl.glShadeModel(GL.GL_SMOOTH); // try setting this to GL_FLAT and see what happens.
+        gl.glShadeModel(GL2.GL_SMOOTH); // try setting this to GL_FLAT and see what happens.
     }
 
     public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
-        GL gl = drawable.getGL();
+        GL2 gl = (GL2) drawable.getGL();
         GLU glu = new GLU();
 
         if (height <= 0) { // avoid a divide by zero error!
-        
+
             height = 1;
         }
         final float h = (float) width / (float) height;
         gl.glViewport(0, 0, width, height);
-        gl.glMatrixMode(GL.GL_PROJECTION);
+        gl.glMatrixMode(GL2.GL_PROJECTION);
         gl.glLoadIdentity();
         glu.gluPerspective(45.0f, h, 1.0, 20.0);
-        gl.glMatrixMode(GL.GL_MODELVIEW);
+        gl.glMatrixMode(GL2.GL_MODELVIEW);
         gl.glLoadIdentity();
     }
 
     public void display(GLAutoDrawable drawable) {
-        GL gl = drawable.getGL();
+        GL2 gl = (GL2) drawable.getGL();
 
         // Clear the drawing area
-        gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
+        gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
         // Reset the current matrix to the "identity"
         gl.glLoadIdentity();
 
@@ -58,7 +58,7 @@ public class GLRenderer implements GLEventListener {
         gl.glTranslatef(-1.5f, 0.0f, -6.0f);
 
         // Drawing Using Triangles
-        gl.glBegin(GL.GL_TRIANGLES);
+        gl.glBegin(GL2.GL_TRIANGLES);
             gl.glColor3f(1.0f, 0.0f, 0.0f);    // Set the current drawing color to red
             gl.glVertex3f(0.0f, 1.0f, 0.0f);   // Top
             gl.glColor3f(0.0f, 1.0f, 0.0f);    // Set the current drawing color to green
@@ -71,7 +71,7 @@ public class GLRenderer implements GLEventListener {
         // Move the "drawing cursor" to another position
         gl.glTranslatef(3.0f, 0.0f, 0.0f);
         // Draw A Quad
-        gl.glBegin(GL.GL_QUADS);
+        gl.glBegin(GL2.GL_QUADS);
             gl.glColor3f(0.5f, 0.5f, 1.0f);    // Set the current drawing color to light blue
             gl.glVertex3f(-1.0f, 1.0f, 0.0f);  // Top Left
             gl.glVertex3f(1.0f, 1.0f, 0.0f);   // Top Right
@@ -84,7 +84,7 @@ public class GLRenderer implements GLEventListener {
         gl.glFlush();
     }
 
-    public void displayChanged(GLAutoDrawable drawable, boolean modeChanged, boolean deviceChanged) {
+    public void dispose(GLAutoDrawable arg0) {
     }
 }
 

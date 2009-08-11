@@ -13,8 +13,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.media.opengl.GLCanvas;
 import javax.media.opengl.GLCapabilities;
+import javax.media.opengl.GLProfile;
+import javax.media.opengl.awt.GLCanvas;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JFrame;
@@ -125,8 +126,10 @@ public class SimpleGLCanvas extends JFrame {
      * @return Returns customized GLCapabilities.
      */
     private GLCapabilities createGLCapabilites() {
-        
-        GLCapabilities capabilities = new GLCapabilities();
+
+        GLProfile profile = GLProfile.get(GLProfile.GL2);
+
+        GLCapabilities capabilities = new GLCapabilities(profile);
         capabilities.setHardwareAccelerated(true);
 
         // try to enable 2x anti aliasing - should be supported on most hardware
@@ -162,3 +165,4 @@ public class SimpleGLCanvas extends JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
+

@@ -13,7 +13,8 @@ import java.awt.event.WindowEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.media.opengl.GLCapabilities;
-import javax.media.opengl.GLJPanel;
+import javax.media.opengl.GLProfile;
+import javax.media.opengl.awt.GLJPanel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JFrame;
@@ -128,7 +129,9 @@ public class SimpleGLJPanel extends JFrame {
      */
     private GLCapabilities createGLCapabilites() {
         
-        GLCapabilities capabilities = new GLCapabilities();
+        GLProfile profile = GLProfile.get(GLProfile.GL2);
+        
+        GLCapabilities capabilities = new GLCapabilities(profile);
         capabilities.setHardwareAccelerated(true);
 
         // try to enable 2x anti aliasing - should be supported on most hardware
@@ -164,3 +167,4 @@ public class SimpleGLJPanel extends JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
+
