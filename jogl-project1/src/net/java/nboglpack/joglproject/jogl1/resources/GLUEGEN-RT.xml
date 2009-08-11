@@ -3,7 +3,7 @@
 <library version="1.0">
     <name>GLUEGEN-RT</name>
     <type>j2se</type>
-    <localizing-bundle>net.java.nboglpack.joglproject.Bundle</localizing-bundle>
+    <localizing-bundle>net.java.nboglpack.joglproject.jogl1.Bundle</localizing-bundle>
     <volume>
         <type>classpath</type>
         <resource>jar:nbinst:///gluegen-runtime/gluegen-rt.jar!/</resource>

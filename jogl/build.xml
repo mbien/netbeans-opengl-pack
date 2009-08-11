@@ -22,25 +22,45 @@
 
     <target name="-pre-compile">
 
-        <!--unzip jogl distribution-->
-        <unzip src="jogl-dist/jogl-2.0-webstart.zip" dest="release/jogl-runtime2/"/>
-        <unzip src="jogl-dist/nativewindow-2.0-webstart.zip" dest="release/jogl-runtime2/"/>
-        <unzip src="jogl-dist/newt-2.0-webstart.zip" dest="release/jogl-runtime2/"/>
+        <copy todir="release/jogl-runtime2/" file="jogl-dist/jogl-2.0-webstart.zip" overwrite="true"/>
+        <copy todir="release/jogl-runtime2/" file="jogl-dist/nativewindow-2.0-webstart.zip" overwrite="true"/>
+        <copy todir="release/jogl-runtime2/" file="jogl-dist/newt-2.0-webstart.zip" overwrite="true"/>
 
         <!--unzip natives-->
+        <unzip dest="release/jogl-runtime2/" overwrite="true">
+            <patternset>
+                <include name="**-natives-**.jar"/>
+                <include name="jogl.all.jar"/>
+                <include name="nativewindow.all.jar"/>
+                <include name="newt.all.jar"/>
+            </patternset>
+            <fileset dir="release/jogl-runtime2/">
+                <include name="jogl-2.0-webstart.zip"/>
+                <include name="nativewindow-2.0-webstart.zip"/>
+                <include name="newt-2.0-webstart.zip"/>
+            </fileset>
+        </unzip>
+
         <foreach param="filepath" target="unzip-natives" inheritall="true">
             <fileset dir="release/jogl-runtime2" includes="jogl-natives-*.jar"/>
             <fileset dir="release/jogl-runtime2" includes="nativewindow-natives-*.jar"/>
             <fileset dir="release/jogl-runtime2" includes="newt-natives-*.jar"/>
         </foreach>
 
-        <!--copy jars into lib wrapper module ext classpath-->
-        <copy todir="release/modules/ext/" overwrite="true">
-            <fileset file="release/jogl-runtime2/jogl.all.jar"/>
-            <fileset file="release/jogl-runtime2/nativewindow.all.jar"/>
-            <fileset file="release/jogl-runtime2/newt.all.jar"/>
-        </copy>
-        
+        <!--extract jars to the lib wrapper module ext classpath-->
+        <unzip dest="release/modules/ext" overwrite="true">
+            <patternset>
+                <include name="jogl.all.jar"/>
+                <include name="nativewindow.all.jar"/>
+                <include name="newt.all.jar"/>
+            </patternset>
+            <fileset dir="jogl-dist">
+                <include name="jogl-2.0-webstart.zip"/>
+                <include name="nativewindow-2.0-webstart.zip"/>
+                <include name="newt-2.0-webstart.zip"/>
+            </fileset>
+        </unzip>
+
     </target>
 
     <target name="unzip-natives">

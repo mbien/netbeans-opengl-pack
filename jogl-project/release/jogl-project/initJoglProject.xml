@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="initJoglProject" default="all" basedir=".">
+
     <target name="initProject">
         
         <replaceregexp byline="true" flags="g">
@@ -63,7 +64,19 @@
             <substitution expression="\1${project.mainClass}\2"/>
             <fileset file="${project.root}/src/${project.packagePath}/${project.mainClass}.java"/>
         </replaceregexp>
-        
+
+        <!-- initial JOGL deployment-->
+        <copy todir="${project.root}/jogl-dist">
+            <fileset file="${jogl.runtime.distribution}"/>
+            <fileset file="${nativewindow.runtime.distribution}"/>
+            <fileset file="${newt.runtime.distribution}"/>
+            <fileset file="${gluegen.runtime.distribution}"/>
+        </copy>
+
+        <!-- call initial deployment on projects ant file -->
+        <ant antfile="${project.root}/nbproject/build-jogl-template-impl.xml" 
+             target="jogl-template-deploy-jogl" dir="${project.root}" inheritall="true"/>
+
     </target>
     
     <target name="addDeps" if="template.includes">

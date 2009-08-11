@@ -152,104 +152,81 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
         }
     }
 
-    public void uninitialize(WizardDescriptor wiz)
-    {
-        this.wiz.putProperty("projdir",null);
-        this.wiz.putProperty("name",null);
-        this.wiz.putProperty("projpackage",null);
-        this.wiz.putProperty("projclass",null);
+    public void uninitialize(WizardDescriptor wiz) {
+        this.wiz.putProperty("projdir", null);
+        this.wiz.putProperty("name", null);
+        this.wiz.putProperty("projpackage", null);
+        this.wiz.putProperty("projclass", null);
         this.wiz = null;
         panels = null;
     }
 
-    public String name()
-    {
+    public String name() {
         return MessageFormat.format("{0} of {1}",
-            new Object[] {new Integer(index + 1), new Integer(panels.length)});
+                new Object[]{new Integer(index + 1), new Integer(panels.length)});
     }
 
-    public boolean hasNext()
-    {
+    public boolean hasNext() {
         return index < panels.length - 1;
     }
 
-    public boolean hasPrevious()
-    {
+    public boolean hasPrevious() {
         return index > 0;
     }
 
-    public void nextPanel()
-    {
-        if (!hasNext())
-        {
+    public void nextPanel() {
+        if (!hasNext()) {
             throw new NoSuchElementException();
         }
         index++;
     }
 
-    public void previousPanel()
-    {
-        if (!hasPrevious())
-        {
+    public void previousPanel() {
+        if (!hasPrevious()) {
             throw new NoSuchElementException();
         }
         index--;
     }
 
-    public WizardDescriptor.Panel current()
-    {
+    public WizardDescriptor.Panel current() {
         return panels[index];
     }
 
     // If nothing unusual changes in the middle of the wizard, simply:
-    public final void addChangeListener(ChangeListener l)
-    {}
-    public final void removeChangeListener(ChangeListener l)
-    {}
+    public final void addChangeListener(ChangeListener l) {  }
 
-    private static void unZipFile(InputStream source, FileObject projectRoot) throws IOException
-    {
-        try
-        {
+    public final void removeChangeListener(ChangeListener l) {  }
+
+    private static void unZipFile(InputStream source, FileObject projectRoot) throws IOException {
+        try {
             ZipInputStream str = new ZipInputStream(source);
             ZipEntry entry;
-            while ((entry = str.getNextEntry()) != null)
-            {
-                if (entry.isDirectory())
-                {
+            while ((entry = str.getNextEntry()) != null) {
+                if (entry.isDirectory()) {
                     FileUtil.createFolder(projectRoot, entry.getName());
-                }
-                else
-                {
+                } else {
                     FileObject fo = FileUtil.createData(projectRoot, entry.getName());
                     FileLock lock = fo.lock();
-                    try
-                    {
+                    try {
                         OutputStream out = fo.getOutputStream(lock);
-                        try
-                        {
+                        try {
                             FileUtil.copy(str, out);
-                        }
-                        finally
-                        {
+                        } finally {
                             out.close();
                         }
-                    }
-                    finally
-                    {
+                    } finally {
                         lock.releaseLock();
                     }
                 }
             }
-        }
-        finally
-        {
+        } finally {
             source.close();
         }
     }
 
-    private void callInitScript(File dir,String projectName,String packageName,String mainClass,String demo,String archive, String srcPath, String extraFiles, String platform, String includes, String excludes)
-    {
+    private void callInitScript(File dir, String projectName, String packageName, String mainClass, String demo,
+            String archive, String srcPath, String extraFiles, String platform, String includes, String excludes) {
+
         if(includes==null) includes="";
         if(excludes==null) excludes="";
         if(srcPath==null) srcPath="";
@@ -262,56 +239,62 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
             srcPath+="/";
         }
 
-        File archiveFile=InstalledFileLocator.getDefault().locate("jogl-project/"+archive,null,false);
-        Properties props=new Properties();
-        props.setProperty("project.root",dir.getAbsolutePath());
-        props.setProperty("project.name",projectName);
-        props.setProperty("project.packageName",packageName);
-        props.setProperty("project.packagePath",packageName.replace('.','/'));
-        props.setProperty("project.mainClass",mainClass);
+        InstalledFileLocator locator = InstalledFileLocator.getDefault();
 
-        String demoPackage= demo.replaceAll("^(.*?)\\.[^\\.]+$","$1");
-        String demoPath= demoPackage.replace('.','/');
-        String demoClass= demo.replaceAll("^.*?\\.([^\\.]+)$","$1");
-        props.setProperty("template.demoPath",demoPath);
-        props.setProperty("template.demoPackage",demoPackage);
-        props.setProperty("template.demoClass",demoClass);
-        props.setProperty("template.demoPath.regex",demoPath.replaceAll("([\\.\\/])","\\\\$1"));
-        props.setProperty("template.demoPackage.regex",demoPackage.replaceAll("([\\.\\/])","\\\\$1"));
-        props.setProperty("template.demoClass.regex",demoClass.replaceAll("([\\.\\/])","\\\\$1"));
-        props.setProperty("template.archive",archiveFile.getAbsolutePath());
-        props.setProperty("template.srcPath",srcPath);
-        props.setProperty("template.excludes","");
-        props.setProperty("natives.platform",platform);
+        File archiveFile = locator.locate("jogl-project/"+archive,null,false);
+        Properties props = new Properties();
+        props.setProperty("project.root", dir.getAbsolutePath());
+        props.setProperty("project.name", projectName);
+        props.setProperty("project.packageName", packageName);
+        props.setProperty("project.packagePath", packageName.replace('.','/'));
+        props.setProperty("project.mainClass", mainClass);
 
-        if(includes!=null && includes.length() != 0)
-        {
-            String mergedIncludes=null;
+        String demoPackage = demo.replaceAll("^(.*?)\\.[^\\.]+$","$1");
+        String demoPath    = demoPackage.replace('.','/');
+        String demoClass   = demo.replaceAll("^.*?\\.([^\\.]+)$","$1");
+        props.setProperty("template.demoPath", demoPath);
+        props.setProperty("template.demoPackage", demoPackage);
+        props.setProperty("template.demoClass", demoClass);
+        props.setProperty("template.demoPath.regex", demoPath.replaceAll("([\\.\\/])","\\\\$1"));
+        props.setProperty("template.demoPackage.regex", demoPackage.replaceAll("([\\.\\/])","\\\\$1"));
+        props.setProperty("template.demoClass.regex", demoClass.replaceAll("([\\.\\/])","\\\\$1"));
+        props.setProperty("template.archive", archiveFile.getAbsolutePath());
+        props.setProperty("template.srcPath", srcPath);
+        props.setProperty("template.excludes", "");
+        props.setProperty("natives.platform", platform);
+
+        // path to jogl distributions
+        props.setProperty("jogl.runtime.distribution", locator.locate("jogl-runtime2/jogl-2.0-webstart.zip", null, false).getPath());
+        props.setProperty("nativewindow.runtime.distribution", locator.locate("jogl-runtime2/nativewindow-2.0-webstart.zip", null, false).getPath());
+        props.setProperty("newt.runtime.distribution", locator.locate("jogl-runtime2/newt-2.0-webstart.zip", null, false).getPath());
+        props.setProperty("gluegen.runtime.distribution", locator.locate("gluegen-runtime2/gluegen-rt-2.0-webstart.zip", null, false).getPath());
+
+        if (includes != null && includes.length() != 0) {
+            String mergedIncludes = null;
             Scanner scanner = new Scanner(includes).useDelimiter(",");
-            while (scanner.hasNext())
-            {
+            while (scanner.hasNext()) {
                 String token = scanner.next();
-                if(mergedIncludes==null)
-                    mergedIncludes=srcPath+token;
-                else
-                    mergedIncludes+=","+srcPath+token;
+                if (mergedIncludes == null) {
+                    mergedIncludes = srcPath + token;
+                } else {
+                    mergedIncludes += "," + srcPath + token;
+                }
             }
-            props.setProperty("template.includes",mergedIncludes);
+            props.setProperty("template.includes", mergedIncludes);
         }
 
-        if(excludes!=null && excludes.length() != 0)
-        {
-            String mergedExcludes=null;
+        if (excludes != null && excludes.length() != 0) {
+            String mergedExcludes = null;
             Scanner scanner = new Scanner(excludes).useDelimiter(",");
-            while (scanner.hasNext())
-            {
-                String token= scanner.next();
-                if(mergedExcludes==null)
-                    mergedExcludes=srcPath+token;
-                else
-                    mergedExcludes+=","+srcPath+token;
+            while (scanner.hasNext()) {
+                String token = scanner.next();
+                if (mergedExcludes == null) {
+                    mergedExcludes = srcPath + token;
+                } else {
+                    mergedExcludes += "," + srcPath + token;
+                }
             }
-            props.setProperty("template.excludes",mergedExcludes);
+            props.setProperty("template.excludes", mergedExcludes);
         }
 
         try  {
@@ -320,16 +303,14 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
             FileObject script= FileUtil.toFileObject(scriptFile);
             ExecutorTask task= ActionUtils.runTarget(script,new String[]{"initProject"},props);
             task.waitFinished();
-            
+
             // open main file in editor
             final File mainFile = new File( dir.getAbsolutePath()+File.separator
                                            +"src"+File.separator
                                            +packageName.replace('.',File.separatorChar)+File.separator
                                            +mainClass+".java"   );
 
-            // a race condition causes to fail opening JOGL matisse gui components -> add a delay
-            // however reopening works always
-
+            // add a delay and try to open the main file later
             Runnable opener = new Runnable() {
 
                 @Override

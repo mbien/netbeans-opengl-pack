@@ -14,7 +14,6 @@
 
         <delete includeemptydirs="true">
             <fileset dir="release/jogl-runtime" includes="**/*"/>
-            <fileset dir="release/modules/ext" includes="**/*"/>
         </delete>
 
     </target>

@@ -6,9 +6,9 @@
             <folder name="Standard">
                 <file name="SimpleDemo.zip" url="resources/jogl-project.zip">
                     <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
-                    <attr name="demo" stringvalue="net.highteq.gamedev.SimpleJOGL"/>
+                    <attr name="demo" stringvalue="org.yourorghere.SimpleJOGL"/>
                     <attr name="projectPackage" stringvalue="org.yourorghere"/>
-                    <attr name="projectName" stringvalue="SimpleJOGL"/>
+                    <attr name="projectName" stringvalue="SimpleJOGL2"/>
                     <attr name="archive" stringvalue="jogl-templates.zip"/>
                     <attr name="srcPath" stringvalue="SimpleJOGL/src"/>
                     <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglproject.Bundle"/>
@@ -51,8 +51,8 @@
     
     <folder name="org-netbeans-api-project-libraries">
         <folder name="Libraries">
-            <file name="JOGL.xml" url="resources/JOGL.xml"/>
-            <file name="GLUEGEN-RT.xml" url="resources/GLUEGEN-RT.xml"/>
+            <file name="JOGL2.xml" url="resources/JOGL.xml"/>
+            <file name="GLUEGEN-RT2.xml" url="resources/GLUEGEN-RT.xml"/>
         </folder>
     </folder>
 </filesystem>
