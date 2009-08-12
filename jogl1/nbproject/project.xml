@@ -11,11 +11,17 @@
                     <build-prerequisite/>
                     <compile-dependency/>
                     <run-dependency>
-                        <specification-version>1.0.6</specification-version>
+                        <specification-version>1.0</specification-version>
                     </run-dependency>
                 </dependency>
             </module-dependencies>
-            <public-packages/>
+            <public-packages>
+                <package>javax.media.opengl.jogl1</package>
+            </public-packages>
+            <class-path-extension>
+                <runtime-relative-path>ext/JOGLdummy.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/JOGLdummy.jar</binary-origin>
+            </class-path-extension>
         </data>
     </configuration>
 </project>

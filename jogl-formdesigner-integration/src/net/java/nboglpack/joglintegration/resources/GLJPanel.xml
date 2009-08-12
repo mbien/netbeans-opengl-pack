@@ -5,12 +5,12 @@
     Created on : 21. Juli 2007, 21:25
     Author     : Michael Bien
     Description:
-        JOGL GLJPanel Palette item.
+        JOGL2 GLJPanel Palette item.
 -->
 
 <palette_item version="1.0">
     
-    <component classname="javax.media.opengl.GLJPanel" type="visual" />
+    <component classname="javax.media.opengl.awt.GLJPanel" type="visual" />
     <classpath>
       <resource type="jar" name=""/>
     </classpath>

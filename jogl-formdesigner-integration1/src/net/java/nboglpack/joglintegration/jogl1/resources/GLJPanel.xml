@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : GLJPanel.palette_item
+    Created on : 21. Juli 2007, 21:25
+    Author     : Michael Bien
+    Description:
+        JOGL GLJPanel Palette item.
+-->
+
+<palette_item version="1.0">
+    
+    <component classname="javax.media.opengl.GLJPanel" type="visual" />
+    <classpath>
+      <resource type="jar" name=""/>
+    </classpath>
+
+    <icon16 urlvalue="nbres:/net/java/nboglpack/joglintegration/resources/GLJPanel_16.png" />
+    <icon32 urlvalue="nbres:/net/java/nboglpack/joglintegration/resources/GLJPanel_32.png" />
+    
+    <description localizing-bundle="net.java.nboglpack.joglintegration.Bundle"
+                 display-name-key="GLJPanel_Item_Name"
+                 tooltip-key="GLJPanel_Item_Tooltip" />
+    
+</palette_item>

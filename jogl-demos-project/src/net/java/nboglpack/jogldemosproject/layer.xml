@@ -141,7 +141,7 @@
                             <attr name="projectName" stringvalue="JOGLTextRendererDemo"/>
                             <attr name="archive" stringvalue="jogl-demos-src.zip"/>
                             <attr name="srcPath" stringvalue="jogl-demos/src"/>
-                            <attr name="includes" stringvalue="gleem/linalg/**/*,gleem/linalg/Vec2f.java,demos/common/**/*,demos/util/**/*"/>
+                            <attr name="includes" stringvalue="gleem/linalg/**/*,gleem/linalg/Vec2f.java,demos/common/**/*,demos/util/**/*,demos/gears/**/*"/>
                             <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.jogldemosproject.Bundle"/>
                             <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
                             <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/jogldemosproject/resources/TextRendererDemoDescription.html"/>

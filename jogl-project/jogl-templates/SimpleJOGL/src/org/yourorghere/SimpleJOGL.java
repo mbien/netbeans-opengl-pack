@@ -59,9 +59,9 @@ public class SimpleJOGL implements GLEventListener {
 
     public void init(GLAutoDrawable drawable) {
         // Use debug pipeline
-//        drawable.setGL(new DebugGL2((GL2)drawable.getGL()));
+//        drawable.setGL(new DebugGL2(drawable.getGL().getGL2()));
 
-        GL2 gl = (GL2) drawable.getGL();
+        GL2 gl = drawable.getGL().getGL2();
         System.err.println("INIT GL2 IS: " + gl.getClass().getName());
 
         // Enable VSync
@@ -73,7 +73,7 @@ public class SimpleJOGL implements GLEventListener {
     }
 
     public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
-        GL2 gl = (GL2) drawable.getGL();
+        GL2 gl = drawable.getGL().getGL2();
         GLU glu = new GLU();
 
         // avoid a divide by zero error!
@@ -91,7 +91,7 @@ public class SimpleJOGL implements GLEventListener {
     }
 
     public void display(GLAutoDrawable drawable) {
-        GL2 gl = (GL2) drawable.getGL();
+        GL2 gl = drawable.getGL().getGL2();
 
         // Clear the drawing area
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+
+    <folder name="FormDesignerPalette">
+
+        <folder name="JOGL 1 Components">
+
+          <!--somewhere after "Swing Container" category-->
+          <attr name="position" intvalue="150"/>
+          <attr name="isExpanded" boolvalue="false" />
+
+          <file name="GLJPanel.palette_item" url="resources/GLJPanel.xml">
+            <attr name="position" intvalue="100"/>
+          </file>
+          <file name="GLCanvas.palette_item" url="resources/GLCanvas.xml">
+            <attr name="position" intvalue="200"/>
+          </file>
+
+        </folder>
+
+    </folder>
+
+</filesystem>

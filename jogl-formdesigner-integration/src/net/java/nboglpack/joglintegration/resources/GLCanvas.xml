@@ -5,12 +5,12 @@
     Created on : 22. Juli 2007, 10:25
     Author     : Michael Bien
     Description:
-        JOGL GLCanvas Palette item.
+        JOGL2 GLCanvas Palette item.
 -->
 
 <palette_item version="1.0">
     
-    <component classname="javax.media.opengl.GLCanvas" type="visual" />
+    <component classname="javax.media.opengl.awt.GLCanvas" type="visual" />
     <classpath>
       <resource type="jar" name=""/>
     </classpath>

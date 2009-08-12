@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : GLCanvas.palette_item
+    Created on : 22. Juli 2007, 10:25
+    Author     : Michael Bien
+    Description:
+        JOGL GLCanvas Palette item.
+-->
+
+<palette_item version="1.0">
+    
+    <component classname="javax.media.opengl.GLCanvas" type="visual" />
+    <classpath>
+      <resource type="jar" name=""/>
+    </classpath>
+
+    <icon16 urlvalue="nbres:/net/java/nboglpack/joglintegration/jogl1/resources/GLCanvas_16.png" />
+    <icon32 urlvalue="nbres:/net/java/nboglpack/joglintegration/jogl1/resources/GLCanvas_32.png" />
+    
+    <description localizing-bundle="net.java.nboglpack.joglintegration.jogl1.Bundle"
+                 display-name-key="GLCanvas_Item_Name"
+                 tooltip-key="GLCanvas_Item_Tooltip" />
+    
+</palette_item>

@@ -4,7 +4,7 @@
     
     <folder name="FormDesignerPalette">
         
-        <folder name="JOGL Components">
+        <folder name="JOGL 2 Components">
           
           <!--somewhere after "Swing Container" category-->
           <attr name="position" intvalue="150"/>

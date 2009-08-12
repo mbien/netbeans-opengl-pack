@@ -54,7 +54,7 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
       </AuxValues>
     </Component>
-    <Component class="javax.media.opengl.GLCanvas" name="canvas">
+    <Component class="javax.media.opengl.awt.GLCanvas" name="canvas">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new GLCanvas(createGLCapabilites())"/>
       </AuxValues>
