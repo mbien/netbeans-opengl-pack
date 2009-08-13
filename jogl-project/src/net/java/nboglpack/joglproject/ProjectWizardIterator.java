@@ -269,6 +269,20 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
         props.setProperty("newt.runtime.distribution", locator.locate("jogl-runtime2/newt-2.0-webstart.zip", null, false).getPath());
         props.setProperty("gluegen.runtime.distribution", locator.locate("gluegen-runtime2/gluegen-rt-2.0-webstart.zip", null, false).getPath());
 
+        try{
+            //sources
+            props.setProperty("jogl.runtime.src", locator.locate("jogl-runtime2/jogl-2.0-src.zip", null, false).getPath());
+            props.setProperty("gluegen.runtime.src", locator.locate("gluegen-runtime2/gluegen-rt-2.0-src.zip", null, false).getPath());
+            props.setProperty("newt.runtime.src", locator.locate("jogl-runtime2/newt-2.0-src.zip", null, false).getPath());
+            props.setProperty("nativewindow.runtime.src", locator.locate("jogl-runtime2/nativewindow-2.0-src.zip", null, false).getPath());
+            //docs
+            props.setProperty("jogl.runtime.doc", locator.locate("jogl-runtime2/jogl-2.0-docs.zip", null, false).getPath());
+        }catch(Throwable t) {
+            Logger.getLogger(this.getClass().getName()).log(
+                    Level.INFO, "Can not deploy documentation. API support module installed?", t);
+        }
+
+
         if (includes != null && includes.length() != 0) {
             String mergedIncludes = null;
             Scanner scanner = new Scanner(includes).useDelimiter(",");

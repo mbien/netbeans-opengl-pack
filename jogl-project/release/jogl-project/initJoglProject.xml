@@ -73,6 +73,13 @@
             <fileset file="${gluegen.runtime.distribution}"/>
         </copy>
 
+        <copy file="${jogl.runtime.src}" todir="${project.root}/jogl-dist" failonerror="false"/>
+        <copy file="${newt.runtime.src}" todir="${project.root}/jogl-dist" failonerror="false"/>
+        <copy file="${nativewindow.runtime.src}" todir="${project.root}/jogl-dist" failonerror="false"/>
+        <copy file="${gluegen.runtime.src}" todir="${project.root}/jogl-dist" failonerror="false"/>
+
+        <copy file="${jogl.runtime.doc}" todir="${project.root}/jogl-dist" failonerror="false"/>
+
         <!-- call initial deployment on projects ant file -->
         <ant antfile="${project.root}/nbproject/build-jogl-template-impl.xml" 
              target="jogl-template-deploy-jogl" dir="${project.root}" inheritall="true"/>

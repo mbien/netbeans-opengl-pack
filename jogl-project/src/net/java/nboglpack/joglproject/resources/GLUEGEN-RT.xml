@@ -10,10 +10,10 @@
     </volume>
     <volume>
         <type>src</type>
-        
+
     </volume>
     <volume>
-        <type>javadoc</type>            
-        
+        <type>javadoc</type>
+        <resource>jar:nbinst:///gluegen-runtime2/gluegen-rt-2.0-src.zip!/</resource>
     </volume>
 </library>

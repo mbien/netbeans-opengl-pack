@@ -12,11 +12,12 @@
     </volume>
     <volume>
         <type>javadoc</type>            
-        <resource>jar:nbinst:///jogl-runtime2/jogl-docs.zip!/</resource>
+        <resource>jar:nbinst:///jogl-runtime2/jogl-2.0-docs.zip!/jogl-2.0-docs/</resource>
     </volume>
     <volume>
         <type>src</type>
-        <resource>jar:nbinst:///jogl-runtime2/jogl-src.zip!/jogl/src/classes/</resource>
-        <resource>jar:nbinst:///jogl-runtime2/jogl-src.zip!/jogl/build/gensrc/classes/</resource>
+        <resource>jar:nbinst:///jogl-runtime2/jogl-2.0-src.zip!/</resource>
+        <resource>jar:nbinst:///jogl-runtime2/newt-2.0-src.zip!/</resource>
+        <resource>jar:nbinst:///jogl-runtime2/nativewindow-2.0-src.zip!/</resource>
     </volume>
 </library>

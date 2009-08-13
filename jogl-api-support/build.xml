@@ -7,4 +7,63 @@
     <property file="./../nbproject/global.properties"/>
     <property file="./../nbproject/private/global_private.properties"/>
     <import file="nbproject/build-impl.xml"/>
+
+    <!--repackage sources-->
+    <target name="repack-jogl-sources">
+        <mkdir dir="temp/jogl-2.0-src"/>
+        <mkdir dir="temp/jogl-2.0-src/src"/>
+
+        <!--jogl-->
+        <unzip src="temp/jogl-2.0-src.zip" dest="temp/jogl-2.0-src" overwrite="true">
+            <patternset>
+                <include name="jogl/src/jogl/classes/**"/>
+                <include name="jogl/build/jogl/gensrc/classes/**"/>
+            </patternset>
+        </unzip>
+        <move todir="temp/jogl-2.0-src/src">
+            <fileset dir="temp/jogl-2.0-src/jogl/src/jogl/classes"/>
+            <fileset dir="temp/jogl-2.0-src/jogl/build/jogl/gensrc/classes"/>
+        </move>
+        <zip destfile="release/jogl-runtime2/jogl-2.0-src.zip" basedir="temp/jogl-2.0-src/src"/>
+        <delete dir="temp/jogl-2.0-src"/>
+
+        <!--newt-->
+        <unzip src="temp/jogl-2.0-src.zip" dest="temp/jogl-2.0-src" overwrite="true">
+            <patternset>
+                <include name="jogl/src/newt/classes/**"/>
+            </patternset>
+        </unzip>
+        <move todir="temp/jogl-2.0-src/src">
+            <fileset dir="temp/jogl-2.0-src/jogl/src/newt/classes"/>
+        </move>
+        <zip destfile="release/jogl-runtime2/newt-2.0-src.zip" basedir="temp/jogl-2.0-src/src"/>
+        <delete dir="temp/jogl-2.0-src"/>
+
+        <!--nativewindow-->
+        <unzip src="temp/jogl-2.0-src.zip" dest="temp/jogl-2.0-src" overwrite="true">
+            <patternset>
+                <include name="jogl/src/nativewindow/classes/**"/>
+            </patternset>
+        </unzip>
+        <move todir="temp/jogl-2.0-src/src">
+            <fileset dir="temp/jogl-2.0-src/jogl/src/nativewindow/classes"/>
+        </move>
+        <zip destfile="release/jogl-runtime2/nativewindow-2.0-src.zip" basedir="temp/jogl-2.0-src/src"/>
+        <delete dir="temp/jogl-2.0-src"/>
+
+        <!--gluegen-rt-->
+        <unzip src="temp/jogl-2.0-src.zip" dest="temp/jogl-2.0-src" overwrite="true">
+            <patternset>
+                <include name="gluegen/src/java/com/sun/gluegen/runtime/**"/>
+            </patternset>
+        </unzip>
+        <move todir="temp/jogl-2.0-src/src">
+            <fileset dir="temp/jogl-2.0-src/gluegen/src"/>
+        </move>
+        <zip destfile="release/gluegen-runtime2/gluegen-rt-2.0-src.zip" basedir="temp/jogl-2.0-src/src"/>
+        <delete dir="temp/jogl-2.0-src"/>
+
+    </target>
+
+
 </project>
