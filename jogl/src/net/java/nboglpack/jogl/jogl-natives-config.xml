@@ -10,7 +10,7 @@
 <ns0:library  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
    xmlns:ns0='http://net/java/nativelibsupport/natives_config'
    xsi:schemaLocation='http://net/java/nativelibsupport/resource natives-config.xsd'
-   name='jogl.jar' folder='jogl-runtime' flat='true'>
+   name='jogl' folder='jogl-runtime' flat='true'>
     <ns0:os folder='-natives-windows' regex='^(?i)windows'>
         <ns0:cpu folder='-amd64' regex='^(?i)amd|x64|x86_64$'/>
         <ns0:cpu folder='-i586' regex='^(?i)i?+[3-9|x]86$'/>

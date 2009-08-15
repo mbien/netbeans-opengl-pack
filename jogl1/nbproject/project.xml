@@ -18,10 +18,6 @@
             <public-packages>
                 <package>javax.media.opengl.jogl1</package>
             </public-packages>
-            <class-path-extension>
-                <runtime-relative-path>ext/JOGLdummy.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/JOGLdummy.jar</binary-origin>
-            </class-path-extension>
         </data>
     </configuration>
 </project>

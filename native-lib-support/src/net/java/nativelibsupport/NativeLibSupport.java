@@ -34,24 +34,34 @@ public class NativeLibSupport {
     
     /**
      * Deployes, re-deployes or does nothing dependent on the currently deployed native libraries.
-     * @param libraryName the name of the library.jar (without the '.jar')
+     * @param jarName the name of the library.jar
      * @param configFile InputStream which reads the xml config file
      * @param distFolder The distribution folder containing the library.jar and all native libraries in sub folders
      * @throws DeploymentException Thrown when libraries were not successfully deployed.
      */
-    public static void deploy(String libraryName, InputStream configFile, File distributionFolder) throws LibDeploymentException {
+    public static void deploy(String jarName, InputStream configFile, File distributionFolder) throws LibDeploymentException {
+        deploy(jarName, configFile, distributionFolder, null);
+    }
+    
+    /**
+     * Deployes, re-deployes or does nothing dependent on the currently deployed native libraries.
+     * @param jarName the name of the library.jar
+     * @param configFile InputStream which reads the xml config file
+     * @param distFolder The distribution folder containing the library.jar and all native libraries in sub folders
+     * @param archive The zip archive in which the native libraries are stored
+     * @throws DeploymentException Thrown when libraries were not successfully deployed.
+     */
+    public static void deploy(String jarName, InputStream configFile, File distributionFolder, String archive) throws LibDeploymentException {
         
-        assert libraryName!=null;
+        assert jarName!=null;
         assert configFile!=null;
         assert distributionFolder!=null;
-
-        libraryName+=".jar";
 
         try{
             JarFileSystem jarSystem = new JarFileSystem();
             
             // read jogl version from manifest and compare with deployed version
-            jarSystem.setJarFile(new File(distributionFolder+File.separator+libraryName));
+            jarSystem.setJarFile(new File(distributionFolder+File.separator+jarName));
             String jarVersion = jarSystem.getManifest().getMainAttributes().getValue("Implementation-Version");
             
             if(jarVersion == null)
@@ -73,8 +83,7 @@ public class NativeLibSupport {
                 propertyFile.createNewFile();
             }
             
-            String deployedLibVersion = properties.getProperty(libraryName, null);
-            
+            String deployedLibVersion = properties.getProperty(jarName, null);
             
             //  check if we've already deployed
             if(deployedLibVersion == null || !jarVersion.equals(deployedLibVersion)) {
@@ -98,35 +107,60 @@ public class NativeLibSupport {
                 }
 
                 Library lib = (Library)obj;
-                
-                // assamble path to platform dependent library folder
-                StringBuilder nativesFolderPath = new StringBuilder();
-                nativesFolderPath.append(distributionFolder.getName());
-                nativesFolderPath.append(File.separatorChar);
-                nativesFolderPath.append(lib.getName());
-                if(!lib.isFlat())
-                    nativesFolderPath.append(File.separatorChar);
-                
+
                 String osName = System.getProperty("os.name");
                 String cpuName = System.getProperty("os.arch");
+
+                // assamble path to platform dependent library folder
+                StringBuilder path = new StringBuilder();
+                path.append(distributionFolder.getName());
+                path.append(File.separatorChar);
+
+                FileObject libSource = null;
+
+                // find library storage
+                if(archive != null && archive.endsWith(".zip")) {
+                    path.append(archive);
+
+                    JarFileSystem jar = new JarFileSystem();
+                    jar.setJarFile(new File(root+File.separator+path.toString()));
+
+                    path.delete(0, path.length());
+                    path.append(lib.getName());
+                    if(!lib.isFlat())
+                        path.append(File.separatorChar);
+                    assambleLibPath(lib, osName, cpuName, path);
+
+                    path.append(".jar");
+
+                    libSource = jar.findResource(path.toString());
+
+                }else{
+                    path.append(lib.getName());
+                    if(!lib.isFlat())
+                        path.append(File.separatorChar);
+                    assambleLibPath(lib, osName, cpuName, path);
+
+                    libSource = FileUtil.toFileObject(
+                            new File(root+File.separator+path.toString()));
+                }
                 
-                assambleLibPath(lib, osName, cpuName, nativesFolderPath);
-                
-                FileObject libSourceFolder = FileUtil.toFileObject(
-                        new File(root+File.separator+nativesFolderPath.toString()));
-                
-                if(libSourceFolder != null) {
+                if(libSource != null) {
                     
                     FileObject libTargetFolder = FileUtil.createFolder(new File(libFolderPath));
-                    
-                    copyFolderEntries(libSourceFolder, libTargetFolder);
+
+                    if(libSource.isFolder()) {
+                        copyFolderEntries(libSource, libTargetFolder);
+                    }else{
+                        extractArchive(libSource, libTargetFolder);
+                    }
                     
                     // update deployed version property
-                    properties.put(libraryName, jarVersion);
+                    properties.put(jarName, jarVersion);
                     properties.store(new FileOutputStream(propertyFile), "deployed native libraries (remove entry and restart to force re-deployment)");
-                    
+
                     Logger.getLogger(NativeLibSupport.class.getName()).info(
-                        "deployed "+libraryName+" version: "+jarVersion );
+                        "deployed "+jarName+" version: "+jarVersion );
                 }else{
                     String os = System.getProperty("os.name");
                     String arch = System.getProperty("os.arch");
@@ -136,21 +170,20 @@ public class NativeLibSupport {
                 }
             }else{
                 Logger.getLogger(NativeLibSupport.class.getName()).info(
-                        libraryName+" version "+jarVersion +" is up to date");
+                        jarName+" version "+jarVersion +" is up to date");
             }
             
         }catch(Exception ex) {
-            throw new LibDeploymentException("can not deploy "+ libraryName +" natives", ex);
+            throw new LibDeploymentException("can not deploy "+ jarName +" natives", ex);
         }
         
     }
     
-    
     /**
      * overwrites files
      */
-    private static final void copyFolderEntries(FileObject srcFolder, FileObject targetFolder) throws IOException {
-        FileObject[] entries = srcFolder.getChildren();
+    private static final void copyFolderEntries(FileObject src, FileObject targetFolder) throws IOException {
+        FileObject[] entries = src.getChildren();
         for (int i = 0; i < entries.length; i++) {
             FileObject entry = entries[i];
             
@@ -167,6 +200,10 @@ public class NativeLibSupport {
                     "copy "+entry.getPath() +" to "+targetFolder.getPath() );
             FileUtil.copyFile(entry, targetFolder, entry.getName());
         }
+    }
+
+    private static void extractArchive(FileObject libSource, FileObject libTargetFolder) throws IOException {
+        FileUtil.extractJar(libTargetFolder, libSource.getInputStream());
     }
     
     private final static void assambleLibPath(Library lib, String osName, String cpuName, StringBuilder nativesFolderPath) {
