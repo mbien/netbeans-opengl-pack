@@ -104,10 +104,17 @@ public class GLCapabilitiesPanel extends JPanel {
 
             public void hierarchyChanged(HierarchyEvent e) {
                 if(e.getChangeFlags() == HierarchyEvent.SHOWING_CHANGED) {
-                    if(e.getComponent().isShowing())
+                    if(e.getComponent().isShowing()) {
                         demo.start();
-                    else
-                        demo.stop();
+                    }else{
+                        // stop animator outside EDT to prevent deadlocks
+                        new Thread(){
+                            @Override
+                            public void run() {
+                                demo.stop();
+                            }
+                        }.start();
+                    }
                 }
             }
             
