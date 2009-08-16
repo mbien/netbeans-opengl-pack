@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<!--
+    author: Michael Bien
+    This file was automatically generated. Consider generating the script rather than this file.
+-->
+<filesystem>
+    <folder name="Templates">
+        <folder name="Project">
+            <folder name="Samples">
+                <folder name="Java OpenGL">
+                    <folder name="NEHE Tutorials">
+## tutorial specific resources
+## we use an arraylist to emulate a HashMap, maps don't compile for some reason
+#set( $special = [ "6",",demos/data/images/nehe.png"] )
+<!--
+$special.add("7")
+$special.add(",demos/data/images/crate.png")
+$special.add("8")
+$special.add(",demos/data/images/glass.png")
+$special.add("9")
+$special.add(",demos/data/images/star.bmp")
+$special.add("10")
+$special.add(",demos/data/models/world.txt,demos/data/images/mud.png")
+$special.add("11")
+$special.add(",demos/data/images/tim.png")
+$special.add("12")
+$special.add(",demos/data/images/cube.bmp")
+$special.add("13")
+$special.add(",demos/data/images/cube.bmp")
+$special.add("15")
+$special.add(",demos/data/images/lights.png,demos/data/fonts/times_new1.glf")
+$special.add("16")
+$special.add(",demos/data/images/crate.png")
+$special.add("17")
+$special.add(",demos/data/images/font.png,demos/data/images/bumps.png")
+$special.add("18")
+$special.add(",demos/data/images/wall.bmp")
+$special.add("19")
+$special.add(",demos/data/images/particle.png")
+$special.add("20")
+$special.add(",demos/data/images/logo.png,demos/data/images/mask1.png,demos/data/images/image1.png,demos/data/images/mask2.png,demos/data/images/image2.png")
+$special.add("21")
+$special.add(",demos/data/images/font.png,demos/data/images/Image.png,demos/data/samples/**")
+$special.add("22")
+$special.add(",demos/data/images/Bump.bmp,demos/data/images/opengl_alpha.bmp,demos/data/images/opengl.bmp,demos/data/images/multi_on_alpha.bmp,demos/data/images/multi_on.bmp,demos/data/images/base.bmp")
+$special.add("23")
+$special.add(",demos/data/images/bg.png,demos/data/images/reflect.png")
+$special.add("24")
+$special.add(",demos/data/images/font.tga")
+$special.add("25")
+$special.add(",demos/data/models/sphere.txt,demos/data/models/torus.txt,demos/data/models/tube.txt,demos/data/models/sphere.txt")
+$special.add("26")
+$special.add(",demos/data/images/envwall.jpg,demos/data/images/ball.jpg,demos/data/images/envroll.jpg")
+$special.add("27")
+$special.add(",demos/data/models/object2.txt")
+$special.add("28")
+$special.add(",demos/data/images/nehe.png")
+$special.add("29")
+$special.add(",demos/data/images/monitor.raw,demos/data/images/gl.raw")
+$special.add("30")
+$special.add(",demos/data/samples/explode.wav,demos/data/images/marble.bmp,demos/data/images/spark.bmp,demos/data/images/boden.bmp,demos/data/images/wand.bmp")
+$special.add("31")
+$special.add(",demos/data/models/**")
+$special.add("32")
+$special.add(",demos/data/images/BlueFace.tga,demos/data/images/Bucket.tga,demos/data/images/Target.tga,demos/data/images/Coke.tga,demos/data/images/Vase.tga,demos/data/images/Explode.tga,demos/data/images/Ground.tga,demos/data/images/Sky.tga,demos/data/images/Crosshair.tga,demos/data/images/Font.tga")
+$special.add("33")
+$special.add(",demos/data/images/uncompressed.tga,demos/data/images/compressed.tga")
+$special.add("34")
+$special.add(",demos/data/models/terrain.raw")
+$special.add("37")
+$special.add(",demos/data/models/model.txt,demos/data/models/shader.txt")
+$special.add("44")
+$special.add(",demos/data/images/font.bmp,demos/data/images/hardglow2.bmp,demos/data/images/bigglow3.bmp,demos/data/images/halo3.bmp,demos/data/images/streaks4.bmp")
+$special.add("45")
+$special.add(",demos/data/images/terrain.bmp")
+$special.add("47")
+$special.add(",demos/data/shaders/wave.glsl")
+-->
+#foreach ($i in [1..48])
+    #if ($i < 10)
+        #set($number = "0$i")
+    #else
+        #set($number = $i)
+    #end
+                        <file name="lesson${number}" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
+                            <attr name="demo" stringvalue="demos.nehe.lesson${number}.Lesson${number}"/>
+                            <attr name="projectPackage" stringvalue="demos.nehe.lesson${number}"/>
+                            <attr name="projectName" stringvalue="Lesson${number}"/>
+                            <attr name="archive" stringvalue="Nehe-Source.zip"/>
+                            <attr name="srcPath" stringvalue="Nehe-Source/src"/>
+    #set( $include = "")
+    #if ($special.contains("$i")) ## simulates map.get(key)
+        #set($index = $special.indexOf("$i")+1)
+        #set($include = $special.get($index))
+    #end
+                            <attr name="includes" stringvalue="demos/nehe/lesson${number}/**,demos/common/**$include"/>
+                            <attr name="SystemFileSystem.localizingBundle" stringvalue="org.nboglpack.nehe.Bundle"/>
+                            <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
+                            <attr name="instantiatingWizardURL" urlvalue="nbresloc:/org/nboglpack/nehe/resources/description.html"/>
+                            <attr name="template" boolvalue="true"/>
+                        </file>
+#end
+                    </folder>
+                </folder>
+            </folder>
+        </folder>
+    </folder>
+</filesystem>

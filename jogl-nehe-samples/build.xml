@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- You may freely edit this file. See harness/README in the NetBeans platform -->
+<!-- for some information on what you could do (e.g. targets to override). -->
+<!-- If you delete this file and reopen the project it will be recreated. -->
+<project name="org.nboglpack.nehe" default="netbeans" basedir="." xmlns:vpp="antlib:foundrylogic.vpp">
+    <description>Builds, tests, and runs the project org.nboglpack.nehe.</description>
+    <import file="nbproject/build-impl.xml"/>
+
+    <vpp:config id="vpp0">
+        <context>
+        </context>
+    </vpp:config>
+
+    <!--generate NEHE project configuration layer file-->
+    <target name="generate-layer">
+
+        <copy
+            file="etc/layer-template.xml"
+            tofile="build/layer-generated.xml"
+            overwrite="true"
+        >
+            <filterchain>
+                <vpp:filter xmlns="antlib:foundrylogic.vpp">
+                    <config refid="vpp0"/>
+                </vpp:filter>
+            </filterchain>
+        </copy>
+
+    </target>
+
+</project>
