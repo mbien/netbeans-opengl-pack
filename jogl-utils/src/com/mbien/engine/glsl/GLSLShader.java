@@ -13,7 +13,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.EnumMap;
 import java.util.logging.Logger;
-import javax.media.opengl.GL2;
+import javax.media.opengl.GL;
+import javax.media.opengl.GL2GL3;
 import javax.media.opengl.GLContext;
 
 /**
@@ -181,35 +182,35 @@ public class GLSLShader {
         return sb.toString();
     }
     
-    public void initShader(GL2 gl) throws GLSLCompileException {
-        handle = gl.glCreateShaderObjectARB(type.GL_TYPE);
-        gl.glShaderSourceARB(handle, 1, new String[] {source}, new int[] {source.length()}, 0);
-        gl.glCompileShaderARB(handle);
+    public void initShader(GL2GL3 gl) throws GLSLCompileException {
+        handle = gl.glCreateShader(type.GL_TYPE);
+        gl.glShaderSource(handle, 1, new String[] {source}, new int[] {source.length()}, 0);
+        gl.glCompileShader(handle);
         checkShader(gl);
     }
     
-    public void deleteShader(GL2 gl) {
+    public void deleteShader(GL2GL3 gl) {
         gl.glDeleteShader(handle);
     }
     
-    private void checkShader(GL2 gl) throws GLSLCompileException {
+    private void checkShader(GL2GL3 gl) throws GLSLCompileException {
         
         boolean error = false;
         
         // check compile state
         int[] buffer = new int[1];
-        gl.glGetObjectParameterivARB(handle, GL2.GL_OBJECT_COMPILE_STATUS_ARB, buffer, 0);
-        if(buffer[0] == GL2.GL_FALSE) {
+        gl.glGetShaderiv(handle, GL2GL3.GL_COMPILE_STATUS, buffer, 0);
+        if(buffer[0] == GL.GL_FALSE) {
 //            getLog().warning("error compiling shader:\n"+getName());
             error = true;
         }
         
         // log info log
-        gl.glGetObjectParameterivARB(handle, GL2.GL_OBJECT_INFO_LOG_LENGTH_ARB, buffer, 0);
+        gl.glGetShaderiv(handle, GL2GL3.GL_INFO_LOG_LENGTH, buffer, 0);
         
         if(buffer[0] > 0) {
             byte[] log = new byte[buffer[0]];
-            gl.glGetInfoLogARB(handle, buffer[0], buffer, 0, log, 0);
+            gl.glGetShaderInfoLog(handle, buffer[0], buffer, 0, log, 0);
             
             compilerMsg = new String(log, 0, log.length-1);
             
@@ -257,7 +258,7 @@ public class GLSLShader {
 
            worker.work(new GLRunnable() {
               public void run(GLContext context) {
-                  GL2 gl = (GL2)context.getGL();
+                  GL gl = context.getGL();
                   SUPPORTED_SHADER.put(TYPE.VERTEX, gl.isExtensionAvailable(TYPE.VERTEX.EXT_STRING));
                   SUPPORTED_SHADER.put(TYPE.FRAGMENT, gl.isExtensionAvailable(TYPE.FRAGMENT.EXT_STRING));
                   SUPPORTED_SHADER.put(TYPE.GEOMETRY, gl.isExtensionAvailable(TYPE.GEOMETRY.EXT_STRING));
@@ -271,9 +272,9 @@ public class GLSLShader {
 
     public enum TYPE {
         
-        VERTEX(GL2.GL_VERTEX_SHADER, "GL_ARB_vertex_shader"),
-        FRAGMENT(GL2.GL_FRAGMENT_SHADER, "GL_ARB_fragment_shader"),
-        GEOMETRY(GL2.GL_GEOMETRY_SHADER, "GL_EXT_geometry_shader4"); //TODO not sure if this is correct: GL_EXT_geometry_shader4
+        VERTEX(GL2GL3.GL_VERTEX_SHADER, "GL_ARB_vertex_shader"),
+        FRAGMENT(GL2GL3.GL_FRAGMENT_SHADER, "GL_ARB_fragment_shader"),
+        GEOMETRY(GL2GL3.GL_GEOMETRY_SHADER, "GL_EXT_geometry_shader4");
                 
         public final int GL_TYPE;
         public final String EXT_STRING;

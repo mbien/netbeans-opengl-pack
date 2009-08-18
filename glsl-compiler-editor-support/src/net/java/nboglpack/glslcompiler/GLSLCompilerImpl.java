@@ -23,7 +23,7 @@ import java.util.prefs.Preferences;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import javax.media.opengl.GL;
-import javax.media.opengl.GL2;
+import javax.media.opengl.GL2GL3;
 import javax.media.opengl.GLContext;
 import org.openide.cookies.EditorCookie;
 import org.openide.cookies.LineCookie;
@@ -254,7 +254,7 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
         
         GLRunnable compilerTask = new GLRunnable(){
             public void run(GLContext context) {
-                GL2 gl = (GL2)context.getGL();
+                GL2GL3 gl = context.getGL().getGL2GL3();
 
                 try{
                     shader.initShader(gl);
@@ -281,7 +281,7 @@ public class GLSLCompilerImpl implements GLSLCompilerService {
         
         GLRunnable linkerTask = new GLRunnable(){
             public void run(GLContext context) {
-                GL2 gl = (GL2)context.getGL();
+                GL2GL3 gl = context.getGL().getGL2GL3();
                 GLSLProgram program = new GLSLProgram();
                 try{
                     program.initProgram(gl, shaders);
