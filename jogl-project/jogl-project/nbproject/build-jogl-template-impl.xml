@@ -79,8 +79,8 @@
         <delete dir="${dist.dir}/lib/natives-windows-i586"/>
         <delete dir="${dist.dir}/lib/natives-windows-amd64"/>
     </target>
-
-    <!--inserts jogl jnlp extensions into the jnlp master-->
+    
+    <!-- remove jogl libraries from jnlp and jars from distribution -->
     <target name="-jogl-template-jnlp" depends="-jogl-template-test-jnlp-enabled,-jogl-template-patch-master-jnlp,jnlp-impl.jnlp" if="is.jnlp.enabled">
 
         <!--remove jogl from dist/lib folder-->
@@ -124,16 +124,21 @@
             <replacetoken><![CDATA[<jar href="lib/gluegen-rt.jar" download="eager"/>]]></replacetoken>
             <replacevalue></replacevalue>
         </replace>
+        <replace file="${dist.dir}/launch.jnlp">
+            <replacetoken><![CDATA[-Djava.library.path=&quot;lib&quot;]]></replacetoken>
+            <replacevalue></replacevalue>
+        </replace>
 
     </target>
 
     <!--noop in case jnlp-impl.xml is not available-->
     <target name="jnlp-impl.jnlp" ></target>
 
+    <!--inserts jogl jnlp extensions into the jnlp master-->
     <target name="-jogl-template-patch-master-jnlp" depends="-jogl-template-check-master-jnlp" if="is.jnlp.unpatched">
         <replace file="master-${jnlp.descriptor}.jnlp">
             <replacetoken><![CDATA[</resources>]]></replacetoken>
-            <replacevalue><![CDATA[    <extension name="jogl" href="http://download.java.net/media/jogl/builds/archive/jsr-231-1.x-webstart-current/jogl.jnlp" />
+            <replacevalue><![CDATA[    <extension name="jogl-all-awt" href="http://download.java.net/media/jogl/jsr-231-2.x-webstart/jogl-all-awt.jnlp" />
     </resources>]]></replacevalue>
         </replace>
     </target>
@@ -142,7 +147,7 @@
         <loadfile property="master.jnlp.content" srcfile="master-${jnlp.descriptor}.jnlp"/>
         <condition property="is.jnlp.unpatched">
             <not>
-                <contains string="${master.jnlp.content}" substring='extension name="jogl"'/>
+                <contains string="${master.jnlp.content}" substring='extension name="jogl-all-awt"'/>
             </not>
         </condition>
     </target>
