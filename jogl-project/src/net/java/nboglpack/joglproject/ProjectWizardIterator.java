@@ -39,13 +39,13 @@ import org.openide.util.RequestProcessor;
  * @author Mathias Henze
  * @author Michael Bien
  */
-public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIterator
+public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIterator<WizardDescriptor>
 {
 	
     private static final long serialVersionUID = 1L;
     private transient String createLabel="LBL_CreateProjectStep";
     private transient int index;
-    private transient WizardDescriptor.Panel[] panels;
+    private transient WizardDescriptor.Panel<WizardDescriptor>[] panels;
     private transient WizardDescriptor wiz;
 
     public ProjectWizardIterator()
@@ -56,7 +56,8 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
         return new ProjectWizardIterator();
     }
 
-    private WizardDescriptor.Panel[] createPanels()
+    @SuppressWarnings("unchecked")
+    private WizardDescriptor.Panel<WizardDescriptor>[] createPanels()
     {
         return new WizardDescriptor.Panel[] {
             new ProjectWizardPanel(),
@@ -188,7 +189,7 @@ public class ProjectWizardIterator implements WizardDescriptor.InstantiatingIter
         index--;
     }
 
-    public WizardDescriptor.Panel current() {
+    public WizardDescriptor.Panel<WizardDescriptor> current() {
         return panels[index];
     }
 

@@ -11,16 +11,17 @@ import org.openide.WizardValidationException;
 import org.openide.util.HelpCtx;
 import org.openide.util.NbBundle;
 
+import static org.openide.WizardDescriptor.*;
+
 /**
  * Panel just asking for basic info.
  */
-public class ProjectWizardPanel implements WizardDescriptor.Panel,
-	WizardDescriptor.ValidatingPanel, WizardDescriptor.FinishablePanel
+public class ProjectWizardPanel implements Panel<WizardDescriptor>, ValidatingPanel<WizardDescriptor>, FinishablePanel<WizardDescriptor>
 {
 	
     private WizardDescriptor wizardDescriptor;
     private ProjectPanelVisual component;
-    private final Set<ChangeListener> listeners = new HashSet<ChangeListener>(1);
+    private final Set<ChangeListener> listeners = new HashSet<ChangeListener>(2);
 
     /** Creates a new instance of templateWizardPanel */
     public ProjectWizardPanel()
@@ -76,15 +77,15 @@ public class ProjectWizardPanel implements WizardDescriptor.Panel,
         }
     }
 
-    public void readSettings(Object settings)
+    public void readSettings(WizardDescriptor settings)
     {
-        wizardDescriptor = (WizardDescriptor) settings;
+        wizardDescriptor = settings;
         component.read(wizardDescriptor);
     }
 
-    public void storeSettings(Object settings)
+    public void storeSettings(WizardDescriptor settings)
     {
-        WizardDescriptor d = (WizardDescriptor) settings;
+        WizardDescriptor d = settings;
         component.store(d);
     }
 
