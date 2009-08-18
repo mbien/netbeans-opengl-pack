@@ -74,19 +74,19 @@ public final class OpenGLCapabilitiesAction extends CallableSystemAction {
                 GLCapabilitiesModel model = capsPanel.getModel();
                 
                 // overview
-                model.setGLVersion(gl.glGetString(GL2.GL_VERSION));
-                model.setGLVendor(gl.glGetString(GL2.GL_VENDOR));
-                model.setRenderer(gl.glGetString(GL2.GL_RENDERER));
+                model.setGLVersion(gl.glGetString(GL.GL_VERSION));
+                model.setGLVendor(gl.glGetString(GL.GL_VENDOR));
+                model.setRenderer(gl.glGetString(GL.GL_RENDERER));
                 model.setGLSLVersion(gl.glGetString(GL2.GL_SHADING_LANGUAGE_VERSION));
                 model.setGLImplVersion(Package.getPackage("javax.media.opengl").getImplementationVersion());// NOI18N
                 
                 // TODO we need a better way to get good buffer size
                 int[] buffer = new int[2];
-                gl.glGetIntegerv(GL2.GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, buffer, 0);
+                gl.glGetIntegerv(GL.GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, buffer, 0);
                 model.setMaxAnisotropy(buffer[0]+"x");
                 
                 buffer[0] = 0; buffer[1] = 0;
-                gl.glGetIntegerv(GL2.GL_MAX_VIEWPORT_DIMS, buffer, 0);
+                gl.glGetIntegerv(GL.GL_MAX_VIEWPORT_DIMS, buffer, 0);
                 model.setMaxViewportSize(buffer[0]+"x"+buffer[1]);
                 
                 buffer[0] = 0; buffer[1] = 0;
@@ -106,7 +106,7 @@ public final class OpenGLCapabilitiesAction extends CallableSystemAction {
                 model.setMaxGeometryTextureImageUnits(""+buffer[0]);
                 
                 buffer[0] = 0; buffer[1] = 0;
-                gl.glGetIntegerv(GL2.GL_MAX_TEXTURE_SIZE, buffer, 0);
+                gl.glGetIntegerv(GL.GL_MAX_TEXTURE_SIZE, buffer, 0);
                 model.setMaxTextureSize(""+buffer[0]);
                 
                 buffer[0] = 0; buffer[1] = 0;
@@ -118,16 +118,16 @@ public final class OpenGLCapabilitiesAction extends CallableSystemAction {
                 model.setMaxDrawBuffers(""+buffer[0]);
                 
                 
-                // extentions
-                ArrayList<String> extentions = model.getExtensions();
-                extentions.clear();
-                StringTokenizer tokenizer = new StringTokenizer(gl.glGetString(GL2.GL_EXTENSIONS));
+                // extensions
+                ArrayList<String> extensions = model.getExtensions();
+                extensions.clear();
+                StringTokenizer tokenizer = new StringTokenizer(gl.glGetString(GL.GL_EXTENSIONS));
                 while(tokenizer.hasMoreTokens())
-                    extentions.add(tokenizer.nextToken());
+                    extensions.add(tokenizer.nextToken());
                 
-                                
+
                 // capabilities
-                Field[] fields = GL2.class.getDeclaredFields();
+                Field[] fields = gl.getClass().getFields();
                 List<GLCapabilitiesModel.Capability> capabilities = model.getCapabilities();
                 capabilities.clear();
                 

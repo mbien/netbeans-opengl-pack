@@ -24,6 +24,9 @@ import javax.media.opengl.GLException;
 import javax.media.opengl.GLProfile;
 import javax.media.opengl.awt.GLCanvas;
 
+
+import static java.util.logging.Level.*;
+
 /**
  * GLWorker implementation with fallback mode.
  * @author Michel Bien
@@ -34,28 +37,43 @@ public class NBGLWorkerImpl implements GLWorker {
 
     public NBGLWorkerImpl() {
 
+        // try to create a GL3 worker first, fallback to GL2 and finally to the
+        // workaround if something wents wrong
         if (GLDrawableFactory.getFactory(GLProfile.getDefault()).canCreateGLPbuffer()) {
-            try {
-                glworker = new GLWorkerImpl();
-            } catch (GLException ex) {
-                Logger.getLogger(NBGLWorkerImpl.class.getName()).log(
-                        Level.INFO, "unable to create GLWorkerImpl, switching to fallback mode", ex);
-                glworker = createFallbackWorkerImpl();
-            }
+            if((glworker = initGLWorker(GLProfile.GL3)) == null)
+                if((glworker = initGLWorker(GLProfile.GL2)) == null)
+                    glworker = initFallbackWorkerImpl();
+
         } else {
-            glworker = createFallbackWorkerImpl();
+            glworker = initFallbackWorkerImpl();
         }
+        
         GLWorkerImpl.DEFAULT = this;
     }
 
-    private final GLWorkerImpl createFallbackWorkerImpl() {
+    private final GLWorker initGLWorker(String p) {
+        GLProfile profile = GLProfile.get(p);
+        try {
+            GLWorker worker = new GLWorkerImpl(profile);
+            log().info("created context with profile: "+profile);
+            return worker;
+        } catch (GLException ex) {
+            log().log(INFO, "unable to create GLContext with profile: "+profile, ex);
+            return null;
+        }
+
+    }
+
+    private final GLWorkerImpl initFallbackWorkerImpl() {
+
+        GLProfile profile = GLProfile.getDefault();
         
-        Logger.getLogger(NBGLWorkerImpl.class.getName()).log(Level.INFO, "using GLWorker fallback mode");
+        log().info("using GLWorker fallback mode with profile: "+profile);
         
         // fallback mode
         // use a heavy weight drawable if pixel buffers are not supported
-        Beans.setDesignTime(false); // TODO designtime = false workaround
-        GLCapabilities caps = new GLCapabilities(GLProfile.getDefault());
+        Beans.setDesignTime(false); // TODO designtime = false; workaround
+        GLCapabilities caps = new GLCapabilities(profile);
         GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         GLCapabilitiesChooser chooser = new DefaultGLCapabilitiesChooser();
 
@@ -66,6 +84,10 @@ public class NBGLWorkerImpl implements GLWorker {
         GLWorkerStatusLineElementProvider.component.add(canvas);
 
         return new GLWorkerImpl(canvas);
+    }
+
+    private final Logger log() {
+        return Logger.getLogger(NBGLWorkerImpl.class.getName());
     }
 
     @Override

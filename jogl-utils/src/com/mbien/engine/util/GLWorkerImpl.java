@@ -14,7 +14,7 @@ import javax.media.opengl.GLCapabilitiesChooser;
 import javax.media.opengl.GLContext;
 import javax.media.opengl.GLDrawableFactory;
 import javax.media.opengl.GLEventListener;
-import javax.media.opengl.GLPbuffer;
+import javax.media.opengl.GLException;
 import javax.media.opengl.GLProfile;
 
 /**
@@ -29,32 +29,38 @@ public class GLWorkerImpl implements GLWorker {
  public static GLWorker DEFAULT;
     
     /** Creates a new instance of GLWorker */
-    public GLWorkerImpl() {
-        this(null);
+    public GLWorkerImpl(GLProfile profile) throws GLException {
+
+        GLDrawableFactory factory = GLDrawableFactory.getFactory(profile);
+        GLCapabilitiesChooser chooser = new DefaultGLCapabilitiesChooser();
+
+        drawable = factory.createGLPbuffer(new GLCapabilities(profile), chooser, 1, 1, null);
+        work = new ArrayDeque<GLRunnable>();
+
+        init();
     }
     
     public GLWorkerImpl(GLAutoDrawable autoDrawable) {
         
         if(autoDrawable == null) {
-            GLDrawableFactory factory = GLDrawableFactory.getFactory(GLProfile.getDefault());
-            GLCapabilities c = new GLCapabilities(GLProfile.getDefault());
-            GLCapabilitiesChooser chooser = new DefaultGLCapabilitiesChooser();
-
-            drawable = factory.createGLPbuffer(c, chooser, 1, 1, null);
-        }else{
-            drawable = autoDrawable;
+            throw new NullPointerException();
         }
-        
-        drawable.addGLEventListener(new Worker());
+
+        drawable = autoDrawable;
         work = new ArrayDeque<GLRunnable>();
-        
+
+        init();
+    }
+
+    private final void init() {
+        drawable.addGLEventListener(new Worker());
         if(DEFAULT == null)
             DEFAULT = this;
     }
     
     public static GLWorker getDefault() {
         if(DEFAULT == null)
-            DEFAULT = new GLWorkerImpl();
+            DEFAULT = new GLWorkerImpl(GLProfile.getDefault());
         return DEFAULT;
     }
     
@@ -69,8 +75,7 @@ public class GLWorkerImpl implements GLWorker {
     }
     
     public synchronized void destroy() {
-        if(drawable instanceof GLPbuffer)
-            ((GLPbuffer)drawable).destroy();
+        drawable.destroy();
     }
 
     public synchronized void addWork(GLRunnable runnable) {
@@ -98,9 +103,6 @@ public class GLWorkerImpl implements GLWorker {
     }
 
     public void reshape(GLAutoDrawable arg0, int arg1, int arg2, int arg3, int arg4) {
-    }
-
-    public void displayChanged(GLAutoDrawable arg0, boolean arg1, boolean arg2) {
     }
 
     public void dispose(GLAutoDrawable arg0) {

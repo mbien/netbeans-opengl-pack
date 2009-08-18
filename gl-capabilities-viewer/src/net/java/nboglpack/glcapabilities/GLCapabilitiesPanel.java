@@ -5,8 +5,10 @@
  */
 package net.java.nboglpack.glcapabilities;
 
+import java.awt.Canvas;
 import java.awt.Dimension;
 import javax.media.nativewindow.Capabilities;
+import javax.media.opengl.GLAutoDrawable;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -48,8 +50,6 @@ import org.openide.util.NbBundle;
  */
 public class GLCapabilitiesPanel extends JPanel {
 
-
-    private static final GLProfile profile = GLProfile.get(GLProfile.GL2);
 
     @SuppressWarnings("unchecked")
     public GLCapabilitiesPanel() {
@@ -97,8 +97,7 @@ public class GLCapabilitiesPanel extends JPanel {
         
         bindingGroup.addBinding(tableBinding);
         
-        
-        final JOGLGearsDemo demo = new JOGLGearsDemo(gLCanvas);
+        final JOGLGearsDemo demo = new JOGLGearsDemo((GLAutoDrawable) gLCanvas);
         
         gLCanvas.addHierarchyListener(new HierarchyListener() {
 
@@ -163,8 +162,7 @@ public class GLCapabilitiesPanel extends JPanel {
         
     }
 
-    
-    private GLCanvas createGLDemoCanvas() {
+    private Canvas createGLDemoCanvas() {
 
         GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         GLCapabilitiesChooser chooser = new DefaultGLCapabilitiesChooser(){
@@ -189,6 +187,8 @@ public class GLCapabilitiesPanel extends JPanel {
                 return super.chooseCapabilities(desired, available, arg2);
             }
         };
+
+        GLProfile profile = GLProfile.get(GLProfile.GL2);
 
         try{
             GLCapabilities caps = new GLCapabilities(profile);
@@ -295,6 +295,11 @@ public class GLCapabilitiesPanel extends JPanel {
         binding = Bindings.createAutoBinding(UpdateStrategy.READ, capabilitiesModel, ELProperty.create("${vendor}"), vendorField, BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
+
+
+
+
+
         gl.setText(NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.gl.text")); // NOI18N
         glsl.setText(NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.glsl.text")); // NOI18N
         jogl.setText(NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.jogl.text")); // NOI18N
@@ -308,7 +313,7 @@ public class GLCapabilitiesPanel extends JPanel {
         );
         wrapperPanelLayout.setVerticalGroup(
             wrapperPanelLayout.createParallelGroup(Alignment.LEADING)
-            .addComponent(gLCanvas, GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+            .addComponent(gLCanvas, GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
         );
 
         GroupLayout basicCapsPanelLayout = new GroupLayout(basicCapsPanel);
@@ -439,6 +444,16 @@ public class GLCapabilitiesPanel extends JPanel {
         binding = Bindings.createAutoBinding(UpdateStrategy.READ, capabilitiesModel, ELProperty.create("${maxDrawBuffers}"), renderBuffersField, BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
+
+
+
+
+
+
+
+
+
+
         viewportSizeLabel.setText(NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.viewportSizeLabel.text")); // NOI18N
         textureSizeLabel.setText(NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.textureSizeLabel.text")); // NOI18N
         textureUnitsLabel.setText(NbBundle.getMessage(GLCapabilitiesPanel.class, "GLCapabilitiesPanel.textureUnitsLabel.text")); // NOI18N
@@ -552,11 +567,15 @@ public class GLCapabilitiesPanel extends JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(Alignment.LEADING)
-            .addComponent(tabbedPane, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(tabbedPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(Alignment.LEADING)
-            .addComponent(tabbedPane, GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(tabbedPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         bindingGroup.bind();
@@ -570,7 +589,7 @@ public class GLCapabilitiesPanel extends JPanel {
     private DisplayModesPanel displayModesJPanel;
     private FilteredTable extensionsJPanel;
     private JTextField fsaaField;
-    private GLCanvas gLCanvas;
+    private Canvas gLCanvas;
     private JTextField glField;
     private JTextField glslField;
     private JTextField joglField;
