@@ -49,7 +49,7 @@
                 <include name="jogl-2.0-webstart.zip"/>
                 <include name="nativewindow-2.0-webstart.zip"/>
                 <include name="newt-2.0-webstart.zip"/>
-                <include name="glugen-rt-2.0-webstart.zip"/>
+                <include name="gluegen-rt-2.0-webstart.zip"/>
             </fileset>
         </unzip>
         <unzip dest="${dist.dir}/lib/natives-${platform.name}" overwrite="true">
@@ -79,7 +79,7 @@
         <delete dir="${dist.dir}/lib/natives-windows-i586"/>
         <delete dir="${dist.dir}/lib/natives-windows-amd64"/>
     </target>
-    
+
     <!-- remove jogl libraries from jnlp and jars from distribution -->
     <target name="-jogl-template-jnlp" depends="-jogl-template-test-jnlp-enabled,-jogl-template-patch-master-jnlp,jnlp-impl.jnlp" if="is.jnlp.enabled">
 
