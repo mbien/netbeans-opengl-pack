@@ -4,6 +4,7 @@ import com.sun.opengl.util.Animator;
 import java.awt.Frame;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.media.opengl.DebugGL2;
 import javax.media.opengl.GL2;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLCapabilities;
@@ -15,9 +16,10 @@ import javax.media.opengl.glu.GLU;
 
 /**
  * @author Brian Paul
- * converted to Java by Ron Cemer and Sven Goethel, ported to JOGL2 by Michael Bien
+ * Converted to Java by Ron Cemer and Sven Goethel,
+ * ported to JOGL2 by Michael Bien.
  *
- * This version is equal to Brian Paul's version 1.2 1999/10/21
+ * This code is based on Brian Paul's version 1.2 1999/10/21
  */
 public class SimpleJOGL implements GLEventListener {
 
@@ -25,15 +27,22 @@ public class SimpleJOGL implements GLEventListener {
 
         Frame frame = new Frame("Simple JOGL Application");
 
-        // use GL2 profile since do not use shaders in this example
+        // use GL2 profile since we only use the old OpenGL 2.x fixed function pipeline
         GLCapabilities capabilities = new GLCapabilities(GLProfile.get(GLProfile.GL2));
+
+        // try to enable 2x anti aliasing - should be supported on most hardware
+//        capabilities.setNumSamples(2);
+//        capabilities.setSampleBuffers(true);
+
         GLCanvas canvas = new GLCanvas(capabilities);
 
         canvas.addGLEventListener(new SimpleJOGL());
         frame.add(canvas);
-        frame.setSize(640, 480);
 
+        // use JOGL's Animator utility for rendering
         final Animator animator = new Animator(canvas);
+
+        // stop the Animator when we receive a window closing event
         frame.addWindowListener(new WindowAdapter() {
 
             @Override
@@ -51,20 +60,25 @@ public class SimpleJOGL implements GLEventListener {
             }
         });
 
-        // Center frame, open and start rendering
+        // Center frame, set its size and start rendering
+        frame.setSize(640, 480);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         animator.start();
     }
 
+    // GLEventListener methods
+
     public void init(GLAutoDrawable drawable) {
-        // Use debug pipeline
-//        drawable.setGL(new DebugGL2(drawable.getGL().getGL2()));
+
+        // Use debug pipeline, all OpenGL error codes will be automatically
+        // converted to GLExceptions as soon as they appear
+        drawable.setGL(new DebugGL2(drawable.getGL().getGL2()));
 
         GL2 gl = drawable.getGL().getGL2();
-        System.err.println("INIT GL2 IS: " + gl.getClass().getName());
+        System.out.println("INIT GL2 IS: " + gl.getClass().getName());
 
-        // Enable VSync
+        // Enable VSync - this limits the rendering FPS to screen refresh rate
         gl.setSwapInterval(1);
 
         // Setup the drawing area and shading mode
@@ -73,6 +87,7 @@ public class SimpleJOGL implements GLEventListener {
     }
 
     public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
+
         GL2 gl = drawable.getGL().getGL2();
         GLU glu = new GLU();
 
@@ -91,6 +106,7 @@ public class SimpleJOGL implements GLEventListener {
     }
 
     public void display(GLAutoDrawable drawable) {
+
         GL2 gl = drawable.getGL().getGL2();
 
         // Clear the drawing area

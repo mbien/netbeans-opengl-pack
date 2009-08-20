@@ -1,5 +1,6 @@
 package org.yourorghere;
 
+import javax.media.opengl.DebugGL2;
 import javax.media.opengl.GL2;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;
@@ -15,8 +16,9 @@ import javax.media.opengl.glu.GLU;
 public class GLRenderer implements GLEventListener {
 
     public void init(GLAutoDrawable drawable) {
-        // Use debug pipeline
-        // drawable.setGL(new DebugGL2(drawable.getGL().getGL2()));
+        // Use debug pipeline, all OpenGL error codes will be automatically
+        // converted to GLExceptions as soon as they appear
+        drawable.setGL(new DebugGL2(drawable.getGL().getGL2()));
 
         GL2 gl = drawable.getGL().getGL2();
         System.err.println("INIT GL IS: " + gl.getClass().getName());
