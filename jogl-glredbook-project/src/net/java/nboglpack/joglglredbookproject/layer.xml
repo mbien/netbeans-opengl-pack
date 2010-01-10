@@ -503,30 +503,6 @@
                             <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/jfont.html"/>
                             <attr name="template" boolvalue="true"/>
                         </file>
-                        <file name="jitter.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
-                            <attr name="demo" stringvalue='jitter'/>
-                            <attr name="projectPackage" stringvalue='net.letskit.redbook'/>
-                            <attr name="projectName" stringvalue="jitter"/>
-                            <attr name="archive" stringvalue="glredbook-src.zip"/>
-                            <attr name="srcPath" stringvalue="src"/>
-                            <attr name="includes" stringvalue='glredbook10/glskeleton.java'/>
-                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
-                            <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-                            <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/jitter.html"/>
-                            <attr name="template" boolvalue="true"/>
-                        </file>
-                        <file name="jitter.jitter_point.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
-                            <attr name="demo" stringvalue='jitter.jitter_point'/>
-                            <attr name="projectPackage" stringvalue='net.letskit.redbook'/>
-                            <attr name="projectName" stringvalue="jitter.jitter_point"/>
-                            <attr name="archive" stringvalue="glredbook-src.zip"/>
-                            <attr name="srcPath" stringvalue="src"/>
-                            <attr name="includes" stringvalue='glredbook10/glskeleton.java'/>
-                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
-                            <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-                            <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/jitter.jitter_point.html"/>
-                            <attr name="template" boolvalue="true"/>
-                        </file>
                         <file name="light.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
                             <attr name="demo" stringvalue='glredbook10.light'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
@@ -1029,18 +1005,6 @@
                             <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
                             <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
                             <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/texbind.html"/>
-                            <attr name="template" boolvalue="true"/>
-                        </file>
-                        <file name="texgen.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
-                            <attr name="demo" stringvalue='glredbook11.texgen'/>
-                            <attr name="projectPackage" stringvalue='glredbook11'/>
-                            <attr name="projectName" stringvalue="texgen"/>
-                            <attr name="archive" stringvalue="glredbook-src.zip"/>
-                            <attr name="srcPath" stringvalue="src"/>
-                            <attr name="includes" stringvalue='glredbook10/glskeleton.java'/>
-                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
-                            <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
-                            <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/texgen.html"/>
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="texgen.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
