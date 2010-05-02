@@ -12,6 +12,7 @@
                 <folder name="Java OpenGL">
                     <folder name="Redbook Samples">
                         <file name="accanti.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.accanti'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="accanti"/>
@@ -24,6 +25,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="accnot.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.accnot'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="accnot"/>
@@ -36,6 +38,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="accpersp.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.accpersp'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="accpersp"/>
@@ -48,6 +51,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="accum.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.accum'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="accum"/>
@@ -60,6 +64,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="aim.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.aim'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="aim"/>
@@ -72,6 +77,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="alpha.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.alpha'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="alpha"/>
@@ -84,6 +90,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="alpha3D.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.alpha3D'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="alpha3D"/>
@@ -96,6 +103,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="anti.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.anti'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="anti"/>
@@ -108,6 +116,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="antipoint.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.antipoint'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="antipoint"/>
@@ -120,6 +129,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="antipoly.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.antipoly'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="antipoly"/>
@@ -132,6 +142,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="bezcurve.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.bezcurve'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="bezcurve"/>
@@ -144,6 +155,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="bezmesh.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.bezmesh'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="bezmesh"/>
@@ -156,6 +168,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="bezsurf.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.bezsurf'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="bezsurf"/>
@@ -168,6 +181,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="blendeqn.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook12x.blendeqn'/>
                             <attr name="projectPackage" stringvalue='glredbook12x'/>
                             <attr name="projectName" stringvalue="blendeqn"/>
@@ -180,6 +194,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="checker.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.checker'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="checker"/>
@@ -192,6 +207,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="checker2.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.checker2'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="checker2"/>
@@ -204,6 +220,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="chess.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.chess'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="chess"/>
@@ -216,6 +233,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="clip.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.clip'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="clip"/>
@@ -228,6 +246,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="colormat.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.colormat'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="colormat"/>
@@ -240,6 +259,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="colormatrix.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook12x.colormatrix'/>
                             <attr name="projectPackage" stringvalue='glredbook12x'/>
                             <attr name="projectName" stringvalue="colormatrix"/>
@@ -252,6 +272,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="colortable.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook12x.colortable'/>
                             <attr name="projectPackage" stringvalue='glredbook12x'/>
                             <attr name="projectName" stringvalue="colortable"/>
@@ -264,6 +285,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="combiner.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook1314.combiner'/>
                             <attr name="projectPackage" stringvalue='glredbook1314'/>
                             <attr name="projectName" stringvalue="combiner"/>
@@ -276,6 +298,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="cone.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.cone'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="cone"/>
@@ -288,6 +311,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="convolution.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook12x.convolution'/>
                             <attr name="projectPackage" stringvalue='glredbook12x'/>
                             <attr name="projectName" stringvalue="convolution"/>
@@ -300,6 +324,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="cube.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.cube'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="cube"/>
@@ -312,6 +337,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="cubemap.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook1314.cubemap'/>
                             <attr name="projectPackage" stringvalue='glredbook1314'/>
                             <attr name="projectName" stringvalue="cubemap"/>
@@ -324,6 +350,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="depthcue.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.depthcue'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="depthcue"/>
@@ -336,6 +363,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="disk.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.disk'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="disk"/>
@@ -348,6 +376,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="dof.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.dof'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="dof"/>
@@ -360,6 +389,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="dofnot.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.dofnot'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="dofnot"/>
@@ -372,6 +402,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="doublebuf.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.doublebuf'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="doublebuf"/>
@@ -384,6 +415,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="drawf.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.drawf'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="drawf"/>
@@ -396,6 +428,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="feedback.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.feedback'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="feedback"/>
@@ -408,6 +441,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="fog.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.fog'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="fog"/>
@@ -420,6 +454,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="fogcoord.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook1314.fogcoord'/>
                             <attr name="projectPackage" stringvalue='glredbook1314'/>
                             <attr name="projectName" stringvalue="fogcoord"/>
@@ -432,6 +467,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="font.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.font'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="font"/>
@@ -444,6 +480,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="aargb.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook11.aargb'/>
                             <attr name="projectPackage" stringvalue='glredbook11'/>
                             <attr name="projectName" stringvalue="aargb"/>
@@ -456,6 +493,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="hello.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook11.hello'/>
                             <attr name="projectPackage" stringvalue='glredbook11'/>
                             <attr name="projectName" stringvalue="hello"/>
@@ -468,6 +506,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="histogram.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook12x.histogram'/>
                             <attr name="projectPackage" stringvalue='glredbook12x'/>
                             <attr name="projectName" stringvalue="histogram"/>
@@ -480,6 +519,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="image.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook11.image'/>
                             <attr name="projectPackage" stringvalue='glredbook11'/>
                             <attr name="projectName" stringvalue="image"/>
@@ -492,6 +532,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="jfont.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.jfont'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="jfont"/>
@@ -503,7 +544,34 @@
                             <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/jfont.html"/>
                             <attr name="template" boolvalue="true"/>
                         </file>
+                        <file name="jitter.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
+                            <attr name="demo" stringvalue='jitter'/>
+                            <attr name="projectPackage" stringvalue='net.letskit.redbook'/>
+                            <attr name="projectName" stringvalue="jitter"/>
+                            <attr name="archive" stringvalue="glredbook-src.zip"/>
+                            <attr name="srcPath" stringvalue="src"/>
+                            <attr name="includes" stringvalue='glredbook10/glskeleton.java'/>
+                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+                            <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
+                            <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/jitter.html"/>
+                            <attr name="template" boolvalue="true"/>
+                        </file>
+                        <file name="jitter.jitter_point.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
+                            <attr name="demo" stringvalue='jitter.jitter_point'/>
+                            <attr name="projectPackage" stringvalue='net.letskit.redbook'/>
+                            <attr name="projectName" stringvalue="jitter.jitter_point"/>
+                            <attr name="archive" stringvalue="glredbook-src.zip"/>
+                            <attr name="srcPath" stringvalue="src"/>
+                            <attr name="includes" stringvalue='glredbook10/glskeleton.java'/>
+                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+                            <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
+                            <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/jitter.jitter_point.html"/>
+                            <attr name="template" boolvalue="true"/>
+                        </file>
                         <file name="light.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.light'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="light"/>
@@ -516,6 +584,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="linelist.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.linelist'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="linelist"/>
@@ -528,6 +597,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="lines.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.lines'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="lines"/>
@@ -540,6 +610,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="list.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.list'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="list"/>
@@ -552,6 +623,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="list2.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.list2'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="list2"/>
@@ -564,6 +636,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="maplight.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.maplight'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="maplight"/>
@@ -576,6 +649,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="material.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.material'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="material"/>
@@ -588,6 +662,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="minmax.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook12x.minmax'/>
                             <attr name="projectPackage" stringvalue='glredbook12x'/>
                             <attr name="projectName" stringvalue="minmax"/>
@@ -600,6 +675,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="mipmap.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.mipmap'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="mipmap"/>
@@ -612,6 +688,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="model.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.model'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="model"/>
@@ -624,6 +701,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="movelight.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.movelight'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="movelight"/>
@@ -636,6 +714,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="multisamp.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook1314.multisamp'/>
                             <attr name="projectPackage" stringvalue='glredbook1314'/>
                             <attr name="projectName" stringvalue="multisamp"/>
@@ -648,6 +727,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="multitex.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook12x.multitex'/>
                             <attr name="projectPackage" stringvalue='glredbook12x'/>
                             <attr name="projectName" stringvalue="multitex"/>
@@ -660,6 +740,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="mvarray.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook1314.mvarray'/>
                             <attr name="projectPackage" stringvalue='glredbook1314'/>
                             <attr name="projectName" stringvalue="mvarray"/>
@@ -672,6 +753,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="pickdepth.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.pickdepth'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="pickdepth"/>
@@ -684,6 +766,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="pickline.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.pickline'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="pickline"/>
@@ -696,6 +779,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="picksquare.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.picksquare'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="picksquare"/>
@@ -708,6 +792,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="plane.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.plane'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="plane"/>
@@ -720,6 +805,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="planet.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.planet'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="planet"/>
@@ -732,6 +818,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="planetup.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.planetup'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="planetup"/>
@@ -744,6 +831,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="pointp.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook1314.pointp'/>
                             <attr name="projectPackage" stringvalue='glredbook1314'/>
                             <attr name="projectName" stringvalue="pointp"/>
@@ -756,6 +844,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="polyoff.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook11.polyoff'/>
                             <attr name="projectPackage" stringvalue='glredbook11'/>
                             <attr name="projectName" stringvalue="polyoff"/>
@@ -768,6 +857,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="polys.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.polys'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="polys"/>
@@ -780,6 +870,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="quadric.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook12x.quadric'/>
                             <attr name="projectPackage" stringvalue='glredbook12x'/>
                             <attr name="projectName" stringvalue="quadric"/>
@@ -792,6 +883,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="robot.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.robot'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="robot"/>
@@ -804,6 +896,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="sccolorlight.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.sccolorlight'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="sccolorlight"/>
@@ -816,6 +909,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="scene.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.scene'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="scene"/>
@@ -828,6 +922,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="scenebamb.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.scenebamb'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="scenebamb"/>
@@ -840,6 +935,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="sceneflat.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.sceneflat'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="sceneflat"/>
@@ -852,6 +948,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="select.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.select'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="select"/>
@@ -864,6 +961,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="shadowmap.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook1314.shadowmap'/>
                             <attr name="projectPackage" stringvalue='glredbook1314'/>
                             <attr name="projectName" stringvalue="shadowmap"/>
@@ -876,6 +974,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="simple.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.simple'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="simple"/>
@@ -888,6 +987,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="smooth.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.smooth'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="smooth"/>
@@ -900,6 +1000,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="sphere.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.sphere'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="sphere"/>
@@ -912,6 +1013,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="stencil.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.stencil'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="stencil"/>
@@ -924,6 +1026,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="stroke.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.stroke'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="stroke"/>
@@ -936,6 +1039,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="tea.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.tea'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="tea"/>
@@ -948,6 +1052,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="teaambient.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.teaambient'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="teaambient"/>
@@ -960,6 +1065,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="teapots.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.teapots'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="teapots"/>
@@ -972,6 +1078,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="tess.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook11.tess'/>
                             <attr name="projectPackage" stringvalue='glredbook11'/>
                             <attr name="projectName" stringvalue="tess"/>
@@ -984,6 +1091,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="tesswind.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook11.tesswind'/>
                             <attr name="projectPackage" stringvalue='glredbook11'/>
                             <attr name="projectName" stringvalue="tesswind"/>
@@ -996,6 +1104,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="texbind.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook11.texbind'/>
                             <attr name="projectPackage" stringvalue='glredbook11'/>
                             <attr name="projectName" stringvalue="texbind"/>
@@ -1008,6 +1117,20 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="texgen.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
+                            <attr name="demo" stringvalue='glredbook11.texgen'/>
+                            <attr name="projectPackage" stringvalue='glredbook11'/>
+                            <attr name="projectName" stringvalue="texgen"/>
+                            <attr name="archive" stringvalue="glredbook-src.zip"/>
+                            <attr name="srcPath" stringvalue="src"/>
+                            <attr name="includes" stringvalue='glredbook10/glskeleton.java'/>
+                            <attr name="SystemFileSystem.localizingBundle" stringvalue="net.java.nboglpack.joglglredbookproject.Bundle"/>
+                            <attr name="instantiatingIterator" methodvalue="net.java.nboglpack.joglproject.ProjectWizardIterator.createIterator"/>
+                            <attr name="instantiatingWizardURL" urlvalue="nbresloc:/net/java/nboglpack/joglglredbookproject/resources/texgen.html"/>
+                            <attr name="template" boolvalue="true"/>
+                        </file>
+                        <file name="texgen.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook11.texgen'/>
                             <attr name="projectPackage" stringvalue='glredbook11'/>
                             <attr name="projectName" stringvalue="texgen"/>
@@ -1020,6 +1143,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="texprox.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook11.texprox'/>
                             <attr name="projectPackage" stringvalue='glredbook11'/>
                             <attr name="projectName" stringvalue="texprox"/>
@@ -1032,6 +1156,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="texsub.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook11.texsub'/>
                             <attr name="projectPackage" stringvalue='glredbook11'/>
                             <attr name="projectName" stringvalue="texsub"/>
@@ -1044,6 +1169,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="texture3d.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook12x.texture3d'/>
                             <attr name="projectPackage" stringvalue='glredbook12x'/>
                             <attr name="projectName" stringvalue="texture3d"/>
@@ -1056,6 +1182,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="texturesurf.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook10.texturesurf'/>
                             <attr name="projectPackage" stringvalue='glredbook10'/>
                             <attr name="projectName" stringvalue="texturesurf"/>
@@ -1068,6 +1195,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="torus.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook11.torus'/>
                             <attr name="projectPackage" stringvalue='glredbook11'/>
                             <attr name="projectName" stringvalue="torus"/>
@@ -1080,6 +1208,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="unproject.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook11.unproject'/>
                             <attr name="projectPackage" stringvalue='glredbook11'/>
                             <attr name="projectName" stringvalue="unproject"/>
@@ -1092,6 +1221,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="varray.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook11.varray'/>
                             <attr name="projectPackage" stringvalue='glredbook11'/>
                             <attr name="projectName" stringvalue="varray"/>
@@ -1104,6 +1234,7 @@
                             <attr name="template" boolvalue="true"/>
                         </file>
                         <file name="wrap.zip" url="nbresloc:/net/java/nboglpack/joglproject/resources/jogl-project.zip">
+                            <attr name="SystemFileSystem.icon" urlvalue="nbresloc:/net/java/nboglpack/joglproject/resources/opengl-icon.gif"/>
                             <attr name="demo" stringvalue='glredbook11.wrap'/>
                             <attr name="projectPackage" stringvalue='glredbook11'/>
                             <attr name="projectName" stringvalue="wrap"/>

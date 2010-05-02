@@ -41,6 +41,7 @@ final class GlslCompilerOptionsPanel extends JPanel {
         GLWorker worker = Lookup.getDefault().lookup(GLWorker.class);
         worker.addWork(new GLRunnable() {
 
+            @Override
             public void run(GLContext context) {
                 GL gl = context.getGL();
                 buffer[0] = gl.glGetString(GL.GL_VERSION);
@@ -114,6 +115,7 @@ final class GlslCompilerOptionsPanel extends JPanel {
 
         optionsPanel.setBackground(getBackground());
 
+
         optionsPanel.setBorder(BorderFactory.createTitledBorder(NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_OptionsPanelTitle"))); // NOI18N
         patternLabel.setText(NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_ErrorParserPatternLabel")); // NOI18N
         GroupLayout optionsPanelLayout = new GroupLayout(optionsPanel);
@@ -124,9 +126,8 @@ final class GlslCompilerOptionsPanel extends JPanel {
                 .addContainerGap()
                 .add(patternLabel)
                 .addPreferredGap(LayoutStyle.RELATED)
-                .add(patternTextField, GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                .add(patternTextField, GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
                 .addContainerGap())
-
         );
         optionsPanelLayout.setVerticalGroup(
             optionsPanelLayout.createParallelGroup(GroupLayout.LEADING)
@@ -135,26 +136,37 @@ final class GlslCompilerOptionsPanel extends JPanel {
                     .add(patternLabel)
                     .add(patternTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-
         );
 
         runtimePanel.setBackground(getBackground());
+
         runtimePanel.setBorder(BorderFactory.createTitledBorder(NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_RuntimePanelTitle"))); // NOI18N
         glVersion.setText(NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_OpenGLVersionLabel")); // NOI18N
+
         glVersionLabel.setText("jLabel2");
+
         gpuVendor.setText(NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_GPU_VendorLabel")); // NOI18N
+
         vendorLabel.setText("jLabel4");
+
         joglVersion.setText(NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_JOGL_VersionLabel")); // NOI18N
+
         joglVersionLabel.setText("jLabel6");
+
+
+
         jLabel1.setText(NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_VertexShaderLabel")); // NOI18N
         jLabel2.setText(NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_FragmentShaderLabel")); // NOI18N
         jLabel3.setText(NbBundle.getMessage(GlslCompilerOptionsPanel.class, "GlslCompilerPanel_GeometryShaderLabel")); // NOI18N
+
         vertexShaderSupport.setText("jLabel4");
+
         fragmentShaderSupport.setText("jLabel5");
+
         geometryShaderSupport.setText("jLabel6");
 
+
         logoLabel.setIcon(new ImageIcon(getClass().getResource("/net/java/nboglpack/glslcompiler/options/NetBeansOpenGLPack.png"))); // NOI18N
-        
         GroupLayout runtimePanelLayout = new GroupLayout(runtimePanel);
         runtimePanel.setLayout(runtimePanelLayout);
         runtimePanelLayout.setHorizontalGroup(
@@ -183,7 +195,6 @@ final class GlslCompilerOptionsPanel extends JPanel {
                     .add(fragmentShaderSupport, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                     .add(geometryShaderSupport, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
                 .addContainerGap())
-
         );
         runtimePanelLayout.setVerticalGroup(
             runtimePanelLayout.createParallelGroup(GroupLayout.LEADING)
@@ -215,7 +226,6 @@ final class GlslCompilerOptionsPanel extends JPanel {
                         .add(geometryShaderSupport))
                     .add(logoLabel))
                 .addContainerGap(12, Short.MAX_VALUE))
-
         );
 
         GroupLayout layout = new GroupLayout(this);
@@ -228,7 +238,6 @@ final class GlslCompilerOptionsPanel extends JPanel {
                     .add(GroupLayout.LEADING, optionsPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(GroupLayout.LEADING, runtimePanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(GroupLayout.LEADING)
@@ -238,7 +247,6 @@ final class GlslCompilerOptionsPanel extends JPanel {
                 .addPreferredGap(LayoutStyle.RELATED)
                 .add(optionsPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables

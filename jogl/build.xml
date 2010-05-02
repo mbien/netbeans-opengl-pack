@@ -12,7 +12,7 @@
 
     <target name="clean">
 
-        <delete includeemptydirs="true">
+        <delete includeemptydirs="true" failonerror="false">
             <fileset dir="release/jogl-runtime2" includes="**/*"/>
             <fileset dir="release/modules/ext" includes="**/*"/>
         </delete>

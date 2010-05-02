@@ -46,8 +46,9 @@ public abstract class WebPageQuickSearchProvider implements SearchProvider {
     public WebPageQuickSearchProvider(final String url) {
         
         // async harvest task
-        harvestTask = RequestProcessor.getDefault().create(new Runnable() {
+        harvestTask = new RequestProcessor("GL Quicksearch Requestprocessor").create(new Runnable() {
 
+            @Override
             public void run() {
                 try {
                     harvest(new URL(url));
@@ -65,7 +66,7 @@ public abstract class WebPageQuickSearchProvider implements SearchProvider {
     }
     
 
-    private final void harvest(URL url) throws IOException {
+    private void harvest(URL url) throws IOException {
         
         BufferedReader reader = null;
         ArrayList<SearchItem> itemList = new ArrayList<SearchItem>(128);
@@ -133,6 +134,7 @@ public abstract class WebPageQuickSearchProvider implements SearchProvider {
      * Note that it's important to react to return value of SearchResponse.addResult(...) method
      * and stop computation if false value is returned.
      */
+    @Override
     public void evaluate(SearchRequest request, SearchResponse response) {
         
         // make sure harvester is done
@@ -182,6 +184,7 @@ public abstract class WebPageQuickSearchProvider implements SearchProvider {
             this.url = new URL(url);
         }
 
+        @Override
         public void run() {
             URLDisplayer.getDefault().showURL(url);
         }
