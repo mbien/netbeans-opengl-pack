@@ -3,7 +3,7 @@
     <type>org.netbeans.modules.apisupport.project</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/nb-module-project/3">
-            <code-name-base>com.sun.gluegen</code-name-base>
+            <code-name-base>com.jogamp.gluegen</code-name-base>
             <suite-component/>
             <module-dependencies>
                 <dependency>
@@ -32,8 +32,14 @@
                 </dependency>
             </module-dependencies>
             <public-packages>
-                <package>com.sun.gluegen.runtime</package>
-                <package>com.sun.gluegen.runtime.opengl</package>
+                <package>com.jogamp.common</package>
+                <package>com.jogamp.common.impl</package>
+                <package>com.jogamp.common.jvm</package>
+                <package>com.jogamp.common.nio</package>
+                <package>com.jogamp.common.os</package>
+                <package>com.jogamp.common.util</package>
+                <package>com.jogamp.gluegen.runtime</package>
+                <package>com.jogamp.gluegen.runtime.opengl</package>
             </public-packages>
             <class-path-extension>
                 <runtime-relative-path>ext/gluegen-rt.jar</runtime-relative-path>

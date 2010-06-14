@@ -250,7 +250,7 @@ public class NativeLibSupport {
                 reference = new WeakReference<JAXBContext>(jc);
             }
         }
-        System.out.println(jc);
+//        System.out.println(jc);
         return jc;
     }
     

@@ -20,7 +20,7 @@ public class Installer extends ModuleInstall {
     @Override
     public void restored() {
         File gluegenDistFolder = InstalledFileLocator.getDefault().locate(
-                "gluegen-runtime2", "com.sun.gluegen", false);
+                "gluegen-runtime", "com.jogamp.gluegen", false);
         try {
             InputStream stream = this.getClass().getResourceAsStream("gluegen-natives-config.xml");
             NativeLibSupport.deploy("gluegen-rt.jar", stream, gluegenDistFolder, "gluegen-rt-2.0-webstart.zip");

@@ -2,8 +2,8 @@
 <!-- You may freely edit this file. See harness/README in the NetBeans platform -->
 <!-- for some information on what you could do (e.g. targets to override). -->
 <!-- If you delete this file and reopen the project it will be recreated. -->
-<project name="com.sun.gluegen" default="netbeans" basedir=".">
-    <description>Builds, tests, and runs the project com.sun.gluegen.</description>
+<project name="com.jogamp.gluegen" default="netbeans" basedir=".">
+    <description>Builds, tests, and runs the project com.jogamp.gluegen</description>
     <property file="./../nbproject/global.properties"/>
     <property file="./../nbproject/private/global_private.properties"/>
     <import file="nbproject/build-impl.xml"/>
@@ -13,25 +13,35 @@
     <target name="clean">
 
         <delete includeemptydirs="true" failonerror="false">
-            <fileset dir="release/gluegen-runtime2" includes="**/*"/>
+            <fileset dir="release/gluegen-runtime" includes="**/*"/>
             <fileset dir="release/modules/ext" includes="**/*"/>
         </delete>
         
     </target>
 
-    <target name="-pre-compile">
+    <target name="download">
+        <property name="folder" value="http://jogamp.org/deployment/autobuilds/gluegen-2010-06-10_15-36-54//build"/>
+        <get src="${folder}/gluegen-rt.jar" dest="gluegen-dist"/>
+        <get src="${folder}/gluegen-rt-natives-windows-i586.jar" dest="gluegen-dist"/>
+        <get src="${folder}/gluegen-rt-natives-windows-amd64.jar" dest="gluegen-dist"/>
+        <get src="${folder}/gluegen-rt-natives-linux-i586.jar" dest="gluegen-dist"/>
+        <get src="${folder}/gluegen-rt-natives-linux-amd64.jar" dest="gluegen-dist"/>
+        <zip basedir="gluegen-dist" includes="*" excludes="*.zip" destfile="gluegen-dist/gluegen-rt-2.0-webstart.zip" />
+    </target>
 
-        <copy todir="release/gluegen-runtime2/" file="gluegen-dist/gluegen-rt-2.0-webstart.zip" overwrite="true"/>
+    <target name="-pre-compile" depends="download">
+
+        <copy todir="release/gluegen-runtime/" file="gluegen-dist/gluegen-rt-2.0-webstart.zip" overwrite="true"/>
 
         <!--unzip gluegen jar-->
-        <unzip src="release/gluegen-runtime2/gluegen-rt-2.0-webstart.zip" dest="release/gluegen-runtime2/" overwrite="true">
+        <unzip src="release/gluegen-runtime/gluegen-rt-2.0-webstart.zip" dest="release/gluegen-runtime/" overwrite="true">
             <patternset>
                 <include name="gluegen-rt.jar"/>
             </patternset>
         </unzip>
 
         <!--copy jar into ext classpath-->
-        <copy file="release/gluegen-runtime2/gluegen-rt.jar" todir="release/modules/ext"/>
+        <copy file="release/gluegen-runtime/gluegen-rt.jar" todir="release/modules/ext"/>
         
     </target>
     

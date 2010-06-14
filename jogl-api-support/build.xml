@@ -24,7 +24,7 @@
             <fileset dir="temp/jogl-2.0-src/jogl/src/jogl/classes"/>
             <fileset dir="temp/jogl-2.0-src/jogl/build/jogl/gensrc/classes"/>
         </move>
-        <zip destfile="release/jogl-runtime2/jogl-2.0-src.zip" basedir="temp/jogl-2.0-src/src"/>
+        <zip destfile="release/jogl-runtime/jogl-2.0-src.zip" basedir="temp/jogl-2.0-src/src"/>
         <delete dir="temp/jogl-2.0-src"/>
 
         <!--newt-->
@@ -36,7 +36,7 @@
         <move todir="temp/jogl-2.0-src/src">
             <fileset dir="temp/jogl-2.0-src/jogl/src/newt/classes"/>
         </move>
-        <zip destfile="release/jogl-runtime2/newt-2.0-src.zip" basedir="temp/jogl-2.0-src/src"/>
+        <zip destfile="release/jogl-runtime/newt-2.0-src.zip" basedir="temp/jogl-2.0-src/src"/>
         <delete dir="temp/jogl-2.0-src"/>
 
         <!--nativewindow-->
@@ -48,7 +48,7 @@
         <move todir="temp/jogl-2.0-src/src">
             <fileset dir="temp/jogl-2.0-src/jogl/src/nativewindow/classes"/>
         </move>
-        <zip destfile="release/jogl-runtime2/nativewindow-2.0-src.zip" basedir="temp/jogl-2.0-src/src"/>
+        <zip destfile="release/jogl-runtime/nativewindow-2.0-src.zip" basedir="temp/jogl-2.0-src/src"/>
         <delete dir="temp/jogl-2.0-src"/>
 
         <!--gluegen-rt-->
@@ -60,7 +60,7 @@
         <move todir="temp/jogl-2.0-src/src">
             <fileset dir="temp/jogl-2.0-src/gluegen/src"/>
         </move>
-        <zip destfile="release/gluegen-runtime2/gluegen-rt-2.0-src.zip" basedir="temp/jogl-2.0-src/src"/>
+        <zip destfile="release/gluegen-runtime/gluegen-rt-2.0-src.zip" basedir="temp/jogl-2.0-src/src"/>
         <delete dir="temp/jogl-2.0-src"/>
 
     </target>

@@ -13,37 +13,46 @@
     <target name="clean">
 
         <delete includeemptydirs="true" failonerror="false">
-            <fileset dir="release/jogl-runtime2" includes="**/*"/>
+            <fileset dir="release/jogl-runtime" includes="**/*"/>
             <fileset dir="release/modules/ext" includes="**/*"/>
         </delete>
 
     </target>
 
+    <target name="download">
 
-    <target name="-pre-compile">
+        <property name="folder" value="http://jogamp.org/deployment/autobuilds/jogl-2010-06-10_15-40-25/build/jar/"/>
+        <get src="${folder}/jogl.all.jar" dest="jogl-dist"/>
+        <get src="${folder}/jogl-natives-linux-amd64.jar" dest="jogl-dist"/>
+        <get src="${folder}/jogl-natives-linux-i586.jar" dest="jogl-dist"/>
+        <get src="${folder}/jogl-natives-windows-amd64.jar" dest="jogl-dist"/>
+        <get src="${folder}/jogl-natives-windows-i586.jar" dest="jogl-dist"/>
 
-        <copy todir="release/jogl-runtime2/" file="jogl-dist/jogl-2.0-webstart.zip" overwrite="true"/>
-        <copy todir="release/jogl-runtime2/" file="jogl-dist/nativewindow-2.0-webstart.zip" overwrite="true"/>
-        <copy todir="release/jogl-runtime2/" file="jogl-dist/newt-2.0-webstart.zip" overwrite="true"/>
+        <get src="${folder}/newt.all.jar" dest="jogl-dist"/>
+        <get src="${folder}/newt-natives-linux-amd64.jar" dest="jogl-dist"/>
+        <get src="${folder}/newt-natives-linux-i586.jar" dest="jogl-dist"/>
+        <get src="${folder}/newt-natives-windows-amd64.jar" dest="jogl-dist"/>
+        <get src="${folder}/newt-natives-windows-i586.jar" dest="jogl-dist"/>
 
-        <!--unzip natives-->
-        <unzip dest="release/jogl-runtime2/" overwrite="true">
-            <patternset>
-                <include name="jogl.all.jar"/>
-                <include name="nativewindow.all.jar"/>
-                <include name="newt.all.jar"/>
-            </patternset>
-            <fileset dir="release/jogl-runtime2/">
-                <include name="jogl-2.0-webstart.zip"/>
-                <include name="nativewindow-2.0-webstart.zip"/>
-                <include name="newt-2.0-webstart.zip"/>
-            </fileset>
-        </unzip>
+        <get src="${folder}/nativewindow.all.jar" dest="jogl-dist"/>
+        <get src="${folder}/nativewindow-natives-linux-amd64.jar" dest="jogl-dist"/>
+        <get src="${folder}/nativewindow-natives-linux-i586.jar" dest="jogl-dist"/>
+        <get src="${folder}/nativewindow-natives-windows-amd64.jar" dest="jogl-dist"/>
+        <get src="${folder}/nativewindow-natives-windows-i586.jar" dest="jogl-dist"/>
 
-        <!--copy jars to the lib wrapper module ext classpath-->
-        <copy file="release/jogl-runtime2/jogl.all.jar" todir="release/modules/ext"/>
-        <copy file="release/jogl-runtime2/nativewindow.all.jar" todir="release/modules/ext"/>
-        <copy file="release/jogl-runtime2/newt.all.jar" todir="release/modules/ext"/>
+        <zip basedir="jogl-dist" includes="*" excludes="*.zip" destfile="jogl-dist/jogl-2.0-webstart.zip" />
+    </target>
+
+    <target name="-pre-compile" depends="download">
+
+        <copy todir="release/jogl-runtime/" file="jogl-dist/jogl-2.0-webstart.zip" overwrite="true"/>
+        <copy todir="release/jogl-runtime/" file="jogl-dist/jogl.all.jar" overwrite="true"/>
+        <copy todir="release/jogl-runtime/" file="jogl-dist/newt.all.jar" overwrite="true"/>
+        <copy todir="release/jogl-runtime/" file="jogl-dist/nativewindow.all.jar" overwrite="true"/>
+
+        <copy file="release/jogl-runtime/jogl.all.jar" todir="release/modules/ext"/>
+        <copy file="release/jogl-runtime/nativewindow.all.jar" todir="release/modules/ext"/>
+        <copy file="release/jogl-runtime/newt.all.jar" todir="release/modules/ext"/>
 
     </target>
 

@@ -14,7 +14,6 @@ import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.beans.Beans;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.media.opengl.DefaultGLCapabilitiesChooser;
 import javax.media.opengl.GLCapabilities;
@@ -39,7 +38,7 @@ public class NBGLWorkerImpl implements GLWorker {
 
         // try to create a GL3 worker first, fallback to GL2 and finally to the
         // workaround if something wents wrong
-        if (GLDrawableFactory.getFactory(GLProfile.getDefault()).canCreateGLPbuffer()) {
+        if (GLDrawableFactory.getFactory(GLProfile.getDefault()).canCreateGLPbuffer(null)) {
             if((glworker = initGLWorker(GLProfile.GL3)) == null)
                 if((glworker = initGLWorker(GLProfile.GL2)) == null)
                     glworker = initFallbackWorkerImpl();

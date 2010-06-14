@@ -1,6 +1,6 @@
 package net.java.nboglpack.glcapabilities.demo;
 
-import com.sun.opengl.util.Animator;
+import com.jogamp.opengl.util.Animator;
 import javax.media.opengl.GL2;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;

@@ -21,17 +21,17 @@ public class Installer extends ModuleInstall {
     @Override
     public void restored() {
         
-        File joglDistFolder = InstalledFileLocator.getDefault().locate("jogl-runtime2", "javax.media.opengl", false);
+        File joglDistFolder = InstalledFileLocator.getDefault().locate("jogl-runtime", "javax.media.opengl", false);
         
         try {
             InputStream stream = this.getClass().getResourceAsStream("jogl-natives-config.xml");
             NativeLibSupport.deploy("jogl.all.jar", stream, joglDistFolder, "jogl-2.0-webstart.zip");
 
             stream = this.getClass().getResourceAsStream("nativewindow-natives-config.xml");
-            NativeLibSupport.deploy("nativewindow.all.jar", stream, joglDistFolder, "nativewindow-2.0-webstart.zip");
+            NativeLibSupport.deploy("nativewindow.all.jar", stream, joglDistFolder, "jogl-2.0-webstart.zip");
 
             stream = this.getClass().getResourceAsStream("newt-natives-config.xml");
-            NativeLibSupport.deploy("newt.all.jar", stream, joglDistFolder, "newt-2.0-webstart.zip");
+            NativeLibSupport.deploy("newt.all.jar", stream, joglDistFolder, "jogl-2.0-webstart.zip");
         } catch (LibDeploymentException ex) {
             Exceptions.printStackTrace(ex);
         }
